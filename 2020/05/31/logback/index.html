@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+  <title>SpringBoot + LogBack 配置 - LUNA</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LUNA</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/logback.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SpringBoot + LogBack 配置">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-31 00:00" pubdate>
+        May 31, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SpringBoot + LogBack 配置</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 hours ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="SpringBoot-LogBack-配置"><a href="#SpringBoot-LogBack-配置" class="headerlink" title="SpringBoot + LogBack 配置"></a>SpringBoot + LogBack 配置</h3><ol>
+<li>首先可使用Spring 默认依赖,其他maven项目可引入</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0-alpha5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringBootDemoLogbackApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger log = LoggerFactory.getLogger(SpringBootDemoLogbackApplication.class);</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		ConfigurableApplicationContext context = SpringApplication.run(SpringBootDemoLogbackApplication.class, args);</span><br><span class="line">		<span class="keyword">int</span> length = context.getBeanDefinitionNames().length;</span><br><span class="line">		log.trace(<span class="string">&quot;Spring boot启动初始化了 &#123;&#125; 个 Bean&quot;</span>, length);</span><br><span class="line">		log.debug(<span class="string">&quot;Spring boot启动初始化了 &#123;&#125; 个 Bean&quot;</span>, length);</span><br><span class="line">		log.info(<span class="string">&quot;Spring boot启动初始化了 &#123;&#125; 个 Bean&quot;</span>, length);</span><br><span class="line">		log.warn(<span class="string">&quot;Spring boot启动初始化了 &#123;&#125; 个 Bean&quot;</span>, length);</span><br><span class="line">		log.error(<span class="string">&quot;Spring boot启动初始化了 &#123;&#125; 个 Bean&quot;</span>, length);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> j = <span class="number">1</span> / i;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			log.error(<span class="string">&quot;【SpringBootDemoLogbackApplication】启动异常：&quot;</span>, e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>也可使用lombok 配合IDEA插件 使用@Sel4j 注解 无需LoggerFactory创建log</li>
+</ol>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><ul>
+<li><p><a href="(https://juejin.im/post/5b51f85c5188251af91a7525#heading-6)">参照这个文件介绍</a></p>
+</li>
+<li><p>这里贴出自定义完整配置</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  &quot;$&#123;FILE_LOG_PATTERN:-%d&#123;$&#123;LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS&#125;&#125; $&#123;LOG_LEVEL_PATTERN:-%5p&#125; $&#123;PID:- &#125; - - - [%t]  %-40.40logger&#123;39&#125;  %file:%line: %m%n$&#123;LOG_EXCEPTION_CONVERSION_WORD:-%wEx&#125;&#125;&quot;--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;FILE_ERROR_PATTERN_LUNA&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">value</span>=<span class="string">&quot;$&#123;FILE_ERROR_PATTERN_LUNA:-%d&#123;$&#123;FILE_ERROR_PATTERN_LUNA:-yyyy-MM-dd HH:mm:ss.SSS&#125;&#125; $&#123;LOG_LEVEL_PATTERN:-%5p&#125; $&#123;PID:- &#125; --- [%t] %file:%line: -  %m%n$&#123;LOG_EXCEPTION_CONVERSION_WORD:-%wEx&#125;&#125;&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">include</span> <span class="attr">resource</span>=<span class="string">&quot;org/springframework/boot/logging/logback/defaults.xml&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">conversionRule</span> <span class="attr">conversionWord</span>=<span class="string">&quot;clr&quot;</span> <span class="attr">converterClass</span>=<span class="string">&quot;org.springframework.boot.logging.logback.ColorConverter&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">conversionRule</span> <span class="attr">conversionWord</span>=<span class="string">&quot;wex&quot;</span> <span class="attr">converterClass</span>=<span class="string">&quot;org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">conversionRule</span> <span class="attr">conversionWord</span>=<span class="string">&quot;wEx&quot;</span></span></span><br><span class="line"><span class="tag">                  <span class="attr">converterClass</span>=<span class="string">&quot;org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter&quot;</span> /&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 彩色日志格式 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;CONSOLE_LOG_PATTERN_LUNA&quot;</span></span></span><br><span class="line"><span class="tag">            <span class="attr">value</span>=<span class="string">&quot;$&#123;CONSOLE_LOG_PATTERN_LUNA:-%clr(%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125;)&#123;faint&#125; %clr($&#123;LOG_LEVEL_PATTERN:-%5p&#125;) %clr($&#123;PID:- &#125;)&#123;magenta&#125; %clr(---)&#123;faint&#125; %clr([%t])&#123;faint&#125; %clr(%40.40file:%line:)&#123;cyan&#125; %clr( -)&#123;faint&#125; %m%n$&#123;LOG_EXCEPTION_CONVERSION_WORD:-%wEx&#125;&#125;&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;CONSOLE&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.LevelFilter&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">level</span>&gt;</span>INFO<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;CONSOLE_LOG_PATTERN_LUNA&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">charset</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">charset</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;FILE_INFO&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--如果只是想要 Info 级别的日志，只是过滤 info 还是会输出 Error 日志，因为 Error 的级别高， 所以我们使用下面的策略，可以避免输出 Error 的日志--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.LevelFilter&quot;</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--过滤 Error--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">level</span>&gt;</span>ERROR<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--匹配到就禁止--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">onMatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">onMatch</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--没有匹配到就允许--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">onMismatch</span>&gt;</span>ACCEPT<span class="tag">&lt;/<span class="name">onMismatch</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--日志名称，如果没有File 属性，那么只会使用FileNamePattern的文件路径规则如果同时有&lt;File&gt;和&lt;FileNamePattern&gt;，那么当天日志是&lt;File&gt;，明天会自动把今天的日志改名为今天的日期。即，&lt;File&gt; 的日志都是当天的。--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--&lt;File&gt;logs/info.spring-boot-demo-logback.log&lt;/File&gt;--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--滚动策略，按照时间滚动 TimeBasedRollingPolicy--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">FileNamePattern</span>&gt;</span>logs/spring-boot-demo-logback/info.created_on_%d&#123;yyyy-MM-dd&#125;.part_%i.log<span class="tag">&lt;/<span class="name">FileNamePattern</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--只保留最近90天的日志--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>90<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志--&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--&lt;totalSizeCap&gt;1GB&lt;/totalSizeCap&gt;--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">timeBasedFileNamingAndTriggeringPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- maxFileSize:这是活动文件的大小，默认值是10MB,本篇设置为1KB，只是为了演示 --&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">maxFileSize</span>&gt;</span>2MB<span class="tag">&lt;/<span class="name">maxFileSize</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">timeBasedFileNamingAndTriggeringPolicy</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--&lt;triggeringPolicy class=&quot;ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy&quot;&gt;--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--&lt;maxFileSize&gt;1KB&lt;/maxFileSize&gt;--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--&lt;/triggeringPolicy&gt;--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;FILE_ERROR_PATTERN_LUNA&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">charset</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">charset</span>&gt;</span> <span class="comment">&lt;!-- 此处设置字符集 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;FILE_ERROR&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--如果只是想要 Error 级别的日志，那么需要过滤一下，默认是 info 级别的，ThresholdFilter--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.ThresholdFilter&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">level</span>&gt;</span>Error<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--日志名称，如果没有File 属性，那么只会使用FileNamePattern的文件路径规则如果同时有&lt;File&gt;和&lt;FileNamePattern&gt;，那么当天日志是&lt;File&gt;，明天会自动把今天的日志改名为今天的日期。即，&lt;File&gt; 的日志都是当天的。--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--&lt;File&gt;logs/error.spring-boot-demo-logback.log&lt;/File&gt;--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--滚动策略，按照时间滚动 TimeBasedRollingPolicy--&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">FileNamePattern</span>&gt;</span>logs/spring-boot-demo-logback/error.created_on_%d&#123;yyyy-MM-dd&#125;.part_%i.log<span class="tag">&lt;/<span class="name">FileNamePattern</span>&gt;</span></span><br><span class="line">			<span class="comment">&lt;!--只保留最近90天的日志--&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>90<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">timeBasedFileNamingAndTriggeringPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP&quot;</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- maxFileSize:这是活动文件的大小，默认值是10MB,本篇设置为1KB，只是为了演示 --&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">maxFileSize</span>&gt;</span>2MB<span class="tag">&lt;/<span class="name">maxFileSize</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">timeBasedFileNamingAndTriggeringPolicy</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">pattern</span>&gt;</span>$&#123;FILE_ERROR_PATTERN_LUNA&#125;<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">charset</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">charset</span>&gt;</span> <span class="comment">&lt;!-- 此处设置字符集 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;info&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;CONSOLE&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;FILE_INFO&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;FILE_ERROR&quot;</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>logback和logback-spring.xml都可以用来配置logback，但是2者的加载顺序是不一样的。</p>
+<p>logback.xml—&gt;application.properties—&gt;logback-spring.xml.</p>
+<h2 id="logback-xml加载早于application-properties，所以如果你在logback-xml使用了变量时，而恰好这个变量是写在application-properties时，那么就会获取不到，只要改成logback-spring-xml就可以解决。"><a href="#logback-xml加载早于application-properties，所以如果你在logback-xml使用了变量时，而恰好这个变量是写在application-properties时，那么就会获取不到，只要改成logback-spring-xml就可以解决。" class="headerlink" title="logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到，只要改成logback-spring.xml就可以解决。"></a>logback.xml加载早于application.properties，所以如果你在logback.xml使用了变量时，而恰好这个变量是写在application.properties时，那么就会获取不到，只要改成logback-spring.xml就可以解决。</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/spring/">spring</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/logBack/">logBack</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/01/reply/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">reply</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/31/spring%20security/">
+                        <span class="hidden-mobile">Spring security 配置</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

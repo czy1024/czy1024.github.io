@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+  <title>Docker 技术原理 - LUNA</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LUNA</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/docker.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Docker 技术原理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-03 00:00" pubdate>
+        June 3, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Docker 技术原理</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 hours ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h4 id="先聊聊Docker-的基础内容：Docker-能做什么，怎么安装-Docker，以及容器技术的原理。"><a href="#先聊聊Docker-的基础内容：Docker-能做什么，怎么安装-Docker，以及容器技术的原理。" class="headerlink" title="先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。"></a><strong>先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。</strong></h4><h3 id="1-Docker-能做什么？"><a href="#1-Docker-能做什么？" class="headerlink" title="1. Docker 能做什么？"></a>1. Docker 能做什么？</h3><p>​    众所周知，Docker 是一个用于开发，发布和运行应用程序的开放平台。通俗地讲，Docker 类似于集装箱。在一艘大船上，各种货物要想被整齐摆放并且相互不受到影响，我们就需要把各种货物进行集装箱标准化。有了集装箱，我们就不需要专门运输水果或者化学用品的船了。我们可以把各种货品通过集装箱打包，然后统一放到一艘船上运输。Docker 要做的就是把各种软件打包成一个集装箱（镜像），然后分发，且在运行的时候可以相互隔离。</p>
+<p>到此，相信你已经迫不及待想要体验下了，下面就让我们来安装一个 Docker。</p>
+<p><img src="/images/docker1.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2-CentOS-下安装-Docker"><a href="#2-CentOS-下安装-Docker" class="headerlink" title="2. CentOS 下安装 Docker"></a><strong>2. CentOS 下安装 Docker</strong></h4><p>​    Docker 是跨平台的解决方案，它支持在当前主流的各大平台安装，包括 Ubuntu、RHEL、CentOS、Debian 等 Linux 发行版，同时也可以在 OSX 、Microsoft Windows 等非 Linux 平台下安装使用。</p>
+<p>​    因为 Linux 是 Docker 的原生支持平台，所以推荐你在 Linux 上使用 Docker。由于生产环境中我们使用 CentOS 较多，下面主要针对在 CentOS 平台下安装和使用 Docker 展开介绍。</p>
+<h5 id="2-1-操作系统要求"><a href="#2-1-操作系统要求" class="headerlink" title="2.1 操作系统要求"></a>2.1 操作系统要求</h5><p>要安装 Docker，我们需要 CentOS 7 及以上的发行版本。</p>
+<h5 id="2-2-卸载已有-Docker"><a href="#2-2-卸载已有-Docker" class="headerlink" title="2.2 卸载已有 Docker"></a>2.2 卸载已有 Docker</h5><p>如果你已经安装过旧版的 Docker，可以先执行以下命令卸载旧版 Docker。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum remove docker \</span><br><span class="line">				docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-3-安装-Docker"><a href="#2-3-安装-Docker" class="headerlink" title="2.3 安装 Docker"></a>2.3 安装 Docker</h5><p>首次安装 Docker 之前，需要添加 Docker 安装源。添加之后，我们就可以从已经配置好的源，安装和更新 Docker。添加 Docker 安装源的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install yum-utils</span><br><span class="line">$ sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br></pre></td></tr></table></figure>
+
+<p>正常情况下，直接安装最新版本的 Docker 即可，因为最新版本的 Docker 有着更好的稳定性和安全性。你可以使用以下命令安装最新版本的 Docker。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，使用以下命令启动 Docker。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-4-启动一个-hello-world-的容器"><a href="#2-4-启动一个-hello-world-的容器" class="headerlink" title="2.4 启动一个 hello world 的容器"></a>2.4 启动一个 hello world 的容器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run hello-world</span><br><span class="line">Unable to find image &#39;hello-world:latest&#39; locally</span><br><span class="line">latest: Pulling from library&#x2F;hello-world</span><br><span class="line">0e03bdcc26d7: Pull complete</span><br><span class="line">Digest: sha256:7f0a9f93b4aa3022c3a4c147a449bf11e0941a1fd0bf4a8e6c9408b2600777c5</span><br><span class="line">Status: Downloaded newer image for hello-world:latest</span><br><span class="line">Hello from Docker!</span><br></pre></td></tr></table></figure>
+
+<p>运行上述命令，Docker 首先会检查本地是否有<code>hello-world</code>这个镜像，如果发现本地没有这个镜像，Docker 就会去 <strong>Docker Hub</strong> 官方仓库下载此镜像，然后运行它。最后我们看到该镜像输出 “Hello from Docker!” 并退出。</p>
+<blockquote>
+<p>安装完成后默认 docker 命令只能以 root 用户执行，如果想允许普通用户执行 docker 命令，需要执行以下命令 sudo groupadd docker &amp;&amp; sudo gpasswd -a ${USER} docker &amp;&amp; sudo systemctl restart docker ，执行完命令后，退出当前命令行窗口并打开新的窗口即可。</p>
+</blockquote>
+<p>安装完 Docker，先不着急使用，先来了解下容器的技术原理，这样才能知其所以然。</p>
+<h3 id="3-容器技术原理"><a href="#3-容器技术原理" class="headerlink" title="3. 容器技术原理"></a>3. 容器技术原理</h3><p>必须先提一提chroot，因为 chroot 是最早的容器雏形。chroot 意味着切换根目录，有了 chroot 就意味着我们可以把任何目录更改为当前进程的根目录，这与容器非常相似，下面我们通过一个实例了解下 chroot。</p>
+<h4 id="3-1-chroot-即-change-root-directory-（更改-root-目录）"><a href="#3-1-chroot-即-change-root-directory-（更改-root-目录）" class="headerlink" title="3.1 chroot 即 change root directory （更改 root 目录）"></a>3.1 chroot 即 change root directory （更改 root 目录）</h4><p>​    什么是 chroot 呢？下面是 chroot 维基百科定义：</p>
+<blockquote>
+<p>chroot 是在 Unix 和 Linux 系统的一个操作，针对正在运作的软件行程和它的子进程，改变它外显的根目录。一个运行在这个环境下，经由 chroot 设置根目录的程序，它不能够对这个指定根目录之外的文件进行访问动作，不能读取，也不能更改它的内容。</p>
+</blockquote>
+<p>​    通俗地说 ，chroot 就是可以改变某进程的根目录，使这个程序不能访问目录之外的其他目录，这个跟我们在一个容器中是很相似的。</p>
+<p>​    在经过 chroot 之后，系统读取到的目录和文件将不在是旧系统根下的而是新根下(即被指定的新的位置)的目录结构和文件，因此它带来的好处大致有以下3个：</p>
+<ol>
+<li><p>增加了系统的安全性，限制了用户的权力；</p>
+<p>在经过 chroot 之后，在新根下将访问不到旧系统的根目录结构和文件，这样就增强了系统的安全性。这个一般是在登录 (login) 前使用 chroot，以此达到用户不能访问一些特定的文件。</p>
+</li>
+<li><p>建立一个与原系统隔离的系统目录结构，方便用户的开发；</p>
+<p>使用 chroot 后，系统读取的是新根下的目录和文件，这是一个与原系统根下文件不相关的目录结构。在这个新的环境中，可以用来测试软件的静态编译以及一些与系统不相关的独立开发。</p>
+</li>
+<li><p>切换系统的根目录位置，引导 Linux 系统启动以及急救系统等。</p>
+<p>chroot 的作用就是切换系统的根位置，而这个作用最为明显的是在系统初始引导磁盘的处理过程中使用，从初始 RAM 磁盘 (initrd) 切换系统的根位置并执行真正的 init。另外，当系统出现一些问题时，我们也可以使用 chroot 来切换到一个临时的系统。</p>
+</li>
+</ol>
+<p>下面我们<strong>通过一个实例来演示下 chroot。</strong></p>
+<p>首先我们在当前/home目录下创建一个 rootfs 目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir rootfs</span><br></pre></td></tr></table></figure>
+
+<p>这里为了方便演示，我使用现成的 busybox 镜像来创建一个系统，镜像的概念和组成后面我会详细讲解，如果你没有 Docker 基础可以把下面的操作命令理解成在 rootfs 下创建了一些目录和放置了一些二进制文件。</p>
+<p>复制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd rootfs </span><br><span class="line">$ docker export $(docker create busybox) -o busybox.tar</span><br><span class="line">$ tar -xf busybox.tar</span><br></pre></td></tr></table></figure>
+
+<p>执行完上面的命令后，在 rootfs 目录下，我们会得到一些目录和文件。下面我们使用 ls 命令查看一下 rootfs 目录下的内容。</p>
+<p>复制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</span><br></pre></td></tr></table></figure>
+
+<p>可以看到我们在 rootfs 目录下初始化了一些目录，下面让我们通过一条命令来见证 chroot 的神奇之处。使用以下命令，可以启动一个 sh 进程，并且把 /home/centos/rootfs 作为 sh 进程的根目录。</p>
+<p>复制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chroot &#x2F;home&#x2F;rootfs &#x2F;bin&#x2F;sh</span><br></pre></td></tr></table></figure>
+
+<p>此时，我们的命令行窗口已经处于上述命令启动的 sh 进程中。在当前 sh 命令行窗口下，我们使用 ls 命令查看一下当前进程，看是否真的与主机上的其他目录隔离开了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; # ls &#x2F;</span><br><span class="line">bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</span><br></pre></td></tr></table></figure>
+
+<p>这里可以看到当前进程的根目录已经变成了主机上的 /home/rootfs 目录。这样就实现了当前进程与主机的隔离。到此为止，一个目录隔离的容器就完成了。操作图解如下图所示：</p>
+<p><img src="images/chroot1.png" srcset="/img/loading.gif" lazyload></p>
+<p>但是，此时还不能称之为一个容器，为什么呢？你可以在上一步（使用 chroot 启动命令行窗口）执行以下命令，查看如下路由信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc # ip route</span><br><span class="line">default via 172.20.1.1 dev eth0</span><br><span class="line">172.17.0.0&#x2F;16 dev docker0 scope link  src 172.17.0.1</span><br><span class="line">172.20.1.0&#x2F;24 dev eth0 scope link  src 172.20.1.3</span><br></pre></td></tr></table></figure>
+
+<p>执行 ip route 命令后，你可以看到网络信息并没有隔离，实际上进程等信息此时也并未隔离。要想实现一个完整的容器，我们还需要 Linux 的其他三项技术： Namespace、Cgroups 和联合文件系统。</p>
+<p>Docker 是利用 Linux 的 Namespace 、Cgroups 和联合文件系统三大机制来保证实现的， 所以它的原理是使用 Namespace 做主机名、网络、PID 等资源的隔离，使用 Cgroups 对进程或者进程组做资源（例如：CPU、内存等）的限制，联合文件系统用于镜像构建和容器运行环境。</p>
+<p>下面简单解释下它们的作用</p>
+<h4 id="3-2-Namespace"><a href="#3-2-Namespace" class="headerlink" title="3.2 Namespace"></a><strong>3.2 Namespace</strong></h4><p>​    Namespace 是 Linux 内核的一项功能，该功能对内核资源进行隔离，使得容器中的进程都可以在单独的命名空间中运行，并且只可以访问当前容器命名空间的资源。Namespace 可以隔离进程 ID、主机名、用户 ID、文件名、网络访问和进程间通信等相关资源。</p>
+<p>Docker 主要用到以下五种命名空间。</p>
+<ul>
+<li>pid namespace：用于隔离进程 ID。</li>
+<li>net namespace：隔离网络接口，在虚拟的 net namespace 内用户可以拥有自己独立的 IP、路由、端口等。</li>
+<li>mnt namespace：文件系统挂载点隔离。</li>
+<li>ipc namespace：信号量,消息队列和共享内存的隔离。</li>
+<li>uts namespace：主机名和域名的隔离。</li>
+</ul>
+<h4 id="3-3-Cgroups-即：Linux-Control-Group"><a href="#3-3-Cgroups-即：Linux-Control-Group" class="headerlink" title="3.3 Cgroups 即：Linux Control Group"></a>3.3 Cgroups 即：Linux Control Group</h4><p>​    Cgroups 是一种 Linux 内核功能，可以限制和隔离进程的资源使用情况（CPU、内存、磁盘 I/O、网络等）。在容器的实现中，Cgroups 通常用来限制容器的 CPU 和内存等资源的使用。</p>
+<p>参考地址：<a target="_blank" rel="noopener" href="https://coolshell.cn/articles/17049.html">https://coolshell.cn/articles/17049.html</a></p>
+<p>首先，Linux把CGroup这个事实现成了一个file system，你可以mount。在我的Ubuntu 14.04下，你输入以下命令你就可以看到cgroup已为你mount好了。如下图所示：</p>
+<p><img src="images/cgroups1.png" srcset="/img/loading.gif" lazyload></p>
+<p>在**/sys/fs**下有一个cgroup的目录，这个目录下还有很多子目录，比如： cpu，cpuset，memory，blkio……这些，这些都是cgroup的子系统。分别用于干不同的事的。</p>
+<h4 id="CPU限制"><a href="#CPU限制" class="headerlink" title="CPU限制"></a>CPU限制</h4><p><strong>1)  先创建一个test.py文件</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p><strong>2）执行test.py文件，并查询内存使用情况</strong></p>
+<p><img src="images/cgroups2.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>3) 限制cpu使用效率</strong></p>
+<p><img src="images/cgroups-cpu-quota-us.png" srcset="/img/loading.gif" lazyload></p>
+<p>在/sys/fs/cgroup/cpu下创建了一个coco，而且你会发现，一旦你创建了一个子目录，这个子目录里又有很多文件了。其中<strong>cpu.cfs_quota_us</strong>表示该control group限制占用的时间（微秒），默认为-1，表示不限制。如果设为50000，表示占用50000/10000=50%的CPU。</p>
+<p>这里，我们设置占用20%的CPU，即把cpu.cfs_quota_us设置为20000。执行命令就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 20000 &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;cpu.cfs_quota_us</span><br></pre></td></tr></table></figure>
+
+<p>然后执行死循环test.py文件，瞬间cpu就会跑到100%。如下图所示：</p>
+<p><img src="images/cgroups-cpu-full-top.png" srcset="/img/loading.gif" lazyload></p>
+<p>我们看到，这个进程的PID是4897，我们把这个进程加到这个cgroup中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 4897 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;tasks</span><br></pre></td></tr></table></figure>
+
+<p>然后，就会在top中看到CPU的利用立马下降成20%了。（前面我们设置的20000就是20%的意思）</p>
+<p><strong>4) 查看内存使用情况</strong></p>
+<p><img src="images/cgroups-cpu-top.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="内存限制"><a href="#内存限制" class="headerlink" title="内存限制"></a>内存限制</h4><h5 id="1）创建test1-py文件"><a href="#1）创建test1-py文件" class="headerlink" title="1）创建test1.py文件"></a>1）创建test1.py文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    i &#x3D; []</span><br><span class="line">    while True:</span><br><span class="line">        i.append(1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line"></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>想要的效果为：i变量一直新增元素，导致i的内存空间会一直增大。</p>
+<p><strong>2） 执行test1.py文件，并通过top观察执行消耗内存情况</strong></p>
+<p>执行test1.py文件，获取到进程PID</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test1.py &amp;</span><br></pre></td></tr></table></figure>
+
+<p>然后可以通过top查看到对应进程的内存使用情况。</p>
+<p><strong>3）限制内存使用情况</strong></p>
+<p><img src="images/cgroups-memory.png" srcset="/img/loading.gif" lazyload></p>
+<p>在/sys/fs/cgroup/memory下创建了一个coco，而且你会发现，一旦你创建了一个子目录，这个子目录里又有很多文件了。其中<strong>memory.limit_in_bytes</strong> 或 <strong>memory.memsw.limit_in_bytes</strong> 限制进程内存占用的大小，避免在进程异常时耗尽系统资源</p>
+<p>这里，我们设置占用300k的内存使用量，即把memory.limit_in_bytes设置为300k。执行命令就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 300k &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;memory.limit_in_bytes </span><br></pre></td></tr></table></figure>
+
+<p>然后再把需要限制内存大小的进程加到这个cgroup中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 23541 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;tasks</span><br></pre></td></tr></table></figure>
+
+<p>最后你会看到，一会上面PID为 23541的进程将会被kill掉。</p>
+<p><strong>4）查看进程</strong></p>
+<p>从上图中可以看出，当执行kill -9 23541时，提示无法找到PID为23541的进程。那就说明当PID为23541的进程消耗的内存超过了300k时，将主动被kill掉了。</p>
+<h4 id="3-4-联合文件系统"><a href="#3-4-联合文件系统" class="headerlink" title="3.4 联合文件系统"></a>3.4 联合文件系统</h4><p>​    联合文件系统，又叫 UnionFS，是一种通过创建文件层进程操作的文件系统，因此，联合文件系统非常轻快。Docker 使用联合文件系统为容器提供构建层，使得容器可以实现写时复制以及镜像的分层构建和存储。常用的联合文件系统有 AUFS、Overlay 和 Devicemapper 等。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/docker/">docker</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/docker/">docker</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/07/exception/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringBoot 统一异常处理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">Docker 容器操作</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

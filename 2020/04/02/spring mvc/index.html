@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+  <title>springMVC - LUNA</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LUNA</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/java1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="springMVC">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-02 00:00" pubdate>
+        April 2, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">springMVC</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 hours ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="1-页面模板解析"><a href="#1-页面模板解析" class="headerlink" title="1.页面模板解析"></a>1.页面模板解析</h3><p>可通过使用thymeleaf模板对应的spring配置，默认已经配置好，可手动配置其他路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>并且引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- SpringBoot集成thymeleaf模板 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>即可在控制层实现页面跳转</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(path = &quot;crud&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> UserDAO userDAO;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> DepartmentDAO departmentDAO;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有用户</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@GetMapping(&quot;/users&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(ModelMap map)</span> </span>&#123;</span><br><span class="line">		List&lt;UserDO&gt; all = userDAO.getAll();</span><br><span class="line">		map.put(<span class="string">&quot;users&quot;</span>, all);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;user/users&quot;</span>; <span class="comment">//对应templates/user/users.html</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在页面访问 {ip：端口}/项目路径/curd/users 即可访问对应页面。其中若<br>注解 @@RequestMapping(path = “crud”) 为 “/curd” 或者 @GetMapping(“users”)为”/users” 都可。</p>
+<h3 id="2-重定向"><a href="#2-重定向" class="headerlink" title="2. 重定向"></a>2. 重定向</h3><p>重定向可带参数或者不带参数</p>
+<ol>
+<li>不带参数<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 添加用户请求</span></span><br><span class="line"><span class="comment">	 * SpringMVC 自动将属性绑定  入参名和对象属性名一样</span></span><br><span class="line"><span class="comment">	 *</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@PostMapping(&quot;/user&quot;)</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String  <span class="title">addUser</span><span class="params">(UserDO userDO)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;提交的用户信息&quot;</span> + userDO);</span><br><span class="line">		userDAO.insert(userDO);</span><br><span class="line">		<span class="comment">//　TODO　添加完成后来到用户列表页面 redirect: 重定向地址  forward:转发地址 不能有空格</span></span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;redirect:/crud/users&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>带参数传递</li>
+</ol>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">redirect 目标有三种构建方式：</span><br><span class="line"></span><br><span class="line">1. 使用 redirect: 前缀url方式构建目标url</span><br><span class="line">2. 使用 RedirectView 类型指定目标, 推荐使用这个,</span><br><span class="line">3. 使用 ModelAndView 类型指定目标, ModelAndView 视图名默认是forward, 所以对于redirect, 需要加上 redirect: 前缀</span><br><span class="line"></span><br><span class="line">传参和取参方式:</span><br><span class="line"></span><br><span class="line">1. 传参: 以字符串的形式构建目标url, 可以使用 query variable的格式拼url. 取参: @RequestParam()来fetch</span><br><span class="line">2. 传参: redirectAttributes.addAttribute() 加的attr. 取参: @RequestParam()来fetch</span><br><span class="line">3. 传参: redirectAttributes.addFlashAttribute() 加的attr. 取参: @ModelAttribute()来fetch</span><br><span class="line"></span><br><span class="line">Flash attribute的特点:</span><br><span class="line"></span><br><span class="line">1. addFlashAttribute() 可以是任意类型的数据(不局限在String等基本类型), addAttribute()只能加基本类型的参数.</span><br><span class="line">2. addFlashAttribute() 加的 attr, 不会出现在url 地址栏上.</span><br><span class="line">3. addFlashAttribute() 加的 attr, 一旦fetch后, 就会自动清空, 非常适合 form 提交后 feedback Message.</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-请求转发"><a href="#3-请求转发" class="headerlink" title="3. 请求转发"></a>3. 请求转发</h3><p>在Spring MVC 中, 构建forward 目标有两种方式:</p>
+<ol>
+<li>以字符串的形式构建目标url, url 需要加上 forward: 前缀</li>
+<li>使用 ModelAndView 对象来设置转发的forward目标, viewName 可以省略 forward: 前缀, viewName 应该是目标url, 而不是目标视图的函数名.<br>传参方式:</li>
+<li>以字符串的形式构建目标url, 可以使用 query variable的格式拼url</li>
+<li>使用 ModelAndView 对象来增加 attribute Object, 其结果也是在拼接url.<br>取参的方式: 可以使用 @RequestParam 来取参. </li>
+</ol>
+<p>eg：Java代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * forward 示例: 以字符串的形式构建目标url, url 需要加上 forward: 前缀</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/forwardTest1&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">forwardTest1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;forward:/forwardTarget?param1=v1&amp;param2=v2&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * forward 示例: 使用 ModelAndView() 设置转发的目标url</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/forwardTest2&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">forwardTest2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ModelAndView mav=<span class="keyword">new</span> ModelAndView(<span class="string">&quot;/forwardTarget&quot;</span>); <span class="comment">// 绝对路径OK</span></span><br><span class="line">        <span class="comment">//ModelAndView mav=new ModelAndView(&quot;forwardTarget&quot;); // 相对路径也OK</span></span><br><span class="line">        mav.addObject(<span class="string">&quot;param1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">        mav.addObject(<span class="string">&quot;param2&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> mav ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/forwardTarget&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">forwardTargetView</span><span class="params">(Model model, <span class="meta">@RequestParam(&quot;param1&quot;)</span> String param1,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="meta">@RequestParam(&quot;param2&quot;)</span> String param2)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;param1&quot;</span>, param1);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;param2&quot;</span>, param2);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;forwardTarget&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * redirect 目标有三种构建方式</span></span><br><span class="line"><span class="comment">     * 1. 使用 redirect: 前缀url方式构建目标url</span></span><br><span class="line"><span class="comment">     * 2. 使用 RedirectView 类型指定目标</span></span><br><span class="line"><span class="comment">     * 3. 使用 ModelAndView 类型指定目标, ModelAndView 视图名默认是forward, 所以对于redirect, 需要加上 redirect: 前缀</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/noParamRedirect&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RedirectView <span class="title">noParamTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        RedirectView redirectTarget = <span class="keyword">new</span> RedirectView();</span><br><span class="line">        redirectTarget.setContextRelative(<span class="keyword">true</span>);</span><br><span class="line">        redirectTarget.setUrl(<span class="string">&quot;noParamTarget&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> redirectTarget;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/noParamTarget&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">redirectTarget</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;noParamTarget&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/withParamRedirect&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RedirectView <span class="title">withParamRedirect</span><span class="params">(RedirectAttributes redirectAttributes)</span> </span>&#123;</span><br><span class="line">        RedirectView redirectTarget = <span class="keyword">new</span> RedirectView();</span><br><span class="line">        redirectTarget.setContextRelative(<span class="keyword">true</span>);</span><br><span class="line">        redirectTarget.setUrl(<span class="string">&quot;withParamTarget&quot;</span>);</span><br><span class="line"></span><br><span class="line">        redirectAttributes.addAttribute(<span class="string">&quot;param1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">        redirectAttributes.addAttribute(<span class="string">&quot;param2&quot;</span>, <span class="string">&quot;value2&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> redirectTarget;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/withParamTarget&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">withParamTarget</span><span class="params">(Model model, <span class="meta">@RequestParam(&quot;param1&quot;)</span> String param1,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="meta">@RequestParam(&quot;param2&quot;)</span> String param2)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;param1&quot;</span>, param1);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;param2&quot;</span>, param2);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;withParamTarget&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/withFlashRedirect&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RedirectView <span class="title">withFlashTest</span><span class="params">(RedirectAttributes redirectAttributes)</span> </span>&#123;</span><br><span class="line">        RedirectView redirectTarget = <span class="keyword">new</span> RedirectView();</span><br><span class="line">        redirectTarget.setContextRelative(<span class="keyword">true</span>);</span><br><span class="line">        redirectTarget.setUrl(<span class="string">&quot;withFlashTarget&quot;</span>);</span><br><span class="line"></span><br><span class="line">        redirectAttributes.addAttribute(<span class="string">&quot;param&quot;</span>, <span class="string">&quot;value&quot;</span>);</span><br><span class="line">        redirectAttributes.addFlashAttribute(<span class="string">&quot;flashParam&quot;</span>, <span class="string">&quot;flashValue&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> redirectTarget;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * redirectAttributes.addAttribute加的attr, 使用 @RequestParam()来fetch</span></span><br><span class="line"><span class="comment">     * redirectAttributes.addFlashAttribute()加的attr, 使用 @ModelAttribute()来fetch</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/withFlashTarget&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">withFlashTarget</span><span class="params">(Model model, <span class="meta">@RequestParam(&quot;param&quot;)</span> String param,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="meta">@ModelAttribute(&quot;flashParam&quot;)</span> String flashParam)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;param&quot;</span>, param);</span><br><span class="line">        model.addAttribute(<span class="string">&quot;flashParam&quot;</span>, flashParam);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;withFlashTarget&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/input&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;input&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * form 提交后, 如果form数据有问题, 使用redirectAttributes.addFlashAttribute()加上 flash message.</span></span><br><span class="line"><span class="comment">     * addFlashAttribute()可以是任意类型的数据(不局限在String等基本类型)</span></span><br><span class="line"><span class="comment">     * addFlashAttribute() 加的 attr, 不会出现在url 地址栏上.</span></span><br><span class="line"><span class="comment">     * addFlashAttribute() 加的 attr, 一旦fetch后, 就会自动清空, 非常适合 form 提交后 feedback Message.</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/submit&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RedirectView <span class="title">submit</span><span class="params">(RedirectAttributes redirectAttributes)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> passed = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (passed==<span class="keyword">false</span>) &#123;</span><br><span class="line">            RedirectView redirectTarget = <span class="keyword">new</span> RedirectView();</span><br><span class="line">            redirectTarget.setContextRelative(<span class="keyword">true</span>);</span><br><span class="line">            redirectTarget.setUrl(<span class="string">&quot;input&quot;</span>);</span><br><span class="line">            redirectAttributes.addFlashAttribute(<span class="string">&quot;errorMessage&quot;</span>, <span class="string">&quot;some error information here&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> redirectTarget;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            RedirectView redirectTarget = <span class="keyword">new</span> RedirectView();</span><br><span class="line">            redirectTarget.setContextRelative(<span class="keyword">true</span>);</span><br><span class="line">            redirectTarget.setUrl(<span class="string">&quot;inputOK&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> redirectTarget;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/spring/">spring</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/springmvc/">springmvc</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/04/02/shiro/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">shiro</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

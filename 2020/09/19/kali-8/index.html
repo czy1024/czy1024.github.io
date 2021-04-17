@@ -1,0 +1,892 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+  <title>kali 无线攻击 - LUNA</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LUNA</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/kaili.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="kali 无线攻击">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-09-19 00:00" pubdate>
+        September 19, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      60
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">kali 无线攻击</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 hours ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这一章中，我们要探索一些攻击密码来获得用户账户的方式。密码破解是所有渗透测试者都需要执行的任务。本质上，任何系统的最不安全的部分就是由用户提交的密码。无论密码策略如何，人们必然讨厌输入强密码，或者时常更新它们。这会使它们易于成为黑客的目标。</p>
+<h2 id="8-1-在线密码攻击"><a href="#8-1-在线密码攻击" class="headerlink" title="8.1 在线密码攻击"></a>8.1 在线密码攻击</h2><p>这个秘籍中我们会使用 Hydra 密码破解器。有时候我们有机会来物理攻击基于 Windows 的计算机，直接获取安全账户管理器（SAM）。但是，我们也有时不能这样做，所以这是在线密码攻击具有优势的情况。</p>
+<p>Hydra 支持许多协议，包括（但不仅限于）FTP、HTTP、HTTPS、MySQL、MSSQL、Oracle、Cisco、IMAP、VNC 和更多的协议。需要注意的是，由于这种攻击可能会产生噪声，这会增加你被侦测到的可能。</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>需要内部网络或互联网的链接，也需要一台用作受害者的计算机。</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>让我们开始破解在线密码。</p>
+<ol>
+<li><p>在开始菜单中，选择<code>Applications | Kali Linux | Password Attacks | Online Attacks | hydra-gtk</code>。</p>
+<p><img src="/blog/img/img/8-1-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>既然我们已经把 Hydra 打开了，我们需要设置我们的单词列表。点击<code>Passwords</code>（密码）标签页。我们需要使用用户名列表和密码列表。输入你的用户名和密码列表的位置。同时选择<code>Loop around users</code>（循环使用用户名）和<code>Try empty password</code>（尝试空密码）。</p>
+<ul>
+<li>用户名列表：<code>/usr/share/wfuzz/wordlist/fuzzdb/wordlistsuser-passwd/names/nameslist.txt</code></li>
+<li>密码列表：<code>/usr/share/wfuzz/wordlist/fuzzdb/wordlistsuser-passwd/passwds/john.txt</code></li>
+</ul>
+<blockquote>
+<p>你可以使用的快捷方式是，点击单词列表框来打开文件系统窗口。</p>
+</blockquote>
+<p><img src="/blog/img/img/8-1-2.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>下面，我们要做一些调整。在<code>Performance Options</code>（执行选项）下面，我们将任务数量从 16 设置为 2。原因是我们不打算让这么多进程运行，这样会使服务器崩溃。虽然它是可选的，我们也希望选择<code>Exit after first found pair</code>（在首次发现匹配之后退出）选项。</p>
+<p><img src="/blog/img/img/8-1-3.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>最后，我们要设置我们的目标。点击<code>Target</code>（目标）标签页并设置我们的目标和协议。这里，我们使用 Metasploitable 主机（<code>192.168.10.111</code>）的 MySQL 端口。</p>
+<p><img src="/blog/img/img/8-1-4.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>最后我们点击<code>Start</code>（开始）标签页的<code>Start</code>按钮来启动攻击。</p>
+<p><img src="/blog/img/img/8-1-5.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+</ol>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个秘籍中，我们使用 Hydra 来对目标执行字典攻击。Hydra 允许我们指定目标，并且使用用户名和密码列表。它会通过使用来自两个列表的不同用户名和密码组合来爆破密码。</p>
+<h2 id="8-2-破解-HTTP-密码"><a href="#8-2-破解-HTTP-密码" class="headerlink" title="8.2 破解 HTTP 密码"></a>8.2 破解 HTTP 密码</h2><p>这个秘籍中，我们将要使用 Hydra 密码破解器来破解 HTTP 密码。网站和 Web 应用的访问通常由用户名和密码组合来控制。就像任何密码类型那样，用户通常会输入弱密码。</p>
+<h3 id="准备-1"><a href="#准备-1" class="headerlink" title="准备"></a>准备</h3><p>需要内部网络或互联网的链接，也需要一台用作受害者的计算机。</p>
+<h3 id="操作步骤-1"><a href="#操作步骤-1" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>让我们开始破解 HTTP 密码。</p>
+<ol>
+<li><p>在开始菜单中，选择<code>Applications | Kali Linux | Password Attacks | Online Attacks | hydra-gtk</code>。</p>
+<p><img src="/blog/img/img/8-2-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>既然我们已经把 Hydra 打开了，我们需要设置我们的单词列表。点击<code>Passwords</code>（密码）标签页。我们需要使用用户名列表和密码列表。输入你的用户名和密码列表的位置。同时选择<code>Loop around users</code>（循环使用用户名）和<code>Try empty password</code>（尝试空密码）。</p>
+<ul>
+<li>用户名列表：<code>/usr/share/wfuzz/wordlist/fuzzdb/wordlistsuser-passwd/names/nameslist.txt</code></li>
+<li>密码列表：<code>/usr/share/wfuzz/wordlist/fuzzdb/wordlistsuser-passwd/passwds/john.txt</code></li>
+</ul>
+<blockquote>
+<p>你可以使用的快捷方式是，点击单词列表框来打开文件系统窗口。</p>
+</blockquote>
+<p><img src="/blog/img/img/8-2-2.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>下面，我们要做一些调整。在<code>Performance Options</code>（执行选项）下面，我们将任务数量从 16 设置为 2。原因是我们不打算让这么多进程运行，这样会使服务器崩溃。虽然它是可选的，我们也希望选择<code>Exit after first found pair</code>（在首次发现匹配之后退出）选项。</p>
+<p><img src="/blog/img/img/8-2-3.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>最后，我们要设置我们的目标。点击<code>Target</code>（目标）标签页并设置我们的目标和协议。这里，我们使用 Metasploitable 主机（<code>192.168.10.111</code>）的 HTTP 端口。</p>
+<p><img src="/blog/img/img/8-2-4.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>最后我们点击<code>Start</code>（开始）标签页的<code>Start</code>按钮来启动攻击。</p>
+<p><img src="/blog/img/img/8-2-5.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+</ol>
+<h2 id="8-3-获得路由访问"><a href="#8-3-获得路由访问" class="headerlink" title="8.3 获得路由访问"></a>8.3 获得路由访问</h2><p>这个秘籍中，我们会使用 Medusa 来进行爆破攻击。</p>
+<p>当今，我们处于网络社会之中。随着联网视频游戏系统的诞生，多数家庭拥有数台计算机，并且小型业务以创纪录的趋势增长。路由器也成为了网络连接的基石。然而，富有经验的网络管理员的数量并没有增长，以保护这些路由器，使得许多这种路由器易于被攻击。</p>
+<h3 id="准备-2"><a href="#准备-2" class="headerlink" title="准备"></a>准备</h3><p>需要连接到互联网或内部网络的计算机。也需要可用的路由器。</p>
+<h3 id="操作步骤-2"><a href="#操作步骤-2" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>在开始菜单中，访问<code>Applications | Kali Linux | Password Attacks | Online Attacks | medusa</code>。当 Medusa 启动后，它会加载<code>help</code>（帮助）文件。</p>
+<p><img src="/blog/img/img/8-3-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>我们现在已选定的选项来云顶 Medusa。</p>
+<p><code>medusa –M http -h 192.168.10.1 -u admin -P /usr/share/wfuzz/ wordlist/fuzzdb/wordlists-user-passwd/passwds/john.txt -e ns -n 80 -F</code></p>
+<ul>
+<li><code>-M http</code>允许我们指定模块。这里，我们选择了 HTTP 模块。</li>
+<li><code>-h 192.168.10.1</code>允许我们指定主机。这里，我们选择了<code>192.168.10.1</code>（路由的 IP 地址）。</li>
+<li><code>-u admin</code>允许我们指定用户。这里我们选择了<code>admin</code>。</li>
+<li><code>-P [location of password list]</code>允许我们指定密码列表的位置。</li>
+<li><code>-e ns</code>允许我们指定额外的密码检查。<code>ns</code>变量允许我们使用用户名作为密码，并且使用空密码。</li>
+<li><code>-n 80</code>允许我们指定端口号码。这里我们选择了<code>80</code>。</li>
+<li><code>-F</code>允许我们在成功找到用户名密码组合之后停止爆破。</li>
+</ul>
+<p><img src="/blog/img/img/8-3-2.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>Medusa 会运行，并尝试所有用户名和密码组合，直到某次成功。</p>
+</li>
+</ol>
+<h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个秘籍中，我们使用 Medusa 来爆破目标路由器的密码。能够这样做的好处就是，一旦你能够访问路由器，你就可以更新它的设置，便于你以后再访问它，或者甚至是重定向发送给它的流量来改变你选择的位置。</p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>你也可以直接从命令行运行 Medusa，通过键入<code>medusa</code>命令。</p>
+<p>你也可以传入其它选项给 Medusa，取决于你的情况。细节请参见帮助文档，通过在终端窗口仅仅键入<code>medusa</code>来显示。</p>
+<p><strong>模块类型</strong></p>
+<p>下面是我们可以用于 Medusa 的模块列表：</p>
+<ul>
+<li>AFP</li>
+<li>CVS</li>
+<li>FTP</li>
+<li>HTTP</li>
+<li>IMAP</li>
+<li>MS-SQL</li>
+<li>MySQL</li>
+<li>NetWare</li>
+<li>NNTP</li>
+<li>PCAnywhere</li>
+<li>Pop3</li>
+<li>PostgreSQL</li>
+<li>REXEC</li>
+<li>RLOGIN</li>
+<li>RSH</li>
+<li>SMBNT</li>
+<li>SMTP-AUTH</li>
+<li>SMTp-VRFY</li>
+<li>SNMP</li>
+<li>SSHv2</li>
+<li>Subversion</li>
+<li>Telnet</li>
+<li>VMware Authentication</li>
+<li>VNC</li>
+<li>Generic Wrapper</li>
+<li>Web form</li>
+</ul>
+<h2 id="8-4-密码分析"><a href="#8-4-密码分析" class="headerlink" title="8.4 密码分析"></a>8.4 密码分析</h2><p>这个秘籍中，我们会学到如何在密码攻击之前分析密码。密码分析的目的是允许我们通过收集目标机器、业务以及其它的信息来得到更小的单词列表。在我们的教程中，我们会使用 Ettercap 和 它的 ARP 毒化功能来嗅探流量。</p>
+<h3 id="准备-3"><a href="#准备-3" class="headerlink" title="准备"></a>准备</h3><p>这个秘籍需要局域网的连接。</p>
+<h3 id="操作步骤-3"><a href="#操作步骤-3" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>让我们启动 Ettercap 来进行密码分析。</p>
+<ol>
+<li><p>我们以配置 Ettercap 来开始这个秘籍。首先，我们找到它的配置文件并用 VIM 编辑它。</p>
+<p><code>locate etter.conf vi /etc/etterconf</code></p>
+<p>要注意，你的位置可能不同。</p>
+</li>
+<li><p>将<code>ec_uid</code>和<code>ec_gid</code>改为<code>0</code>。</p>
+<p><img src="/blog/img/img/8-4-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>下面我们需要取消下面的 IPTABLES 行的注释。它在靠近文件末尾的<code>LINUX</code>一节。</p>
+<p><img src="/blog/img/img/8-4-2.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>现在，我们将要启动 Ettercap。使用<code>-G</code>选项，加载图形化界面（GUI）。</p>
+<p><img src="/blog/img/img/8-4-3.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>我们开启统一嗅探。你可以按下<code>Shift + U</code>或者访问菜单栏中的<code>Sniff | Unified sniffing...</code>。</p>
+<p><img src="/blog/img/img/8-4-4.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>选择网络接口。</p>
+<p><img src="/blog/img/img/8-4-5.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>下面，我们开始<code>Scan for hosts</code>（扫描主机），这可以通过按下<code>Ctrl + S</code>或访问菜单栏的<code>Hosts | Scan for hosts</code>来完成。</p>
+<p><img src="/blog/img/img/8-4-6.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>现在我们能够让 Ettercap 开始嗅探了。你可以按下<code>Ctrl + W</code>或访问菜单栏的<code>Start | Start Sniffing</code>（开始嗅探）。</p>
+<p><img src="/blog/img/img/8-4-7.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>最后，我们开始进行 ARP 毒化。访问菜单栏的<code>Mitm | Arp poisoning</code>（ARP 毒化）。</p>
+<p><img src="/blog/img/img/8-4-8.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>在出现的窗口中，选中<code>Sniff remote connections</code>（嗅探远程连接）的选项。</p>
+<p><img src="/blog/img/img/8-4-9.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>取决于网络情况，我们会看到信息。</p>
+<p><img src="/blog/img/img/8-4-10.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>一旦我们找到了我们想找的信息（用户名和密码）。我们会关闭 Ettercap。你可以按下<code>Ctrl + E</code>或者访问菜单栏的<code>Start | Stop sniffing</code>（停止嗅探）来完成。</p>
+<p><img src="/blog/img/img/8-4-11.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>现在我们需要关闭 ARP 毒化来使网络恢复正常。</p>
+<p><img src="/blog/img/img/8-4-12.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+</ol>
+<h3 id="工作原理-2"><a href="#工作原理-2" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个秘籍中，我们使用 Ettercap 来毒化网络并偷取网络上的用户名和密码。我们以寻找和修改 Ettercap 的配置文件来开始。之后我们启动了 Ettercap 并使用 ARP 毒化执行中间人（MITM）攻击。由于流量被重定向到我们的主机，当用户名和密码在网络上传播时，我们就能够看到它们。</p>
+<h3 id="更多-1"><a href="#更多-1" class="headerlink" title="更多"></a>更多</h3><p>我们也可以使用 Metasploit 来分析用户名和面。我们会通过使用搜索邮件收集器模块来执行它。</p>
+<ol>
+<li><p>打开终端窗口并启动 MSFCONSOLE：</p>
+<p><code>msfconsole</code></p>
+</li>
+<li><p>搜索邮件收集器；</p>
+<p><code>search email collector</code></p>
+<p><img src="/blog/img/img/8-4-13.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>键入下列命令来使用搜索邮件收集器模块：</p>
+<p><code>use auxiliary/gather/search_email_collector</code></p>
+</li>
+<li><p>展示该模块可用的选项：</p>
+<p><code>show options</code></p>
+<p><img src="/blog/img/img/8-4-14.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>下面我们设置域名。如果不想被有关部门查水表的话，请小心选择域名。</p>
+</li>
+<li><p>将域名设为你希望的域名：</p>
+<p><code>set domain gmail.com</code></p>
+</li>
+<li><p>设置输入文件。这并不是必需的。如果你打算运行多个攻击，或打算稍后也能运行某个攻击，推荐设置它。</p>
+<p><code>set outfile /root/Desktop/fromwillie.txt</code></p>
+<p><img src="/blog/img/img/8-4-15.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>最后，我们开始攻击。</p>
+<p><code>run</code></p>
+<p><img src="/blog/img/img/8-4-16.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+</ol>
+<h2 id="8-5-使用-John-the-Ripper-破解-Windows-密码"><a href="#8-5-使用-John-the-Ripper-破解-Windows-密码" class="headerlink" title="8.5 使用 John the Ripper 破解 Windows 密码"></a>8.5 使用 John the Ripper 破解 Windows 密码</h2><p>这个秘籍中，我们会使用 John the Ripper 来破解 Windows 安全访问管理器（SAM）文件。SAM文件储存了目标系统用户的用户名和密码的哈希。出于安全因素，SAM文件使用授权来保护，并且不能在 Windows 系统运行中直接手动打开或复制。</p>
+<h3 id="准备-4"><a href="#准备-4" class="headerlink" title="准备"></a>准备</h3><p>你将会需要访问 SAM 文件。</p>
+<p>这个秘籍中，我们假设你能够访问某台 Windows 主机。</p>
+<h3 id="操作步骤-4"><a href="#操作步骤-4" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>让我们开始使用 John the Ripper 破解 Windows SAM 文件。我们假设你能够访问某台 Windows 主机，通过远程入侵，或者物理接触，并且能够通过 USB 或 DVD 驱动器启动 Kali Linux。</p>
+<ol>
+<li><p>看看你想挂载哪个硬盘：</p>
+<p><code>Fdisk -l</code></p>
+</li>
+<li><p>挂载该硬盘，并将<code>target</code>设为它的挂载点。</p>
+<p><code>mount /dev/sda1 /target/</code></p>
+</li>
+<li><p>将目录改为 Windows SAM 文件的位置：</p>
+<p><code>cd /target/windows/system32/config</code></p>
+</li>
+<li><p>列出目录中所有内容。</p>
+<p><code>ls –al</code></p>
+</li>
+<li><p>使用 SamDump2 来提取哈希，并将文件放到你的 root 用户目录中的一个叫做<code>hashes</code>的文件夹中。</p>
+<p><code>samdump2 system SAM &gt; /root/hashes/hash.txt</code></p>
+</li>
+<li><p>将目录改为 John the Ripper 所在目录。</p>
+</li>
+<li><p>运行 John the Ripper：</p>
+<p><code>./john /root/hashes/hash.txt ./john /root/hashes/hash.txt–f:nt (If attacking a file on a NTFS System)</code></p>
+</li>
+</ol>
+<h2 id="8-6-字典攻击"><a href="#8-6-字典攻击" class="headerlink" title="8.6 字典攻击"></a>8.6 字典攻击</h2><p>这个秘籍中，我们会进行字典或单词列表的攻击。字典攻击使用事先准备的密码集合，并尝试使用单词列表爆破与指定用户匹配的密码。所生成的字典通常由三种类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+   只有用户名：列表只含有用户名。</span><br><span class="line">+   只有密码：列表只含有密码。</span><br><span class="line">+   用户名和密码：列表含有生成的用户名和密码。</span><br></pre></td></tr></table></figure>
+
+<p>出于演示目的，我们使用 Crucnch 来生成我们自己的密码字典。</p>
+<h3 id="准备-5"><a href="#准备-5" class="headerlink" title="准备"></a>准备</h3><p>需要在 Kali 上安装 Crunch。</p>
+<h3 id="操作步骤-5"><a href="#操作步骤-5" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>Kali 的好处是已经安装了 Crunch，不像 BackTrack。</p>
+<ol>
+<li><p>打开终端窗口，并输入<code>crunch</code>命令来查看 Crunch 的帮助文件。</p>
+<p><code>crunch</code></p>
+<p><img src="/blog/img/img/8-6-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>使用 Crunch 生成密码的基本语法是，<code>[minimum length] [maximum length] [character set] [options]</code>。</p>
+</li>
+<li><p>Crunch 拥有几种备选选项。一些常用的如下：</p>
+<ul>
+<li><code>-o</code>：这个选项允许你指定输出列表的文件名称和位置、</li>
+<li><code>-b</code>：这个选项允许你指定每个文件的最大字节数。大小可以以 KB/MB/GB 来指定，并且必须和<code>-o START</code>触发器一起使用。</li>
+<li><code>-t</code>：这个选项允许你指定所使用的模式。</li>
+<li><code>-l</code>：在使用<code>-t</code>选项时，这个选项允许你将一些字符标识为占位符（<code>@</code>，<code>%</code>，<code>^</code>）。</li>
+</ul>
+</li>
+<li><p>下面我们执行命令来在桌面上创建密码列表，它最少 8 个字母，最大 10 个字符，并且使用字符集<code>ABCDEFGabcdefg0123456789</code>。</p>
+<p><code>crunch 8 10 ABCDEFGabcdefg0123456789 –o /root/Desktop/ generatedCrunch.txt</code></p>
+<p><img src="/blog/img/img/8-6-2.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>一旦生成了文件，我们使用 Nano 来打开文件：</p>
+<p><code>nano /root/Desktop/generatedCrunch.txt</code></p>
+</li>
+</ol>
+<h3 id="工作原理-3"><a href="#工作原理-3" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个秘籍中我们使用了 Crunch 来生成密码字典列表。</p>
+<h2 id="8-7-使用彩虹表"><a href="#8-7-使用彩虹表" class="headerlink" title="8.7 使用彩虹表"></a>8.7 使用彩虹表</h2><p>这个秘籍中我们会学到如何在 Kali 中使用彩虹表。彩虹表是特殊字典表，它使用哈希值代替了标准的字典密码来完成攻击。出于演示目的，我们使用 RainbowCrack 来生成彩虹表。</p>
+<h3 id="操作步骤-6"><a href="#操作步骤-6" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>打开终端窗口并将目录改为<code>rtgen</code>的目录：</p>
+<p><code>cd /usr/share/rainbowcrack/</code></p>
+<p><img src="/blog/img/img/8-7-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>下面我们要启动<code>rtgen</code>来生成基于 MD5 的彩虹表。</p>
+<p><code>./rtgen md5 loweralpha-numeric 1 5 0 3800 33554432 0</code></p>
+<p><img src="/blog/img/img/8-7-2.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>一旦彩虹表生成完毕，你的目录会包含<code>.rt</code>文件。这取决于用于生成哈希的处理器数量，大约需要 2~7 个小时。</p>
+</li>
+<li><p>为了开始破解密码，我们使用<code>rtsort</code>程序对彩虹表排序，使其更加易于使用。</p>
+</li>
+</ol>
+<h3 id="工作原理-4"><a href="#工作原理-4" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个秘籍中，我们使用了 RainbowCrack 攻击来生成、排序和破解 MD5 密码。RainbowCrack 能够使用彩虹表破解哈希，基于一些预先准备的哈希值。我们以使用小写字母值生成 MD5 彩虹表来开始。在秘籍的末尾，我们成功创建了彩虹表，并使用它来破解哈希文件。</p>
+<h2 id="8-8-使用英伟达统一计算设备架构（CUDA）"><a href="#8-8-使用英伟达统一计算设备架构（CUDA）" class="headerlink" title="8.8 使用英伟达统一计算设备架构（CUDA）"></a>8.8 使用英伟达统一计算设备架构（CUDA）</h2><p>这个秘籍中，我们会使用英伟达统一计算设备架构（CUDA）来破解密码哈希。CUDA 是一个并行计算平台，它通过利用 GPU 的能力来提升计算性能。随着时间的流逝，GPU 的处理能力有了戏剧性的提升，这让我们能够将它用于计算目的。出于演示目的，我们使用 CudaHashcat-plus 来破解密码。</p>
+<h3 id="准备-6"><a href="#准备-6" class="headerlink" title="准备"></a>准备</h3><p>需要 CUDA 所支持的显卡来完成这个秘籍。</p>
+<h3 id="操作步骤-7"><a href="#操作步骤-7" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>打开终端窗口并将目录改为 OclHashcat-plus 所在目录。</p>
+<p><code>cd /usr/share/oclhashcat-plus</code></p>
+<p><img src="/blog/img/img/8-8-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>执行下列命令来启动 CudaHashcat-plus 的帮助文件：</p>
+<p><code>./cudaHashcat-plus.bin –help</code></p>
+</li>
+<li><p>运行 CudaHashcat 的语法是<code>cudaHashcat-plus.bin [options] hash [mask]</code>。</p>
+<blockquote>
+<p>使用 OclHashcat 的重点之一是理解它的字符集结构。</p>
+</blockquote>
+</li>
+<li><p>在我们开始攻击之前，让我们先看看一些可用的攻击向量。CudaHashcat 在攻击中使用左右掩码。密码的字符按照掩码划分，并且被均分为左和右掩码。对于每个掩码，你可以为其指定字典或字符集。出于我们的目的，我们会使用定制的字符集。</p>
+</li>
+<li><p>为了指定自定义字符集，我们使用<code>–1</code>选项。我们可以设置任意多的自定义字符集，只要为它们指定一个数值（<code>1-n</code>）。每个自定义字符都由问号（<code>?</code>）来表示，并且随后是字符类型。可用的选择是：</p>
+<ul>
+<li><code>d</code>指定数字（0~9）</li>
+<li><code>l</code>指定小写字母</li>
+<li><code>u</code>指定大写字母</li>
+<li><code>s</code>指定特殊字符</li>
+<li><code>1-n</code>指定用做占位符的自定义字符集。</li>
+</ul>
+</li>
+<li><p>这样将它们组合起来，我们就指定了一个自定义字符集，它包括特殊字符（<code>s</code>），大写字母（<code>u</code>），小写字母（<code>l</code>）和数字（<code>d</code>），生成长度为 8 的密码。我们打算指定叫做<code>attackfile</code>的哈希表。</p>
+<p><code>./cudaHashcat-plus.bin attackfile -1 ?l?u?d?s ?1?1?1?1 ?1?1?1?1</code></p>
+</li>
+<li><p>我们可以将这个命令这样拆分：</p>
+<ul>
+<li><code>./cudaHashcat-plus.bin</code>调用了 CudaHashcat 。</li>
+<li><code>attackfile</code>是我们的攻击文件。</li>
+<li><code>-1 ?l?u?d?</code>指定了自定义字符集<code>1</code>，它包含小写字母、大写字母、数字和特殊字符。</li>
+<li><code>?1?1?1?1</code>是使用字符集<code>1</code>的左掩码。</li>
+<li><code>?1?1?1?1</code>是使用字符集<code>1</code>的右掩码。</li>
+</ul>
+<p>这就结束了。</p>
+</li>
+</ol>
+<h2 id="8-9-使用-ATI-Stream"><a href="#8-9-使用-ATI-Stream" class="headerlink" title="8.9 使用 ATI Stream"></a>8.9 使用 ATI Stream</h2><p>这个秘籍中，我们会使用 ATI Stream 来破解密码哈希。ATI Stream 类似于 CUDA，因为它是一个并行计算平台，它可以通过利用 GPU 的能力来提升计算性能。随着时间的流逝，GPU 的处理能力有了戏剧性的提升，这让我们能够将它用于计算目的。出于演示目的，我们使用 OclHashcat-plus 来破解密码。OclHashcat 有两种版本：plus 和 lite。两个都包含在 Kali 中。</p>
+<h3 id="准备-7"><a href="#准备-7" class="headerlink" title="准备"></a>准备</h3><p>需要支持 ATI Stream 的显卡来完成这个秘籍。</p>
+<h3 id="操作步骤-8"><a href="#操作步骤-8" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>让我们开始使用 OclHashcat-plus。</p>
+<ol>
+<li><p>打开终端窗口并将目录改为 OclHashcat-plus 所在目录。</p>
+<p><code>cd /usr/share/oclhashcat-plus</code></p>
+<p><img src="/blog/img/img/8-9-1.jpg" srcset="/img/loading.gif" lazyload alt="/img/img"></p>
+</li>
+<li><p>执行下列命令来启动 OclHashcat-plus 的帮助文件：</p>
+<p><code>./oclHashcat-plus.bin –help</code></p>
+</li>
+<li><p>运行 OclHashcat 的语法是<code>oclHashcat-plus.bin [options] hash [mask]</code>。</p>
+<blockquote>
+<p>使用 OclHashcat 的重点之一是理解它的字符集结构。</p>
+</blockquote>
+</li>
+<li><p>在我们开始攻击之前，让我们先看看一些可用的攻击向量。OclHashcat 在攻击中使用左右掩码。密码的字符按照掩码划分，并且被均分为左和右掩码。对于每个掩码，你可以为其指定字典或字符集。出于我们的目的，我们会使用定制的字符集。</p>
+</li>
+<li><p>为了指定自定义字符集，我们使用<code>–1</code>选项。我们可以设置任意多的自定义字符集，只要为它们指定一个数值（<code>1-n</code>）。每个自定义字符都由问号（<code>?</code>）来表示，并且随后是字符类型。可用的选择是：</p>
+<ul>
+<li><code>d</code>指定数字（0~9）</li>
+<li><code>l</code>指定小写字母</li>
+<li><code>u</code>指定大写字母</li>
+<li><code>s</code>指定特殊字符</li>
+<li><code>1-n</code>指定用做占位符的自定义字符集。</li>
+</ul>
+</li>
+<li><p>这样将它们组合起来，我们就指定了一个自定义字符集，它包括特殊字符（<code>s</code>），大写字母（<code>u</code>），小写字母（<code>l</code>）和数字（<code>d</code>），生成长度为 8 的密码。我们打算指定叫做<code>attackfile</code>的哈希表。</p>
+<p><code>./oclHashcat-plus.bin attackfile -1 ?l?u?d?s ?1?1?1?1 ?1?1?1?1</code></p>
+</li>
+<li><p>我们可以将这个命令这样拆分：</p>
+<ul>
+<li><code>./oclHashcat-plus.bin</code>调用了 OclHashcat 。</li>
+<li><code>attackfile</code>是我们的攻击文件。</li>
+<li><code>-1 ?l?u?d?</code>指定了自定义字符集<code>1</code>，它包含小写字母、大写字母、数字和特殊字符。</li>
+<li><code>?1?1?1?1</code>是使用字符集<code>1</code>的左掩码。</li>
+<li><code>?1?1?1?1</code>是使用字符集<code>1</code>的右掩码。</li>
+</ul>
+<p>这就结束了。</p>
+</li>
+</ol>
+<h2 id="8-10-物理访问攻击"><a href="#8-10-物理访问攻击" class="headerlink" title="8.10 物理访问攻击"></a>8.10 物理访问攻击</h2><p>这个秘籍中，我们会使用 SUCrack 来执行物理访问密码攻击。 SUCrack 是个多线程的工具，能够通过<code>su</code>来执行本地用户账户的暴力破解。Linux 的<code>su</code>命令允许你作为替代用户来运行命令。这个攻击，虽然在你不能通过其他手段提权 Linux 系统时非常有用，但是会填满日志文件，所以请确保在完成之后清理这些日志。</p>
+<p>SUCrack 拥有几种备选的可用命令：</p>
+<ul>
+<li><code>--help</code>允许你查看它的帮助文档。</li>
+<li><code>-l</code>允许你修改我们尝试绕过登录的用户。</li>
+<li><code>-s</code>允许你设置展示统计信息的秒数间隔。默认值为 3 秒。</li>
+<li><code>-a</code>允许你设置是否使用 ANSI 转义代码。</li>
+<li><code>-w</code>允许你设置工作线程的数量。由于 SUCrack 是多线程的，你可以运行任意多的线程。我们推荐你只使用一个线程，因为每次失败的登录尝试在尝试下个密码之前通常有三秒的延迟。</li>
+</ul>
+<h3 id="操作步骤-9"><a href="#操作步骤-9" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>为了使用 SUCrack，你需要在启动时指定单词列表。否则，你会得到一条搞笑的信息。打开终端窗口并执行<code>sucrack</code>命令。出于我们的目的，我们会使用之前创建的自定义单词列表文件，它由 Crunch 生成。但是，你可以指定任何希望的单词列表。</p>
+<p><code>sucrack /usr/share/wordlists/rockyou.txt</code></p>
+</li>
+<li><p>如果你打算设置两个工作线程，以及每 6 秒显示一次统计信息，并且使用 ANSI 转义代码，你可以使用下列命令：</p>
+<p><code>sucrack –w 2 –s 6 –a /usr/share/wordlists/rockyou.txt</code></p>
+<p>这就结束了。</p>
+</li>
+</ol>
+<h3 id="工作原理-5"><a href="#工作原理-5" class="headerlink" title="工作原理"></a>工作原理</h3><p>这个秘籍中，我们使用 SUCrack 来对系统的 root 用户执行物理访问密码攻击。使用单词列表的攻击可以对管理员（默认）或特定用户指定。我们运行<code>sucrack</code>命令，它为我们执行攻击。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/kaili/">kaili</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/kaili/">kaili</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/09/19/kali-3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">kali高级测试环境</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/09/13/easycode/">
+                        <span class="hidden-mobile">easyCode 代码生成</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

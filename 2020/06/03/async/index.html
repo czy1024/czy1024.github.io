@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+  <title>Springboot的异步方法async调用与线程池配置 - LUNA</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LUNA</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/async.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Springboot的异步方法async调用与线程池配置">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-06-03 00:00" pubdate>
+        June 3, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Springboot的异步方法async调用与线程池配置</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 hours ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Springboot的异步方法调用与线程池配置"><a href="#Springboot的异步方法调用与线程池配置" class="headerlink" title="Springboot的异步方法调用与线程池配置"></a>Springboot的异步方法调用与线程池配置</h2><h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><ol>
+<li>springboot 自带了scheduling 包里已经设置了异步方法,我们只需要在方法或者类上加入@Async 注解即可</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xkcoding.async.task;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.scheduling.annotation.Async;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将一个类声明为异步类，那么这个类对外暴露的方法全部成为异步方法。</span></span><br><span class="line"><span class="comment"> * 与异步方法的区别是这里的注解是加到类上，异步方法的注解是加到方法上。仅此而已</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@DESC</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> guchuang</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AsyncClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;-------------------------init AsyncClass--------------------&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">volatile</span> <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;asyncclass foo, index:&quot;</span> + index);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.index = i;</span><br><span class="line">        log.info(<span class="string">&quot;asyncclass foo, index:&quot;</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bar</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.index = i;</span><br><span class="line">        log.info(<span class="string">&quot;asyncclass bar, index:&quot;</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>yml配置</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">task:</span></span><br><span class="line">    <span class="attr">execution:</span></span><br><span class="line">      <span class="attr">pool:</span></span><br><span class="line">        <span class="comment"># 最大线程数</span></span><br><span class="line">        <span class="attr">max-size:</span> <span class="number">16</span></span><br><span class="line">        <span class="comment"># 核心线程数</span></span><br><span class="line">        <span class="attr">core-size:</span> <span class="number">16</span></span><br><span class="line">        <span class="comment"># 存活时间</span></span><br><span class="line">        <span class="attr">keep-alive:</span> <span class="string">10s</span></span><br><span class="line">        <span class="comment"># 队列大小</span></span><br><span class="line">        <span class="attr">queue-capacity:</span> <span class="number">100</span></span><br><span class="line">        <span class="comment"># 是否允许核心线程超时</span></span><br><span class="line">        <span class="attr">allow-core-thread-timeout:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># 线程名称前缀</span></span><br><span class="line">      <span class="attr">thread-name-prefix:</span> <span class="string">async-task-</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>然后直接调用即可产生异步效果</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">       asyncClass.foo();</span><br><span class="line">       asyncClass.foo(<span class="number">10</span>);</span><br><span class="line">       Thread.sleep(<span class="number">100</span>);</span><br><span class="line">       asyncClass.foo();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ThreadFactory自定义配置"><a href="#ThreadFactory自定义配置" class="headerlink" title="ThreadFactory自定义配置"></a>ThreadFactory自定义配置</h3><ol>
+<li>首先需创建一个类继承ThreadFactory,书写构造器</li>
+<li>覆写他newThread 方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThreadFactory</span> <span class="keyword">implements</span> <span class="title">ThreadFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> AtomicInteger poolNumber   = <span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ThreadGroup          group;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger        threadNumber = <span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String               namePrefix;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyThreadFactory</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        SecurityManager s = System.getSecurityManager();</span><br><span class="line">        group = (s != <span class="keyword">null</span>) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();</span><br><span class="line">        namePrefix = name + <span class="string">&quot;-pool-&quot;</span> +</span><br><span class="line">            poolNumber.getAndIncrement() +</span><br><span class="line">            <span class="string">&quot;-thread-&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 覆写了newThread方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> r</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(group, r,</span><br><span class="line">            namePrefix + threadNumber.getAndIncrement(),</span><br><span class="line">            <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> (t.isDaemon()) &#123;</span><br><span class="line">            t.setDaemon(<span class="keyword">false</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (t.getPriority() != Thread.NORM_PRIORITY) &#123;</span><br><span class="line">            t.setPriority(Thread.NORM_PRIORITY);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程池异步配置"><a href="#线程池异步配置" class="headerlink" title="线程池异步配置"></a>线程池异步配置</h3><ol>
+<li>添加注解@EnableAsync和@Configuration</li>
+<li>实现AsyncConfigurer接口,如果不覆写AsyncConfigurer的话，这个方法暴露bean会被当做@Async的默认线程池。</li>
+<li>ExecutorService配置</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ExecutorService threadPool               = <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">5</span>, <span class="number">5</span>,</span><br><span class="line">        <span class="number">60L</span>, TimeUnit.MILLISECONDS,</span><br><span class="line">        <span class="keyword">new</span> LinkedBlockingQueue&lt;&gt;(<span class="number">3</span>), <span class="keyword">new</span> MyThreadFactory(<span class="string">&quot;common1&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>定义默认调用线程执行器和异常处理机制</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这个实例声明的TaskExecutor会成为<span class="doctag">@Async</span>方法运行的默认线程执行器</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@Bean</span> 使这个实例完全被spring接管</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TaskExecutor <span class="title">getAsyncExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentTaskExecutor(Executors.newFixedThreadPool(<span class="number">5</span>, <span class="keyword">new</span> MyThreadFactory(<span class="string">&quot;async&quot;</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义<span class="doctag">@Async</span>方法默认的异常处理机制（只对void型异步返回方法有效，Future返回值类型的异常会抛给调用者）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AsyncUncaughtExceptionHandler <span class="title">getAsyncUncaughtExceptionHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (e, method, objects) -&gt; log.error(<span class="string">&quot;Method:&quot;</span> + method + <span class="string">&quot;, exception:&quot;</span> + e.getMessage());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>自定义线程执行器配置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果不覆写AsyncConfigurer的话，这个方法暴露bean会被当做<span class="doctag">@Async</span>的默认线程池。</span></span><br><span class="line"><span class="comment">     * 注意必须是这个方法名（也就是bean name， 或者显示指定bean name <span class="doctag">@Qualifier</span>(&quot;taskExecutor&quot;)），返回类型可以是Executor或者TaskExecutor</span></span><br><span class="line"><span class="comment">     * 如果没有配置的Executor，则默认使用SimpleAsyncTaskExecutor</span></span><br><span class="line"><span class="comment">     * 备注： 这种方式声明的bean，方法名就是bean name</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Executor <span class="title">taskExecutor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentTaskExecutor(Executors.newFixedThreadPool(<span class="number">5</span>, <span class="keyword">new</span> MyThreadFactory(<span class="string">&quot;async0&quot;</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义其它的TaskExecutor，声明<span class="doctag">@Async</span>方法的时候可以指定TaskExecutor，达到切换底层的目的</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TaskExecutor <span class="title">async1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 线程数,线程名</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentTaskExecutor(Executors.newFixedThreadPool(<span class="number">2</span>, <span class="keyword">new</span> MyThreadFactory(<span class="string">&quot;async1&quot;</span>)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 没有设置拒绝策略</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@Qualifier(&quot;async2&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TaskExecutor <span class="title">myAsyncExecutor2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentTaskExecutor(threadPool);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常配置"><a href="#异常配置" class="headerlink" title="异常配置"></a>异常配置</h3><ul>
+<li>线程满载后处理类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xkcoding.async.task;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.xkcoding.async.MyLog;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.log4j.Log4j;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.RejectedExecutionHandler;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ThreadPoolExecutor;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 线程池满之后的处理策略类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@DESC</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> guchuang</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RejectedPolicy</span> <span class="keyword">implements</span> <span class="title">RejectedExecutionHandler</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RejectedPolicy</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 向线程池中添加线程被拒绝时会调用这个方法。一般拒绝是因为线程池满了</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> r 被拒绝的任务</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> e 拒绝这个任务的线程池</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">rejectedExecution</span><span class="params">(Runnable r, ThreadPoolExecutor e)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;one thread is rejected, i will deal it&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (!e.isShutdown()) &#123;</span><br><span class="line">            r.run();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ol>
+<li>获取返回值</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFuture</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, ExecutionException </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;\n-----------------start-----------------------&quot;</span>);</span><br><span class="line">        Future&lt;String&gt; result1 = asyncMethod.futureTask1();</span><br><span class="line">        CompletableFuture&lt;String&gt; result2 = asyncMethod.futureTask2();</span><br><span class="line">        <span class="comment">// 获取返回值</span></span><br><span class="line">        log.info(<span class="string">&quot;result1:&quot;</span> + result1.get());</span><br><span class="line">        log.info(<span class="string">&quot;result2:&quot;</span> + result2.get());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>无返回值方法可直接抛出异常,有返回值方法方法需要通过get方法获取异常</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testE</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          Future&lt;String&gt; result = asyncMethod.futureE();</span><br><span class="line">          <span class="comment">//这里调用get才会获得异常</span></span><br><span class="line">          log.info(result.get());</span><br><span class="line">      &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">          <span class="comment">//e.printStackTrace();</span></span><br><span class="line">          log.info(<span class="string">&quot;this is excepted Exception:&quot;</span> + e.getMessage());</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 直接抛出异常</span></span><br><span class="line">      asyncMethod.fooE();</span><br><span class="line">      log.info(<span class="string">&quot;end call e&quot;</span>);</span><br><span class="line">      <span class="comment">//log.sleep(1000);</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>当超过线程词最大容量的时候，会抛出TaskRejectedException</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testRejectWithDeal</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">       log.info(<span class="string">&quot;\n-----------------start testRejectWithDeal-----------------------&quot;</span>);</span><br><span class="line">       log.info(<span class="string">&quot;start add task&quot;</span>);</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">               asyncMethod.asyncSleep3(i, <span class="number">1</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span>(RejectedExecutionException e) &#123;</span><br><span class="line">           log.info(<span class="string">&quot;excepted exception:&quot;</span> + e.getMessage());</span><br><span class="line">       &#125;</span><br><span class="line">       log.info(<span class="string">&quot;finished add task&quot;</span>);</span><br><span class="line">       Thread.sleep(<span class="number">100</span> * <span class="number">1000</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/spring/">spring</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/async/">async</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Docker 资源隔离</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/03/2.Docker%E5%AE%B9%E5%99%A8%E3%80%81%E9%95%9C%E5%83%8F%E3%80%81%E4%BB%93%E5%BA%93/">
+                        <span class="hidden-mobile">Docker 容器</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

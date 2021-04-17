@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+  <title>mybatis动态sql - LUNA</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 50vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>LUNA</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                Links
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/Pikachu.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="mybatis动态sql">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-04 00:00" pubdate>
+        November 4, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">mybatis动态sql</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 hours ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="MyBatis的动态SQL是基于OGNL表达式的，它可以帮助我们方便的在SQL语句中实现某些逻辑。"><a href="#MyBatis的动态SQL是基于OGNL表达式的，它可以帮助我们方便的在SQL语句中实现某些逻辑。" class="headerlink" title="MyBatis的动态SQL是基于OGNL表达式的，它可以帮助我们方便的在SQL语句中实现某些逻辑。"></a>MyBatis的动态SQL是基于OGNL表达式的，它可以帮助我们方便的在SQL语句中实现某些逻辑。</h3><p>MyBatis中用于实现动态SQL的元素主要有：</p>
+<ul>
+<li>if</li>
+<li>where</li>
+<li>set</li>
+<li>choose（when，otherwise）</li>
+<li>trim</li>
+<li>foreach  </li>
+</ul>
+<h3 id="（1）if标签"><a href="#（1）if标签" class="headerlink" title="（1）if标签"></a>（1）if标签</h3><p>此时如果CNAINDCLABASINFID为null，此语句很可能报错或查询结果为空。此时我们使用if动态sql语句先进行判断，如果值为null或等于空字符串，我们就不进行此条件的判断，增加灵活性。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span><span class="keyword">where</span><span class="operator">&gt;</span></span><br><span class="line">   com.CNAINDCLABASINFID = #&#123;industryNum&#125;</span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;id!=null and id!=&#x27;&#x27;&quot;<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">!</span><span class="comment">-- 项目编号 --&gt;</span></span><br><span class="line">      and bas.id = #&#123;id&#125;</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;projectName!=null and projectName!=&#x27;&#x27;&quot;<span class="operator">&gt;</span><span class="operator">&lt;</span><span class="operator">!</span><span class="comment">-- 项目名称 --&gt;</span></span><br><span class="line">      and bas.PROJECT_NAME = #&#123;projectName&#125;</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">where</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）if-where-条件判断"><a href="#（2）if-where-条件判断" class="headerlink" title="（2）if + where 条件判断"></a>（2）if + where 条件判断</h3><p>如上所示</p>
+<h3 id="（3）if-set-更新语句"><a href="#（3）if-set-更新语句" class="headerlink" title="（3）if + set 更新语句"></a>（3）if + set 更新语句</h3><p>当update语句中没有使用if标签时，如果有一个参数为null，都会导致错误。<br>当在update语句中使用if标签时，如果前面的if没有执行，则或导致逗号多余错误。使用set标签可以将动态的配置SET 关键字，和剔除追加到条件末尾的任何不相关的逗号。<strong>如果set包含的内容为空的话则会出错。</strong></p>
+<p>使用if+set标签修改后，如果某项为null则不进行更新，而是保持数据库原值。如下示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>update id<span class="operator">=</span>&quot;editRateAnalysTask&quot; parameterType<span class="operator">=</span>&quot;RateAnalystScale&quot; <span class="operator">&gt;</span></span><br><span class="line">UPDATE STUDENT_TBL</span><br><span class="line"><span class="operator">&lt;</span><span class="keyword">set</span><span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;studentName != null and studentName != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">      STUDENT_TBL.STUDENT_NAME = #&#123;studentName&#125;,</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;studentSex != null and studentSex != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">      STUDENT_TBL.STUDENT_SEX = #&#123;studentSex&#125;,</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;studentBirthday != null &quot;<span class="operator">&gt;</span></span><br><span class="line">      STUDENT_TBL.STUDENT_BIRTHDAY = #&#123;studentBirthday&#125;,</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;studentPhoto != null &quot;<span class="operator">&gt;</span></span><br><span class="line">      STUDENT_TBL.STUDENT_PHOTO = #&#123;studentPhoto, javaType=byte[], jdbcType=BLOB, typeHandler=org.apache.ibatis.type.BlobTypeHandler&#125;,</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;classId != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">      STUDENT_TBL.CLASS_ID = #&#123;classId&#125;</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span>if test<span class="operator">=</span>&quot;placeId != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">      STUDENT_TBL.PLACE_ID = #&#123;placeId&#125;</span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span>if<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">set</span><span class="operator">&gt;</span></span><br><span class="line">WHERE STUDENT_TBL.STUDENT_ID = #&#123;studentId&#125;;</span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>update<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（4）choose-when-otherwise"><a href="#（4）choose-when-otherwise" class="headerlink" title="（4）choose (when,otherwise)"></a>（4）choose (when,otherwise)</h3><p>​    有时候我们并不想应用所有的条件，而只是想从多个选项中选择一个。而使用if标签时，只要test中的表达式为true，就会执行if标签中的条件。MyBatis提供了choose 元素。if标签是与(and)的关系，而choose标签是或（or）的关系.</p>
+<p>​    choose标签是按顺序判断其内部when标签中的test条件出否成立，如果有一个成立，则choose结束<strong>。</strong>当choose中所有when的条件都不满则时，则执行otherwise中的sql。类似于Java 的switch 语句，choose为switch，when为case，otherwise则为default。</p>
+<p>例如下面例子，同样把所有可以限制的条件都写上，方面使用。choose会从上到下选择一个when标签的test为true的sql执行。安全考虑，我们使用where将choose包起来，放置关键字多于错误。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span><span class="keyword">select</span> id<span class="operator">=</span>&quot;&quot;<span class="operator">&gt;</span></span><br><span class="line">   <span class="keyword">SELECT</span> ST.STUDENT_ID,</span><br><span class="line">   ST.STUDENT_NAME,</span><br><span class="line">   ST.STUDENT_SEX,</span><br><span class="line">   ST.STUDENT_BIRTHDAY,</span><br><span class="line">   ST.STUDENT_PHOTO,</span><br><span class="line">   ST.CLASS_ID,</span><br><span class="line">   ST.PLACE_ID</span><br><span class="line">   <span class="keyword">FROM</span> STUDENT_TBL ST</span><br><span class="line">   <span class="operator">&lt;</span><span class="keyword">where</span><span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span>choose<span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;studentName !=null &quot;<span class="operator">&gt;</span></span><br><span class="line">            ST.STUDENT_NAME LIKE CONCAT(CONCAT(&#x27;%&#x27;, #&#123;studentName, jdbcType=VARCHAR&#125;),&#x27;%&#x27;)</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;studentSex != null and studentSex != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.STUDENT_SEX = #&#123;studentSex, jdbcType=INTEGER&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;studentBirthday != null &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.STUDENT_BIRTHDAY = #&#123;studentBirthday, jdbcType=DATE&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;classId != null and classId!= &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.CLASS_ID = #&#123;classId, jdbcType=VARCHAR&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;classEntity != null and classEntity.classId !=null and classEntity.classId !=&#x27; &#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.CLASS_ID = #&#123;classEntity.classId, jdbcType=VARCHAR&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;placeId != null and placeId != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.PLACE_ID = #&#123;placeId, jdbcType=VARCHAR&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;placeEntity != null and placeEntity.placeId != null and placeEntity.placeId != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.PLACE_ID = #&#123;placeEntity.placeId, jdbcType=VARCHAR&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="keyword">when</span> test<span class="operator">=</span>&quot;studentId != null and studentId != &#x27;&#x27; &quot;<span class="operator">&gt;</span></span><br><span class="line">            AND ST.STUDENT_ID = #&#123;studentId, jdbcType=VARCHAR&#125;</span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">when</span> <span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span>otherwise<span class="operator">&gt;</span></span><br><span class="line">         <span class="operator">&lt;</span><span class="operator">/</span>otherwise<span class="operator">&gt;</span></span><br><span class="line">      <span class="operator">&lt;</span><span class="operator">/</span>choose<span class="operator">&gt;</span></span><br><span class="line">   <span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">where</span><span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">select</span><span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="（5）trim标签"><a href="#（5）trim标签" class="headerlink" title="（5）trim标签"></a>（5）trim标签</h3><p>trim元素的主要功能是可以在自己包含的内容前加上某些前缀，也可以在其后加上某些后缀，与之对应的属性是<strong>prefix</strong>和<strong>suffix</strong>；可以把包含内容的首部某些内容覆盖，即忽略，也可以把尾部的某些内容覆盖，对应的属性是<strong>prefixOverrides</strong>和<strong>suffixOverrides</strong>。正因为trim有这样的功能，所以我们也可以非常简单的利用trim来代替where/set标签的功能，示例代码如下：</p>
+<p><strong>trim代替where标签：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> </span><br><span class="line">　　<span class="operator">&lt;</span>trim prefix<span class="operator">=</span>&quot;WHERE&quot; prefixoverride<span class="operator">=</span>&quot;AND |OR&quot;<span class="operator">&gt;</span></span><br><span class="line">　　　　&lt;if test=&quot;name != null and name.length()&gt;0&quot;&gt; AND name=#&#123;name&#125;&lt;/if&gt;</span><br><span class="line">　　　　&lt;if test=&quot;gender != null and gender.length()&gt;0&quot;&gt; AND gender=#&#123;gender&#125;&lt;/if&gt;</span><br><span class="line">　　<span class="operator">&lt;</span><span class="operator">/</span>trim<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>假如说name和gender的值都不为null的话打印的SQL为：select * from user where   name = ‘xx’ and gender = ‘xx’</p>
+<p>　　在红色标记的地方是不存在第一个and的，上面两个属性的意思如下：</p>
+<p>　　prefix：前缀　　　　　　</p>
+<p>　　prefixoverride：去掉第一个and或者是or</p>
+<p><strong>trim代替set标签：</strong></p>
+<p>update user</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="operator">&lt;</span>trim prefix<span class="operator">=</span>&quot;set&quot; suffixoverride<span class="operator">=</span>&quot;,&quot; suffix<span class="operator">=</span>&quot; where id = #&#123;id&#125; &quot;<span class="operator">&gt;</span></span><br><span class="line">　　　　&lt;if test=&quot;name != null and name.length()&gt;0&quot;&gt; name=#&#123;name&#125; , &lt;/if&gt;</span><br><span class="line">　　　　&lt;if test=&quot;gender != null and gender.length()&gt;0&quot;&gt; gender=#&#123;gender&#125; ,  &lt;/if&gt;</span><br><span class="line">　　<span class="operator">&lt;</span><span class="operator">/</span>trim<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>假如说name和gender的值都不为null的话打印的SQL为：update user set name=’xx’ , gender=’xx’   where id=’x’</p>
+<p>　　在红色标记的地方不存在逗号，而且自动加了一个set前缀和where后缀，上面三个属性的意义如下，其中prefix意义如上：</p>
+<p>　　suffixoverride：去掉最后一个逗号（也可以是其他的标记，就像是上面前缀中的and一样）</p>
+<p>　　suffix：后缀</p>
+<h3 id="（6）foreach-标签"><a href="#（6）foreach-标签" class="headerlink" title="（6）foreach 标签"></a>（6）foreach 标签</h3><p>foreach的主要用在构建in条件中，它可以在SQL语句中进行迭代一个集合。<strong>foreach元素的属性主要有item，index，collection，open，separator，close。</strong></p>
+<ul>
+<li><strong>item</strong>表示集合中每一个元素进行迭代时的别名；</li>
+<li><strong>index</strong>指定一个名字，用于表示在迭代过程中，每次迭代到的位置；</li>
+<li><strong>open</strong>表示该语句以什么开始；</li>
+<li><strong>separator</strong>表示在每次进行迭代之间以什么符号作为分隔符；</li>
+<li><strong>close</strong>表示以什么结束；</li>
+</ul>
+<p>在使用foreach的时候最关键的也是最容易出错的就是 <strong>collection</strong> 属性，该属性是必须指定的，但是在不同情况下，该属性的值是不一样的，主要有一下3种情况： </p>
+<ul>
+<li>如果传入的是单参数且参数类型是一个List的时候，collection属性值为list</li>
+<li>如果传入的是单参数且参数类型是一个array数组的时候，collection的属性值为array</li>
+<li>如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可以封装成map，实际上如果你在传入参数的时候，在MyBatis里面也是会把它封装成一个Map的，map的key就是参数名，所以这个时候collection属性值就是传入的List或array对象在自己封装的map里面的key</li>
+</ul>
+<h4 id="1）单参数List的类型："><a href="#1）单参数List的类型：" class="headerlink" title="1）单参数List的类型："></a>1）单参数List的类型：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span><span class="keyword">select</span> id<span class="operator">=</span>&quot;dynamicForeachTest&quot; resultType<span class="operator">=</span>&quot;Blog&quot;<span class="operator">&gt;</span>  </span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_blog <span class="keyword">where</span> id <span class="keyword">in</span>  </span><br><span class="line">    <span class="operator">&lt;</span>foreach collection<span class="operator">=</span>&quot;list&quot; index<span class="operator">=</span>&quot;index&quot; item<span class="operator">=</span>&quot;item&quot; <span class="keyword">open</span><span class="operator">=</span>&quot;(&quot; separator<span class="operator">=</span>&quot;,&quot; <span class="keyword">close</span><span class="operator">=</span>&quot;)&quot;<span class="operator">&gt;</span>  </span><br><span class="line">        #&#123;item&#125;  </span><br><span class="line">    <span class="operator">&lt;</span><span class="operator">/</span>foreach<span class="operator">&gt;</span>  </span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">select</span><span class="operator">&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+<p>上述collection的值为list，对应的Mapper是这样的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public List<span class="operator">&lt;</span>Blog<span class="operator">&gt;</span> dynamicForeachTest(List<span class="operator">&lt;</span><span class="type">Integer</span><span class="operator">&gt;</span> ids); </span><br></pre></td></tr></table></figure>
+
+<h4 id="2）单参数array数组的类型："><a href="#2）单参数array数组的类型：" class="headerlink" title="2）单参数array数组的类型："></a>2）单参数array数组的类型：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span><span class="keyword">select</span> id<span class="operator">=</span>&quot;dynamicForeach2Test&quot; resultType<span class="operator">=</span>&quot;Blog&quot;<span class="operator">&gt;</span>  </span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_blog <span class="keyword">where</span> id <span class="keyword">in</span>  </span><br><span class="line">    <span class="operator">&lt;</span>foreach collection<span class="operator">=</span>&quot;array&quot; index<span class="operator">=</span>&quot;index&quot; item<span class="operator">=</span>&quot;item&quot; <span class="keyword">open</span><span class="operator">=</span>&quot;(&quot; separator<span class="operator">=</span>&quot;,&quot; <span class="keyword">close</span><span class="operator">=</span>&quot;)&quot;<span class="operator">&gt;</span>  </span><br><span class="line">        #&#123;item&#125;  </span><br><span class="line">    <span class="operator">&lt;</span><span class="operator">/</span>foreach<span class="operator">&gt;</span>  </span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">select</span><span class="operator">&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+<p>上述collection为array，对应的Mapper代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Blog&gt; <span class="title">dynamicForeach2Test</span><span class="params">(<span class="keyword">int</span>[] ids)</span></span>;  </span><br></pre></td></tr></table></figure>
+
+<h4 id="3）自己把参数封装成Map的类型"><a href="#3）自己把参数封装成Map的类型" class="headerlink" title="3）自己把参数封装成Map的类型"></a>3）自己把参数封装成Map的类型</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span><span class="keyword">select</span> id<span class="operator">=</span>&quot;dynamicForeach3Test&quot; resultType<span class="operator">=</span>&quot;Blog&quot;<span class="operator">&gt;</span>  </span><br><span class="line">    select * from t_blog where title like &quot;%&quot;#&#123;title&#125;&quot;%&quot; and id in  </span><br><span class="line">    <span class="operator">&lt;</span>foreach collection<span class="operator">=</span>&quot;ids&quot; index<span class="operator">=</span>&quot;index&quot; item<span class="operator">=</span>&quot;item&quot; <span class="keyword">open</span><span class="operator">=</span>&quot;(&quot; separator<span class="operator">=</span>&quot;,&quot; <span class="keyword">close</span><span class="operator">=</span>&quot;)&quot;<span class="operator">&gt;</span>  </span><br><span class="line">        #&#123;item&#125;  </span><br><span class="line">    <span class="operator">&lt;</span><span class="operator">/</span>foreach<span class="operator">&gt;</span>  </span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span><span class="keyword">select</span><span class="operator">&gt;</span>  </span><br></pre></td></tr></table></figure>
+
+<p>上述collection的值为ids，是传入的参数Map的key，对应的Mapper代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Blog&gt; <span class="title">dynamicForeach3Test</span><span class="params">(Map&lt;String, Object&gt; params)</span></span>; </span><br></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/mybatis/">mybatis</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/mybatis/">mybatis</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/24/spring%20restTemplate/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">spring RestTemplate</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/04/MybatisUnderlyingPrinciple/">
+                        <span class="hidden-mobile">mybatis原理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
