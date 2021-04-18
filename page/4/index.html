@@ -252,34 +252,34 @@ pom.xml文件的节点大致可以分为以下几个部分：
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DML/" target="_self">
-          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DML">
+        <a href="/2020/07/04/mysql-DDL/" target="_self">
+          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DML/">mysql-DML</a>
+        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DML/">
+        <a href="/2020/07/04/mysql-DDL/">
           
           
             
           
-          Review mysql插入一、方式一
-语法：
-insert into 表名(字段名,...) values(值,...);
-特点：
-1、要求值的类型和字段的类型要一致或兼容
-2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致
-但必须保证值和字段一一对应
-3、假如表中有可以为null的字段，注意可以通过以下两种方式插入null值
-①字段和值都省略
-②字段写上，值使用null
-4、字段和值的个
+          Review mysql库管理一、创建库
+create database 【if not exists】 库名【 character set 字符集名】;
+
+二、修改库
+alter database 库名 character set 字符集名;
+三、删除库
+drop database 【if exists】 库名;
+
+
+表管理一、创建表 ★
+create table 【if not exists】
         </a>
       </p>
 
@@ -318,34 +318,34 @@ insert into 表名(字段名,...) values(值,...);
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DDL/" target="_self">
-          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
+        <a href="/2020/07/04/mysql-DML/" target="_self">
+          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DML">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
+        <a href="/2020/07/04/mysql-DML/">mysql-DML</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DDL/">
+        <a href="/2020/07/04/mysql-DML/">
           
           
             
           
-          Review mysql库管理一、创建库
-create database 【if not exists】 库名【 character set 字符集名】;
-
-二、修改库
-alter database 库名 character set 字符集名;
-三、删除库
-drop database 【if exists】 库名;
-
-
-表管理一、创建表 ★
-create table 【if not exists】
+          Review mysql插入一、方式一
+语法：
+insert into 表名(字段名,...) values(值,...);
+特点：
+1、要求值的类型和字段的类型要一致或兼容
+2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致
+但必须保证值和字段一一对应
+3、假如表中有可以为null的字段，注意可以通过以下两种方式插入null值
+①字段和值都省略
+②字段写上，值使用null
+4、字段和值的个
         </a>
       </p>
 
@@ -707,28 +707,27 @@ try
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/" target="_self">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 镜像配置">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">Docker 镜像配置</a>
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
           
           
             
           
-          ​    Docker 核心：镜像，首先重点讲解一下镜像的基本操作，然后介绍一下镜像的实现原理。
-1. 镜像​    镜像是一个只读的 Docker 容器模板，包含启动容器所需要的所有文件系统结构和内容。简单来讲，镜像是一个特殊的文件系统，它提供了容器运行时所需的程序、软件库、资源、配置等静态数据。即镜像不包含任何动态数据，镜像内容在构建后不会被改变。
-如何操作镜像：
+          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
+1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
 
-从图中可知，镜像的操作可分
+1.1 容器的生命周期容器的生命周期是容器可能处于
         </a>
       </p>
 
@@ -767,27 +766,28 @@ try
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
+        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/" target="_self">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 镜像配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
+        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">Docker 镜像配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
           
           
             
           
-          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
-1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
+          ​    Docker 核心：镜像，首先重点讲解一下镜像的基本操作，然后介绍一下镜像的实现原理。
+1. 镜像​    镜像是一个只读的 Docker 容器模板，包含启动容器所需要的所有文件系统结构和内容。简单来讲，镜像是一个特殊的文件系统，它提供了容器运行时所需的程序、软件库、资源、配置等静态数据。即镜像不包含任何动态数据，镜像内容在构建后不会被改变。
+如何操作镜像：
 
-1.1 容器的生命周期容器的生命周期是容器可能处于
+从图中可知，镜像的操作可分
         </a>
       </p>
 
