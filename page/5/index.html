@@ -192,6 +192,63 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_self">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 架构">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">Docker 架构</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+          
+          
+            
+          
+          1. 前言docker架构设计参考文章进行整理：地址为https://www.huweihuang.com/article/docker/docker-architecture/
+这一篇文章源于2015年出版的《docker源码分析》，书中以docker1.2.0版本进行分析。但是在docker1.11以后，docker的架构就在不断的优化和拆分。下面整理出了docker框架的变迁史，可以稍作参考
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-03 00:00" pubdate>
+              2020-06-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/" target="_self">
           <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全性能">
         </a>
@@ -250,26 +307,25 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/" target="_self">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 资源隔离">
+        <a href="/2020/06/03/8.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/" target="_self">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">Docker 资源隔离</a>
+        <a href="/2020/06/03/8.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">Docker 安全</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">
+        <a href="/2020/06/03/8.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">
           
           
             
           
-          1. 前言​    在上一章Docker安全性能中已有讲解Namespace的功能作用。
-​    概念回顾：Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
-​    虽然Namespace的技术的隔离和安全性相对
+          1. 前言​    Docker容器安全目前推荐的技术方案是 : Kata Containers，那先来认识一下什么是kata containers。
+​    Kata Containers是一个开源项目和社区，致力于构建轻量级虚拟机（VM）的标准实现——这些虚拟机的感知和执行类似容器，但提供VM的工作负载隔离和安全优势，内核级别的隔离宿主机的内核！Kata Containers 项目最初是基于
         </a>
       </p>
 
@@ -308,25 +364,26 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/8.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/" target="_self">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全">
+        <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/" target="_self">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 资源隔离">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/8.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">Docker 安全</a>
+        <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">Docker 资源隔离</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/8.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">
+        <a href="/2020/06/03/9.Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">
           
           
             
           
-          1. 前言​    Docker容器安全目前推荐的技术方案是 : Kata Containers，那先来认识一下什么是kata containers。
-​    Kata Containers是一个开源项目和社区，致力于构建轻量级虚拟机（VM）的标准实现——这些虚拟机的感知和执行类似容器，但提供VM的工作负载隔离和安全优势，内核级别的隔离宿主机的内核！Kata Containers 项目最初是基于
+          1. 前言​    在上一章Docker安全性能中已有讲解Namespace的功能作用。
+​    概念回顾：Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
+​    虽然Namespace的技术的隔离和安全性相对
         </a>
       </p>
 
@@ -722,64 +779,6 @@ import org.springframework.scheduling.an
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/reply/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="reply">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/01/reply/">reply</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/01/reply/">
-          
-          
-            
-          
-          1.如何将教务系统信息导入系统？怎么保证这些信息的安全？我们采用Excel模板解析导入, 并使用apache的poi解析工具, 解析上传的数据并存入数据库
-
-数据库存储密码等信息采用sha256加密，保证信息安全。
-项目部署的服务器位于校大数据中心，使用内网访问，安全性高。外部人员需要使用内部人员提供的vpn账号才能使用。
-云数据库符合企业级安全标准，高效防御 SQL 注入、暴力破解等数据库攻击行
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-01 00:00" pubdate>
-              2020-06-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/genesis/">genesis</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/reply/">reply</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -827,6 +826,12 @@ import org.springframework.scheduling.an
 </div>
     
 
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <script src='https://api.vvhan.com/api/snow'></script>
+        </div>
+      </div>
     
   </main>
 

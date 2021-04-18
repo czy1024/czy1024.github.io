@@ -192,6 +192,67 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/05/ssh-password/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="ssh 配置教程">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/05/ssh-password/">ssh 配置教程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/05/ssh-password/">
+          
+          
+            
+          
+          1、环境说明环境就不进行说明了，比较三次配置，一个配过九台，每每情况各有不同。只能告知各位读者，博主这里使用的是red hat红帽，估计centOS也差不太多，不过有差异也无妨，学会博主方法，相信你就不会蒙蔽了，知道怎么往对的方向走了
+2、场景说明要求node1免密登录到node2，这里任选了一个用户，也即是
+[hadoop@node1 .ssh]$ ssh node2
+
+3、ssh登录原理过程
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-05 00:00" pubdate>
+              2020-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/ssh/">ssh</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ssh/">ssh</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/13/anno/" target="_self">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="anno">
         </a>
@@ -613,86 +674,32 @@ Map&lt;Str
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/hello/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="welcome!">
+        <a href="/2020/04/02/linux%20tar/" target="_self">
+          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="tar 命令">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/02/hello/">welcome!</a>
+        <a href="/2020/04/02/linux%20tar/">tar 命令</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/02/hello/">
+        <a href="/2020/04/02/linux%20tar/">
           
           
             
           
-          welcome!欢迎访问本系统~希望能帮助到您.
-来自-&gt;luna
+          tar
+-c: 建立压缩档案-x：解压-t：查看内容-r：向压缩归档文件末尾追加文件-u：更新原压缩包中的文件
 
-        </a>
-      </p>
+这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。
 
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-02 00:00" pubdate>
-              2020-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/luna/">luna</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/welcome/">welcome</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
+-z：有gzip属性的-j：有bz2属性的-Z：有compress属性的-v：显示所有过程-O：将文件解开到标准输出
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20systemctl/" target="_self">
-          <img src="/img/linux.png" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/02/linux%20systemctl/">linux_systemctl</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/02/linux%20systemctl/">
-          
-          
-            
-          
-          systemctl配置管理文件详解
-文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
-
-文件内容$cat sshd.service
-    [Unit]
-    Description=OpenSSH server daemon
-    Documentation=man:sshd(8) man:s
+下面的参数-f是必须的
+-f: 使
         </a>
       </p>
 
@@ -731,32 +738,30 @@ Map&lt;Str
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20tar/" target="_self">
-          <img src="/img/linux.png" srcset="/img/loading.gif" lazyload alt="tar 命令">
+        <a href="/2020/04/02/linux%20systemctl/" target="_self">
+          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/02/linux%20tar/">tar 命令</a>
+        <a href="/2020/04/02/linux%20systemctl/">linux_systemctl</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/02/linux%20tar/">
+        <a href="/2020/04/02/linux%20systemctl/">
           
           
             
           
-          tar
--c: 建立压缩档案-x：解压-t：查看内容-r：向压缩归档文件末尾追加文件-u：更新原压缩包中的文件
+          systemctl配置管理文件详解
+文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
 
-这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。
-
--z：有gzip属性的-j：有bz2属性的-Z：有compress属性的-v：显示所有过程-O：将文件解开到标准输出
-
-下面的参数-f是必须的
--f: 使
+文件内容$cat sshd.service
+    [Unit]
+    Description=OpenSSH server daemon
+    Documentation=man:sshd(8) man:s
         </a>
       </p>
 
@@ -838,6 +843,12 @@ Map&lt;Str
 </div>
     
 
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <script src='https://api.vvhan.com/api/snow'></script>
+        </div>
+      </div>
     
   </main>
 
