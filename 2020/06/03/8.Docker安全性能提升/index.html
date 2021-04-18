@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -70,7 +70,7 @@
 
 
 <body>
-  <header style="height: 50vh;">
+  <header style="height: 40vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      16
        分钟
     </span>
   
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：19 hours ago
+                  本文最后更新于：28 minutes ago
                 
               </p>
             
@@ -270,14 +270,14 @@
 <h3 id="2-kata-containers"><a href="#2-kata-containers" class="headerlink" title="2. kata-containers"></a>2. kata-containers</h3><p>　　kata containers是由OpenStack基金会管理，但独立于OpenStack项目之外的容器项目。它是一个<strong>可以使用容器镜像以超轻量级虚机的形式创建容器的运行时工具</strong>。 kata containers整合了Intel的 Clear Containers 和 Hyper.sh 的 runV，能够支持不同平台的硬件 （x86-64，arm等），并符合**OCI(Open Container Initiative)**规范，同时还可以兼容k8s的 <strong>CRI（Container Runtime Interface）</strong>接口规范。目前项目包含几个配套组件，即Runtime，Agent， Proxy，Shim，Kernel等</p>
 <p>　　真正启动Docker容器的命令工具是RunC，它是OCI运行时规范 (runtime-spec)的默认实现。Kata containers其实跟RunC类似，也是一个符合OCI运行时规范的一种 实现（即<strong>Clear Container和runV 都符OCI规范</strong>），不同之处是，它给每个容器（在Docker容器的 角度）或每个Pod（k8s的角度）增加了一个独立的linux内核（不共享宿主机的内核），使容器有更好 的隔离性，安全性。</p>
 <p><strong>2.1）docker的runtime模式架构图：</strong></p>
-<p><img src="/blog/images/8.docker%E7%9A%84runtime%E6%9E%B6%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/8.docker%E7%9A%84runtime%E6%9E%B6%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
 <p>​    可以看到runC处于docker组件图的最底端，runC下面就是容器。目前docker已经不是一个专一的容器 管理组件，而真正的容器管理组件是containerd，而containerd本身也不会直接跟操作系统交互，去创建、删除容器，而是借助runC来对容器生命周期进行管理，因此runC作为必须遵循OCI规范。</p>
 <p><strong>2.2）kata containers定义位置：</strong></p>
 <p>kata containers在容器的什么位置，应该就显而易见了。它符合OCI运行时规 范，因此，可以作为runC的替代组件，如红色虚线框内所示：</p>
-<p><img src="/blog/images/8.docker%E7%9A%84runtime%E6%9E%B6%E6%9E%84%E5%9B%BE2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/8.docker%E7%9A%84runtime%E6%9E%B6%E6%9E%84%E5%9B%BE2.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>2.3）kata container原理</strong></p>
 <p>​    kata container实质上是在虚拟机内部使用container（基于runc的实现）。 kata-container使用虚拟化软件(qemu-lite优化过的qemu)， 通过已经将kata-agent 安装的kernel &amp; intrd image，启动过一个轻量级的虚拟机， 使用nvdimm将initrd image映射到guest vm中。然后由kata-agent为container创建对应的namespace和资源。 Guest VM作为实质上的sandbox可以完全与host kernel进行隔离。</p>
-<p><img src="/blog/images/8.kata-container%E5%8E%9F%E7%90%86png.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/8.kata-container%E5%8E%9F%E7%90%86png.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>组件拆分介绍</strong></p>
 <ul>
 <li><strong>kata-runtime</strong>：实现OCI接口，可以通过CRI-O 与kubelet对接作为k8s runtime server， containerd对接docker engine，创建运行container/pod的VM</li>
@@ -286,7 +286,7 @@
 <li><strong>kata-shim</strong>: 作为guest vm标准输入输出的接口，exec命令就是同kata-shim实现的。（其实相当于是container-shim的一个适配）</li>
 </ul>
 <p><strong>2.4）classic Docker与Docker with Kata的架构</strong></p>
-<p>![](/blog/images/8.Docker with Kata架构设计.png)</p>
+<p>![](/img/images/8.Docker with Kata架构设计.png)</p>
 
             </div>
             <hr>

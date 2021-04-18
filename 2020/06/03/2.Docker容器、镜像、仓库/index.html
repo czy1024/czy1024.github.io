@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -70,7 +70,7 @@
 
 
 <body>
-  <header style="height: 50vh;">
+  <header style="height: 40vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      49
+      83
        分钟
     </span>
   
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：19 hours ago
+                  本文最后更新于：29 minutes ago
                 
               </p>
             
@@ -276,7 +276,7 @@
 <p>虽然容器的本质是主机上运行的一个进程，但是容器有自己独立的命名空间隔离和资源限制。也就是说，在容器内部，无法看到主机上的进程、环境变量、网络等信息，这是容器与直接运行在主机上进程的本质区别。</p>
 <h4 id="1-3-仓库"><a href="#1-3-仓库" class="headerlink" title="1.3 仓库"></a>1.3 仓库</h4><p>Docker 的镜像仓库类似于代码仓库，用来存储和分发 Docker 镜像。镜像仓库分为公共镜像仓库和私有镜像仓库。</p>
 <p>目前，<a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub</a> 是 Docker 官方的公开镜像仓库，它不仅有很多应用或者操作系统的官方镜像，还有很多组织或者个人开发的镜像供我们免费存放、下载、研究和使用。除了公开镜像仓库，你也可以构建自己的私有镜像仓库，在第 5 课时，我会带你搭建一个私有的镜像仓库。</p>
-<h4 id="1-4-镜像、容器、仓库，三者之间的联系"><a href="#1-4-镜像、容器、仓库，三者之间的联系" class="headerlink" title="1.4 镜像、容器、仓库，三者之间的联系"></a>1.4 镜像、容器、仓库，三者之间的联系</h4><p><img src="/blog/images/2docker%E5%AE%B9%E5%99%A8%E5%85%B3%E7%B3%BB%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="Drawing 1.png"></p>
+<h4 id="1-4-镜像、容器、仓库，三者之间的联系"><a href="#1-4-镜像、容器、仓库，三者之间的联系" class="headerlink" title="1.4 镜像、容器、仓库，三者之间的联系"></a>1.4 镜像、容器、仓库，三者之间的联系</h4><p><img src="/img/images/2docker%E5%AE%B9%E5%99%A8%E5%85%B3%E7%B3%BB%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="Drawing 1.png"></p>
 <p>可以看到，镜像是容器的基石，容器是由镜像创建的。一个镜像可以创建多个容器，容器是镜像运行的实体。仓库就非常好理解了，就是用来存放和分发镜像的。</p>
 <p>了解了 Docker 的三大核心概念，接下来认识下 Docker 的核心架构和一些重要的组件。</p>
 <h1 id="2-Docker-架构"><a href="#2-Docker-架构" class="headerlink" title="2. Docker 架构"></a>2. Docker 架构</h1><p>在了解 Docker 架构前，我先说下相关的背景知识——容器的发展史。</p>
@@ -285,7 +285,7 @@
 <p>在这样的背景下，最终爆发了容器大战，<code>OCI</code>也正是在这样的背景下应运而生。</p>
 <p><strong><code>OCI</code>全称为开放容器标准（Open Container Initiative）</strong>，它是一个轻量级，开放的治理结构。<code>OCI</code>组织在 Linux 基金会的大力支持下，于 2015 年 6 月份正式注册成立。基金会旨在为用户围绕工业化容器的格式和镜像运行时，制定一个开放的容器标准。目前主要有两个标准文档：<strong>容器运行时标准 （runtime spec）和容器镜像标准（image spec）</strong>。</p>
 <p>正是由于容器的战争，才导致 Docker 不得不在战争中改变一些技术架构。最终形成了下图所示的技术架构。</p>
-<p><img src="/blog/images/2docker-%E6%9E%B6%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/2docker-%E6%9E%B6%E6%9E%84%E5%9B%BE.png" srcset="/img/loading.gif" lazyload></p>
 <p>​                                         Docker 架构图</p>
 <p>​    我们可以看到，Docker 整体架构采用 <strong>C/S（客户端 / 服务器）模式</strong>，主要由客户端和服务端两大部分组成。客户端负责发送操作指令，服务端负责接收和处理指令。客户端和服务端通信有多种方式，即可以在同一台机器上通过<code>UNIX</code>套接字通信，也可以通过网络连接远程通信。</p>
 <p>下面我逐一介绍客户端和服务端。</p>
@@ -294,7 +294,7 @@
 <p>​    Docker 从诞生到现在，服务端经历了多次架构重构。起初，服务端的组件是全部集成在 docker 二进制里。但是从 1.11 版本开始， dockerd 已经成了独立的二进制，此时的容器也不是直接由 dockerd 来启动了，而是集成了 containerd、runC 等多个组件。</p>
 <p>​    虽然 Docker 的架构在不停重构，但是各个模块的基本功能和定位并没有变化。它和一般的 C/S 架构系统一样，Docker 服务端模块负责和 Docker 客户端交互，并管理 Docker 的容器、镜像、网络等资源。</p>
 <h4 id="2-3-Docker-重要组件"><a href="#2-3-Docker-重要组件" class="headerlink" title="2.3 Docker 重要组件"></a>2.3 Docker 重要组件</h4><p>看下 Docker 都有哪些工具和组件。在 Docker 安装路径下**/usr/bin** 中执行 ls 命令可以看到以下与 docker 有关的二进制文件。（containerd、containerd-shim、ctr、docker、docker-init、docker-proxy、dockerd、runc）</p>
-<p><img src="/blog/images/2docker-%E7%BB%84%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/2docker-%E7%BB%84%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
 <p>先简单介绍一下 Docker 的两个至关重要的组件：<code>runc</code>和<code>containerd</code>。</p>
 <ul>
 <li><code>runc</code>是 Docker 官方按照 OCI 容器运行时标准的一个实现。通俗地讲，runc是一个用来运行容器的轻量级工具，是真正用来运行容器的。</li>
@@ -590,7 +590,7 @@
 
 <p>不难发现，当执行 <strong>docker run 命令</strong>时，containerd 会创建 containerd-shim 充当 “垫片” 进程（进程PID为9297），然后启动容器的真正进程 sleep 3600 。</p>
 <p>在当前的宿主机器上，可能就存在由上述的不同进程构成的进程树，如下图所示：</p>
-<p><img src="/blog/images/2docker-%E8%BF%9B%E7%A8%8B%E6%95%B0%E6%9C%BA%E6%9E%841.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/2docker-%E8%BF%9B%E7%A8%8B%E6%95%B0%E6%9C%BA%E6%9E%841.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>

@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -70,7 +70,7 @@
 
 
 <body>
-  <header style="height: 50vh;">
+  <header style="height: 40vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      67
        分钟
     </span>
   
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：19 hours ago
+                  本文最后更新于：29 minutes ago
                 
               </p>
             
@@ -268,7 +268,7 @@
               <p>​    Docker 核心：镜像，首先重点讲解一下镜像的基本操作，然后介绍一下镜像的实现原理。</p>
 <h3 id="1-镜像"><a href="#1-镜像" class="headerlink" title="1. 镜像"></a>1. 镜像</h3><p>​    镜像是一个只读的 Docker 容器模板，包含启动容器所需要的所有文件系统结构和内容。简单来讲，<strong>镜像是一个特殊的文件系统</strong>，它提供了容器运行时所需的程序、软件库、资源、配置等静态数据。即镜像不包含任何动态数据，镜像内容在构建后不会被改变。</p>
 <p>如何操作镜像：</p>
-<p><img src="/blog/images/3docker-%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C.png" srcset="/img/loading.gif" lazyload></p>
 <p>从图中可知，镜像的操作可分为：</p>
 <p>​    拉取镜像，使用docker pull命令拉取远程仓库的镜像到本地 ；</p>
 <p>​    重命名镜像，使用docker tag命令“重命名”镜像 ；</p>
@@ -444,9 +444,9 @@ ubuntu              latest              <span class="token number">4e2eef94cd6b<
 
 <p>大家可能注意到上面命令输出的最后一列， 它显示 ubuntu 这个镜像才 73.9MB ！但是大家应该都知道，安装一个 ubuntu 系统怎么也不可能就几十兆，那么 Docker 是怎么做到的呢？</p>
 <p>这是因为典型的 Linux 运行需要两个 FS: <strong>bootfs 和 rootfs</strong>，Linux 刚启动时会加载 bootfs 文件系统，之后 bootfs 会被卸载掉。对于不同的 Linux 发行版, bootfs 基本是一致的, 但 rootfs 会有差别，其包含我们熟悉的 /dev, /proc, /bin 等目录。对于 ubuntu 镜像来说，其底层直接使用 Host 的 <strong>kernel内核</strong>，自己只需要提供 rootfs 就行了。如下图所示：</p>
-<p><img src="/blog/images/3docker-bootfs-rootfs.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-bootfs-rootfs.png" srcset="/img/loading.gif" lazyload></p>
 <p>为了确定 ubuntu 镜像使用的是 Host 的Kernel内核，我们可以使用<strong>uname -a命令查看内核版本</strong>：</p>
-<p><img src="/blog/images/3docker-kernel.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-kernel.png" srcset="/img/loading.gif" lazyload></p>
 <p>说明如下：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">第一个组数字：4, 主版本号
 第二个组数字：15, 次版本号，当前为稳定版本
@@ -459,7 +459,7 @@ SMP：对称多处理机，表示内核支持多核、多处理器
 Tue Jul 15 17:46:11 UTC 2014：内核的编译时间（build date）为 2014&#x2F;07&#x2F;15 17:46:11  </code></pre></div>
 
 <p><strong>重点：</strong>如果我们在同一个 host 上下载不同 Linux 发行版镜像，如python:3和Ubuntu，可以从上图中发现其都是使用的公用 host 的 bootfs。抽象一下，如下图所示：</p>
-<p><img src="/blog/images/3docker-bootfs.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-bootfs.png" srcset="/img/loading.gif" lazyload></p>
 <p>理解到bootfs和rootfs后，就可以解释什么是镜像分层了。</p>
 <h4 id="2-1-镜像分层"><a href="#2-1-镜像分层" class="headerlink" title="2.1 镜像分层"></a>2.1 镜像分层</h4><p>​    每个镜像都是通过 DockerFile 文本文件定义的，Dockerfile 中的每条指令最终都会成为镜像中的 Layer。Layer 是按顺序构成的，<strong>最底层的 Layer 是基础镜像（base image），最上层是最终镜像（final image）</strong>。当一个镜像被更新或重新构建时，只有更新的层需要修改，其他没有更新的层可以直接复用本地缓存。这就是 Docker 镜像如此快速和轻量级的部分原因，每一层的大小加起来等于最终镜像的大小。</p>
 <p>​    理解上面的设计之后，我们现在来解释最上面关于 Layer 这个概念。假设我们的 Dockerfile 定义如下：</p>
@@ -482,11 +482,11 @@ Successfully built 48ec647c89a1
 Successfully tagged iteblog-docker:latest</code></pre></div>
 
 <p>如果用图片表示的话，这个过程如下：</p>
-<p><img src="/blog/images/3docker-%E9%95%9C%E5%83%8F%E5%88%86%E5%B1%82.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-%E9%95%9C%E5%83%8F%E5%88%86%E5%B1%82.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="3-容器层"><a href="#3-容器层" class="headerlink" title="3. 容器层"></a>3. 容器层</h3><p>​    如果多个镜像共用一个基础镜像，内存中也只需加载一份基础镜像，就可以为所有容器服务了。那么问题来了，如果我们需要修改基础镜像里面的东西咋办呢？Docker 很好的处理了这个问题，<strong>当容器启动时，一个新的可写层被加载到镜像的顶部，这一层通常被称作容器层（container layer），容器层之下的都叫镜像层（image layer）</strong>，所有的修改（比如删除文件、添加文件）都是在容器层进行的，如下图所示：</p>
-<p><img src="/blog/images/3docker-container1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-container1.png" srcset="/img/loading.gif" lazyload></p>
 <p>​    可以从图中看出Container layer容器可读层和Image layers镜像层。用户对容器中的添加、修改等数据都存放在container layer层，当容器被删除时，也只是container layer层被删除。底层的image layers镜像层是不动的。因此<strong>不同容器都有自己独有的容器层，所有的修改只会存在自己的容器层，也就是说不同容器之间的修改都互不影响，这也就使得不同容器可以共享一个镜像层</strong>，具体图解如下：</p>
-<p><img src="/blog/images/3docker-container2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/3docker-container2.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>重点：不同容器之间的修改是互不影响的，但是如果不同容器之间需要做数据传递，可以使用network进行网络通信。</strong></p>
 
             </div>

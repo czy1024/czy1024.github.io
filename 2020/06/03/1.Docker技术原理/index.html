@@ -62,7 +62,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":60,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -70,7 +70,7 @@
 
 
 <body>
-  <header style="height: 50vh;">
+  <header style="height: 40vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      38
+      63
        分钟
     </span>
   
@@ -260,14 +260,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：19 hours ago
+                  本文最后更新于：30 minutes ago
                 
               </p>
             
             <div class="markdown-body">
               <h4 id="先聊聊Docker-的基础内容：Docker-能做什么，怎么安装-Docker，以及容器技术的原理。"><a href="#先聊聊Docker-的基础内容：Docker-能做什么，怎么安装-Docker，以及容器技术的原理。" class="headerlink" title="先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。"></a><strong>先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。</strong></h4><h3 id="1-Docker-能做什么？"><a href="#1-Docker-能做什么？" class="headerlink" title="1. Docker 能做什么？"></a>1. Docker 能做什么？</h3><p>​    众所周知，Docker 是一个用于开发，发布和运行应用程序的开放平台。通俗地讲，Docker 类似于集装箱。在一艘大船上，各种货物要想被整齐摆放并且相互不受到影响，我们就需要把各种货物进行集装箱标准化。有了集装箱，我们就不需要专门运输水果或者化学用品的船了。我们可以把各种货品通过集装箱打包，然后统一放到一艘船上运输。Docker 要做的就是把各种软件打包成一个集装箱（镜像），然后分发，且在运行的时候可以相互隔离。</p>
 <p>到此，相信你已经迫不及待想要体验下了，下面就让我们来安装一个 Docker。</p>
-<p><img src="/images/docker1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="//img/images/docker1.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="2-CentOS-下安装-Docker"><a href="#2-CentOS-下安装-Docker" class="headerlink" title="2. CentOS 下安装 Docker"></a><strong>2. CentOS 下安装 Docker</strong></h4><p>​    Docker 是跨平台的解决方案，它支持在当前主流的各大平台安装，包括 Ubuntu、RHEL、CentOS、Debian 等 Linux 发行版，同时也可以在 OSX 、Microsoft Windows 等非 Linux 平台下安装使用。</p>
 <p>​    因为 Linux 是 Docker 的原生支持平台，所以推荐你在 Linux 上使用 Docker。由于生产环境中我们使用 CentOS 较多，下面主要针对在 CentOS 平台下安装和使用 Docker 展开介绍。</p>
 <h5 id="2-1-操作系统要求"><a href="#2-1-操作系统要求" class="headerlink" title="2.1 操作系统要求"></a>2.1 操作系统要求</h5><p>要安装 Docker，我们需要 CentOS 7 及以上的发行版本。</p>
@@ -348,7 +348,7 @@ bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</code></pre></d
 bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</code></pre></div>
 
 <p>这里可以看到当前进程的根目录已经变成了主机上的 /home/rootfs 目录。这样就实现了当前进程与主机的隔离。到此为止，一个目录隔离的容器就完成了。操作图解如下图所示：</p>
-<p><img src="images/chroot1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/chroot1.png" srcset="/img/loading.gif" lazyload></p>
 <p>但是，此时还不能称之为一个容器，为什么呢？你可以在上一步（使用 chroot 启动命令行窗口）执行以下命令，查看如下路由信息：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">&#x2F;etc # ip route
 default via 172.20.1.1 dev eth0
@@ -370,7 +370,7 @@ default via 172.20.1.1 dev eth0
 <h4 id="3-3-Cgroups-即：Linux-Control-Group"><a href="#3-3-Cgroups-即：Linux-Control-Group" class="headerlink" title="3.3 Cgroups 即：Linux Control Group"></a>3.3 Cgroups 即：Linux Control Group</h4><p>​    Cgroups 是一种 Linux 内核功能，可以限制和隔离进程的资源使用情况（CPU、内存、磁盘 I/O、网络等）。在容器的实现中，Cgroups 通常用来限制容器的 CPU 和内存等资源的使用。</p>
 <p>参考地址：<a target="_blank" rel="noopener" href="https://coolshell.cn/articles/17049.html">https://coolshell.cn/articles/17049.html</a></p>
 <p>首先，Linux把CGroup这个事实现成了一个file system，你可以mount。在我的Ubuntu 14.04下，你输入以下命令你就可以看到cgroup已为你mount好了。如下图所示：</p>
-<p><img src="images/cgroups1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/cgroups1.png" srcset="/img/loading.gif" lazyload></p>
 <p>在**/sys/fs**下有一个cgroup的目录，这个目录下还有很多子目录，比如： cpu，cpuset，memory，blkio……这些，这些都是cgroup的子系统。分别用于干不同的事的。</p>
 <h4 id="CPU限制"><a href="#CPU限制" class="headerlink" title="CPU限制"></a>CPU限制</h4><p><strong>1)  先创建一个test.py文件</strong></p>
 <div class="code-wrapper"><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -383,21 +383,21 @@ default via 172.20.1.1 dev eth0
     main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
 
 <p><strong>2）执行test.py文件，并查询内存使用情况</strong></p>
-<p><img src="images/cgroups2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/cgroups2.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>3) 限制cpu使用效率</strong></p>
-<p><img src="images/cgroups-cpu-quota-us.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/cgroups-cpu-quota-us.png" srcset="/img/loading.gif" lazyload></p>
 <p>在/sys/fs/cgroup/cpu下创建了一个coco，而且你会发现，一旦你创建了一个子目录，这个子目录里又有很多文件了。其中<strong>cpu.cfs_quota_us</strong>表示该control group限制占用的时间（微秒），默认为-1，表示不限制。如果设为50000，表示占用50000/10000=50%的CPU。</p>
 <p>这里，我们设置占用20%的CPU，即把cpu.cfs_quota_us设置为20000。执行命令就是：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 20000 &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;cpu.cfs_quota_us</code></pre></div>
 
 <p>然后执行死循环test.py文件，瞬间cpu就会跑到100%。如下图所示：</p>
-<p><img src="images/cgroups-cpu-full-top.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/cgroups-cpu-full-top.png" srcset="/img/loading.gif" lazyload></p>
 <p>我们看到，这个进程的PID是4897，我们把这个进程加到这个cgroup中：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 4897 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;tasks</code></pre></div>
 
 <p>然后，就会在top中看到CPU的利用立马下降成20%了。（前面我们设置的20000就是20%的意思）</p>
 <p><strong>4) 查看内存使用情况</strong></p>
-<p><img src="images/cgroups-cpu-top.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/cgroups-cpu-top.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="内存限制"><a href="#内存限制" class="headerlink" title="内存限制"></a>内存限制</h4><h5 id="1）创建test1-py文件"><a href="#1）创建test1-py文件" class="headerlink" title="1）创建test1.py文件"></a>1）创建test1.py文件</h5><div class="code-wrapper"><pre class="language-none"><code class="language-none">def main():
     i &#x3D; []
     while True:
@@ -415,7 +415,7 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 
 <p>然后可以通过top查看到对应进程的内存使用情况。</p>
 <p><strong>3）限制内存使用情况</strong></p>
-<p><img src="images/cgroups-memory.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/img/images/cgroups-memory.png" srcset="/img/loading.gif" lazyload></p>
 <p>在/sys/fs/cgroup/memory下创建了一个coco，而且你会发现，一旦你创建了一个子目录，这个子目录里又有很多文件了。其中<strong>memory.limit_in_bytes</strong> 或 <strong>memory.memsw.limit_in_bytes</strong> 限制进程内存占用的大小，避免在进程异常时耗尽系统资源</p>
 <p>这里，我们设置占用300k的内存使用量，即把memory.limit_in_bytes设置为300k。执行命令就是：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 300k &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;memory.limit_in_bytes </code></pre></div>
