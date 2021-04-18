@@ -260,44 +260,44 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：32 分钟前
+                  本文最后更新于：9 分钟前
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="MySQL5-7绿色版（免装版）的初始化和修改密码"><a href="#MySQL5-7绿色版（免装版）的初始化和修改密码" class="headerlink" title="MySQL5.7绿色版（免装版）的初始化和修改密码"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jyiqing/p/6924062.html">MySQL5.7绿色版（免装版）的初始化和修改密码</a></h2><h2 id="1-下载MySQL5-7-18绿色版"><a href="#1-下载MySQL5-7-18绿色版" class="headerlink" title="1.下载MySQL5.7.18绿色版"></a>1.下载MySQL5.7.18绿色版</h2><h3 id="1-1下载链接"><a href="#1-1下载链接" class="headerlink" title="1.1下载链接"></a>1.1下载链接</h3><p>以下是MySQL5.7.18绿色版的链接（来源oracle官网），打开链接直接下载</p>
 <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip"> https://dev.mysql.com/gt/Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip</a></p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531143529352-602278557.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/Fslm6cZMqWU5JCz.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="1-2解压"><a href="#1-2解压" class="headerlink" title="1.2解压"></a>1.2解压</h3><p>解压到文件夹</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531144247352-1580893970.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/hqpuc7SHXJ8LQgP.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="2-新建或清空data文件夹"><a href="#2-新建或清空data文件夹" class="headerlink" title="2.新建或清空data文件夹"></a>2.新建或清空data文件夹</h2><p>2.1解压以后，在目录下创建一个data文件夹</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531144826149-841051205.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/GCqjWEg8un7N46r.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>2.2如果原来已经有一个data文件夹，就把里面的数据全部删掉。</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531145236946-1572810043.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/YZfb3eRmorDVaJ8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="3-安装服务"><a href="#3-安装服务" class="headerlink" title="3.安装服务"></a>3.安装服务</h2><h3 id="3-1打开cmd（管理员）"><a href="#3-1打开cmd（管理员）" class="headerlink" title="3.1打开cmd（管理员）"></a>3.1打开cmd（管理员）</h3><p>右键开始菜单→选择  命令提示符（管理员）  </p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531145850039-1319323901.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/VRUrtOW9iNyLcKl.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>3.2在cmd中打开mysql的bin文件夹</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531150209180-1118035298.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/LCwnjzseMSNaPOJ.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h3 id="3-3安装服务"><a href="#3-3安装服务" class="headerlink" title="3.3安装服务"></a>3.3安装服务</h3><p>3.3.1运行命令mysqld –install安装服务，如下图：</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531150533821-1911670674.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/9n3YDyxGzNiP25Q.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>3.3.2（可忽略）如果不需要mysql里，只需要运行mysqld –remove即可移除，如下图</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531150657743-1551155360.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/ZO9XSDgvMQluIVa.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="4-初始化数据库"><a href="#4-初始化数据库" class="headerlink" title="4.初始化数据库"></a>4.初始化数据库</h2><p>4.1运行命令：mysqld –initialize-insecure –user=mysql –explicit_defaults_for_timestamp。</p>
 <p>运行前，先确保data目录下没有任何文件（如果有文件，会初始化失败）。</p>
 <p>如图：</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531152920946-912565873.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/wWMe2ogFzNkxLq9.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="5启动服务"><a href="#5启动服务" class="headerlink" title="5启动服务"></a>5启动服务</h2><p>5.1运行net start mysql 启动服务，如下图:</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531152123868-1945981492.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/NQcxrwq8CvEWkAj.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>5.2运行net stop mysql 启动服务，如下图:</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531152232321-1808686512.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/qv6uYVKd5RgsUyF.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="6-客户端测试"><a href="#6-客户端测试" class="headerlink" title="6.客户端测试"></a>6.客户端测试</h2><p>6.1运行：mysql –uroot –p</p>
 <p>如下图：</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531153348243-2114953114.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/TVWS7py5utzA8fE.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p> 这里不需要密码，直接按回车键</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531153504321-346439667.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/ZVoBid1muUFENrt.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>看到 mysql&gt; 就证明是成功进入mysql的了</p>
 <h2 id="7-配置编码为UTF-8"><a href="#7-配置编码为UTF-8" class="headerlink" title="7.配置编码为UTF-8"></a>7.配置编码为UTF-8</h2><p>7.1创建.txt文件，改名为my.ini</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531153816274-47071108.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/k9GPZ2D7nFf3pMA.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>将以下代码添加到my.ini</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">[mysqld]
 character-set-server&#x3D;utf8
@@ -305,13 +305,13 @@ character-set-server&#x3D;utf8
 default-character-set&#x3D;utf8</code></pre></div>
 
 <p> 如图：</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201706/1082630-20170602093831883-1704012524.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/Sc3UfXNeYqiw2Pd.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>7.2在mysql中查看编码</p>
 <p>7.2.1重启mysql，命令：mysqld restart</p>
 <p>7.2.2查看编码命令：<code>show variables ``like &#39;``character``%&#39;;（修改前）</code></p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531193918618-75843652.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/2tIM8EgOsAauTYG.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p> 7.2.3查看编码命令：<code>show variables ``like &#39;``character``%&#39;;（修改后）</code></p>
-<p> <img src="https://images2015.cnblogs.com/blog/1082630/201706/1082630-20170602094015118-857002467.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p> <img src="https://i.loli.net/2021/04/18/BxcSJWG346qTHme.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="8-修改密码"><a href="#8-修改密码" class="headerlink" title="8.修改密码"></a>8.修改密码</h2><p>在mysql 中逐步输入以下的代码：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">use mysql;
 
@@ -329,13 +329,13 @@ quit;</code></pre></div>
 
 <p> 如图：</p>
 <p> a.</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531194355243-1786061531.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/cQzYPhGJK324mVd.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p> b.</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531194415164-1674331383.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/Qxkv5G4cCVbpjXf.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>c.</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531194513868-541684904.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/C8KUryuVfz4dOkW.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p> d.</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531194603368-61233480.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://i.loli.net/2021/04/18/nGYSEdOCfsq6AKt.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="9-重新打开mysql"><a href="#9-重新打开mysql" class="headerlink" title="9.重新打开mysql"></a>9.重新打开mysql</h2><p>使用刚刚设置的密码123456登录</p>
 <p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531194808383-101044283.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p> 登录成功！！！</p>
@@ -491,7 +491,7 @@ quit;</code></pre></div>
     
       <div class="col-lg-7 mx-auto nopadding-x-md">
         <div class="container custom mx-auto">
-          <script src='https://api.vvhan.com/api/snow'></script>
+          <script src='https://api.vvhan.com/api/snow'>
         </div>
       </div>
     
