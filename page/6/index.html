@@ -192,6 +192,64 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/01/reply/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="reply">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/01/reply/">reply</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/01/reply/">
+          
+          
+            
+          
+          1.如何将教务系统信息导入系统？怎么保证这些信息的安全？我们采用Excel模板解析导入, 并使用apache的poi解析工具, 解析上传的数据并存入数据库
+
+数据库存储密码等信息采用sha256加密，保证信息安全。
+项目部署的服务器位于校大数据中心，使用内网访问，安全性高。外部人员需要使用内部人员提供的vpn账号才能使用。
+云数据库符合企业级安全标准，高效防御 SQL 注入、暴力破解等数据库攻击行
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-01 00:00" pubdate>
+              2020-06-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/genesis/">genesis</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/reply/">reply</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/06/01/spring%20aop/" target="_self">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="Spring Aop切面编程">
         </a>
@@ -758,69 +816,6 @@ macOS缺失的软件包管理器 官方地址
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/date/" target="_self">
-          <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="时间和字符传的转化">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/05/05/date/">时间和字符传的转化</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/05/05/date/">
-          
-          
-            
-          
-          时间和字符传的转化
-日期转为字符串
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
- 
-public class Test01 &#123;
-    public static void main(String[] args) &#123;
-        Date date = new Date(); //获取当前时间
-   
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-05 00:00" pubdate>
-              2020-05-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/date/">date</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -850,7 +845,7 @@ public class Test01 &#123;
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -859,7 +854,7 @@ public class Test01 &#123;
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

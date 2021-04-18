@@ -192,34 +192,28 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DDL/" target="_self">
-          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
+        <a href="/2020/07/27/maven/" target="_self">
+          <img src="/img/maven.jpg" srcset="/img/loading.gif" lazyload alt="maven配置学习">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
+        <a href="/2020/07/27/maven/">maven配置学习</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DDL/">
+        <a href="/2020/07/27/maven/">
           
           
             
           
-          Review mysql库管理一、创建库
-create database 【if not exists】 库名【 character set 字符集名】;
+          
+                                            二、pom文件节点
 
-二、修改库
-alter database 库名 character set 字符集名;
-三、删除库
-drop database 【if exists】 库名;
-
-
-表管理一、创建表 ★
-create table 【if not exists】
+pom.xml文件的节点大致可以分为以下几个部分：
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
         </a>
       </p>
 
@@ -227,8 +221,8 @@ create table 【if not exists】
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-04 00:00" pubdate>
-              2020-07-04
+            <time datetime="2020-07-27 00:00" pubdate>
+              2020-07-27
             </time>
           </div>
         
@@ -238,7 +232,7 @@ create table 【if not exists】
             
               <a href="/categories/basic-component/">basic-component</a>
             
-              <a href="/categories/basic-component/mysql/">mysql</a>
+              <a href="/categories/basic-component/maven/">maven</a>
             
           </div>
         
@@ -246,7 +240,7 @@ create table 【if not exists】
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/mysql/">mysql</a>
+              <a href="/tags/maven/">maven</a>
             
           </div>
         
@@ -286,6 +280,72 @@ insert into 表名(字段名,...) values(值,...);
 ①字段和值都省略
 ②字段写上，值使用null
 4、字段和值的个
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-07-04 00:00" pubdate>
+              2020-07-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/mysql/">mysql</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/mysql/">mysql</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/07/04/mysql-DDL/" target="_self">
+          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/07/04/mysql-DDL/">
+          
+          
+            
+          
+          Review mysql库管理一、创建库
+create database 【if not exists】 库名【 character set 字符集名】;
+
+二、修改库
+alter database 库名 character set 字符集名;
+三、删除库
+drop database 【if exists】 库名;
+
+
+表管理一、创建表 ★
+create table 【if not exists】
         </a>
       </p>
 
@@ -762,66 +822,6 @@ try
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/" target="_self">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker File">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">Docker File</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
-          
-          
-            
-          
-          1. 前言​    生产实践中一定优先使用 Dockerfile 的方式构建镜像。 因为使用 Dockerfile 构建镜像可以带来很多好处：
-
-易于版本化管理，Dockerfile 本身是一个文本文件，方便存放在代码仓库做版本管理，可以很方便地找到各个版本之间的变更历史；
-
-过程可追溯，Dockerfile 的每一行指令代表一个镜像层，根据 Dockerfile 的内容即可很明确地查看镜像的完整
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-03 00:00" pubdate>
-              2020-06-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/basic-component/">basic-component</a>
-            
-              <a href="/categories/basic-component/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -851,7 +851,7 @@ try
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -860,7 +860,7 @@ try
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
