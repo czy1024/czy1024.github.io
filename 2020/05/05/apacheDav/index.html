@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      253 字
+      347 字
     </span>
   
 
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      6
        分钟
     </span>
   
@@ -260,22 +260,65 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="1-安装apache"><a href="#1-安装apache" class="headerlink" title="1.安装apache"></a>1.安装apache</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apache2 apache2-utils</span><br></pre></td></tr></table></figure>
+              <h2 id="1-安装apache"><a href="#1-安装apache" class="headerlink" title="1.安装apache"></a>1.安装apache</h2><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">sudo apt-get install apache2 apache2-utils</code></pre></div>
 
-<h2 id="2-启用dav模块"><a href="#2-启用dav模块" class="headerlink" title="2.启用dav模块"></a>2.启用dav模块</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo a2enmod dav_fs</span><br><span class="line">sudo a2enmod dav</span><br><span class="line">sudo a2enmod dav_lock</span><br></pre></td></tr></table></figure>
+<h2 id="2-启用dav模块"><a href="#2-启用dav模块" class="headerlink" title="2.启用dav模块"></a>2.启用dav模块</h2><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">sudo a2enmod dav_fs
+sudo a2enmod dav
+sudo a2enmod dav_lock</code></pre></div>
 
-<h2 id="3-创建webdav目录及DavLockDB文件"><a href="#3-创建webdav目录及DavLockDB文件" class="headerlink" title="3.创建webdav目录及DavLockDB文件"></a>3.创建webdav目录及DavLockDB文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /var/webdav</span><br><span class="line">sudo chown www-data:www-data /var/webdav</span><br><span class="line">sudo touch /var/DavLock</span><br><span class="line">sudo chown www-data:www-data /var/DavLock</span><br></pre></td></tr></table></figure>
+<h2 id="3-创建webdav目录及DavLockDB文件"><a href="#3-创建webdav目录及DavLockDB文件" class="headerlink" title="3.创建webdav目录及DavLockDB文件"></a>3.创建webdav目录及DavLockDB文件</h2><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">sudo mkdir &#x2F;var&#x2F;webdav
+sudo chown www-data:www-data &#x2F;var&#x2F;webdav
+sudo touch &#x2F;var&#x2F;DavLock
+sudo chown www-data:www-data &#x2F;var&#x2F;DavLock</code></pre></div>
 
-<h2 id="4-增加访问用户-例如用户-alex"><a href="#4-增加访问用户-例如用户-alex" class="headerlink" title="4.增加访问用户(例如用户 alex)"></a>4.增加访问用户(例如用户 alex)</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo htpasswd -c /var/passwd.dav alex</span><br><span class="line"><span class="meta">#</span><span class="bash"> 此处会输入密码2次</span></span><br><span class="line">sudo chown www-data:www-data /var/passwd.dav</span><br><span class="line">sudo chmod 640 /var/www/passwd.dav</span><br></pre></td></tr></table></figure>
+<h2 id="4-增加访问用户-例如用户-alex"><a href="#4-增加访问用户-例如用户-alex" class="headerlink" title="4.增加访问用户(例如用户 alex)"></a>4.增加访问用户(例如用户 alex)</h2><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">sudo htpasswd -c &#x2F;var&#x2F;passwd.dav alex
+# 此处会输入密码2次
+sudo chown www-data:www-data &#x2F;var&#x2F;passwd.dav
+sudo chmod 640 &#x2F;var&#x2F;www&#x2F;passwd.dav</code></pre></div>
 
-<h2 id="5-配置虚拟主机"><a href="#5-配置虚拟主机" class="headerlink" title="5.配置虚拟主机"></a>5.配置虚拟主机</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/apache2/site-available/000-default.conf</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">###########################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 内容开始</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 80端口冲突需要修改此处及 /etc/apache2/ports.conf 文件</span></span><br><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">        ServerAdmin webmaster@localhost</span><br><span class="line">        DocumentRoot /var/webdav</span><br><span class="line">        ErrorLog $&#123;APACHE_LOG_DIR&#125;/error.log</span><br><span class="line">        CustomLog $&#123;APACHE_LOG_DIR&#125;/access.log combined</span><br><span class="line">        </span><br><span class="line">        DavLockDB &quot;/var/DavLock&quot;</span><br><span class="line">        &lt;Directory /var/webdav/&gt;</span><br><span class="line">                Options Indexes MultiViews</span><br><span class="line">                AllowOverride None</span><br><span class="line">                Order allow,deny</span><br><span class="line">                allow from all</span><br><span class="line">        &lt;/Directory&gt;</span><br><span class="line"></span><br><span class="line">        Alias /webdav /var/webdav</span><br><span class="line">        &lt;Location /webdav&gt;</span><br><span class="line">             DAV On</span><br><span class="line">             AuthType Basic</span><br><span class="line">             AuthName &quot;webdav&quot;</span><br><span class="line">             AuthUserFile /var/webdav/passwd.dav</span><br><span class="line">             Require valid-user</span><br><span class="line">        &lt;/Location&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> vim: syntax=apache ts=4 sw=4 sts=4 sr noet</span></span><br><span class="line">======================================</span><br></pre></td></tr></table></figure>
+<h2 id="5-配置虚拟主机"><a href="#5-配置虚拟主机" class="headerlink" title="5.配置虚拟主机"></a>5.配置虚拟主机</h2><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;etc&#x2F;apache2&#x2F;site-available&#x2F;000-default.conf
 
-<h2 id="6-重启apache服务及测试"><a href="#6-重启apache服务及测试" class="headerlink" title="6.重启apache服务及测试"></a>6.重启apache服务及测试</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart apache2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令行测试用 cadaver</span></span><br><span class="line">cadaver http://127.0.0.1/webdav</span><br><span class="line"><span class="meta">#</span><span class="bash"> Win客户端可以使用 WinSCP</span></span><br></pre></td></tr></table></figure>
+############################
+## 内容开始
+
+# 80端口冲突需要修改此处及 &#x2F;etc&#x2F;apache2&#x2F;ports.conf 文件
+&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster@localhost
+        DocumentRoot &#x2F;var&#x2F;webdav
+        ErrorLog $&#123;APACHE_LOG_DIR&#125;&#x2F;error.log
+        CustomLog $&#123;APACHE_LOG_DIR&#125;&#x2F;access.log combined
+        
+        DavLockDB &quot;&#x2F;var&#x2F;DavLock&quot;
+        &lt;Directory &#x2F;var&#x2F;webdav&#x2F;&gt;
+                Options Indexes MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        &lt;&#x2F;Directory&gt;
+
+        Alias &#x2F;webdav &#x2F;var&#x2F;webdav
+        &lt;Location &#x2F;webdav&gt;
+             DAV On
+             AuthType Basic
+             AuthName &quot;webdav&quot;
+             AuthUserFile &#x2F;var&#x2F;webdav&#x2F;passwd.dav
+             Require valid-user
+        &lt;&#x2F;Location&gt;
+&lt;&#x2F;VirtualHost&gt;
+
+# vim: syntax&#x3D;apache ts&#x3D;4 sw&#x3D;4 sts&#x3D;4 sr noet
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</code></pre></div>
+
+<h2 id="6-重启apache服务及测试"><a href="#6-重启apache服务及测试" class="headerlink" title="6.重启apache服务及测试"></a>6.重启apache服务及测试</h2><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">sudo systemctl restart apache2
+
+# 命令行测试用 cadaver
+cadaver http:&#x2F;&#x2F;127.0.0.1&#x2F;webdav
+# Win客户端可以使用 WinSCP</code></pre></div>
             </div>
             <hr>
             <div>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -375,7 +375,10 @@
           Springboot的异步方法调用与线程池配置简单使用
 springboot 自带了scheduling 包里已经设置了异步方法,我们只需要在方法或者类上加入@Async 注解即可
 
-1234567891011121314151617181920212223242526272829303132333435package com.xkcoding.async.task;import lombok.e
+package com.xkcoding.async.task;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.an
         </a>
       </p>
 
@@ -485,7 +488,13 @@ springboot 自带了scheduling 包里已经设置了异步方法,我们只需要
           
             
           
-          redis与springboot整合依赖1234567891011&lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;&lt;/dependency&gt;
+          redis与springboot整合依赖
+&lt;dependency>
+    &lt;groupId>org.springframework.boot&lt;/groupId>
+    &lt;artifactId>spring-boot-starter-data-redis&lt;/artifactId>
+&lt;/dependency>
+
+&lt;!-- 对象池，使用redis时必须引入 
         </a>
       </p>
 
@@ -539,10 +548,16 @@ springboot 自带了scheduling 包里已经设置了异步方法,我们只需要
           
             
           
-          spring的aop与springboot整合   动态代理引入依赖1234&lt;dependency&gt;	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;	&lt;artifactId&gt;spring-boot-starter-aop&lt;/artifactId&gt;&lt;/dependency&gt;
+          spring的aop与springboot整合   动态代理引入依赖&lt;dependency>
+	&lt;groupId>org.springframework.boot&lt;/groupId>
+	&lt;artifactId>spring-boot-starter-aop&lt;/artifactId>
+&lt;/dependency>
 
 设置切点
-在
+在类上注解@Aspect
+
+/**
+	 
         </a>
       </p>
 
@@ -568,61 +583,6 @@ springboot 自带了scheduling 包里已经设置了异步方法,我们只需要
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/aop/">aop</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/genesis-2/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="智慧教学辅助系统-作品思路">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/01/genesis-2/">智慧教学辅助系统-作品思路</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/01/genesis-2/">
-          
-          
-            
-          
-          \1. 目标与思路   人工智能，知识图谱等前沿信息技术在教育中的应用，推动信息化教育进入高校，学科知识图谱将不断为智慧的教学提供知识功能，人工智能为智慧教育的发展提供了强有力的技术支持，推动人工智能与教育都应刻不容缓。
-\2. 传统教育   现阶段，智慧教育课堂教学仍是学校教育的主阵地，传统课堂教学过程中，教师讲授课程知识以知识点为基本元素，更多偏向将过于细琐和庞杂的知识点填鸭式的、照本宣科的讲
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-01 00:00" pubdate>
-              2020-06-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/genesis/">genesis</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%99%BA%E6%85%A7%E6%95%99%E5%AD%A6%E8%BE%85%E5%8A%A9%E7%B3%BB%E7%BB%9F-%E4%BD%9C%E5%93%81%E6%80%9D%E8%B7%AF/">智慧教学辅助系统-作品思路</a>
             
           </div>
         
@@ -678,6 +638,61 @@ springboot 自带了scheduling 包里已经设置了异步方法,我们只需要
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E6%99%BA%E6%85%A7%E6%95%99%E5%AD%A6%E8%BE%85%E5%8A%A9%E7%B3%BB%E7%BB%9F-%E4%BD%9C%E5%93%81%E7%AE%80%E4%BB%8B/">智慧教学辅助系统-作品简介</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/01/genesis-2/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="智慧教学辅助系统-作品思路">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/01/genesis-2/">智慧教学辅助系统-作品思路</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/01/genesis-2/">
+          
+          
+            
+          
+          \1. 目标与思路   人工智能，知识图谱等前沿信息技术在教育中的应用，推动信息化教育进入高校，学科知识图谱将不断为智慧的教学提供知识功能，人工智能为智慧教育的发展提供了强有力的技术支持，推动人工智能与教育都应刻不容缓。
+\2. 传统教育   现阶段，智慧教育课堂教学仍是学校教育的主阵地，传统课堂教学过程中，教师讲授课程知识以知识点为基本元素，更多偏向将过于细琐和庞杂的知识点填鸭式的、照本宣科的讲
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-01 00:00" pubdate>
+              2020-06-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/genesis/">genesis</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%99%BA%E6%85%A7%E6%95%99%E5%AD%A6%E8%BE%85%E5%8A%A9%E7%B3%BB%E7%BB%9F-%E4%BD%9C%E5%93%81%E6%80%9D%E8%B7%AF/">智慧教学辅助系统-作品思路</a>
             
           </div>
         

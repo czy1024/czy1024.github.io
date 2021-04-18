@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -370,7 +370,11 @@
           
             
           
-          easyCode 代码生成dao1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969
+          easyCode 代码生成dao##定义初始变量
+#set($tableName = $tool.append($tableInfo.name, "Mapper"))
+##设置回调
+$!callback.setFileName($tool.append($tableName, ".java"))
+$!callback.setSavePath($tool.append($tableInfo.save
         </a>
       </p>
 
@@ -427,7 +431,16 @@
           基础工具包Apihttp操作HttpUtils类
 普通get请求
 
-1234567891011/**     * get     *     * @param host 主机     * @param path 路径     * @param headers 请求头     * @param queries 请求参数     * @return     * @throws Exception   
+/**
+     * get
+     *
+     * @param host 主机
+     * @param path 路径
+     * @param headers 请求头
+     * @param queries 请求参数
+     * @return
+     * @throws Exception
+     */
         </a>
       </p>
 
@@ -723,26 +736,34 @@ pom.xml文件的节点大致可以分为以下几个部分：
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DDL/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
+        <a href="/2020/07/04/mysql-DML/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="mysql-DML">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
+        <a href="/2020/07/04/mysql-DML/">mysql-DML</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DDL/">
+        <a href="/2020/07/04/mysql-DML/">
           
           
             
           
-          Review mysql库管理12345678一、创建库create database 【if not exists】 库名【 character set 字符集名】;二、修改库alter database 库名 character set 字符集名;三、删除库drop database 【if exists】 库名;
-
-表管理12345678910111213141516171819202122
+          Review mysql插入一、方式一
+语法：
+insert into 表名(字段名,...) values(值,...);
+特点：
+1、要求值的类型和字段的类型要一致或兼容
+2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致
+但必须保证值和字段一一对应
+3、假如表中有可以为null的字段，注意可以通过以下两种方式插入null值
+①字段和值都省略
+②字段写上，值使用null
+4、字段和值的个
         </a>
       </p>
 

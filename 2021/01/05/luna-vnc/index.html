@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/vncserver.jpg') no-repeat center center;
+         style="background: url('/img/vncserver.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      555 字
+      557 字
     </span>
   
 
@@ -260,12 +260,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：a minute ago
                 
               </p>
             
             <div class="markdown-body">
-              <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c &quot;$(curl -x 192.168.31.225:10822 -fsSl https://raw.githubusercontent.com/czy1024/luna-linux-conf/master/vnc/vnc_install.sh)&quot;</span><br></pre></td></tr></table></figure>
+              <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">sh</span> -c <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -x <span class="token number">192.168</span>.31.225:10822 -fsSl https://raw.githubusercontent.com/czy1024/luna-linux-conf/master/vnc/vnc_install.sh<span class="token variable">)</span></span>"</span></code></pre></div>
 
 
 <p>VNC Client就不用说了，单文件版，双击就能运行。</p>
@@ -273,38 +273,66 @@
 <ol>
 <li><strong>ssh到你的server，然后输入以下命令安装tiger vnc</strong>：</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer
+</code></pre></div>
 
 <ol>
 <li><strong>如果你没有任何桌面的话，可以输入以下命令安装过gnome桌面</strong>：</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ubuntu-gnome-desktop</span><br><span class="line">sudo systemctl enable gdm</span><br><span class="line">sudo systemctl start gdm</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> ubuntu-gnome-desktop
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> gdm
+<span class="token function">sudo</span> systemctl start gdm
+</code></pre></div>
 
 <ol>
 <li><strong>配置vnc的登陆密码，直接输入以下命令，输入两次密码即可（最多只能输入8位）</strong>：</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vncpasswd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell">vncpasswd
+</code></pre></div>
 
 <ol>
 <li><strong>配置vnc使用gnome桌面</strong>：</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.vnc/xstartup</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">nano</span> ~/.vnc/xstartup
+</code></pre></div>
 
 <p>然后将以下内容粘贴进去，并保存：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Uncomment the following two lines <span class="keyword">for</span> normal desktop:</span></span><br><span class="line">export XKL_XMODMAP_DISABLE=1</span><br><span class="line">unset SESSION_MANAGER</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">exec</span> /etc/X11/xinit/xinitrc</span></span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS</span><br><span class="line">gnome-panel &amp;</span><br><span class="line">gnmoe-settings-daemon &amp;</span><br><span class="line">metacity &amp;</span><br><span class="line">nautilus &amp;</span><br><span class="line">gnome-terminal &amp;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token shebang important">#!/bin/sh</span>
+<span class="token comment"># Uncomment the following two lines for normal desktop:</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">XKL_XMODMAP_DISABLE</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span>
+<span class="token comment"># exec /etc/X11/xinit/xinitrc</span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span>
+gnome-panel <span class="token operator">&amp;</span>
+gnmoe-settings-daemon <span class="token operator">&amp;</span>
+metacity <span class="token operator">&amp;</span>
+nautilus <span class="token operator">&amp;</span>
+gnome-terminal <span class="token operator">&amp;</span>
+
+</code></pre></div>
 
 <p>如果你使用的xfce桌面，就粘贴如下代码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span> </span><br><span class="line">unset SESSION_MANAGER </span><br><span class="line">unset DBUS_SESSION_BUS_ADDRESS </span><br><span class="line">startxfce4 &amp; </span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup </span><br><span class="line">[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources </span><br><span class="line">xsetroot -solid grey</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token shebang important">#!/bin/sh </span>
+<span class="token builtin class-name">unset</span> <span class="token environment constant">SESSION_MANAGER</span> 
+<span class="token builtin class-name">unset</span> <span class="token environment constant">DBUS_SESSION_BUS_ADDRESS</span> 
+startxfce4 <span class="token operator">&amp;</span> 
+<span class="token punctuation">[</span> -x /etc/vnc/xstartup <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exec</span> /etc/vnc/xstartup 
+<span class="token punctuation">[</span> -r <span class="token environment constant">$HOME</span>/.Xresources <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> xrdb <span class="token environment constant">$HOME</span>/.Xresources 
+xsetroot -solid grey
+</code></pre></div>
 
 <ol>
 <li><strong>启动TigerVNC，直接输入</strong><code>vncserver</code><strong>看到如下结果就成功了</strong><br><img src="https://img-blog.csdnimg.cn/20191121141703662.jpg" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>但是别着急连,因为还不能用. 输入<code>netstat -ntupl|grep vnc</code>查看tiger vnc的端口监听状况:<br><img src="https://img-blog.csdnimg.cn/20191121141940642.jpg" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>发现它只是监听了127.0.0.1本地地址，没有监听外网地址。输入<code>vncserver -kill :*</code>关闭vncserver（实际上是关闭了所有vnc开启的桌面，更多命令参考请输入<code>vncserver --help</code>），然后再输入<code>vncserver -localhost no</code>，开启外网的监听。<br><img src="https://img-blog.csdnimg.cn/20191121142528917.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9jYXRzaGl0b25lLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>可以看到已经监听0.0.0.0了，端口5901。<br>如果你使用ECS或者有防火墙的话，可能会有一些安全策略上的配置需要你放行该端口。<br>至此，你可以开启VNC Viewer进行远程了。<br><img src="https://img-blog.csdnimg.cn/20191121145230255.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9jYXRzaGl0b25lLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
 </ol>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>(1) VNC server输入IP和端口的方式（中间用两个冒号分隔）。</p>
 <p>(2) 如果远程之后你发现是<strong>灰屏而且鼠标指针是个十字</strong>的话，表明需要安装gnome缺失组件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal -y</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal -y
+</code></pre></div>
 
 <p>然后再安装dpi</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xfonts-100dpi</span><br><span class="line">sudo apt-get install xfonts-75dpi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> xfonts-100dpi
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> xfonts-75dpi
+</code></pre></div>
 
 <h3 id="图赏"><a href="#图赏" class="headerlink" title="图赏"></a>图赏</h3><p><img src="https://img-blog.csdnimg.cn/20191121144358233.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9jYXRzaGl0b25lLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 <hr>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -444,7 +444,7 @@
 <h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>在第一步中，我们准备好了核心资源。之后，我们向访客操作系统插入了虚拟的 VMware Tools CD 。接着，我们创建了挂载点，并挂载虚拟CD。我们在临时目录中复制并解压了安装工具。最后我们保留默认配置来运行安装工具。</p>
 <h2 id="1-5-修复启动画面"><a href="#1-5-修复启动画面" class="headerlink" title="1.5 修复启动画面"></a>1.5 修复启动画面</h2><p>我们首次启动新安装的Kali Linux系统时，会注意到启动画面消失了。为了手动修复它，我们需要解压<code>Initrd</code>，修改它，之后将它再次压缩。幸运的是，有一个由 Mati Aharoni（也称为“muts”，Kali Linux的创造者）编写的自动化bash脚本使这件事变得容易。</p>
 <h3 id="操作步骤-4"><a href="#操作步骤-4" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>键入下列命令并且按下回车键来修复消失的启动画面：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fix-splash</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">fix-splash</code></pre></div>
 
 <h2 id="1-6-启动网络服务"><a href="#1-6-启动网络服务" class="headerlink" title="1.6 启动网络服务"></a>1.6 启动网络服务</h2><p>Kali Linux 自带了多种网络服务，它们在多种情况下可能很实用，并且默认是禁用的。这个秘籍中，我们会涉及到通过多种方法设置和启动每个服务的步骤。</p>
 <h3 id="准备-4"><a href="#准备-4" class="headerlink" title="准备"></a>准备</h3><p>需要满足下列要求以继续：</p>

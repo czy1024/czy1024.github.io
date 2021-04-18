@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -282,23 +282,387 @@
 </li>
 </ul>
 <p>分　 时　  日　 月     周　     命令</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第1列表示分钟1～59 每分钟用*或者 */1表示</span><br><span class="line">第2列表示小时1～23（0表示0点）</span><br><span class="line">第3列表示日期1～31</span><br><span class="line">第4列表示月份1～12</span><br><span class="line">第5列标识号星期0～6（0表示星期天）</span><br><span class="line">第6列要运行的命令</span><br></pre></td></tr></table></figure>
+ <div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">第1列表示分钟1～59 每分钟用*或者 */1表示
+第2列表示小时1～23（0表示0点）
+第3列表示日期1～31
+第4列表示月份1～12
+第5列标识号星期0～6（0表示星期天）
+第6列要运行的命令</code></pre></div>
 
 <p>在以上各个字段中，还可以使用以下特殊字符：</p>
 <p>星号（*）：代表所有可能的值，例如month字段如果是星号，则表示在满足其它字段的制约条件后每月都执行该命令操作。</p>
 <p>逗号（,）：可以用逗号隔开的值指定一个列表范围，例如，“1,2,5,7,8,9”</p>
 <p>中杠（-）：可以用整数之间的中杠表示一个整数范围，例如“2-6”表示“2,3,4,5,6”</p>
 <p>正斜线（/）：可以用正斜线指定时间的间隔频率，例如“0-23/2”表示每两小时执行一次。同时正斜线可以和星号一起使用，例如*/10，如果用在minute字段，表示每十分钟执行一次。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">安装crontab：</span><br><span class="line"></span><br><span class="line">yum install crontabs || apt-get install crontab</span><br><span class="line"></span><br><span class="line">服务操作说明：</span><br><span class="line"></span><br><span class="line">/sbin/service crond start //启动服务</span><br><span class="line"></span><br><span class="line">/sbin/service crond stop //关闭服务</span><br><span class="line"></span><br><span class="line">/sbin/service crond restart //重启服务</span><br><span class="line"></span><br><span class="line">/sbin/service crond reload //重新载入配置</span><br><span class="line"></span><br><span class="line">查看crontab服务状态：</span><br><span class="line"></span><br><span class="line">service crond status</span><br><span class="line"></span><br><span class="line">手动启动crontab服务：</span><br><span class="line"></span><br><span class="line">service crond start</span><br><span class="line"></span><br><span class="line">查看crontab服务是否已设置为开机启动，执行命令：</span><br><span class="line"></span><br><span class="line">ntsysv</span><br><span class="line"></span><br><span class="line">加入开机自动启动：</span><br><span class="line"></span><br><span class="line">chkconfig –level 35 crond on</span><br><span class="line"></span><br><span class="line">基础命令：</span><br><span class="line"></span><br><span class="line">-e 表示编辑当前的crontab</span><br><span class="line"></span><br><span class="line">-l 表示列表显示当前的crontab任务</span><br><span class="line"></span><br><span class="line">-r 表示删除当前用户的crontab</span><br><span class="line"></span><br><span class="line">-i 表示删除crontab时给予提示信息</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">安装crontab：
 
-<h2 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br></pre></td><td class="code"><pre><span class="line">Cron表达式范例：</span><br><span class="line">             每隔5秒执行一次：*/5 * * * * ?</span><br><span class="line"> </span><br><span class="line">             每隔1分钟执行一次：0 */1 * * * ?</span><br><span class="line"> </span><br><span class="line">             每天23点执行一次：0 0 23 * * ?</span><br><span class="line"> </span><br><span class="line">             每天凌晨1点执行一次：0 0 1 * * ?</span><br><span class="line"> </span><br><span class="line">             每月1号凌晨1点执行一次：0 0 1 1 * ?</span><br><span class="line"> </span><br><span class="line">             每月最后一天23点执行一次：0 0 23 L * ?</span><br><span class="line"> </span><br><span class="line">             每周星期天凌晨1点实行一次：0 0 1 ? * L</span><br><span class="line">1、每天6:00执行</span><br><span class="line"> </span><br><span class="line">0 6 * * * root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">2、每周六凌晨4:00执行</span><br><span class="line"> </span><br><span class="line">0 4 * * 6 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">3、每周六凌晨4:05执行</span><br><span class="line"> </span><br><span class="line">5 4 * * 6 root /home/mvp/osyunwei.sh </span><br><span class="line"> </span><br><span class="line">4、每周六凌晨4:15执行</span><br><span class="line"> </span><br><span class="line">15 4 * * 6 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">5、每周六凌晨4:25执行</span><br><span class="line"> </span><br><span class="line">25 4 * * 6 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">6、每周六凌晨4:35执行</span><br><span class="line"> </span><br><span class="line">35 4 * * 6 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">7、每周六凌晨5:00执行</span><br><span class="line"> </span><br><span class="line">5 * * 6 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">8、每天8:40执行</span><br><span class="line"> </span><br><span class="line">40 8 * * * root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">9、每天8:30执行</span><br><span class="line"> </span><br><span class="line">30 8 * * * root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">10、每周一到周五的11:41开始，每隔10分钟执行一次    <span class="comment">#值得借鉴</span></span><br><span class="line"> </span><br><span class="line">41,51 11 * * 1-5   root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">或者</span><br><span class="line"> </span><br><span class="line">1-59/10 12-23 * * 1-5   root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">11、在每天的10:31开始，每隔2小时重复一次</span><br><span class="line"> </span><br><span class="line">31 10-23/2 * * * root   /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">12、每天15:00执行</span><br><span class="line"> </span><br><span class="line">0 15 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">13、每天的10:30开始，每隔2小时重复一次</span><br><span class="line"> </span><br><span class="line">30 10-23/2 * * * root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">14、每天15:30执行</span><br><span class="line"> </span><br><span class="line">30 15 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">15、每天17:50执行</span><br><span class="line"> </span><br><span class="line">50 17 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">16、每天8:00执行</span><br><span class="line"> </span><br><span class="line">0 8 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">17、每天18:00执行</span><br><span class="line"> </span><br><span class="line">0 18 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">18、每天8:30执行</span><br><span class="line"> </span><br><span class="line">30 8 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">19、每天20:30</span><br><span class="line"> </span><br><span class="line">30 20 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">20、每周一到周五2:00</span><br><span class="line"> </span><br><span class="line">0 2 * * 1-5 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">21、每周一到周五9:30</span><br><span class="line"> </span><br><span class="line">30 9 * * 1-5 root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">22、每周一到周五8:00，每周一到周五9:00</span><br><span class="line"> </span><br><span class="line">0 8,9 * * 1-5  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">23、每天23:59</span><br><span class="line"> </span><br><span class="line">59 23 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">24、每周六23:59</span><br><span class="line"> </span><br><span class="line">59 23 * * 6  root    /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">25、每天0:30</span><br><span class="line"> </span><br><span class="line">30 0 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">26、每周一到周五9:25到11:35之间、13:00到15:00之间，每隔10分钟运行一次</span><br><span class="line"> </span><br><span class="line">分区段写值得借鉴</span><br><span class="line"> </span><br><span class="line">25,35,45,55  9 * * 1-5  root   /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">5-59/10  10 * * 1-5  root   /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">5,15,25,35  11 * * 1-5  root   /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">*/10  13-15 * * 1-5  root   /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">27、每周一到周五8:30、8:50、9:30、10:00、10:30、11:00、11:30、13:30、14:00、14:30、5:00分别执行一次</span><br><span class="line"> </span><br><span class="line">30,50 8 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">30 9 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">*/30 10-11 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">30 13 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">0,30 14-15 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">28、每天23:50执行</span><br><span class="line"> </span><br><span class="line">50 23 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">29、每天10:00、16:00执行</span><br><span class="line"> </span><br><span class="line">0 10,16 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">30、每天5:30执行</span><br><span class="line"> </span><br><span class="line">30 5 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">31、每周一到周五9:30执行</span><br><span class="line"> </span><br><span class="line">30 9 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">32、每周一到周五13:00执行</span><br><span class="line"> </span><br><span class="line">0 13 * * 1-5  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">33、每天7:51执行</span><br><span class="line"> </span><br><span class="line">51 7 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">34、每天7:53、12:40分别执行一次</span><br><span class="line"> </span><br><span class="line">53 7 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">40 12 * * *  root /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">35、每天7:55执行</span><br><span class="line"> </span><br><span class="line">55 7 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">36、每天8:10、16:00、20:00分别执行一次</span><br><span class="line"> </span><br><span class="line">10 8 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">0 16 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">0 20 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">37、每天7:57、8:00分别执行一次</span><br><span class="line"> </span><br><span class="line">57 7 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">0 8 * * *  root  /home/mvp/osyunwei.sh</span><br><span class="line"> </span><br><span class="line">             在26分、29分、33分执行一次：0 26,29,33 * * * ?</span><br><span class="line"> </span><br><span class="line">             每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ?</span><br><span class="line"> </span><br><span class="line">实例1：每1分钟执行一次<span class="built_in">command</span></span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">* * * * * <span class="built_in">command</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例2：每小时的第3和第15分钟执行</span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">3,15 * * * * <span class="built_in">command</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例3：在上午8点到11点的第3和第15分钟执行</span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">3,15 8-11 * * * <span class="built_in">command</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例4：每隔两天的上午8点到11点的第3和第15分钟执行</span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">3,15 8-11 */2 * * <span class="built_in">command</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例5：每个星期一的上午8点到11点的第3和第15分钟执行</span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">3,15 8-11 * * 1 <span class="built_in">command</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例6：每晚的21:30重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">30 21 * * * /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例7：每月1、10、22日的4 : 45重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">45 4 1,10,22 * * /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例8：每周六、周日的1 : 10重启smb</span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">10 1 * * 6,0 /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例9：每天18 : 00至23 : 00之间每隔30分钟重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">0,30 18-23 * * * /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例10：每星期六的晚上11 : 00 pm重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">0 23 * * 6 /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例11：每一小时重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">* */1 * * * /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例12：晚上11点到早上7点之间，每隔一小时重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">* 23-7/1 * * * /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例13：每月的4号与每周一到周三的11点重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">0 11 4 * mon-wed /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">实例14：一月一号的4点重启smb </span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">0 4 1 jan * /etc/init.d/smb restart</span><br><span class="line"> </span><br><span class="line">实例15：每小时执行/etc/cron.hourly目录内的脚本</span><br><span class="line"> </span><br><span class="line">命令：</span><br><span class="line"> </span><br><span class="line">01   *   *   *   *     root run-parts /etc/cron.hourly</span><br><span class="line"> </span><br><span class="line">说明：</span><br><span class="line"> </span><br><span class="line">run-parts这个参数了，如果去掉这个参数的话，后面就可以写要运行的某个脚本名，而不是目录名了</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+yum <span class="token function">install</span> crontabs <span class="token operator">||</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">crontab</span>
+
+服务操作说明：
+
+/sbin/service crond start //启动服务
+
+/sbin/service crond stop //关闭服务
+
+/sbin/service crond restart //重启服务
+
+/sbin/service crond reload //重新载入配置
+
+查看crontab服务状态：
+
+<span class="token function">service</span> crond status
+
+手动启动crontab服务：
+
+<span class="token function">service</span> crond start
+
+查看crontab服务是否已设置为开机启动，执行命令：
+
+ntsysv
+
+加入开机自动启动：
+
+<span class="token function">chkconfig</span> –level <span class="token number">35</span> crond on
+
+基础命令：
+
+-e 表示编辑当前的crontab
+
+-l 表示列表显示当前的crontab任务
+
+-r 表示删除当前用户的crontab
+
+-i 表示删除crontab时给予提示信息</code></pre></div>
+
+<h2 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">Cron表达式范例：
+             每隔5秒执行一次：*/5 * * * * ?
+ 
+             每隔1分钟执行一次：0 */1 * * * ?
+ 
+             每天23点执行一次：0 <span class="token number">0</span> <span class="token number">23</span> * * ?
+ 
+             每天凌晨1点执行一次：0 <span class="token number">0</span> <span class="token number">1</span> * * ?
+ 
+             每月1号凌晨1点执行一次：0 <span class="token number">0</span> <span class="token number">1</span> <span class="token number">1</span> * ?
+ 
+             每月最后一天23点执行一次：0 <span class="token number">0</span> <span class="token number">23</span> L * ?
+ 
+             每周星期天凌晨1点实行一次：0 <span class="token number">0</span> <span class="token number">1</span> ? * L
+<span class="token number">1</span>、每天6:00执行
+ 
+<span class="token number">0</span> <span class="token number">6</span> * * * root /home/mvp/osyunwei.sh
+ 
+<span class="token number">2</span>、每周六凌晨4:00执行
+ 
+<span class="token number">0</span> <span class="token number">4</span> * * <span class="token number">6</span> root /home/mvp/osyunwei.sh
+ 
+<span class="token number">3</span>、每周六凌晨4:05执行
+ 
+<span class="token number">5</span> <span class="token number">4</span> * * <span class="token number">6</span> root /home/mvp/osyunwei.sh 
+ 
+<span class="token number">4</span>、每周六凌晨4:15执行
+ 
+<span class="token number">15</span> <span class="token number">4</span> * * <span class="token number">6</span> root /home/mvp/osyunwei.sh
+ 
+<span class="token number">5</span>、每周六凌晨4:25执行
+ 
+<span class="token number">25</span> <span class="token number">4</span> * * <span class="token number">6</span> root /home/mvp/osyunwei.sh
+ 
+<span class="token number">6</span>、每周六凌晨4:35执行
+ 
+<span class="token number">35</span> <span class="token number">4</span> * * <span class="token number">6</span> root /home/mvp/osyunwei.sh
+ 
+<span class="token number">7</span>、每周六凌晨5:00执行
+ 
+<span class="token number">5</span> * * <span class="token number">6</span> root /home/mvp/osyunwei.sh
+ 
+<span class="token number">8</span>、每天8:40执行
+ 
+<span class="token number">40</span> <span class="token number">8</span> * * * root /home/mvp/osyunwei.sh
+ 
+<span class="token number">9</span>、每天8:30执行
+ 
+<span class="token number">30</span> <span class="token number">8</span> * * * root /home/mvp/osyunwei.sh
+ 
+<span class="token number">10</span>、每周一到周五的11:41开始，每隔10分钟执行一次    <span class="token comment">#值得借鉴</span>
+ 
+<span class="token number">41,51</span> <span class="token number">11</span> * * <span class="token number">1</span>-5   root /home/mvp/osyunwei.sh
+ 
+或者
+ 
+<span class="token number">1</span>-59/10 <span class="token number">12</span>-23 * * <span class="token number">1</span>-5   root /home/mvp/osyunwei.sh
+ 
+<span class="token number">11</span>、在每天的10:31开始，每隔2小时重复一次
+ 
+<span class="token number">31</span> <span class="token number">10</span>-23/2 * * * root   /home/mvp/osyunwei.sh
+ 
+<span class="token number">12</span>、每天15:00执行
+ 
+<span class="token number">0</span> <span class="token number">15</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">13</span>、每天的10:30开始，每隔2小时重复一次
+ 
+<span class="token number">30</span> <span class="token number">10</span>-23/2 * * * root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">14</span>、每天15:30执行
+ 
+<span class="token number">30</span> <span class="token number">15</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">15</span>、每天17:50执行
+ 
+<span class="token number">50</span> <span class="token number">17</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">16</span>、每天8:00执行
+ 
+<span class="token number">0</span> <span class="token number">8</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">17</span>、每天18:00执行
+ 
+<span class="token number">0</span> <span class="token number">18</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">18</span>、每天8:30执行
+ 
+<span class="token number">30</span> <span class="token number">8</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">19</span>、每天20:30
+ 
+<span class="token number">30</span> <span class="token number">20</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">20</span>、每周一到周五2:00
+ 
+<span class="token number">0</span> <span class="token number">2</span> * * <span class="token number">1</span>-5 root /home/mvp/osyunwei.sh
+ 
+<span class="token number">21</span>、每周一到周五9:30
+ 
+<span class="token number">30</span> <span class="token number">9</span> * * <span class="token number">1</span>-5 root /home/mvp/osyunwei.sh
+ 
+<span class="token number">22</span>、每周一到周五8:00，每周一到周五9:00
+ 
+<span class="token number">0</span> <span class="token number">8,9</span> * * <span class="token number">1</span>-5  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">23</span>、每天23:59
+ 
+<span class="token number">59</span> <span class="token number">23</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">24</span>、每周六23:59
+ 
+<span class="token number">59</span> <span class="token number">23</span> * * <span class="token number">6</span>  root    /home/mvp/osyunwei.sh
+ 
+<span class="token number">25</span>、每天0:30
+ 
+<span class="token number">30</span> <span class="token number">0</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">26</span>、每周一到周五9:25到11:35之间、13:00到15:00之间，每隔10分钟运行一次
+ 
+分区段写值得借鉴
+ 
+<span class="token number">25,35</span>,45,55  <span class="token number">9</span> * * <span class="token number">1</span>-5  root   /home/mvp/osyunwei.sh
+ 
+<span class="token number">5</span>-59/10  <span class="token number">10</span> * * <span class="token number">1</span>-5  root   /home/mvp/osyunwei.sh
+ 
+<span class="token number">5,15</span>,25,35  <span class="token number">11</span> * * <span class="token number">1</span>-5  root   /home/mvp/osyunwei.sh
+ 
+*/10  <span class="token number">13</span>-15 * * <span class="token number">1</span>-5  root   /home/mvp/osyunwei.sh
+ 
+<span class="token number">27</span>、每周一到周五8:30、8:50、9:30、10:00、10:30、11:00、11:30、13:30、14:00、14:30、5:00分别执行一次
+ 
+<span class="token number">30,50</span> <span class="token number">8</span> * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">30</span> <span class="token number">9</span> * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+*/30 <span class="token number">10</span>-11 * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">30</span> <span class="token number">13</span> * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">0,30</span> <span class="token number">14</span>-15 * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">28</span>、每天23:50执行
+ 
+<span class="token number">50</span> <span class="token number">23</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">29</span>、每天10:00、16:00执行
+ 
+<span class="token number">0</span> <span class="token number">10,16</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">30</span>、每天5:30执行
+ 
+<span class="token number">30</span> <span class="token number">5</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">31</span>、每周一到周五9:30执行
+ 
+<span class="token number">30</span> <span class="token number">9</span> * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">32</span>、每周一到周五13:00执行
+ 
+<span class="token number">0</span> <span class="token number">13</span> * * <span class="token number">1</span>-5  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">33</span>、每天7:51执行
+ 
+<span class="token number">51</span> <span class="token number">7</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">34</span>、每天7:53、12:40分别执行一次
+ 
+<span class="token number">53</span> <span class="token number">7</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">40</span> <span class="token number">12</span> * * *  root /home/mvp/osyunwei.sh
+ 
+<span class="token number">35</span>、每天7:55执行
+ 
+<span class="token number">55</span> <span class="token number">7</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">36</span>、每天8:10、16:00、20:00分别执行一次
+ 
+<span class="token number">10</span> <span class="token number">8</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">0</span> <span class="token number">16</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">0</span> <span class="token number">20</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">37</span>、每天7:57、8:00分别执行一次
+ 
+<span class="token number">57</span> <span class="token number">7</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+<span class="token number">0</span> <span class="token number">8</span> * * *  root  /home/mvp/osyunwei.sh
+ 
+             在26分、29分、33分执行一次：0 <span class="token number">26,29</span>,33 * * * ?
+ 
+             每天的0点、13点、18点、21点都执行一次：0 <span class="token number">0</span> <span class="token number">0,13</span>,18,21 * * ?
+ 
+实例1：每1分钟执行一次command
+ 
+命令：
+ 
+* * * * * <span class="token builtin class-name">command</span>
+ 
+ 
+ 
+实例2：每小时的第3和第15分钟执行
+ 
+命令：
+ 
+<span class="token number">3,15</span> * * * * <span class="token builtin class-name">command</span>
+ 
+ 
+ 
+实例3：在上午8点到11点的第3和第15分钟执行
+ 
+命令：
+ 
+<span class="token number">3,15</span> <span class="token number">8</span>-11 * * * <span class="token builtin class-name">command</span>
+ 
+ 
+ 
+实例4：每隔两天的上午8点到11点的第3和第15分钟执行
+ 
+命令：
+ 
+<span class="token number">3,15</span> <span class="token number">8</span>-11 */2 * * <span class="token builtin class-name">command</span>
+ 
+ 
+ 
+实例5：每个星期一的上午8点到11点的第3和第15分钟执行
+ 
+命令：
+ 
+<span class="token number">3,15</span> <span class="token number">8</span>-11 * * <span class="token number">1</span> <span class="token builtin class-name">command</span>
+ 
+ 
+ 
+实例6：每晚的21:30重启smb 
+ 
+命令：
+ 
+<span class="token number">30</span> <span class="token number">21</span> * * * /etc/init.d/smb restart
+ 
+ 
+ 
+实例7：每月1、10、22日的4 <span class="token builtin class-name">:</span> <span class="token number">45</span>重启smb 
+ 
+命令：
+ 
+<span class="token number">45</span> <span class="token number">4</span> <span class="token number">1,10</span>,22 * * /etc/init.d/smb restart
+ 
+ 
+ 
+实例8：每周六、周日的1 <span class="token builtin class-name">:</span> <span class="token number">10</span>重启smb
+ 
+命令：
+ 
+<span class="token number">10</span> <span class="token number">1</span> * * <span class="token number">6,0</span> /etc/init.d/smb restart
+ 
+ 
+ 
+实例9：每天18 <span class="token builtin class-name">:</span> 00至23 <span class="token builtin class-name">:</span> 00之间每隔30分钟重启smb 
+ 
+命令：
+ 
+<span class="token number">0,30</span> <span class="token number">18</span>-23 * * * /etc/init.d/smb restart
+ 
+ 
+ 
+实例10：每星期六的晚上11 <span class="token builtin class-name">:</span> 00 pm重启smb 
+ 
+命令：
+ 
+<span class="token number">0</span> <span class="token number">23</span> * * <span class="token number">6</span> /etc/init.d/smb restart
+ 
+ 
+ 
+实例11：每一小时重启smb 
+ 
+命令：
+ 
+* */1 * * * /etc/init.d/smb restart
+ 
+ 
+ 
+实例12：晚上11点到早上7点之间，每隔一小时重启smb 
+ 
+命令：
+ 
+* <span class="token number">23</span>-7/1 * * * /etc/init.d/smb restart
+ 
+ 
+ 
+实例13：每月的4号与每周一到周三的11点重启smb 
+ 
+命令：
+ 
+<span class="token number">0</span> <span class="token number">11</span> <span class="token number">4</span> * mon-wed /etc/init.d/smb restart
+ 
+ 
+ 
+实例14：一月一号的4点重启smb 
+ 
+命令：
+ 
+<span class="token number">0</span> <span class="token number">4</span> <span class="token number">1</span> jan * /etc/init.d/smb restart
+ 
+实例15：每小时执行/etc/cron.hourly目录内的脚本
+ 
+命令：
+ 
+01   *   *   *   *     root run-parts /etc/cron.hourly
+ 
+说明：
+ 
+run-parts这个参数了，如果去掉这个参数的话，后面就可以写要运行的某个脚本名，而不是目录名了
+ </code></pre></div>
 
 <h2 id="三、其他问题"><a href="#三、其他问题" class="headerlink" title="三、其他问题"></a>三、其他问题</h2><h4 id="注意环境变量问题"><a href="#注意环境变量问题" class="headerlink" title="注意环境变量问题"></a>注意环境变量问题</h4><p>有时我们创建了一个crontab，但是这个任务却无法自动执行，而手动执行这个任务却没有问题，这种情况一般是由于在crontab文件中没有配置环境变量引起的。</p>
 <p>在crontab文件中定义多个调度任务时，需要特别注意的一个问题就是环境变量的设置，因为我们手动执行某个任务时，是在当前shell环境下进行的，程序当然能找到环境变量，而系统自动执行任务调度时，是不会加载任何环境变量的，因此，就需要在crontab文件中指定任务运行所需的所有环境变量，这样，系统执行任务调度时就没有问题了。</p>
 <p>不要假定cron知道所需要的特殊环境，它其实并不知道。所以你要保证在shelll脚本中提供所有必要的路径和环境变量，除了一些自动设置的全局变量。所以注意如下3点：</p>
 <p>1）脚本中涉及文件路径时写全局路径；</p>
 <p>2）脚本执行要用到java或其他环境变量时，通过source命令引入环境变量，如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat start_cbp.sh</span><br><span class="line"></span><br><span class="line">\<span class="comment">#!/bin/sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> RUN_CONF=/home/d139/conf/platform/cbp/cbp_jboss.conf</span><br><span class="line"></span><br><span class="line">/usr/<span class="built_in">local</span>/jboss-4.0.5/bin/run.sh -c mev &amp;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> start_cbp.sh
+
+<span class="token punctuation">\</span>#<span class="token operator">!</span>/bin/sh
+
+<span class="token builtin class-name">source</span> /etc/profile
+
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">RUN_CONF</span><span class="token operator">=</span>/home/d139/conf/platform/cbp/cbp_jboss.conf
+
+/usr/local/jboss-4.0.5/bin/run.sh -c mev <span class="token operator">&amp;</span></code></pre></div>
 
 <p>3）当手动执行脚本OK，但是crontab死活不执行时。这时必须大胆怀疑是环境变量惹的祸，并可以尝试在crontab中直接引入环境变量解决问题。如：</p>
 <p>0 * * * * . /etc/profile;/bin/sh /var/www/java/audit_no_count/bin/restart_audit.sh</p>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,19 +260,89 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
             <div class="markdown-body">
               <p>Java中我们在定义类的成员变量时，如果是私有属性，我们通过调用属性对应的set和get方法来获取和设置变量的值，如果我们将这种方式来用于python那么代码如下:</p>
-<figure class="highlight plain"><figcaption><span>coding</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Money(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.money &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    def getMoney(self):</span><br><span class="line">        return self.money</span><br><span class="line"> </span><br><span class="line">    def setMoney(self, value):</span><br><span class="line">        if isinstance(value, int):</span><br><span class="line">            self.money &#x3D; value</span><br><span class="line">        else:</span><br><span class="line">            print(&quot;error：输入类型与预设类型不一致&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">def main():</span><br><span class="line">    money &#x3D; Money()</span><br><span class="line">    money.setMoney(10)</span><br><span class="line">    print(money.getMoney())</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-#" data-language="#"><div class="caption"><span>coding</span></div><code class="language-#">class Money(object):
+    def __init__(self):
+        self.money &#x3D; 0
+ 
+    def getMoney(self):
+        return self.money
+ 
+    def setMoney(self, value):
+        if isinstance(value, int):
+            self.money &#x3D; value
+        else:
+            print(&quot;error：输入类型与预设类型不一致&quot;)
+ 
+ 
+def main():
+    money &#x3D; Money()
+    money.setMoney(10)
+    print(money.getMoney())
+ 
+ 
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    main()
+</code></pre></div>
 
 <p>但是在python中我们可以利用python属性来实现，代码如下：</p>
-<figure class="highlight plain"><figcaption><span>coding</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Money(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.money &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    def getMoney(self):</span><br><span class="line">        return self.money</span><br><span class="line"> </span><br><span class="line">    def setMoney(self, value):</span><br><span class="line">        if isinstance(value, int):</span><br><span class="line">            self.money &#x3D; value</span><br><span class="line">        else:</span><br><span class="line">            print(&quot;error：输入类型与预设类型不一致&quot;)</span><br><span class="line"> </span><br><span class="line">    dealValue &#x3D; property(getMoney, setMoney)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">def main():</span><br><span class="line">    money &#x3D; Money()</span><br><span class="line">    money.dealValue&#x3D;100</span><br><span class="line">    print(money.dealValue)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-#" data-language="#"><div class="caption"><span>coding</span></div><code class="language-#">class Money(object):
+    def __init__(self):
+        self.money &#x3D; 0
+ 
+    def getMoney(self):
+        return self.money
+ 
+    def setMoney(self, value):
+        if isinstance(value, int):
+            self.money &#x3D; value
+        else:
+            print(&quot;error：输入类型与预设类型不一致&quot;)
+ 
+    dealValue &#x3D; property(getMoney, setMoney)
+ 
+ 
+def main():
+    money &#x3D; Money()
+    money.dealValue&#x3D;100
+    print(money.dealValue)
+ 
+ 
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    main()
+</code></pre></div>
 
 <p>也使用property完全取代get/set</p>
-<figure class="highlight plain"><figcaption><span>coding</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Money(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.__money &#x3D; 0</span><br><span class="line"> </span><br><span class="line">    @property</span><br><span class="line">    def money(self):</span><br><span class="line">        return self.__money</span><br><span class="line"> </span><br><span class="line">    @money.setter</span><br><span class="line">    def money(self, value):</span><br><span class="line">        if isinstance(value, int):</span><br><span class="line">            self.__money &#x3D; value</span><br><span class="line">        else:</span><br><span class="line">            print(&quot;error：输入类型与预设类型不一致&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">def main():</span><br><span class="line">    a &#x3D; Money()</span><br><span class="line">    a.money &#x3D; 10</span><br><span class="line">    print(a.money)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-#" data-language="#"><div class="caption"><span>coding</span></div><code class="language-#">class Money(object):
+    def __init__(self):
+        self.__money &#x3D; 0
+ 
+    @property
+    def money(self):
+        return self.__money
+ 
+    @money.setter
+    def money(self, value):
+        if isinstance(value, int):
+            self.__money &#x3D; value
+        else:
+            print(&quot;error：输入类型与预设类型不一致&quot;)
+ 
+ 
+def main():
+    a &#x3D; Money()
+    a.money &#x3D; 10
+    print(a.money)
+ 
+ 
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+    main()
+</code></pre></div>
             </div>
             <hr>
             <div>

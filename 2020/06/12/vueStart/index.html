@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,14 +260,31 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="1-Vue-js是什么"><a href="#1-Vue-js是什么" class="headerlink" title="1. Vue.js是什么?"></a>1. Vue.js是什么?</h1><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1). 一位华裔前Google工程师(尤雨溪)开发的前端js库</span><br><span class="line">2). 作用: 动态构建用户界面</span><br><span class="line">3). 特点:</span><br><span class="line">	* 遵循MVVM模式</span><br><span class="line">	* 编码简洁, 体积小, 运行效率高, 移动/PC端开发</span><br><span class="line">	* 它本身只关注UI, 可以轻松引入vue插件和其它第三库开发项目</span><br><span class="line">4). 与其它框架的关联:</span><br><span class="line">	* 借鉴angular的模板和数据绑定技术</span><br><span class="line">	* 借鉴react的组件化和虚拟DOM技术</span><br><span class="line">5). vue包含一系列的扩展插件(库):</span><br><span class="line">	* vue-cli: vue脚手架</span><br><span class="line">	* vue-resource(axios): ajax请求</span><br><span class="line">	* vue-router: 路由</span><br><span class="line">	* vuex: 状态管理</span><br><span class="line">	* vue-lazyload: 图片懒加载</span><br><span class="line">	* vue-scroller: 页面滑动相关</span><br><span class="line">	* mint-ui: 基于vue的组件库(移动端)</span><br><span class="line">	* element-ui: 基于vue的组件库(PC端)</span><br></pre></td></tr></table></figure>
+              <h1 id="1-Vue-js是什么"><a href="#1-Vue-js是什么" class="headerlink" title="1. Vue.js是什么?"></a>1. Vue.js是什么?</h1><div class="code-wrapper"><pre class="language-tex" data-language="tex"><code class="language-tex">1). 一位华裔前Google工程师(尤雨溪)开发的前端js库
+2). 作用: 动态构建用户界面
+3). 特点:
+	* 遵循MVVM模式
+	* 编码简洁, 体积小, 运行效率高, 移动&#x2F;PC端开发
+	* 它本身只关注UI, 可以轻松引入vue插件和其它第三库开发项目
+4). 与其它框架的关联:
+	* 借鉴angular的模板和数据绑定技术
+	* 借鉴react的组件化和虚拟DOM技术
+5). vue包含一系列的扩展插件(库):
+	* vue-cli: vue脚手架
+	* vue-resource(axios): ajax请求
+	* vue-router: 路由
+	* vuex: 状态管理
+	* vue-lazyload: 图片懒加载
+	* vue-scroller: 页面滑动相关
+	* mint-ui: 基于vue的组件库(移动端)
+	* element-ui: 基于vue的组件库(PC端)</code></pre></div>
 
-<h1 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h1><pre><code>1). 引入vue.js
+<h1 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h1><div class="code-wrapper"><pre><code>1). 引入vue.js
 2). 创建Vue实例对象(vm), 指定选项(配置)对象
     el : 指定dom标签容器的选择器
     data : 指定初始化状态数据的对象/函数(返回一个对象)
@@ -304,8 +321,8 @@
 	如何给对象定义get/set属性
 		在创建对象时指定: get name () &#123;return xxx&#125; / set name (value) &#123;&#125;
 	  	对象创建之后指定: Object.defineProperty(obj, age, &#123;get()&#123;&#125;, set(value)&#123;&#125;&#125;)
-</code></pre>
-<h2 id="5-watch"><a href="#5-watch" class="headerlink" title="5). watch"></a>5). watch</h2><pre><code>包含多个属性监视的对象
+</code></pre></div>
+<h2 id="5-watch"><a href="#5-watch" class="headerlink" title="5). watch"></a>5). watch</h2><div class="code-wrapper"><pre><code>包含多个属性监视的对象
 分为一般监视和深度监视
     xxx: function(value)&#123;&#125;
     xxx : &#123;
@@ -313,18 +330,34 @@
         handler : fun(value)
     &#125;
 另一种添加监视方式: vm.$watch(&#39;xxx&#39;, function(value)&#123;&#125;)
-</code></pre>
-<h1 id="4-过渡动画"><a href="#4-过渡动画" class="headerlink" title="4. 过渡动画"></a>4. 过渡动画</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">利用vue去操控css的transition/animation动画</span><br><span class="line">模板: 使用<span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">&#x27;xxx&#x27;</span>&gt;</span>包含带动画的标签</span><br><span class="line">css样式</span><br><span class="line">	.fade-enter-active: 进入过程, 指定进入的transition</span><br><span class="line">	.fade-leave-active: 离开过程, 指定离开的transition</span><br><span class="line">	.xxx-enter, .xxx-leave-to: 指定隐藏的样式</span><br><span class="line">编码例子</span><br><span class="line">    .xxx-enter-active, .xxx-leave-active &#123;</span><br><span class="line">      transition: opacity .5s</span><br><span class="line">    &#125;</span><br><span class="line">    .xxx-enter, .xxx-leave-to &#123;</span><br><span class="line">      opacity: 0</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">&quot;show&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre></div>
+<h1 id="4-过渡动画"><a href="#4-过渡动画" class="headerlink" title="4. 过渡动画"></a>4. 过渡动画</h1><div class="code-wrapper"><pre class="language-html" data-language="html"><code class="language-html">利用vue去操控css的transition/animation动画
+模板: 使用<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>包含带动画的标签
+css样式
+	.fade-enter-active: 进入过程, 指定进入的transition
+	.fade-leave-active: 离开过程, 指定离开的transition
+	.xxx-enter, .xxx-leave-to: 指定隐藏的样式
+编码例子
+    .xxx-enter-active, .xxx-leave-active &#123;
+      transition: opacity .5s
+    &#125;
+    .xxx-enter, .xxx-leave-to &#123;
+      opacity: 0
+    &#125;
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transition</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xxx<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>show<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transition</span><span class="token punctuation">></span></span></code></pre></div>
 
-<h1 id="5-生命周期"><a href="#5-生命周期" class="headerlink" title="5. 生命周期"></a>5. 生命周期</h1><pre><code>vm/组件对象
+<h1 id="5-生命周期"><a href="#5-生命周期" class="headerlink" title="5. 生命周期"></a>5. 生命周期</h1><div class="code-wrapper"><pre><code>vm/组件对象
 生命周期图
 主要的生命周期函数(钩子)
     created() / mounted(): 启动异步任务(启动定时器,发送ajax请求, 绑定监听)
     beforeDestroy(): 做一些收尾的工作
-</code></pre>
-<h1 id="6-自定义过滤器"><a href="#6-自定义过滤器" class="headerlink" title="6. 自定义过滤器"></a>6. 自定义过滤器</h1><h2 id="1-理解"><a href="#1-理解" class="headerlink" title="1). 理解"></a>1). 理解</h2><pre><code>对需要显示的数据进行格式化后再显示
-</code></pre>
-<h2 id="2-编码"><a href="#2-编码" class="headerlink" title="2). 编码"></a>2). 编码</h2><pre><code>1). 定义过滤器
+</code></pre></div>
+<h1 id="6-自定义过滤器"><a href="#6-自定义过滤器" class="headerlink" title="6. 自定义过滤器"></a>6. 自定义过滤器</h1><h2 id="1-理解"><a href="#1-理解" class="headerlink" title="1). 理解"></a>1). 理解</h2><div class="code-wrapper"><pre><code>对需要显示的数据进行格式化后再显示
+</code></pre></div>
+<h2 id="2-编码"><a href="#2-编码" class="headerlink" title="2). 编码"></a>2). 编码</h2><div class="code-wrapper"><pre><code>1). 定义过滤器
     Vue.filter(filterName, function(value[,arg1,arg2,...])&#123;
       // 进行一定的数据处理
       return newValue
@@ -332,14 +365,49 @@
 2). 使用过滤器
     &lt;div&gt;&#123;&#123;myData | filterName&#125;&#125;&lt;/div&gt;
     &lt;div&gt;&#123;&#123;myData | filterName(arg)&#125;&#125;&lt;/div&gt;
-</code></pre>
-<h1 id="7-vue内置指令"><a href="#7-vue内置指令" class="headerlink" title="7. vue内置指令"></a>7. vue内置指令</h1><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">v-text/v-html:</span> <span class="string">指定标签体</span></span><br><span class="line">	<span class="string">*</span> <span class="attr">v-text :</span> <span class="string">当作纯文本</span></span><br><span class="line">	<span class="string">*</span> <span class="attr">v-html :</span> <span class="string">将value作为html标签来解析</span></span><br><span class="line"><span class="attr">v-if v-else v-show:</span> <span class="string">显示/隐藏元素</span></span><br><span class="line">	<span class="string">*</span> <span class="attr">v-if :</span> <span class="string">如果vlaue为true,</span> <span class="string">当前标签会输出在页面中</span></span><br><span class="line">	<span class="string">*</span> <span class="attr">v-else :</span> <span class="string">与v-if一起使用,</span> <span class="string">如果value为false,</span> <span class="string">将当前标签输出到页面中</span></span><br><span class="line">	<span class="string">*</span> <span class="attr">v-show:</span> <span class="string">就会在标签中添加display样式,</span> <span class="string">如果vlaue为true,</span> <span class="string">display=block,</span> <span class="string">否则是none</span></span><br><span class="line"><span class="attr">v-for :</span> <span class="string">遍历</span></span><br><span class="line">	<span class="string">*</span> <span class="string">遍历数组</span> <span class="string">:</span> <span class="string">v-for=&quot;(person,</span> <span class="string">index)</span> <span class="string">in</span> <span class="string">persons&quot;</span>   </span><br><span class="line">	<span class="string">*</span> <span class="string">遍历对象</span> <span class="string">:</span> <span class="string">v-for=&quot;value</span> <span class="string">in</span> <span class="string">person&quot;</span>   <span class="string">$key</span></span><br><span class="line"><span class="attr">v-on :</span> <span class="string">绑定事件监听</span></span><br><span class="line">	<span class="string">*</span> <span class="string">v-on:事件名,</span> <span class="string">可以缩写为:</span> <span class="string">@事件名</span></span><br><span class="line">	<span class="string">*</span> <span class="string">监视具体的按键:</span> <span class="string">@keyup.keyCode</span>   <span class="string">@keyup.enter</span></span><br><span class="line">	<span class="string">*</span> <span class="string">停止事件的冒泡和阻止事件默认行为:</span> <span class="string">@click.stop</span>   <span class="string">@click.prevent</span></span><br><span class="line">	<span class="string">*</span> <span class="string">隐含对象:</span> <span class="string">$event</span></span><br><span class="line"><span class="attr">v-bind :</span> <span class="string">强制绑定解析表达式</span>  </span><br><span class="line">	<span class="string">*</span> <span class="string">html标签属性是不支持表达式的,</span> <span class="string">就可以使用v-bind</span></span><br><span class="line">	<span class="string">*</span> <span class="string">可以缩写为:</span>  <span class="string">:id=&#x27;name&#x27;</span></span><br><span class="line">	<span class="string">*</span> <span class="string">:class</span></span><br><span class="line">	  <span class="string">*</span> <span class="string">:class=&quot;a&quot;</span></span><br><span class="line">		<span class="string">*</span> <span class="string">:class=&quot;&#123;classA</span> <span class="string">:</span> <span class="string">isA,</span> <span class="attr">classB :</span> <span class="string">isB&#125;&quot;</span></span><br><span class="line">		<span class="string">*</span> <span class="string">:class=&quot;[classA,</span> <span class="string">classB]&quot;</span></span><br><span class="line">	<span class="string">*</span> <span class="string">:style</span></span><br><span class="line">		<span class="string">:style=&quot;&#123;color</span> <span class="string">:</span> <span class="string">color&#125;&quot;</span></span><br><span class="line"><span class="string">v-model</span></span><br><span class="line">	<span class="string">*</span> <span class="string">双向数据绑定</span></span><br><span class="line">	<span class="string">*</span> <span class="string">自动收集用户输入数据</span></span><br><span class="line"><span class="attr">ref :</span> <span class="string">标识某个标签</span></span><br><span class="line">	<span class="string">*</span> <span class="string">ref=&#x27;xxx&#x27;</span></span><br><span class="line">	<span class="string">*</span> <span class="string">读取得到标签对象:</span> <span class="string">this.$refs.xxx</span></span><br></pre></td></tr></table></figure>
+</code></pre></div>
+<h1 id="7-vue内置指令"><a href="#7-vue内置指令" class="headerlink" title="7. vue内置指令"></a>7. vue内置指令</h1><div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">v-text&#x2F;v-html: 指定标签体
+	* v-text : 当作纯文本
+	* v-html : 将value作为html标签来解析
+v-if v-else v-show: 显示&#x2F;隐藏元素
+	* v-if : 如果vlaue为true, 当前标签会输出在页面中
+	* v-else : 与v-if一起使用, 如果value为false, 将当前标签输出到页面中
+	* v-show: 就会在标签中添加display样式, 如果vlaue为true, display&#x3D;block, 否则是none
+v-for : 遍历
+	* 遍历数组 : v-for&#x3D;&quot;(person, index) in persons&quot;   
+	* 遍历对象 : v-for&#x3D;&quot;value in person&quot;   $key
+v-on : 绑定事件监听
+	* v-on:事件名, 可以缩写为: @事件名
+	* 监视具体的按键: @keyup.keyCode   @keyup.enter
+	* 停止事件的冒泡和阻止事件默认行为: @click.stop   @click.prevent
+	* 隐含对象: $event
+v-bind : 强制绑定解析表达式  
+	* html标签属性是不支持表达式的, 就可以使用v-bind
+	* 可以缩写为:  :id&#x3D;&#39;name&#39;
+	* :class
+	  * :class&#x3D;&quot;a&quot;
+		* :class&#x3D;&quot;&#123;classA : isA, classB : isB&#125;&quot;
+		* :class&#x3D;&quot;[classA, classB]&quot;
+	* :style
+		:style&#x3D;&quot;&#123;color : color&#125;&quot;
+v-model
+	* 双向数据绑定
+	* 自动收集用户输入数据
+ref : 标识某个标签
+	* ref&#x3D;&#39;xxx&#39;
+	* 读取得到标签对象: this.$refs.xxx</code></pre></div>
 
-<h1 id="8-自定义指令"><a href="#8-自定义指令" class="headerlink" title="8. 自定义指令"></a>8. 自定义指令</h1><h2 id="1-注册全局指令"><a href="#1-注册全局指令" class="headerlink" title="1). 注册全局指令"></a>1). 注册全局指令</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">&#x27;my-directive&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">el, binding</span>)</span>&#123;</span><br><span class="line">  el.innerHTML = binding.value.toUpperCase()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="8-自定义指令"><a href="#8-自定义指令" class="headerlink" title="8. 自定义指令"></a>8. 自定义指令</h1><h2 id="1-注册全局指令"><a href="#1-注册全局指令" class="headerlink" title="1). 注册全局指令"></a>1). 注册全局指令</h2><div class="code-wrapper"><pre class="language-javascript" data-language="javascript"><code class="language-javascript">Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'my-directive'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  el<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> binding<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre></div>
 
-<h2 id="2-注册局部指令"><a href="#2-注册局部指令" class="headerlink" title="2). 注册局部指令"></a>2). 注册局部指令</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">directives : &#123;</span><br><span class="line">  <span class="string">&#x27;my-directive&#x27;</span> : <span class="function"><span class="keyword">function</span>(<span class="params">el, binding</span>) </span>&#123;</span><br><span class="line">      el.innerHTML = binding.value.toUpperCase()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-注册局部指令"><a href="#2-注册局部指令" class="headerlink" title="2). 注册局部指令"></a>2). 注册局部指令</h2><div class="code-wrapper"><pre class="language-javascript" data-language="javascript"><code class="language-javascript">directives <span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token string">'my-directive'</span> <span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      el<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> binding<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
-<h2 id="3-使用指令"><a href="#3-使用指令" class="headerlink" title="3). 使用指令"></a>3). 使用指令</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-my-directive</span>=<span class="string">&#x27;xxx&#x27;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-使用指令"><a href="#3-使用指令" class="headerlink" title="3). 使用指令"></a>3). 使用指令</h2><div class="code-wrapper"><pre class="language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">v-my-directive</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>xxx<span class="token punctuation">'</span></span><span class="token punctuation">></span></span></code></pre></div>
             </div>
             <hr>
             <div>

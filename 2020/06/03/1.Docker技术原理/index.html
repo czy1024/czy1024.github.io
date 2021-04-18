@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -272,18 +272,34 @@
 <p>​    因为 Linux 是 Docker 的原生支持平台，所以推荐你在 Linux 上使用 Docker。由于生产环境中我们使用 CentOS 较多，下面主要针对在 CentOS 平台下安装和使用 Docker 展开介绍。</p>
 <h5 id="2-1-操作系统要求"><a href="#2-1-操作系统要求" class="headerlink" title="2.1 操作系统要求"></a>2.1 操作系统要求</h5><p>要安装 Docker，我们需要 CentOS 7 及以上的发行版本。</p>
 <h5 id="2-2-卸载已有-Docker"><a href="#2-2-卸载已有-Docker" class="headerlink" title="2.2 卸载已有 Docker"></a>2.2 卸载已有 Docker</h5><p>如果你已经安装过旧版的 Docker，可以先执行以下命令卸载旧版 Docker。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum remove docker \</span><br><span class="line">				docker-client \</span><br><span class="line">                docker-client-latest \</span><br><span class="line">                docker-common \</span><br><span class="line">                docker-latest \</span><br><span class="line">                docker-latest-logrotate \</span><br><span class="line">                docker-logrotate \</span><br><span class="line">                docker-engine</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ sudo yum remove docker \
+				docker-client \
+                docker-client-latest \
+                docker-common \
+                docker-latest \
+                docker-latest-logrotate \
+                docker-logrotate \
+                docker-engine</code></pre></div>
 
 <h5 id="2-3-安装-Docker"><a href="#2-3-安装-Docker" class="headerlink" title="2.3 安装 Docker"></a>2.3 安装 Docker</h5><p>首次安装 Docker 之前，需要添加 Docker 安装源。添加之后，我们就可以从已经配置好的源，安装和更新 Docker。添加 Docker 安装源的命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install yum-utils</span><br><span class="line">$ sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ yum -y install yum-utils
+$ sudo yum-config-manager \
+    --add-repo \
+    https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;centos&#x2F;docker-ce.repo</code></pre></div>
 
 <p>正常情况下，直接安装最新版本的 Docker 即可，因为最新版本的 Docker 有着更好的稳定性和安全性。你可以使用以下命令安装最新版本的 Docker。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ sudo yum install docker-ce docker-ce-cli containerd.io</code></pre></div>
 
 <p>安装完成后，使用以下命令启动 Docker。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ sudo systemctl start docker</code></pre></div>
 
-<h5 id="2-4-启动一个-hello-world-的容器"><a href="#2-4-启动一个-hello-world-的容器" class="headerlink" title="2.4 启动一个 hello world 的容器"></a>2.4 启动一个 hello world 的容器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo docker run hello-world</span><br><span class="line">Unable to find image &#39;hello-world:latest&#39; locally</span><br><span class="line">latest: Pulling from library&#x2F;hello-world</span><br><span class="line">0e03bdcc26d7: Pull complete</span><br><span class="line">Digest: sha256:7f0a9f93b4aa3022c3a4c147a449bf11e0941a1fd0bf4a8e6c9408b2600777c5</span><br><span class="line">Status: Downloaded newer image for hello-world:latest</span><br><span class="line">Hello from Docker!</span><br></pre></td></tr></table></figure>
+<h5 id="2-4-启动一个-hello-world-的容器"><a href="#2-4-启动一个-hello-world-的容器" class="headerlink" title="2.4 启动一个 hello world 的容器"></a>2.4 启动一个 hello world 的容器</h5><div class="code-wrapper"><pre class="language-none"><code class="language-none">$ sudo docker run hello-world
+Unable to find image &#39;hello-world:latest&#39; locally
+latest: Pulling from library&#x2F;hello-world
+0e03bdcc26d7: Pull complete
+Digest: sha256:7f0a9f93b4aa3022c3a4c147a449bf11e0941a1fd0bf4a8e6c9408b2600777c5
+Status: Downloaded newer image for hello-world:latest
+Hello from Docker!</code></pre></div>
 
 <p>运行上述命令，Docker 首先会检查本地是否有<code>hello-world</code>这个镜像，如果发现本地没有这个镜像，Docker 就会去 <strong>Docker Hub</strong> 官方仓库下载此镜像，然后运行它。最后我们看到该镜像输出 “Hello from Docker!” 并退出。</p>
 <blockquote>
@@ -310,27 +326,34 @@
 </ol>
 <p>下面我们<strong>通过一个实例来演示下 chroot。</strong></p>
 <p>首先我们在当前/home目录下创建一个 rootfs 目录：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir rootfs</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ mkdir rootfs</code></pre></div>
 
 <p>这里为了方便演示，我使用现成的 busybox 镜像来创建一个系统，镜像的概念和组成后面我会详细讲解，如果你没有 Docker 基础可以把下面的操作命令理解成在 rootfs 下创建了一些目录和放置了一些二进制文件。</p>
 <p>复制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd rootfs </span><br><span class="line">$ docker export $(docker create busybox) -o busybox.tar</span><br><span class="line">$ tar -xf busybox.tar</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ cd rootfs 
+$ docker export $(docker create busybox) -o busybox.tar
+$ tar -xf busybox.tar</code></pre></div>
 
 <p>执行完上面的命令后，在 rootfs 目录下，我们会得到一些目录和文件。下面我们使用 ls 命令查看一下 rootfs 目录下的内容。</p>
 <p>复制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls</span><br><span class="line">bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ ls
+bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</code></pre></div>
 
 <p>可以看到我们在 rootfs 目录下初始化了一些目录，下面让我们通过一条命令来见证 chroot 的神奇之处。使用以下命令，可以启动一个 sh 进程，并且把 /home/centos/rootfs 作为 sh 进程的根目录。</p>
 <p>复制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chroot &#x2F;home&#x2F;rootfs &#x2F;bin&#x2F;sh</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ chroot &#x2F;home&#x2F;rootfs &#x2F;bin&#x2F;sh</code></pre></div>
 
 <p>此时，我们的命令行窗口已经处于上述命令启动的 sh 进程中。在当前 sh 命令行窗口下，我们使用 ls 命令查看一下当前进程，看是否真的与主机上的其他目录隔离开了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F; # ls &#x2F;</span><br><span class="line">bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">&#x2F; # ls &#x2F;
+bin  busybox.tar  dev  etc  home  proc  root  sys  tmp  usr  var</code></pre></div>
 
 <p>这里可以看到当前进程的根目录已经变成了主机上的 /home/rootfs 目录。这样就实现了当前进程与主机的隔离。到此为止，一个目录隔离的容器就完成了。操作图解如下图所示：</p>
 <p><img src="images/chroot1.png" srcset="/img/loading.gif" lazyload></p>
 <p>但是，此时还不能称之为一个容器，为什么呢？你可以在上一步（使用 chroot 启动命令行窗口）执行以下命令，查看如下路由信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc # ip route</span><br><span class="line">default via 172.20.1.1 dev eth0</span><br><span class="line">172.17.0.0&#x2F;16 dev docker0 scope link  src 172.17.0.1</span><br><span class="line">172.20.1.0&#x2F;24 dev eth0 scope link  src 172.20.1.3</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">&#x2F;etc # ip route
+default via 172.20.1.1 dev eth0
+172.17.0.0&#x2F;16 dev docker0 scope link  src 172.17.0.1
+172.20.1.0&#x2F;24 dev eth0 scope link  src 172.20.1.3</code></pre></div>
 
 <p>执行 ip route 命令后，你可以看到网络信息并没有隔离，实际上进程等信息此时也并未隔离。要想实现一个完整的容器，我们还需要 Linux 的其他三项技术： Namespace、Cgroups 和联合文件系统。</p>
 <p>Docker 是利用 Linux 的 Namespace 、Cgroups 和联合文件系统三大机制来保证实现的， 所以它的原理是使用 Namespace 做主机名、网络、PID 等资源的隔离，使用 Cgroups 对进程或者进程组做资源（例如：CPU、内存等）的限制，联合文件系统用于镜像构建和容器运行环境。</p>
@@ -350,7 +373,14 @@
 <p><img src="images/cgroups1.png" srcset="/img/loading.gif" lazyload></p>
 <p>在**/sys/fs**下有一个cgroup的目录，这个目录下还有很多子目录，比如： cpu，cpuset，memory，blkio……这些，这些都是cgroup的子系统。分别用于干不同的事的。</p>
 <h4 id="CPU限制"><a href="#CPU限制" class="headerlink" title="CPU限制"></a>CPU限制</h4><p><strong>1)  先创建一个test.py文件</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
 
 <p><strong>2）执行test.py文件，并查询内存使用情况</strong></p>
 <p><img src="images/cgroups2.png" srcset="/img/loading.gif" lazyload></p>
@@ -358,32 +388,40 @@
 <p><img src="images/cgroups-cpu-quota-us.png" srcset="/img/loading.gif" lazyload></p>
 <p>在/sys/fs/cgroup/cpu下创建了一个coco，而且你会发现，一旦你创建了一个子目录，这个子目录里又有很多文件了。其中<strong>cpu.cfs_quota_us</strong>表示该control group限制占用的时间（微秒），默认为-1，表示不限制。如果设为50000，表示占用50000/10000=50%的CPU。</p>
 <p>这里，我们设置占用20%的CPU，即把cpu.cfs_quota_us设置为20000。执行命令就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 20000 &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;cpu.cfs_quota_us</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 20000 &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;cpu.cfs_quota_us</code></pre></div>
 
 <p>然后执行死循环test.py文件，瞬间cpu就会跑到100%。如下图所示：</p>
 <p><img src="images/cgroups-cpu-full-top.png" srcset="/img/loading.gif" lazyload></p>
 <p>我们看到，这个进程的PID是4897，我们把这个进程加到这个cgroup中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 4897 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;tasks</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 4897 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;cpu&#x2F;coco&#x2F;tasks</code></pre></div>
 
 <p>然后，就会在top中看到CPU的利用立马下降成20%了。（前面我们设置的20000就是20%的意思）</p>
 <p><strong>4) 查看内存使用情况</strong></p>
 <p><img src="images/cgroups-cpu-top.png" srcset="/img/loading.gif" lazyload></p>
-<h4 id="内存限制"><a href="#内存限制" class="headerlink" title="内存限制"></a>内存限制</h4><h5 id="1）创建test1-py文件"><a href="#1）创建test1-py文件" class="headerlink" title="1）创建test1.py文件"></a>1）创建test1.py文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def main():</span><br><span class="line">    i &#x3D; []</span><br><span class="line">    while True:</span><br><span class="line">        i.append(1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line"></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h4 id="内存限制"><a href="#内存限制" class="headerlink" title="内存限制"></a>内存限制</h4><h5 id="1）创建test1-py文件"><a href="#1）创建test1-py文件" class="headerlink" title="1）创建test1.py文件"></a>1）创建test1.py文件</h5><div class="code-wrapper"><pre class="language-none"><code class="language-none">def main():
+    i &#x3D; []
+    while True:
+        i.append(1)
+
+
+if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
+
+    main()</code></pre></div>
 
 <p>想要的效果为：i变量一直新增元素，导致i的内存空间会一直增大。</p>
 <p><strong>2） 执行test1.py文件，并通过top观察执行消耗内存情况</strong></p>
 <p>执行test1.py文件，获取到进程PID</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test1.py &amp;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-Python" data-language="Python"><code class="language-Python">python test1.py &amp;</code></pre></div>
 
 <p>然后可以通过top查看到对应进程的内存使用情况。</p>
 <p><strong>3）限制内存使用情况</strong></p>
 <p><img src="images/cgroups-memory.png" srcset="/img/loading.gif" lazyload></p>
 <p>在/sys/fs/cgroup/memory下创建了一个coco，而且你会发现，一旦你创建了一个子目录，这个子目录里又有很多文件了。其中<strong>memory.limit_in_bytes</strong> 或 <strong>memory.memsw.limit_in_bytes</strong> 限制进程内存占用的大小，避免在进程异常时耗尽系统资源</p>
 <p>这里，我们设置占用300k的内存使用量，即把memory.limit_in_bytes设置为300k。执行命令就是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 300k &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;memory.limit_in_bytes </span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 300k &gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;memory.limit_in_bytes </code></pre></div>
 
 <p>然后再把需要限制内存大小的进程加到这个cgroup中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 23541 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;tasks</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">echo 23541 &gt;&gt; &#x2F;sys&#x2F;fs&#x2F;cgroup&#x2F;memory&#x2F;coco&#x2F;tasks</code></pre></div>
 
 <p>最后你会看到，一会上面PID为 23541的进程将会被kill掉。</p>
 <p><strong>4）查看进程</strong></p>
@@ -433,8 +471,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                        <span class="hidden-mobile">Docker 容器操作</span>
+                      <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
+                        <span class="hidden-mobile">Docker 镜像配置</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

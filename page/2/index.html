@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -277,10 +277,15 @@
 
 
 分　 时　  日　 月     周　     命令
- 123456第1列表示分钟1～59 每分钟用*或者 */1表示第2列表示小时1～23（0表示0点）第3列表示日期1～31第4列表示月份1～12第5列标识号星期0～6（0表示星期天）第6列要运行的命令
+ 第1列表示分钟1～59 每分钟用*或者 */1表示
+第2列表示小时1～23（0表示0点）
+第3列表示日期1～31
+第4列表示月份1～12
+第5列标识号星期0～6（0表示星期天）
+第6列要运行的命令
 
 在以上各个字段中，还可以使用以下特殊字符：
-星号（*）：代表所有可能的值，例如
+星号（*）：代表所有可能的值，例如m
         </a>
       </p>
 
@@ -334,7 +339,17 @@
           
             
           
-          12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210
+           #！/bin/bash
+# 系统安装断开网卡
+
+# 安装vmtools
+
+# 重启打开网卡
+
+# 更换镜像源
+sudo cat > /etc/apt/sources.list &lt;&lt;EOF 
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial m
         </a>
       </p>
 
@@ -568,7 +583,9 @@ foreach
             
           
           MyBatis工作流程简述传统工作模式：
-12345678public static void main(String[] args) &#123;		InputStream inputStream = Resources.getResourceAsStream(&quot;mybatis-config.xml&quot;);		SqlSessionFactory factory = new Sq
+public static void main(String[] args) &#123;
+		InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
+		SqlSessionFactory factory = new SqlSessionFactoryB
         </a>
       </p>
 

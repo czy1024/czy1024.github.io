@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/nginx.jpg') no-repeat center center;
+         style="background: url('/img/nginx.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：2 minutes ago
                 
               </p>
             
@@ -313,7 +313,30 @@
 <p>总体来说，首推清华源，在覆盖软件数量和帮助文件方面堪称国内最好的镜像站。</p>
 <p>访问速度方面，大型商业公司、尤其是云服务商（没错，指的是腾讯源、阿里源和华为源）的镜像站会做得更好，毕竟钱多、基础设施广。</p>
 <p>在细分领域方面，特定领域有固有的特定选择。例如 Nodejs npm 的话淘宝的 cnpm 是不二的选择。又例如，Anaconda 由于授权原因，似乎只有清华源在内的几个大学的镜像站拿到了授权，腾讯、阿里等商业公司的镜像站不知道是没拿到授权还是懒得申请授权，并未上线 Anaconda 镜像。</p>
-<h2 id="Ubuntu20-apt-源"><a href="#Ubuntu20-apt-源" class="headerlink" title="Ubuntu20 apt 源"></a>Ubuntu20 apt 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 备份原文件</span></span><br><span class="line">cp /etc/apt/sources.list /etc/apt/sources.list.copy</span><br><span class="line"></span><br><span class="line">sudo cat &gt; /etc/apt/sources.list &lt;&lt;<span class="string">EOF </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># ubuntu 20.10</span></span><br><span class="line"><span class="string"># 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line"><span class="string">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy main restricted universe multiverse</span></span><br><span class="line"><span class="string"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy main restricted universe multiverse</span></span><br><span class="line"><span class="string">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-updates main restricted universe multiverse</span></span><br><span class="line"><span class="string"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-updates main restricted universe multiverse</span></span><br><span class="line"><span class="string">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-backports main restricted universe multiverse</span></span><br><span class="line"><span class="string"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-backports main restricted universe multiverse</span></span><br><span class="line"><span class="string">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-security main restricted universe multiverse</span></span><br><span class="line"><span class="string"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-security main restricted universe multiverse</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="string"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="string"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新源</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu20-apt-源"><a href="#Ubuntu20-apt-源" class="headerlink" title="Ubuntu20 apt 源"></a>Ubuntu20 apt 源</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">
+<span class="token comment"># 备份原文件</span>
+<span class="token function">cp</span> /etc/apt/sources.list /etc/apt/sources.list.copy
+
+<span class="token function">sudo</span> <span class="token function">cat</span> <span class="token operator">></span> /etc/apt/sources.list <span class="token operator">&lt;&lt;</span><span class="token string">EOF 
+
+# ubuntu 20.10
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ groovy-proposed main restricted universe multiverse
+EOF</span>
+
+<span class="token comment"># 更新源</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update</code></pre></div>
 
 <p>apt-get 命令适用于 deb 包管理式的 Linux 操作系统（Debian、Ubuntu等），主要用于自动从互联网软件仓库中搜索、下载、安装、升级、卸载软件或操作系统。</p>
 <p>Ubuntu 软件包查找: <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://packages.ubuntu.com/">https://packages.ubuntu.com/</a></p>
@@ -334,13 +357,155 @@
 <p>apt-get 是一个用于下载和安装软件包的简易命令行界面。<br> 最常用命令是 update 和 install。</p>
 <h3 id="命令："><a href="#命令：" class="headerlink" title="命令："></a>命令：</h3><p>update - 取回更新的软件包列表信息<br> upgrade - 进行一次升级<br> install - 安装新的软件包(注：软件包名称是 libc6 而非 libc6.deb)<br> remove - 卸载软件包<br> autoremove - 卸载所有自动安装且不再使用的软件包<br> purge - 卸载并清除软件包的配置<br> source - 下载源码包文件<br> build-dep - 为源码包配置所需的编译依赖关系<br> dist-upgrade - 发布版升级，见 apt-get(8)<br> dselect-upgrade - 根据 dselect 的选择来进行升级<br> clean - 删除所有已下载的包文件<br> autoclean - 删除已下载的旧包文件<br> check - 核对以确认系统的依赖关系的完整性<br> changelog - 下载指定软件包，并显示其changelog<br> download - 下载指定的二进制包到当前目录</p>
 <h3 id="选项："><a href="#选项：" class="headerlink" title="选项："></a>选项：</h3><p>-h  本帮助文档。<br> -q  让输出可作为日志 - 不显示进度<br> -qq 除了错误外，什么都不输出<br> -d  仅仅下载 - 【不】安装或解开包文件<br> -s  不作实际操作。只是依次模拟执行命令<br> -y  对所有询问都回答是(Yes)，同时不作任何提示<br> -f  当出现破损的依赖关系时，程序将尝试修正系统<br> -m  当有包文件无法找到时，程序仍尝试继续执行<br> -u  显示已升级的软件包列表<br> -b  在下载完源码包后，编译生成相应的软件包<br> -V  显示详尽的版本号<br> -c=? 读取指定配置文件<br> -o=? 设置任意指定的配置选项，例如 -o dir::cache=/tmp<br> 请查阅 apt-get(8)、sources.list(5) 和 apt.conf(5)的参考手册<br> 以获取更多信息和选项。</p>
-<h2 id="Centos7-yum-源"><a href="#Centos7-yum-源" class="headerlink" title="Centos7 yum 源"></a>Centos7 yum 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">CentOS 8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo sed -e <span class="string">&#x27;s|^mirrorlist=|#mirrorlist=|g&#x27;</span> \</span><br><span class="line">         -e <span class="string">&#x27;s|^#baseurl=http://mirror.centos.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/centos|g&#x27;</span> \</span><br><span class="line">         -i.bak \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Base.repo \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Extras.repo \</span><br><span class="line">         /etc/yum.repos.d/CentOS-AppStream.repo</span><br><span class="line"></span><br><span class="line">CentOS 6   &amp;   CentOS 7</span><br><span class="line"></span><br><span class="line">sudo sed -e <span class="string">&#x27;s|^mirrorlist=|#mirrorlist=|g&#x27;</span> \</span><br><span class="line">         -e <span class="string">&#x27;s|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g&#x27;</span> \</span><br><span class="line">         -i.bak \</span><br><span class="line">         /etc/yum.repos.d/CentOS-Base.repo</span><br><span class="line">更新缓存</span><br><span class="line"></span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+<h2 id="Centos7-yum-源"><a href="#Centos7-yum-源" class="headerlink" title="Centos7 yum 源"></a>Centos7 yum 源</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">CentOS <span class="token number">8</span>
+
+
+<span class="token function">sudo</span> <span class="token function">sed</span> -e <span class="token string">'s|^mirrorlist=|#mirrorlist=|g'</span> <span class="token punctuation">\</span>
+         -e <span class="token string">'s|^#baseurl=http://mirror.centos.org/<span class="token variable">$contentdir</span>|baseurl=https://mirrors.ustc.edu.cn/centos|g'</span> <span class="token punctuation">\</span>
+         -i.bak <span class="token punctuation">\</span>
+         /etc/yum.repos.d/CentOS-Base.repo <span class="token punctuation">\</span>
+         /etc/yum.repos.d/CentOS-Extras.repo <span class="token punctuation">\</span>
+         /etc/yum.repos.d/CentOS-AppStream.repo
+
+CentOS <span class="token number">6</span>   <span class="token operator">&amp;</span>   CentOS <span class="token number">7</span>
+
+<span class="token function">sudo</span> <span class="token function">sed</span> -e <span class="token string">'s|^mirrorlist=|#mirrorlist=|g'</span> <span class="token punctuation">\</span>
+         -e <span class="token string">'s|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g'</span> <span class="token punctuation">\</span>
+         -i.bak <span class="token punctuation">\</span>
+         /etc/yum.repos.d/CentOS-Base.repo
+更新缓存
+
+yum makecache</code></pre></div>
 
 
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份</span></span><br><span class="line">sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</span><br><span class="line"><span class="comment"># 注意名字</span></span><br><span class="line">sudo cat &gt; /etc/yum.repos.d/CentOS-Base.repo &lt;&lt;<span class="string">EOF </span></span><br><span class="line"><span class="string">#https://mirrors.tuna.tsinghua.edu.cn/help/centos/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># CentOS-Base.repo</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"># The mirror system uses the connecting IP address of the client and the</span></span><br><span class="line"><span class="string"># update status of each mirror to pick mirrors that are updated to and</span></span><br><span class="line"><span class="string"># geographically close to the client.  You should use this for CentOS updates</span></span><br><span class="line"><span class="string"># unless you are manually picking other mirrors.</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"># If the mirrorlist= does not work for you, as a fall back you can try the</span></span><br><span class="line"><span class="string"># remarked out baseurl= line instead.</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[base]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Base</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/os/$basearch/</span></span><br><span class="line"><span class="string">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</span></span><br><span class="line"><span class="string">enabled=1</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#released updates</span></span><br><span class="line"><span class="string">[updates]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Updates</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/updates/$basearch/</span></span><br><span class="line"><span class="string">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates</span></span><br><span class="line"><span class="string">enabled=1</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#additional packages that may be useful</span></span><br><span class="line"><span class="string">[extras]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Extras</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/extras/$basearch/</span></span><br><span class="line"><span class="string">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras</span></span><br><span class="line"><span class="string">enabled=1</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#additional packages that extend functionality of existing packages</span></span><br><span class="line"><span class="string">[centosplus]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Plus</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/$releasever/centosplus/$basearch/</span></span><br><span class="line"><span class="string">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">enabled=0</span></span><br><span class="line"><span class="string">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#备份</span>
+<span class="token function">sudo</span> <span class="token function">cp</span> /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+<span class="token comment"># 注意名字</span>
+<span class="token function">sudo</span> <span class="token function">cat</span> <span class="token operator">></span> /etc/yum.repos.d/CentOS-Base.repo <span class="token operator">&lt;&lt;</span><span class="token string">EOF 
+#https://mirrors.tuna.tsinghua.edu.cn/help/centos/
 
-<h2 id="Centos8-yum-源"><a href="#Centos8-yum-源" class="headerlink" title="Centos8 yum 源"></a>Centos8 yum 源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#备份</span></span><br><span class="line">sudo cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</span><br><span class="line"><span class="comment">#  注意名字</span></span><br><span class="line">sudo cat &gt; /etc/yum.repos.d/CentOS-Base.repo &lt;&lt;<span class="string">EOF </span></span><br><span class="line"><span class="string"># CentOS-Base.repo</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"># The mirror system uses the connecting IP address of the client and the</span></span><br><span class="line"><span class="string"># update status of each mirror to pick mirrors that are updated to and</span></span><br><span class="line"><span class="string"># geographically close to the client.  You should use this for CentOS updates</span></span><br><span class="line"><span class="string"># unless you are manually picking other mirrors.</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"># If the mirrorlist= does not work for you, as a fall back you can try the </span></span><br><span class="line"><span class="string"># remarked out baseurl= line instead.</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[base]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Base - mirrors.aliyun.com</span></span><br><span class="line"><span class="string">failovermethod=priority</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/centos/$releasever/BaseOS/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.aliyuncs.com/centos/$releasever/BaseOS/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.cloud.aliyuncs.com/centos/$releasever/BaseOS/$basearch/os/</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">#additional packages that may be useful</span></span><br><span class="line"><span class="string">[extras]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Extras - mirrors.aliyun.com</span></span><br><span class="line"><span class="string">failovermethod=priority</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/centos/$releasever/extras/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.aliyuncs.com/centos/$releasever/extras/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.cloud.aliyuncs.com/centos/$releasever/extras/$basearch/os/</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">#additional packages that extend functionality of existing packages</span></span><br><span class="line"><span class="string">[centosplus]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - Plus - mirrors.aliyun.com</span></span><br><span class="line"><span class="string">failovermethod=priority</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/centos/$releasever/centosplus/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.aliyuncs.com/centos/$releasever/centosplus/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.cloud.aliyuncs.com/centos/$releasever/centosplus/$basearch/os/</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">enabled=0</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">[PowerTools]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - PowerTools - mirrors.aliyun.com</span></span><br><span class="line"><span class="string">failovermethod=priority</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/centos/$releasever/PowerTools/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.aliyuncs.com/centos/$releasever/PowerTools/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.cloud.aliyuncs.com/centos/$releasever/PowerTools/$basearch/os/</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">enabled=0</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[AppStream]</span></span><br><span class="line"><span class="string">name=CentOS-$releasever - AppStream - mirrors.aliyun.com</span></span><br><span class="line"><span class="string">failovermethod=priority</span></span><br><span class="line"><span class="string">baseurl=https://mirrors.aliyun.com/centos/$releasever/AppStream/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.aliyuncs.com/centos/$releasever/AppStream/$basearch/os/</span></span><br><span class="line"><span class="string">        http://mirrors.cloud.aliyuncs.com/centos/$releasever/AppStream/$basearch/os/</span></span><br><span class="line"><span class="string">gpgcheck=1</span></span><br><span class="line"><span class="string">gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+# CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the
+# remarked out baseurl= line instead.
+#
+#
+
+
+[base]
+name=CentOS-<span class="token variable">$releasever</span> - Base
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="token variable">$releasever</span>/os/<span class="token variable">$basearch</span>/
+#mirrorlist=http://mirrorlist.centos.org/?release=<span class="token variable">$releasever</span>&amp;arch=<span class="token variable">$basearch</span>&amp;repo=os
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+
+#released updates
+[updates]
+name=CentOS-<span class="token variable">$releasever</span> - Updates
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="token variable">$releasever</span>/updates/<span class="token variable">$basearch</span>/
+#mirrorlist=http://mirrorlist.centos.org/?release=<span class="token variable">$releasever</span>&amp;arch=<span class="token variable">$basearch</span>&amp;repo=updates
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+
+
+
+#additional packages that may be useful
+[extras]
+name=CentOS-<span class="token variable">$releasever</span> - Extras
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="token variable">$releasever</span>/extras/<span class="token variable">$basearch</span>/
+#mirrorlist=http://mirrorlist.centos.org/?release=<span class="token variable">$releasever</span>&amp;arch=<span class="token variable">$basearch</span>&amp;repo=extras
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+
+
+
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-<span class="token variable">$releasever</span> - Plus
+baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos/<span class="token variable">$releasever</span>/centosplus/<span class="token variable">$basearch</span>/
+#mirrorlist=http://mirrorlist.centos.org/?release=<span class="token variable">$releasever</span>&amp;arch=<span class="token variable">$basearch</span>&amp;repo=centosplus
+gpgcheck=1
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-7
+EOF</span>
+</code></pre></div>
+
+<h2 id="Centos8-yum-源"><a href="#Centos8-yum-源" class="headerlink" title="Centos8 yum 源"></a>Centos8 yum 源</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#备份</span>
+<span class="token function">sudo</span> <span class="token function">cp</span> /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+<span class="token comment">#  注意名字</span>
+<span class="token function">sudo</span> <span class="token function">cat</span> <span class="token operator">></span> /etc/yum.repos.d/CentOS-Base.repo <span class="token operator">&lt;&lt;</span><span class="token string">EOF 
+# CentOS-Base.repo
+#
+# The mirror system uses the connecting IP address of the client and the
+# update status of each mirror to pick mirrors that are updated to and
+# geographically close to the client.  You should use this for CentOS updates
+# unless you are manually picking other mirrors.
+#
+# If the mirrorlist= does not work for you, as a fall back you can try the 
+# remarked out baseurl= line instead.
+#
+#
+ 
+[base]
+name=CentOS-<span class="token variable">$releasever</span> - Base - mirrors.aliyun.com
+failovermethod=priority
+baseurl=https://mirrors.aliyun.com/centos/<span class="token variable">$releasever</span>/BaseOS/<span class="token variable">$basearch</span>/os/
+        http://mirrors.aliyuncs.com/centos/<span class="token variable">$releasever</span>/BaseOS/<span class="token variable">$basearch</span>/os/
+        http://mirrors.cloud.aliyuncs.com/centos/<span class="token variable">$releasever</span>/BaseOS/<span class="token variable">$basearch</span>/os/
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official
+ 
+#additional packages that may be useful
+[extras]
+name=CentOS-<span class="token variable">$releasever</span> - Extras - mirrors.aliyun.com
+failovermethod=priority
+baseurl=https://mirrors.aliyun.com/centos/<span class="token variable">$releasever</span>/extras/<span class="token variable">$basearch</span>/os/
+        http://mirrors.aliyuncs.com/centos/<span class="token variable">$releasever</span>/extras/<span class="token variable">$basearch</span>/os/
+        http://mirrors.cloud.aliyuncs.com/centos/<span class="token variable">$releasever</span>/extras/<span class="token variable">$basearch</span>/os/
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official
+ 
+#additional packages that extend functionality of existing packages
+[centosplus]
+name=CentOS-<span class="token variable">$releasever</span> - Plus - mirrors.aliyun.com
+failovermethod=priority
+baseurl=https://mirrors.aliyun.com/centos/<span class="token variable">$releasever</span>/centosplus/<span class="token variable">$basearch</span>/os/
+        http://mirrors.aliyuncs.com/centos/<span class="token variable">$releasever</span>/centosplus/<span class="token variable">$basearch</span>/os/
+        http://mirrors.cloud.aliyuncs.com/centos/<span class="token variable">$releasever</span>/centosplus/<span class="token variable">$basearch</span>/os/
+gpgcheck=1
+enabled=0
+gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official
+ 
+[PowerTools]
+name=CentOS-<span class="token variable">$releasever</span> - PowerTools - mirrors.aliyun.com
+failovermethod=priority
+baseurl=https://mirrors.aliyun.com/centos/<span class="token variable">$releasever</span>/PowerTools/<span class="token variable">$basearch</span>/os/
+        http://mirrors.aliyuncs.com/centos/<span class="token variable">$releasever</span>/PowerTools/<span class="token variable">$basearch</span>/os/
+        http://mirrors.cloud.aliyuncs.com/centos/<span class="token variable">$releasever</span>/PowerTools/<span class="token variable">$basearch</span>/os/
+gpgcheck=1
+enabled=0
+gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official
+
+
+[AppStream]
+name=CentOS-<span class="token variable">$releasever</span> - AppStream - mirrors.aliyun.com
+failovermethod=priority
+baseurl=https://mirrors.aliyun.com/centos/<span class="token variable">$releasever</span>/AppStream/<span class="token variable">$basearch</span>/os/
+        http://mirrors.aliyuncs.com/centos/<span class="token variable">$releasever</span>/AppStream/<span class="token variable">$basearch</span>/os/
+        http://mirrors.cloud.aliyuncs.com/centos/<span class="token variable">$releasever</span>/AppStream/<span class="token variable">$basearch</span>/os/
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-Official
+
+EOF</span></code></pre></div>
 
 <h3 id="yum简介"><a href="#yum简介" class="headerlink" title="yum简介"></a>yum简介</h3><blockquote>
 <p>对于熟悉Centos的小伙伴都应该很熟悉。</p>
@@ -351,7 +516,7 @@
 <h3 id="命令解析"><a href="#命令解析" class="headerlink" title="命令解析"></a>命令解析</h3><ul>
 <li>格式</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum [<span class="built_in">command</span>] [package] -y|q</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">yum <span class="token punctuation">[</span>command<span class="token punctuation">]</span> <span class="token punctuation">[</span>package<span class="token punctuation">]</span> -y<span class="token operator">|</span>q</code></pre></div>
 
 <blockquote>
 <p>options</p>
@@ -359,77 +524,102 @@
 <ul>
 <li>install</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装nginx软件包</span></span><br><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装nginx软件包</span>
+yum <span class="token function">install</span> nginx</code></pre></div>
 
 <ul>
 <li>search</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  搜索软件包</span></span><br><span class="line">yum search nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#  搜索软件包</span>
+yum search nginx</code></pre></div>
 
 <ul>
 <li>list</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示指定安装包安装软件详情</span></span><br><span class="line">yum <span class="keyword">list</span> nginx</span><br><span class="line"><span class="comment"># 显示所有已安装以及可以安装的软件包</span></span><br><span class="line">yum <span class="keyword">list</span></span><br><span class="line"><span class="comment"># 显示所有软件包</span></span><br><span class="line">yum <span class="keyword">list</span> all</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-php" data-language="php"><code class="language-php"><span class="token comment"># 显示指定安装包安装软件详情</span>
+yum <span class="token keyword">list</span> nginx
+<span class="token comment"># 显示所有已安装以及可以安装的软件包</span>
+yum <span class="token keyword">list</span>
+<span class="token comment"># 显示所有软件包</span>
+yum <span class="token keyword">list</span> all</code></pre></div>
 
 <ul>
 <li>remove</li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 移除软件包</span></span><br><span class="line">yum <span class="keyword">remove</span> nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token preprocessor property"># 移除软件包</span>
+yum <span class="token keyword">remove</span> nginx</code></pre></div>
 
 <ul>
 <li>earse</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 移除软件包</span></span><br><span class="line">yum earse nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 移除软件包</span>
+yum earse nginx</code></pre></div>
 
 <ul>
 <li>update</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 升级软件包</span></span><br><span class="line">yum update nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 升级软件包</span>
+yum update nginx</code></pre></div>
 
 <ul>
 <li>check-update</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查可以更新的软件</span></span><br><span class="line">yum check-update</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 检查可以更新的软件</span>
+yum check-update</code></pre></div>
 
 <ul>
 <li>info</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示安装包信息</span></span><br><span class="line">yum info nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 显示安装包信息</span>
+yum info nginx</code></pre></div>
 
 <ul>
 <li>provides</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出软件包提供哪些文件</span></span><br><span class="line">yum provides</span><br><span class="line"><span class="comment"># 列出哪些软件包提供nginx</span></span><br><span class="line">yum provides */nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 列出软件包提供哪些文件</span>
+yum provides
+<span class="token comment"># 列出哪些软件包提供nginx</span>
+yum provides */nginx</code></pre></div>
 
 <ul>
 <li>grouplist</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出可以用groupinstall安装的组</span></span><br><span class="line">yum grouplist</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 列出可以用groupinstall安装的组</span>
+yum grouplist</code></pre></div>
 
 <ul>
 <li>groupInstall</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装中文组支持</span></span><br><span class="line">yum groupinstall <span class="string">&quot;Chinese Support&quot;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装中文组支持</span>
+yum groupinstall <span class="token string">"Chinese Support"</span></code></pre></div>
 
 <ul>
 <li>groupremove</li>
 </ul>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 移除中文组支持</span></span><br><span class="line">yum <span class="keyword">group</span> <span class="keyword">remove</span> <span class="string">&quot;Chinese Support&quot;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-csharp" data-language="csharp"><code class="language-csharp"><span class="token preprocessor property"># 移除中文组支持</span>
+yum <span class="token keyword">group</span> <span class="token keyword">remove</span> <span class="token string">"Chinese Support"</span></code></pre></div>
 
 <ul>
 <li>deposit</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* 查看nginx依赖</span><br><span class="line">yum deplist nginx</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">* 查看nginx依赖
+yum deplist nginx</code></pre></div>
 
 <ul>
 <li>clear</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清除缓存目录下的软件包</span></span><br><span class="line">yum clear nginx</span><br><span class="line"><span class="comment"># 清除缓存目录下的header</span></span><br><span class="line">yum clean header</span><br><span class="line"><span class="comment"># 清除所有的缓存</span></span><br><span class="line">yum clean all</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 清除缓存目录下的软件包</span>
+yum <span class="token function">clear</span> nginx
+<span class="token comment"># 清除缓存目录下的header</span>
+yum clean header
+<span class="token comment"># 清除所有的缓存</span>
+yum clean all</code></pre></div>
 
 <ul>
 <li>repolist</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看软件仓库</span></span><br><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看软件仓库</span>
+yum repolist</code></pre></div>
 
 <hr>
 <h3 id="搭建yum仓库"><a href="#搭建yum仓库" class="headerlink" title="搭建yum仓库"></a>搭建yum仓库</h3><blockquote>
@@ -441,22 +631,37 @@
 <p>仓库所在位置</p>
 </li>
 </ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[base]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Base</span><br><span class="line">mirrorlist=<span class="symbol">http:</span>/<span class="regexp">/mirrorlist.centos.org/</span><span class="string">?r</span>elease=<span class="variable">$releasever</span>&amp;arch=<span class="variable">$basearch</span>&amp;repo=os&amp;infra=$infra</span><br><span class="line"><span class="comment">#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/</span></span><br><span class="line">gpgcheck=<span class="number">1</span></span><br><span class="line">gpgkey=<span class="symbol">file:</span>/<span class="regexp">//etc</span><span class="regexp">/pki/rpm</span>-gpg/RPM-GPG-KEY-CentOS-<span class="number">7</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-ruby" data-language="ruby"><code class="language-ruby"><span class="token punctuation">[</span>base<span class="token punctuation">]</span>
+name<span class="token operator">=</span><span class="token constant">CentOS</span><span class="token operator">-</span><span class="token variable">$releasever</span> <span class="token operator">-</span> <span class="token constant">Base</span>
+mirrorlist<span class="token operator">=</span>http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>mirrorlist<span class="token punctuation">.</span>centos<span class="token punctuation">.</span>org<span class="token operator">/</span><span class="token operator">?</span>release<span class="token operator">=</span><span class="token variable">$releasever</span><span class="token operator">&amp;</span>arch<span class="token operator">=</span><span class="token variable">$basearch</span><span class="token operator">&amp;</span>repo<span class="token operator">=</span>os<span class="token operator">&amp;</span>infra<span class="token operator">=</span><span class="token variable">$infra</span>
+<span class="token comment">#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/</span>
+gpgcheck<span class="token operator">=</span><span class="token number">1</span>
+gpgkey<span class="token operator">=</span>file<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">/</span>etc<span class="token operator">/</span>pki<span class="token operator">/</span>rpm<span class="token operator">-</span>gpg<span class="token operator">/</span><span class="token constant">RPM</span><span class="token operator">-</span><span class="token constant">GPG</span><span class="token operator">-</span><span class="token constant">KEY</span><span class="token operator">-</span><span class="token constant">CentOS</span><span class="token operator">-</span><span class="token number">7</span></code></pre></div>
 
 <blockquote>
 <p>本地yum仓库</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载对应的镜像文件</span></span><br><span class="line"><span class="comment"># 挂载到/mnt</span></span><br><span class="line">mount -o loop /dev/cdrom /mnt <span class="comment">#光盘 </span></span><br><span class="line">mount -o loop -t iso9660 /home/sunky/mydisk.iso /mnt/vcdrom  <span class="comment">#ios镜像文件</span></span><br><span class="line"><span class="comment"># 创建文件</span></span><br><span class="line">vim /etc/yum.repo.d test.repo</span><br><span class="line">[<span class="built_in">test</span>]</span><br><span class="line">name=<span class="string">&quot;test&quot;</span></span><br><span class="line">baseurl=<span class="string">&quot;file:///mnt&quot;</span></span><br><span class="line"><span class="built_in">enable</span>=1</span><br><span class="line">gpgcheck=0</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 下载对应的镜像文件</span>
+<span class="token comment"># 挂载到/mnt</span>
+<span class="token function">mount</span> -o loop /dev/cdrom /mnt <span class="token comment">#光盘 </span>
+<span class="token function">mount</span> -o loop -t iso9660 /home/sunky/mydisk.iso /mnt/vcdrom  <span class="token comment">#ios镜像文件</span>
+<span class="token comment"># 创建文件</span>
+<span class="token function">vim</span> /etc/yum.repo.d test.repo
+<span class="token punctuation">[</span>test<span class="token punctuation">]</span>
+<span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"test"</span>
+<span class="token assign-left variable">baseurl</span><span class="token operator">=</span><span class="token string">"file:///mnt"</span>
+<span class="token assign-left variable">enable</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable">gpgcheck</span><span class="token operator">=</span><span class="token number">0</span></code></pre></div>
 
 <blockquote>
 <p>远端http仓库</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">和上雷同，略</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">和上雷同，略</code></pre></div>
 
 <blockquote>
 <p>远端ftp仓库</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">和上雷同，略</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">和上雷同，略</code></pre></div>
 
 
             </div>

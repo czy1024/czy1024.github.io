@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -320,7 +320,12 @@ activate-power-mode 和 Power mode II
             
           
           Java中我们在定义类的成员变量时，如果是私有属性，我们通过调用属性对应的set和get方法来获取和设置变量的值，如果我们将这种方式来用于python那么代码如下:
-coding1234567891011121314151617181920212223class Money(object):    def __init__(self):        self.money &#x3D; 0    
+codingclass Money(object):
+    def __init__(self):
+        self.money &#x3D; 0
+ 
+    def getMoney(self):
+        retu
         </a>
       </p>
 
@@ -376,7 +381,13 @@ coding1234567891011121314151617181920212223class Money(object):    def __init__(
           
           时间和字符传的转化
 日期转为字符串
-123456789101112131415161718192021import java.text.SimpleDateFormat;import java.util.Date; public class Test01 &#123;    public static void main(String[] args) &#123;        Date date
+import java.text.SimpleDateFormat;
+import java.util.Date;
+ 
+public class Test01 &#123;
+    public static void main(String[] args) &#123;
+        Date date = new Date(); //获取当前时间
+    
         </a>
       </p>
 
@@ -490,7 +501,9 @@ split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
             
           
           JAVA常用工具类目录- 第一部分：常用的16个工具类- 第二部分：常用的测试库（链接及用法）- 第三部分：java开发常用工具类（正则校验）
-第一部分：常用的16个工具类123456https://mvnrepository.com/artifact/org.apache.commons/org.apache.commons.lang --&gt;&lt;dependency&gt;    &l
+第一部分：常用的16个工具类https://mvnrepository.com/artifact/org.apache.commons/org.apache.commons.lang -->
+&lt;dependency>
+    &lt;groupId>
         </a>
       </p>
 
@@ -546,7 +559,14 @@ split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
           
           FastJSON
 引入依赖或者Jar包
-123456&lt;dependency&gt;     &lt;groupId&gt;com.alibaba&lt;/groupId&gt;     &lt;artifactId&gt;fastjson&lt;/artifactId&gt;     &lt;version&gt;1.1.23&lt;/version&gt; &lt;/dependency&
+&lt;dependency>
+     &lt;groupId>com.alibaba&lt;/groupId>
+     &lt;artifactId>fastjson&lt;/artifactId>
+     &lt;version>1.1.23&lt;/version>
+ &lt;/dependency>
+
+将Map转成JSON
+Map&lt;Str
         </a>
       </p>
 
@@ -659,7 +679,10 @@ split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
           systemctl配置管理文件详解
 文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
 
-文件内容123456789101112131415161718$cat sshd.service    [Unit]    Description=OpenSSH server daemon    Documen
+文件内容$cat sshd.service
+    [Unit]
+    Description=OpenSSH server daemon
+    Documentation=man:sshd(8) man:s
         </a>
       </p>
 

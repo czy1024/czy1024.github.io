@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      40
        分钟
     </span>
   
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -288,32 +288,54 @@
 </ul>
 <p>例如，我们需要获取一个 busybox 镜像，可以执行以下命令：</p>
 <p>busybox 是一个集成了数百个 Linux 命令（例如 curl、grep、mount、telnet 等）的精简工具箱，只有几兆大小，被誉为 Linux 系统的瑞士军刀。我经常会使用 busybox 做调试来查找生产环境中遇到的问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull busybox</span><br><span class="line">Using default tag: latest</span><br><span class="line">latest: Pulling from library&#x2F;busybox</span><br><span class="line">61c5ed1cbdf8: Pull complete</span><br><span class="line">Digest: sha256:4f47c01fa91355af2865ac10fef5bf6ec9c7f42ad2321377c21e844427972977</span><br><span class="line">Status: Downloaded newer image for busybox:latest</span><br><span class="line">docker.io&#x2F;library&#x2F;busybox:latest</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker pull busybox
+Using default tag: latest
+latest: Pulling from library&#x2F;busybox
+61c5ed1cbdf8: Pull complete
+Digest: sha256:4f47c01fa91355af2865ac10fef5bf6ec9c7f42ad2321377c21e844427972977
+Status: Downloaded newer image for busybox:latest
+docker.io&#x2F;library&#x2F;busybox:latest</code></pre></div>
 
 <p>​    实际上执行docker pull busybox命令，都是先从本地搜索，如果本地搜索不到busybox镜像则从 Docker Hub 下载镜像。</p>
 <h4 id="1-2-操作镜像"><a href="#1-2-操作镜像" class="headerlink" title="1.2 操作镜像"></a>1.2 操作镜像</h4><h5 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h5><p>Docker 镜像查看使用<strong>docker images或者docker image ls</strong>命令。</p>
 <p>下面我们使用docker images命令列出本地所有的镜像。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">nginx               latest              4bb46517cac3        9 days ago          133MB</span><br><span class="line">nginx               1.15                53f3fd8007f7        15 months ago       109MB</span><br><span class="line">busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              4bb46517cac3        9 days ago          133MB
+nginx               1.15                53f3fd8007f7        15 months ago       109MB
+busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</code></pre></div>
 
 <p>如果我们想要查询指定的镜像，可以使用docker image ls命令来查询。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker image ls busybox</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker image ls busybox
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</code></pre></div>
 
 <p>当然你也可以使用docker images命令列出所有镜像，然后使用grep命令进行过滤。使用方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker images |grep busybox</span><br><span class="line">busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker images |grep busybox
+busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</code></pre></div>
 
 
 
 <p><strong>“重命名”镜像</strong></p>
 <p>如果你想要自定义镜像名称或者推送镜像到其他镜像仓库，你可以使用docker tag命令将镜像重命名。docker tag的命令格式为 docker tag [SOURCE_IMAGE][:TAG] [TARGET_IMAGE][:TAG]。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker tag busybox:latest mybusybox:latest</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker tag busybox:latest mybusybox:latest</code></pre></div>
 
 <p>执行完docker tag命令后，可以使用查询镜像命令查看一下镜像列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</span><br><span class="line">mybusybox           latest              018c9d7b792b        3 weeks ago         1.22MB</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+busybox             latest              018c9d7b792b        3 weeks ago         1.22MB
+mybusybox           latest              018c9d7b792b        3 weeks ago         1.22MB</code></pre></div>
 
 <p>可以看到，镜像列表中多了一个mybusybox的镜像。busybox和mybusybox这两个镜像的 IMAGE ID 是完全一样的。为什么呢？实际上它们指向了同一个镜像文件，只是别名不同而已。</p>
 <h5 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h5><p>你可以使用<strong>docker rmi或者docker image rm</strong>命令删除镜像。</p>
 <p>例：删除mybusybox镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ docker rmi mybusybox</span><br><span class="line">此时，再次使用docker images命令查看一下我们机器上的镜像列表。</span><br><span class="line"></span><br><span class="line">$ docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">busybox             latest              018c9d7b792b        3 weeks ago         1.22MB</span><br><span class="line">通过上面的输出，我们可以看到，mybusybox镜像已经被删除。</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker rmi mybusybox
+此时，再次使用docker images命令查看一下我们机器上的镜像列表。
+
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+busybox             latest              018c9d7b792b        3 weeks ago         1.22MB
+通过上面的输出，我们可以看到，mybusybox镜像已经被删除。</code></pre></div>
 
 <h5 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a><strong>构建镜像</strong></h5><p>构建镜像主要有两种方式：</p>
 <ul>
@@ -322,16 +344,24 @@
 </ul>
 <p><strong>Docker commit命令</strong></p>
 <p>首先介绍下如何从运行中的容器提交为镜像。我依旧使用 busybox 镜像举例，使用以下命令创建一个名为 busybox 的容器并进入 busybox 容器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 创建容器</span><br><span class="line">$ docker run -itd busybox</span><br><span class="line"></span><br><span class="line"># 进入容器</span><br><span class="line">$ docker exec -it 容器id &#x2F;binn&#x2F;bash</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none"># 创建容器
+$ docker run -itd busybox
+
+# 进入容器
+$ docker exec -it 容器id &#x2F;binn&#x2F;bash</code></pre></div>
 
 <p>执行完上面的命令后，当前窗口会启动一个 busybox 容器并且进入容器中。在容器中，执行以下命令创建一个文件并写入内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch hello.txt &amp;&amp; echo &quot;I love Docker. &quot; &gt; hello.txt</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">touch hello.txt &amp;&amp; echo &quot;I love Docker. &quot; &gt; hello.txt</code></pre></div>
 
 <p>此时在容器的根目录下，已经创建了一个 hello.txt 文件，并写入了 “I love Docker. “。下面，我们新打开另一个命令行窗口，运行以下命令提交镜像：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker commit busybox busybox:hello</span><br><span class="line">sha256:cbc6406aaef080d1dd3087d4ea1e6c6c9915ee0ee0f5dd9e0a90b03e2215e81c</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker commit busybox busybox:hello
+sha256:cbc6406aaef080d1dd3087d4ea1e6c6c9915ee0ee0f5dd9e0a90b03e2215e81c</code></pre></div>
 
 <p>然后使用上面讲到的docker image ls命令查看镜像：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker image ls busybox</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">busybox             hello               cbc6406aaef0        2 minutes ago       1.22MB</span><br><span class="line">busybox             latest              018c9d7b792b        4 weeks ago         1.22MB</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker image ls busybox
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+busybox             hello               cbc6406aaef0        2 minutes ago       1.22MB
+busybox             latest              018c9d7b792b        4 weeks ago         1.22MB</code></pre></div>
 
 <p>此时我们可以看到主机上新生成了 busybox:hello 这个镜像。</p>
 <p><strong>Docker build命令</strong></p>
@@ -361,7 +391,12 @@
 <li>WORKDIR    为 Dockerfile 中跟在其后的所有 RUN、CMD、ENTRYPOINT、COPY 和 ADD 命令设置工作目录。</li>
 </ul>
 <p>先分析下如下Dockerfile文件中的含义：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> centos:<span class="number">7</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> nginx.repo /etc/yum.repos.d/nginx.repo</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> yum install -y nginx</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"><span class="keyword">ENV</span> HOST=mynginx</span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [<span class="string">&quot;nginx&quot;</span>,<span class="string">&quot;-g&quot;</span>,<span class="string">&quot;daemon off;&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-dockerfile" data-language="dockerfile"><code class="language-dockerfile">FROM centos:7
+COPY nginx.repo &#x2F;etc&#x2F;yum.repos.d&#x2F;nginx.repo
+RUN yum install -y nginx
+EXPOSE 80
+ENV HOST&#x3D;mynginx
+CMD [&quot;nginx&quot;,&quot;-g&quot;,&quot;daemon off;&quot;]</code></pre></div>
 
 <ul>
 <li><p>第一行表示我要基于 centos:7 这个镜像来构建自定义镜像。这里需要注意，每个 Dockerfile 的第一行除了注释都必须以 FROM 开头。</p>
@@ -379,7 +414,33 @@
 </ul>
 <p>上面这个 Dockerfile 的例子基本涵盖了常用的镜像构建指令。</p>
 <h3 id="2-镜像的实现原理"><a href="#2-镜像的实现原理" class="headerlink" title="2. 镜像的实现原理"></a>2. 镜像的实现原理</h3><h4 id="2-1-Bootfs和Rootfs"><a href="#2-1-Bootfs和Rootfs" class="headerlink" title="2.1 Bootfs和Rootfs"></a>2.1 Bootfs和Rootfs</h4><p>先下拉ubuntu镜像和python:3镜像：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">root@iZ2ze1lioikou185atzucgZ:~<span class="comment"># docker pull ubuntu</span></span><br><span class="line"></span><br><span class="line">Using default tag: latest</span><br><span class="line"></span><br><span class="line">latest: Pulling <span class="keyword">from</span> library/ubuntu</span><br><span class="line"></span><br><span class="line">54ee1f796a1e: Pull complete </span><br><span class="line"></span><br><span class="line">f7bfea53ad12: Pull complete </span><br><span class="line"></span><br><span class="line">46d371e02073: Pull complete </span><br><span class="line"></span><br><span class="line">b66c17bbf772: Pull complete </span><br><span class="line"></span><br><span class="line">Digest: sha256:31dfb10d52ce76c5ca0aa19d10b3e6424b830729e32a89a7c6eee2cda2be67a5</span><br><span class="line"></span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> ubuntu:latest</span><br><span class="line"></span><br><span class="line">docker.io/library/ubuntu:latest</span><br><span class="line"></span><br><span class="line">root@iZ2ze1lioikou185atzucgZ:~<span class="comment"># docker images</span></span><br><span class="line"></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line"></span><br><span class="line">python              <span class="number">3</span>                   28a4c88cdbbf        <span class="number">15</span> hours ago        882MB</span><br><span class="line"></span><br><span class="line">ubuntu              latest              4e2eef94cd6b        <span class="number">3</span> weeks ago         <span class="number">73.9</span>MB</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-python" data-language="python"><code class="language-python">root@iZ2ze1lioikou185atzucgZ<span class="token punctuation">:</span><span class="token operator">~</span><span class="token comment"># docker pull ubuntu</span>
+
+Using default tag<span class="token punctuation">:</span> latest
+
+latest<span class="token punctuation">:</span> Pulling <span class="token keyword">from</span> library<span class="token operator">/</span>ubuntu
+
+<span class="token number">54ee1f796a1e</span><span class="token punctuation">:</span> Pull complete 
+
+f7bfea53ad12<span class="token punctuation">:</span> Pull complete 
+
+<span class="token number">46d371e02073</span><span class="token punctuation">:</span> Pull complete 
+
+b66c17bbf772<span class="token punctuation">:</span> Pull complete 
+
+Digest<span class="token punctuation">:</span> sha256<span class="token punctuation">:</span><span class="token number">31dfb10d52ce76c5ca0aa19d10b3e6424b830729e32a89a7c6eee2cda2be67a5</span>
+
+Status<span class="token punctuation">:</span> Downloaded newer image <span class="token keyword">for</span> ubuntu<span class="token punctuation">:</span>latest
+
+docker<span class="token punctuation">.</span>io<span class="token operator">/</span>library<span class="token operator">/</span>ubuntu<span class="token punctuation">:</span>latest
+
+root@iZ2ze1lioikou185atzucgZ<span class="token punctuation">:</span><span class="token operator">~</span><span class="token comment"># docker images</span>
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+
+python              <span class="token number">3</span>                   <span class="token number">28a4c88cdbbf</span>        <span class="token number">15</span> hours ago        882MB
+
+ubuntu              latest              <span class="token number">4e2eef94cd6b</span>        <span class="token number">3</span> weeks ago         <span class="token number">73.</span>9MB</code></pre></div>
 
 <p>大家可能注意到上面命令输出的最后一列， 它显示 ubuntu 这个镜像才 73.9MB ！但是大家应该都知道，安装一个 ubuntu 系统怎么也不可能就几十兆，那么 Docker 是怎么做到的呢？</p>
 <p>这是因为典型的 Linux 运行需要两个 FS: <strong>bootfs 和 rootfs</strong>，Linux 刚启动时会加载 bootfs 文件系统，之后 bootfs 会被卸载掉。对于不同的 Linux 发行版, bootfs 基本是一致的, 但 rootfs 会有差别，其包含我们熟悉的 /dev, /proc, /bin 等目录。对于 ubuntu 镜像来说，其底层直接使用 Host 的 <strong>kernel内核</strong>，自己只需要提供 rootfs 就行了。如下图所示：</p>
@@ -387,17 +448,38 @@
 <p>为了确定 ubuntu 镜像使用的是 Host 的Kernel内核，我们可以使用<strong>uname -a命令查看内核版本</strong>：</p>
 <p><img src="/blog/images/3docker-kernel.png" srcset="/img/loading.gif" lazyload></p>
 <p>说明如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">第一个组数字：4, 主版本号</span><br><span class="line">第二个组数字：15, 次版本号，当前为稳定版本</span><br><span class="line">第三个组数字：0, 修订版本号</span><br><span class="line">第四个组数字：111，当前内核版本（4.15.0）的第111次微调patch</span><br><span class="line">generic：当前内核版本为通用版本，另有表示不同含义的server（针对服务器）、i386（针对老式英特尔处理器）</span><br><span class="line">pae（Physical Address Extension）：物理地址扩展，为了弥补32位地址在PC服务器应用上的不足而推出，表示此32位系统可以支持超过4G的内存</span><br><span class="line">x86_64：采用的是64位的CPU</span><br><span class="line">SMP：对称多处理机，表示内核支持多核、多处理器</span><br><span class="line">Tue Jul 15 17:46:11 UTC 2014：内核的编译时间（build date）为 2014&#x2F;07&#x2F;15 17:46:11  </span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">第一个组数字：4, 主版本号
+第二个组数字：15, 次版本号，当前为稳定版本
+第三个组数字：0, 修订版本号
+第四个组数字：111，当前内核版本（4.15.0）的第111次微调patch
+generic：当前内核版本为通用版本，另有表示不同含义的server（针对服务器）、i386（针对老式英特尔处理器）
+pae（Physical Address Extension）：物理地址扩展，为了弥补32位地址在PC服务器应用上的不足而推出，表示此32位系统可以支持超过4G的内存
+x86_64：采用的是64位的CPU
+SMP：对称多处理机，表示内核支持多核、多处理器
+Tue Jul 15 17:46:11 UTC 2014：内核的编译时间（build date）为 2014&#x2F;07&#x2F;15 17:46:11  </code></pre></div>
 
 <p><strong>重点：</strong>如果我们在同一个 host 上下载不同 Linux 发行版镜像，如python:3和Ubuntu，可以从上图中发现其都是使用的公用 host 的 bootfs。抽象一下，如下图所示：</p>
 <p><img src="/blog/images/3docker-bootfs.png" srcset="/img/loading.gif" lazyload></p>
 <p>理解到bootfs和rootfs后，就可以解释什么是镜像分层了。</p>
 <h4 id="2-1-镜像分层"><a href="#2-1-镜像分层" class="headerlink" title="2.1 镜像分层"></a>2.1 镜像分层</h4><p>​    每个镜像都是通过 DockerFile 文本文件定义的，Dockerfile 中的每条指令最终都会成为镜像中的 Layer。Layer 是按顺序构成的，<strong>最底层的 Layer 是基础镜像（base image），最上层是最终镜像（final image）</strong>。当一个镜像被更新或重新构建时，只有更新的层需要修改，其他没有更新的层可以直接复用本地缓存。这就是 Docker 镜像如此快速和轻量级的部分原因，每一层的大小加起来等于最终镜像的大小。</p>
 <p>​    理解上面的设计之后，我们现在来解释最上面关于 Layer 这个概念。假设我们的 Dockerfile 定义如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM debian</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get -y -f install emacs</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get -y -f install apache2</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">FROM debian
+RUN apt-get update &amp;&amp; apt-get -y -f install emacs
+RUN apt-get update &amp;&amp; apt-get -y -f install apache2</code></pre></div>
 
 <p>上面一共有三条指令，如果编译这个 Dockerfile，其会生成三个镜像：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@iteblog.com ~]$ docker build -t iteblog-docker .&#x2F;</span><br><span class="line">Sending build context to Docker daemon  2.048kB</span><br><span class="line">Step 1&#x2F;3: FROM debian</span><br><span class="line">---&gt; a8797652cfd9</span><br><span class="line">Step 2&#x2F;3: RUN apt-get update &amp;&amp; apt-get -y -f install emacs</span><br><span class="line">---&gt; Using cache</span><br><span class="line">---&gt; 4b2cc711d0f1</span><br><span class="line">Step 3&#x2F;3: RUN apt-get update &amp;&amp; apt-get -y -f installapache2</span><br><span class="line">---&gt; Using cache</span><br><span class="line">---&gt; 48ec647c89a1</span><br><span class="line">Successfully built 48ec647c89a1</span><br><span class="line">Successfully tagged iteblog-docker:latest</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">[root@iteblog.com ~]$ docker build -t iteblog-docker .&#x2F;
+Sending build context to Docker daemon  2.048kB
+Step 1&#x2F;3: FROM debian
+---&gt; a8797652cfd9
+Step 2&#x2F;3: RUN apt-get update &amp;&amp; apt-get -y -f install emacs
+---&gt; Using cache
+---&gt; 4b2cc711d0f1
+Step 3&#x2F;3: RUN apt-get update &amp;&amp; apt-get -y -f installapache2
+---&gt; Using cache
+---&gt; 48ec647c89a1
+Successfully built 48ec647c89a1
+Successfully tagged iteblog-docker:latest</code></pre></div>
 
 <p>如果用图片表示的话，这个过程如下：</p>
 <p><img src="/blog/images/3docker-%E9%95%9C%E5%83%8F%E5%88%86%E5%B1%82.png" srcset="/img/loading.gif" lazyload></p>
@@ -440,9 +522,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+                      <a href="/2020/06/03/1.Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker 架构</span>
+                        <span class="hidden-mobile">Docker 技术原理</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -450,8 +532,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
-                        <span class="hidden-mobile">Docker File</span>
+                      <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">Docker 容器操作</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

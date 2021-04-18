@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/java1.jpg') no-repeat center center;
+         style="background: url('/img/bg.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：2 minutes ago
                 
               </p>
             
@@ -268,17 +268,42 @@
               <h3 id="一、-etc-fstab文件的作用"><a href="#一、-etc-fstab文件的作用" class="headerlink" title="一、/etc/fstab文件的作用"></a>一、/etc/fstab文件的作用</h3><p>　　磁盘被手动挂载之后都必须把挂载信息写入/etc/fstab这个文件中，否则下次开机启动时仍然需要重新挂载。<br>　　系统开机时会主动读取/etc/fstab这个文件中的内容，根据文件里面的配置挂载磁盘。这样我们只需要将磁盘的挂载信息写入这个文件中我们就不需要每次开机启动之后手动进行挂载了。</p>
 <h3 id="二、挂载的限制"><a href="#二、挂载的限制" class="headerlink" title="二、挂载的限制"></a>二、挂载的限制</h3><p>　　在说明这个文件的作用之前我想先强调一下挂载的限制。<br>　　1. 根目录是必须挂载的，而且一定要先于其他mount point被挂载。因为mount是所有目录的跟目录，其他木有都是由根目录 /衍生出来的。<br>　　2. 挂载点必须是已经存在的目录。<br>　　3. 挂载点的指定可以任意，但必须遵守必要的系统目录架构原则<br>　　4. 所有挂载点在同一时间只能被挂载一次<br>　　5. 所有分区在同一时间只能挂在一次<br>　　6. 若进行卸载，必须将工作目录退出挂载点（及其子目录）之外。</p>
 <h3 id="三、-etc-fstab文件中的参数"><a href="#三、-etc-fstab文件中的参数" class="headerlink" title="三、/etc/fstab文件中的参数"></a>三、/etc/fstab文件中的参数</h3><p>　　查看/etc/fstab文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/fstab </span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># cat /etc/fstab </span></code></pre></div>
 
 <p>　　这是我的linux环境中/etc/fstab文件中的内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/fstab: static file system information.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Use &#x27;blkid&#x27; to print the universally unique identifier for a</span></span><br><span class="line"><span class="comment"># device; this may be used with UUID= as a more robust way to name devices</span></span><br><span class="line"><span class="comment"># that works even if disks are added and removed. See fstab(5).</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span></span><br><span class="line"><span class="comment"># / was on /dev/sda1 during installation</span></span><br><span class="line">UUID=2095f3a3-960c-466d-92fe-3f3be1dc0fd3 /               ext4    errors=remount-ro 0       1</span><br><span class="line"><span class="comment"># swap was on /dev/sda5 during installation</span></span><br><span class="line">UUID=3d0e5364-4082-4644-92a9-6d4afa28d143 none            swap    sw              0       0</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># /etc/fstab: static file system information.</span>
+<span class="token comment">#</span>
+<span class="token comment"># Use 'blkid' to print the universally unique identifier for a</span>
+<span class="token comment"># device; this may be used with UUID= as a more robust way to name devices</span>
+<span class="token comment"># that works even if disks are added and removed. See fstab(5).</span>
+<span class="token comment">#</span>
+<span class="token comment"># &lt;file system> &lt;mount point>   &lt;type>  &lt;options>       &lt;dump>  &lt;pass></span>
+<span class="token comment"># / was on /dev/sda1 during installation</span>
+<span class="token assign-left variable">UUID</span><span class="token operator">=</span>2095f3a3-960c-466d-92fe-3f3be1dc0fd3 /               ext4    <span class="token assign-left variable">errors</span><span class="token operator">=</span>remount-ro <span class="token number">0</span>       <span class="token number">1</span>
+<span class="token comment"># swap was on /dev/sda5 during installation</span>
+<span class="token assign-left variable">UUID</span><span class="token operator">=</span>3d0e5364-4082-4644-92a9-6d4afa28d143 none            swap    sw              <span class="token number">0</span>       <span class="token number">0</span></code></pre></div>
 
 <p>　　在文件中我已经把每一列都做出来表示方便识别，我们可以看到一共有六列。</p>
 <h5 id="第一列：Device：磁盘设备文件或者该设备的Label或者UUID"><a href="#第一列：Device：磁盘设备文件或者该设备的Label或者UUID" class="headerlink" title="第一列：Device：磁盘设备文件或者该设备的Label或者UUID"></a>第一列：Device：磁盘设备文件或者该设备的Label或者UUID</h5><p>　　1）查看分区的label和uuid<br>　　Label就是分区的标签，在最初安装系统时填写的挂载点就是标签的名字。可以通过查看一个分区的superblock中的信息找到UUID和Label name。<br>　　例如:我们要查看/dev/sda1这个设备的uuid和label name</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dumpe2fs -h /dev/sda11</span></span><br><span class="line">dumpe2fs 1.42.13 (17-May-2015)</span><br><span class="line">Filesystem volume name:   &lt;none&gt;  //Label name</span><br><span class="line">Last mounted on:          /</span><br><span class="line">Filesystem UUID:          2095f3a3-960c-466d-92fe-3f3be1dc0fd3 //UUID</span><br><span class="line">Filesystem magic number:  0xEF53</span><br><span class="line">Filesystem revision <span class="comment">#:    1 (dynamic)</span></span><br><span class="line">Filesystem features:      has_journal ext_attr resize_inode dir_index filetype needs_recovery extent flex_bg sparse_super large_file huge_file uninit_bg dir_nlink extra_isize</span><br><span class="line">Filesystem flags:         signed_directory_hash </span><br><span class="line">Default mount options:    user_xattr acl</span><br><span class="line">Filesystem state:         clean</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># dumpe2fs -h /dev/sda11</span>
+dumpe2fs <span class="token number">1.42</span>.13 <span class="token punctuation">(</span><span class="token number">17</span>-May-2015<span class="token punctuation">)</span>
+Filesystem volume name:   <span class="token operator">&lt;</span>none<span class="token operator">></span>  //Label name
+Last mounted on:          /
+Filesystem UUID:          2095f3a3-960c-466d-92fe-3f3be1dc0fd3 //UUID
+Filesystem magic number:  0xEF53
+Filesystem revision <span class="token comment">#:    1 (dynamic)</span>
+Filesystem features:      has_journal ext_attr resize_inode dir_index filetype needs_recovery extent flex_bg sparse_super large_file huge_file uninit_bg dir_nlink extra_isize
+Filesystem flags:         signed_directory_hash 
+Default <span class="token function">mount</span> options:    user_xattr acl
+Filesystem state:         clean
+<span class="token punctuation">..</span>.</code></pre></div>
 
 <p>　　简单点的方式我们可以通过命令blkid来查看</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># blkid</span></span><br><span class="line">/dev/sda1: UUID=<span class="string">&quot;2095f3a3-960c-466d-92fe-3f3be1dc0fd3&quot;</span> TYPE=<span class="string">&quot;ext4&quot;</span> PARTUUID=<span class="string">&quot;8c98aa8e-01&quot;</span></span><br><span class="line">/dev/sda5: UUID=<span class="string">&quot;3d0e5364-4082-4644-92a9-6d4afa28d143&quot;</span> TYPE=<span class="string">&quot;swap&quot;</span> PARTUUID=<span class="string">&quot;8c98aa8e-05&quot;</span></span><br><span class="line">/dev/sdb1: UUID=<span class="string">&quot;a37f9605-44ee-4fbd-9943-69fd47928f87&quot;</span> TYPE=<span class="string">&quot;ext4&quot;</span> PARTUUID=<span class="string">&quot;d86506b9-01&quot;</span></span><br><span class="line">/dev/sdc1: UUID=<span class="string">&quot;00dbb3ac-c544-402b-98e1-f15d93a7bb53&quot;</span> TYPE=<span class="string">&quot;ext4&quot;</span> PARTUUID=<span class="string">&quot;79e762ca-01&quot;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># blkid</span>
+/dev/sda1: <span class="token assign-left variable">UUID</span><span class="token operator">=</span><span class="token string">"2095f3a3-960c-466d-92fe-3f3be1dc0fd3"</span> <span class="token assign-left variable">TYPE</span><span class="token operator">=</span><span class="token string">"ext4"</span> <span class="token assign-left variable">PARTUUID</span><span class="token operator">=</span><span class="token string">"8c98aa8e-01"</span>
+/dev/sda5: <span class="token assign-left variable">UUID</span><span class="token operator">=</span><span class="token string">"3d0e5364-4082-4644-92a9-6d4afa28d143"</span> <span class="token assign-left variable">TYPE</span><span class="token operator">=</span><span class="token string">"swap"</span> <span class="token assign-left variable">PARTUUID</span><span class="token operator">=</span><span class="token string">"8c98aa8e-05"</span>
+/dev/sdb1: <span class="token assign-left variable">UUID</span><span class="token operator">=</span><span class="token string">"a37f9605-44ee-4fbd-9943-69fd47928f87"</span> <span class="token assign-left variable">TYPE</span><span class="token operator">=</span><span class="token string">"ext4"</span> <span class="token assign-left variable">PARTUUID</span><span class="token operator">=</span><span class="token string">"d86506b9-01"</span>
+/dev/sdc1: <span class="token assign-left variable">UUID</span><span class="token operator">=</span><span class="token string">"00dbb3ac-c544-402b-98e1-f15d93a7bb53"</span> <span class="token assign-left variable">TYPE</span><span class="token operator">=</span><span class="token string">"ext4"</span> <span class="token assign-left variable">PARTUUID</span><span class="token operator">=</span><span class="token string">"79e762ca-01"</span></code></pre></div>
 
 <p>　　2）使用设备名和label及uuid作为标识的不同<br>　　<strong>使用设备名称（/dev/sda)来挂载分区时是被固定死的，一旦磁盘的插槽顺序发生了变化，就会出现名称不对应的问题。因为这个名称是会改变的。</strong><br>　　<strong>不过使用label挂载就不用担心插槽顺序方面的问题。不过要随时注意你的Label name。至于UUID，每个分区被格式化以后都会有一个UUID作为唯一的标识号。使用uuid挂载的话就不用担心会发生错乱的问题了。</strong></p>
 <h5 id="第二列：Mount-point：设备的挂载点，就是你要挂载到哪个目录下。"><a href="#第二列：Mount-point：设备的挂载点，就是你要挂载到哪个目录下。" class="headerlink" title="第二列：Mount point：设备的挂载点，就是你要挂载到哪个目录下。"></a>第二列：Mount point：设备的挂载点，就是你要挂载到哪个目录下。</h5><h5 id="第三列：filesystem：磁盘文件系统的格式，包括ext2、ext3、reiserfs、nfs、vfat等"><a href="#第三列：filesystem：磁盘文件系统的格式，包括ext2、ext3、reiserfs、nfs、vfat等" class="headerlink" title="第三列：filesystem：磁盘文件系统的格式，包括ext2、ext3、reiserfs、nfs、vfat等"></a>第三列：filesystem：磁盘文件系统的格式，包括ext2、ext3、reiserfs、nfs、vfat等</h5><h5 id="第四列：parameters：文件系统的参数"><a href="#第四列：parameters：文件系统的参数" class="headerlink" title="第四列：parameters：文件系统的参数"></a>第四列：parameters：文件系统的参数</h5><table>

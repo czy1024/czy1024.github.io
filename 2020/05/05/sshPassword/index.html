@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/java1.jpg') no-repeat center center;
+         style="background: url('/img/bg.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,14 +260,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：a minute ago
                 
               </p>
             
             <div class="markdown-body">
               <h1 id="1、环境说明"><a href="#1、环境说明" class="headerlink" title="1、环境说明"></a>1、环境说明</h1><p>环境就不进行说明了，比较三次配置，一个配过九台，每每情况各有不同。只能告知各位读者，博主这里使用的是red hat红帽，估计centOS也差不太多，不过有差异也无妨，学会博主方法，相信你就不会蒙蔽了，知道怎么往对的方向走了</p>
 <h1 id="2、场景说明"><a href="#2、场景说明" class="headerlink" title="2、场景说明"></a>2、场景说明</h1><p>要求node1免密登录到node2，这里任选了一个用户，也即是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop<span class="meta">@node1</span> .ssh]$ ssh node2</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>hadoop<span class="token annotation punctuation">@node1 .ssh</span><span class="token punctuation">]</span>$ ssh node2</code></pre></div>
 
 <h1 id="3、ssh登录原理过程"><a href="#3、ssh登录原理过程" class="headerlink" title="3、ssh登录原理过程"></a>3、ssh登录原理过程</h1><p><img src="/blog/img/ssh/ssh-2.png" srcset="/img/loading.gif" lazyload alt="/blog/img/ssh/ssh-2.png"></p>
 <p>这里看不懂也没关系，楼主详解一番：</p>
@@ -296,25 +296,25 @@
 <p>简单说明：</p>
 <p>​       上面做了原理说明，简单来说：就是node1想要连接node2免密登录node2，需要把node1的id_rsa.pub文件内容写进node2的authorized_keys里面。就大功告成了</p>
 <h1 id="4、最简单配置"><a href="#4、最简单配置" class="headerlink" title="4、最简单配置"></a>4、最简单配置</h1><h2 id="4-1、生成公钥以及密钥："><a href="#4-1、生成公钥以及密钥：" class="headerlink" title="4.1、生成公钥以及密钥："></a>4.1、生成公钥以及密钥：</h2><p>在node1上：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop<span class="meta">@node1</span> ~]$ ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>hadoop<span class="token annotation punctuation">@node1</span> <span class="token operator">~</span><span class="token punctuation">]</span>$ ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>t rsa</code></pre></div>
 
 <p>一路回车。</p>
 <p>若是不想回车，可在上面代码末尾加上，-P “”</p>
 <h2 id="4-2、处理"><a href="#4-2、处理" class="headerlink" title="4.2、处理"></a>4.2、处理</h2><p>方法一：</p>
 <h2 id="将node1的公钥拷贝到node2"><a href="#将node1的公钥拷贝到node2" class="headerlink" title="将node1的公钥拷贝到node2"></a>将node1的公钥拷贝到node2</h2><p>node1上(小心别把node2的id_rsa.pub覆盖掉)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop<span class="meta">@node1</span> .ssh]$ scp -p id_rsa.pub hadoop<span class="meta">@node2</span>:~/.ssh/id_rsa.pub1</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>hadoop<span class="token annotation punctuation">@node1 .ssh</span><span class="token punctuation">]</span>$ scp <span class="token operator">-</span>p id_rsa<span class="token punctuation">.</span>pub hadoop<span class="token annotation punctuation">@node2</span><span class="token operator">:</span><span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>id_rsa<span class="token punctuation">.</span>pub1</code></pre></div>
 
 <h2 id="然后，node2将公钥加入自身认证"><a href="#然后，node2将公钥加入自身认证" class="headerlink" title="然后，node2将公钥加入自身认证"></a>然后，node2将公钥加入自身认证</h2><p>在node2上：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop<span class="meta">@node1</span>.ssh]$ cat id_rsa.pub1 &gt; authorized_key</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>hadoop<span class="token annotation punctuation">@node1.ssh</span><span class="token punctuation">]</span>$ cat id_rsa<span class="token punctuation">.</span>pub1 <span class="token operator">></span> authorized_key</code></pre></div>
 
 <p>验证查看文件authorized_key中是否有id_rsa.pub1文件的内容</p>
 <p>方法二：</p>
-<h2 id="直接把自己密钥拷贝到需要免密的机器上："><a href="#直接把自己密钥拷贝到需要免密的机器上：" class="headerlink" title="直接把自己密钥拷贝到需要免密的机器上："></a>直接把自己密钥拷贝到需要免密的机器上：</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~<span class="regexp">/.ssh/i</span>d_rsa.pub 用户名<span class="meta">@ip</span></span><br></pre></td></tr></table></figure>
+<h2 id="直接把自己密钥拷贝到需要免密的机器上："><a href="#直接把自己密钥拷贝到需要免密的机器上：" class="headerlink" title="直接把自己密钥拷贝到需要免密的机器上："></a>直接把自己密钥拷贝到需要免密的机器上：</h2><div class="code-wrapper"><pre class="language-typescript" data-language="typescript"><code class="language-typescript">ssh<span class="token operator">-</span>copy<span class="token operator">-</span>id <span class="token operator">-</span>i <span class="token operator">~</span><span class="token operator">/</span><span class="token punctuation">.</span>ssh<span class="token operator">/</span>id_rsa<span class="token punctuation">.</span>pub 用户名@ip</code></pre></div>
 
 <p> 将密钥文件直接拷贝到指定用户名、ip。输入密码后，下次你当前用户执行ssh到刚刚指定的用户名ip就不用再输入密码了。</p>
 <p>方法二较方法一方便很多</p>
 <h2 id="4-4、验证：node1连接node2"><a href="#4-4、验证：node1连接node2" class="headerlink" title="4.4、验证：node1连接node2"></a>4.4、验证：node1连接node2</h2><p>在node1上：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hadoop<span class="meta">@node1</span> .ssh]$ ssh hadoop<span class="meta">@node2</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token punctuation">[</span>hadoop<span class="token annotation punctuation">@node1 .ssh</span><span class="token punctuation">]</span>$ ssh hadoop<span class="token annotation punctuation">@node2</span></code></pre></div>
 
 <p>楼主这里没有截图，不用输入密码发现主机名变了即为成功</p>
 <h1 id="5、调试及常规报错解决"><a href="#5、调试及常规报错解决" class="headerlink" title="5、调试及常规报错解决"></a>5、调试及常规报错解决</h1><h2 id="5-1、说明"><a href="#5-1、说明" class="headerlink" title="5.1、说明"></a>5.1、说明</h2><p>   系统日志：/var/log/secure，是个不知道干什么用的日志。ssh连接失败的报错，在这里记录</p>

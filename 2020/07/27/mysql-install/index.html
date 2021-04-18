@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/Pikachu.jpg') no-repeat center center;
+         style="background: url('/img/Pikachu.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      515 字
+      516 字
     </span>
   
 
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：a minute ago
                 
               </p>
             
@@ -299,7 +299,10 @@
 <h2 id="7-配置编码为UTF-8"><a href="#7-配置编码为UTF-8" class="headerlink" title="7.配置编码为UTF-8"></a>7.配置编码为UTF-8</h2><p>7.1创建.txt文件，改名为my.ini</p>
 <p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531153816274-47071108.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>将以下代码添加到my.ini</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">character-set-server&#x3D;utf8</span><br><span class="line">[mysql]</span><br><span class="line">default-character-set&#x3D;utf8</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">[mysqld]
+character-set-server&#x3D;utf8
+[mysql]
+default-character-set&#x3D;utf8</code></pre></div>
 
 <p> 如图：</p>
 <p><img src="https://images2015.cnblogs.com/blog/1082630/201706/1082630-20170602093831883-1704012524.png" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -310,7 +313,17 @@
 <p> 7.2.3查看编码命令：<code>show variables ``like &#39;``character``%&#39;;（修改后）</code></p>
 <p> <img src="https://images2015.cnblogs.com/blog/1082630/201706/1082630-20170602094015118-857002467.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <h2 id="8-修改密码"><a href="#8-修改密码" class="headerlink" title="8.修改密码"></a>8.修改密码</h2><p>在mysql 中逐步输入以下的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;密码为123456</span><br><span class="line">update user set authentication_string&#x3D;PASSWORD(&quot;123456&quot;) where user&#x3D;&quot;root&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;更新权限</span><br><span class="line">flush privileges; </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;退出mysql</span><br><span class="line">quit;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">use mysql;
+
+&#x2F;&#x2F;密码为123456
+update user set authentication_string&#x3D;PASSWORD(&quot;123456&quot;) where user&#x3D;&quot;root&quot;;
+
+
+&#x2F;&#x2F;更新权限
+flush privileges; 
+
+&#x2F;&#x2F;退出mysql
+quit;</code></pre></div>
 
 
 

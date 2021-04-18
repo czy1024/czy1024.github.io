@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -316,10 +316,12 @@
 <p>这三个组件可以限制一个容器对主机的内核或其他资源的访问控制。目前，容器报告的一些安全漏洞中，很多都是通过对内核进行加强访问和隔离来实现的。</p>
 <p><strong>5) 资源限制</strong></p>
 <p>​    在生产环境中，建议每个容器都添加相应的资源限制。下面给出一些执行docker run命令启动容器时可以传递的资源限制参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--cpus                          限制 CPU 配额</span><br><span class="line">-m, --memory                    限制内存配额</span><br><span class="line">--pids-limit                    限制容器的 PID 个数</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">--cpus                          限制 CPU 配额
+-m, --memory                    限制内存配额
+--pids-limit                    限制容器的 PID 个数</code></pre></div>
 
 <p>例如我想要启动一个 1 核 2G 的容器，并且限制在容器内最多只能创建 1000 个 PID，启动命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --cpus&#x3D;1 -m&#x3D;2048m --pids-limit&#x3D;1000 busybox &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker run -it --cpus&#x3D;1 -m&#x3D;2048m --pids-limit&#x3D;1000 busybox &#x2F;bin&#x2F;bash</code></pre></div>
 
 <p>推荐在生产环境中限制 CPU、内存、PID 等资源，这样即便应用程序有漏洞，也不会导致主机的资源完全耗尽，最大限度降低安全风险。</p>
 <p><strong>6) 使用安全容器</strong></p>
@@ -360,9 +362,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
+                      <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker File</span>
+                        <span class="hidden-mobile">Docker 架构</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     

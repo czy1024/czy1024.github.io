@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/java1.jpg') no-repeat center center;
+         style="background: url('/img/bg.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,13 +260,18 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：a minute ago
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="JAVA常用工具类"><a href="#JAVA常用工具类" class="headerlink" title="JAVA常用工具类"></a>JAVA常用工具类</h2><p>目录<br>- 第一部分：常用的16个工具类<br>- 第二部分：常用的测试库（链接及用法）<br>- 第三部分：java开发常用工具类（正则校验）</p>
-<h4 id="第一部分：常用的16个工具类"><a href="#第一部分：常用的16个工具类" class="headerlink" title="第一部分：常用的16个工具类"></a>第一部分：常用的16个工具类</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">https://mvnrepository.com/artifact/org.apache.commons/org.apache.commons.lang --&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>org.apache.commons.lang<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="第一部分：常用的16个工具类"><a href="#第一部分：常用的16个工具类" class="headerlink" title="第一部分：常用的16个工具类"></a>第一部分：常用的16个工具类</h4><div class="code-wrapper"><pre class="language-xml" data-language="xml"><code class="language-xml">https://mvnrepository.com/artifact/org.apache.commons/org.apache.commons.lang -->
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.commons<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>org.apache.commons.lang<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.4.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre></div>
 
 <h5 id="一、org-apache-commons-io-IOUtils"><a href="#一、org-apache-commons-io-IOUtils" class="headerlink" title="一、org.apache.commons.io.IOUtils"></a>一、org.apache.commons.io.IOUtils</h5><p>1、closeQuietly 关闭一个IO流、socket、或者selector且不抛出异常。通常放在finally块。</p>
 <p>2、toString 转换IO流、Uri、byte[]为String。</p>

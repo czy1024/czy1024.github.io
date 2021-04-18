@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      383 字
+      381 字
     </span>
   
 
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -268,9 +268,42 @@
               <h1 id="systemctl配置管理文件详解"><a href="#systemctl配置管理文件详解" class="headerlink" title="systemctl配置管理文件详解"></a>systemctl配置管理文件详解</h1><ul>
 <li>文件存放位置：（共三处）<br>/etc/systemd/system/<br>/usr/lib/systemd/system<br>/lib/systemd/system</li>
 </ul>
-<h2 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$cat</span> sshd.service</span><br><span class="line">    [Unit]</span><br><span class="line">    Description=OpenSSH server daemon</span><br><span class="line">    Documentation=man:sshd(8) man:sshd_config(5)</span><br><span class="line">    After=network.target sshd-keygen.service</span><br><span class="line">    Wants=sshd-keygen.service</span><br><span class="line">    [Service]</span><br><span class="line">    Type=forking</span><br><span class="line">    PIDFile=/var/run/sshd.pid</span><br><span class="line">    EnvironmentFile=/etc/sysconfig/sshd</span><br><span class="line">    ExecStart=/usr/sbin/sshd <span class="variable">$OPTIONS</span></span><br><span class="line">    ExecReload=/bin/<span class="built_in">kill</span> -HUP <span class="variable">$MAINPID</span></span><br><span class="line">    KillMode=process</span><br><span class="line">    Restart=on-failure</span><br><span class="line">    RestartSec=42s</span><br><span class="line">    [Install]</span><br><span class="line">    WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$cat</span> sshd.service
+    <span class="token punctuation">[</span>Unit<span class="token punctuation">]</span>
+    <span class="token assign-left variable">Description</span><span class="token operator">=</span>OpenSSH server daemon
+    <span class="token assign-left variable">Documentation</span><span class="token operator">=</span>man:sshd<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> man:sshd_config<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token assign-left variable">After</span><span class="token operator">=</span>network.target sshd-keygen.service
+    <span class="token assign-left variable">Wants</span><span class="token operator">=</span>sshd-keygen.service
+    <span class="token punctuation">[</span>Service<span class="token punctuation">]</span>
+    <span class="token assign-left variable">Type</span><span class="token operator">=</span>forking
+    <span class="token assign-left variable">PIDFile</span><span class="token operator">=</span>/var/run/sshd.pid
+    <span class="token assign-left variable">EnvironmentFile</span><span class="token operator">=</span>/etc/sysconfig/sshd
+    <span class="token assign-left variable">ExecStart</span><span class="token operator">=</span>/usr/sbin/sshd <span class="token variable">$OPTIONS</span>
+    <span class="token assign-left variable">ExecReload</span><span class="token operator">=</span>/bin/kill -HUP <span class="token variable">$MAINPID</span>
+    <span class="token assign-left variable">KillMode</span><span class="token operator">=</span>process
+    <span class="token assign-left variable">Restart</span><span class="token operator">=</span>on-failure
+    <span class="token assign-left variable">RestartSec</span><span class="token operator">=</span>42s
+    <span class="token punctuation">[</span>Install<span class="token punctuation">]</span>
+    <span class="token assign-left variable">WantedBy</span><span class="token operator">=</span>multi-user.target
+</code></pre></div>
 
-<h2 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[Unit] 区块：启动顺序与依赖关系。</span><br><span class="line">Description：当前配置文件的描述信息。</span><br><span class="line">Documentation：帮助信息。</span><br><span class="line">After：表示当前服务是在那个服务后面启动，一般定义为网络服务启动后启动</span><br><span class="line">Wants：表示sshd.service与sshd-keygen.service之间存在”弱依赖”关系，即如果”sshd-keygen.service”启动失败或停止运行，不影响sshd.service继续执行。</span><br><span class="line">[Service] 区块：启动行为</span><br><span class="line">Type：定义启动类型。</span><br><span class="line">PIDFile：服务的pid文件路径。</span><br><span class="line">EnvironmentFile：指定当前服务依赖的环境参数文件。</span><br><span class="line">ExecStart：定义启动进程时执行的命令。</span><br><span class="line">ExecReload：重启服务时执行的命令</span><br><span class="line">KillMode：定义 Systemd 如何停止 sshd 服务。</span><br><span class="line">Restart：定义了 sshd 退出后，Systemd 的重启方式。</span><br><span class="line">RestartSec：表示Systemd重启服务之前，需要等待的秒数。上面的例子设为等待42秒。</span><br><span class="line">[Install] 区块：定义如何安装这个配置文件，即怎样做到开机启动。</span><br><span class="line">WantedBy：表示该服务所在的 Target。multi-user.target表明当系统以多用户方式（默认的运行级别）启动时，这个服务需要被自动运行。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>Unit<span class="token punctuation">]</span> 区块：启动顺序与依赖关系。
+Description：当前配置文件的描述信息。
+Documentation：帮助信息。
+After：表示当前服务是在那个服务后面启动，一般定义为网络服务启动后启动
+Wants：表示sshd.service与sshd-keygen.service之间存在”弱依赖”关系，即如果”sshd-keygen.service”启动失败或停止运行，不影响sshd.service继续执行。
+<span class="token punctuation">[</span>Service<span class="token punctuation">]</span> 区块：启动行为
+Type：定义启动类型。
+PIDFile：服务的pid文件路径。
+EnvironmentFile：指定当前服务依赖的环境参数文件。
+ExecStart：定义启动进程时执行的命令。
+ExecReload：重启服务时执行的命令
+KillMode：定义 Systemd 如何停止 sshd 服务。
+Restart：定义了 sshd 退出后，Systemd 的重启方式。
+RestartSec：表示Systemd重启服务之前，需要等待的秒数。上面的例子设为等待42秒。
+<span class="token punctuation">[</span>Install<span class="token punctuation">]</span> 区块：定义如何安装这个配置文件，即怎样做到开机启动。
+WantedBy：表示该服务所在的 Target。multi-user.target表明当系统以多用户方式（默认的运行级别）启动时，这个服务需要被自动运行。
+</code></pre></div>
 
 
             </div>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/frp.jpg') no-repeat center center;
+         style="background: url('/img/frp.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：3 minutes ago
                 
               </p>
             
@@ -292,7 +292,14 @@
 <li>frpc.ini</li>
 </ul>
 <p>前两个文件（s结尾代表server）分别是服务端程序和服务端配置文件，后两个文件（c结尾代表client）分别是客户端程序和客户端配置文件。<br>因为我们正在配置服务端，可以删除客户端的两个文件<br><code>rm frpc</code><br><code>rm frpc.ini</code><br>然后修改frps.ini文件<br><code>vim frps.ini</code><br>这个文件应有如下格式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 7000</span><br><span class="line">dashboard_port &#x3D; 7500</span><br><span class="line">token &#x3D; 12345678</span><br><span class="line">dashboard_user &#x3D; admin</span><br><span class="line">dashboard_pwd &#x3D; admin</span><br><span class="line">vhost_http_port &#x3D; 10080</span><br><span class="line">vhost_https_port &#x3D; 10443</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">[common]
+bind_port &#x3D; 7000
+dashboard_port &#x3D; 7500
+token &#x3D; 12345678
+dashboard_user &#x3D; admin
+dashboard_pwd &#x3D; admin
+vhost_http_port &#x3D; 10080
+vhost_https_port &#x3D; 10443</code></pre></div>
 
 <blockquote>
 <p>如果没有必要，端口均可使用默认值，token、user和password项请自行设置。</p>
@@ -305,7 +312,11 @@
 <li>“vhost_http_port”和“vhost_https_port”用于反向代理HTTP主机时使用，本文不涉及HTTP协议，因而照抄或者删除这两条均可。</li>
 </ul>
 <p>编辑完成后保存（vim保存如果不会请自行搜索）。<br>之后我们就可以运行frps的服务端了<br><code>./frps -c frps.ini</code><br>如果看到屏幕输出这样一段内容，即表示运行正常，如果出现错误提示，请检查上面的步骤。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:130] frps tcp listen on 0.0.0.0:7000</span><br><span class="line">2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:172] http service listen on 0.0.0.0:10080</span><br><span class="line">2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:193] https service listen on 0.0.0.0:10443</span><br><span class="line">2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:216] Dashboard listen on 0.0.0.0:7500</span><br><span class="line">2019&#x2F;01&#x2F;12 15:22:39 [I] [root.go:210] Start frps success</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:130] frps tcp listen on 0.0.0.0:7000
+2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:172] http service listen on 0.0.0.0:10080
+2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:193] https service listen on 0.0.0.0:10443
+2019&#x2F;01&#x2F;12 15:22:39 [I] [service.go:216] Dashboard listen on 0.0.0.0:7500
+2019&#x2F;01&#x2F;12 15:22:39 [I] [root.go:210] Start frps success</code></pre></div>
 
 <p>此时访问 x.x.x.x:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面</p>
 <p><img src="https://s2.ax1x.com/2019/01/12/FjUf76.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" srcset="/img/loading.gif" lazyload alt="frp服务端仪表板界面">frp服务端仪表板界面</p>
@@ -314,17 +325,30 @@
 <p>nohup后台程序管理或关闭相关命令可自行查询资料，上面这个连接中也有所提及。</p>
 </blockquote>
 <p><code>nohup ./frps -c frps.ini &amp;</code><br>输出如下内容即表示正常运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup: ignoring input and appending output to &#39;nohup.out&#39;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">nohup: ignoring input and appending output to &#39;nohup.out&#39;</code></pre></div>
 
 <p>此时可先使用Ctrl+C关闭nohup，frps依然会在后台运行，使用jobs命令查看后台运行的程序<br><code>jobs</code><br>在结果中我们可以看到frps正在后台正常运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1]+  Running                 nohup .&#x2F;frps -c frps.ini &amp;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">[1]+  Running                 nohup .&#x2F;frps -c frps.ini &amp;</code></pre></div>
 
 <p>此时访问 x.x.x.x:7500 依然可以打开仪表板界面，至此，服务端即设置完成，你可以关闭SSH窗口了。</p>
 <h2 id="客户端设置"><a href="#客户端设置" class="headerlink" title="客户端设置"></a>客户端设置</h2><blockquote>
 <p>frp的客户端就是我们想要真正进行访问的那台设备，大多数情况下应该会是一台Windows主机，因而本文使用Windows主机做例子；Linux配置方法类似，不再赘述。</p>
 </blockquote>
 <p>同样地，根据客户端设备的情况选择相应的frp程序进行<a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases">下载</a>，Windows下下载和解压等步骤不再描述。<br>假定你下载了“frp_0.22.0_windows_amd64.zip”，将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。<br>用文本编辑器打开frpc.ini，与服务端类似，内容如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; x.x.x.x</span><br><span class="line">server_port &#x3D; 7000</span><br><span class="line">token &#x3D; won517574356</span><br><span class="line">[rdp]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1           </span><br><span class="line">local_port &#x3D; 3389</span><br><span class="line">remote_port &#x3D; 7001  </span><br><span class="line">[smb]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 445</span><br><span class="line">remote_port &#x3D; 7002</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">[common]
+server_addr &#x3D; x.x.x.x
+server_port &#x3D; 7000
+token &#x3D; won517574356
+[rdp]
+type &#x3D; tcp
+local_ip &#x3D; 127.0.0.1           
+local_port &#x3D; 3389
+remote_port &#x3D; 7001  
+[smb]
+type &#x3D; tcp
+local_ip &#x3D; 127.0.0.1
+local_port &#x3D; 445
+remote_port &#x3D; 7002</code></pre></div>
 
 <p>其中common字段下的三项即为服务端的设置。</p>
 <ul>
@@ -350,11 +374,21 @@
 <p>frpc程序不能直接双击运行！</p>
 </blockquote>
 <p>使用命令提示符或Powershell进入该目录下<br><code>cd C:\frp</code><br>并执行<br><code>./frpc -c frpc.ini</code><br>运行frpc程序，窗口中输出如下内容表示运行正常。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019&#x2F;01&#x2F;12 16:14:56 [I] [service.go:205] login to server success, get run id [2b65b4e58a5917ac], server udp port [0]</span><br><span class="line">2019&#x2F;01&#x2F;12 16:14:56 [I] [proxy_manager.go:136] [2b65b4e58a5917ac] proxy added: [rdp smb]</span><br><span class="line">2019&#x2F;01&#x2F;12 16:14:56 [I] [control.go:143] [smb] start proxy success</span><br><span class="line">2019&#x2F;01&#x2F;12 16:14:56 [I] [control.go:143] [rdp] start proxy success</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">2019&#x2F;01&#x2F;12 16:14:56 [I] [service.go:205] login to server success, get run id [2b65b4e58a5917ac], server udp port [0]
+2019&#x2F;01&#x2F;12 16:14:56 [I] [proxy_manager.go:136] [2b65b4e58a5917ac] proxy added: [rdp smb]
+2019&#x2F;01&#x2F;12 16:14:56 [I] [control.go:143] [smb] start proxy success
+2019&#x2F;01&#x2F;12 16:14:56 [I] [control.go:143] [rdp] start proxy success</code></pre></div>
 
 <p>不要关闭命令行窗口，此时可以在局域网外使用相应程序访问 x.x.x.x:xxxx （IP为VPS的IP，端口为自定义的remote_port）即可访问到相应服务。</p>
 <h2 id="客户端后台运行及开机自启"><a href="#客户端后台运行及开机自启" class="headerlink" title="客户端后台运行及开机自启"></a>客户端后台运行及开机自启</h2><p>frpc运行时始终有一个命令行窗口运行在前台，影响美观，我们可以使用一个批处理文件来将其运行在后台，而且可以双击执行，每次打开frpc不用再自己输命令了。<br>在任何一个目录下新建一个文本文件并将其重命名为“frpc.bat”，编辑，粘贴如下内容并保存。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">if &quot;%1&quot; &#x3D;&#x3D; &quot;h&quot; goto begin</span><br><span class="line">mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit</span><br><span class="line">:begin</span><br><span class="line">REM</span><br><span class="line">cd C:\frp</span><br><span class="line">frpc -c frpc.ini</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">@echo off
+if &quot;%1&quot; &#x3D;&#x3D; &quot;h&quot; goto begin
+mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit
+:begin
+REM
+cd C:\frp
+frpc -c frpc.ini
+exit</code></pre></div>
 
 <blockquote>
 <p>将cd后的路径更改为你的frpc实际存放的目录。</p>

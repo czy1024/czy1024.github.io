@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,10 @@
           SpringBoot + LogBack 配置
 首先可使用Spring 默认依赖,其他maven项目可引入
 
-12345678&lt;!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic --&gt;&lt;dependency&gt;    &lt;groupId&gt;ch.qos.logback&lt;/g
+&lt;!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+&lt;dependency>
+    &lt;groupId>ch.qos.logback&lt;/groupId>
+    &lt
         </a>
       </p>
 
@@ -387,7 +390,9 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
           JavaCV调用摄像, javacv 包含了opencv ,ffmpeg 等图像处理包 使用javacpp 转为C 文件后执行
 首先需要引入依赖，当然，也可以使用Jar包，推荐使用maven管理
 
-1234567891011121314151617181920212223242526&lt;dependency&gt;            &lt;groupId&gt;org.bytedeco&
+&lt;dependency>
+            &lt;groupId>org.bytedeco&lt;/groupId>
+            &lt;artifactId>javacpp&
         </a>
       </p>
 
@@ -441,7 +446,16 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
           
             
           
-          12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210
+           
+    /**
+     * 以秒为标准时间的毫秒数
+     */
+    public static final long MILLIS_PER_SECOND = 1000
+    /**
+     *以分钟为标准时间的毫秒数
+     */
+    public static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND
+  
         </a>
       </p>
 
@@ -495,11 +509,14 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
           
             
           
-          1.安装apache1sudo apt-get install apache2 apache2-utils
+          1.安装apachesudo apt-get install apache2 apache2-utils
 
-2.启用dav模块123sudo a2enmod dav_fssudo a2enmod davsudo a2enmod dav_lock
+2.启用dav模块sudo a2enmod dav_fs
+sudo a2enmod dav
+sudo a2enmod dav_lock
 
-3.创建webdav目录及DavLockDB文件1234sudo mkdir /var/webdavsudo chown www-data:www-d
+3.创建webdav目录及DavLockDB文件sudo mkdir &#x2F;var&#x2F;webdav
+sudo chown www-data:
         </a>
       </p>
 
@@ -555,10 +572,14 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
           
           apache虚拟主机配置apache2.4的最终配置效果:
 httpd.conf
-123Listen 19010# Virtual hostsInclude conf/extra/httpd-vhosts.conf
+Listen 19010
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
 
 httpd-vhosts.conf
-123456789101112131415161718192021222324# IP:Port,以端口号配置虚拟机&lt;VirtualHost
+# IP:Port,以端口号配置虚拟机
+&lt;VirtualHost 127.0.0.1:19010>
+    # 网站错误时提示的联系管理员邮箱
         </a>
       </p>
 
@@ -617,9 +638,9 @@ httpd-vhosts.conf
 macOS缺失的软件包管理器 官方地址
 
 安装1、自动安装(推荐)执行如下命令：
-1/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-上边的命
+上边的命令行是两个命令，首先下
         </a>
       </p>
 
@@ -676,7 +697,13 @@ macOS缺失的软件包管理器 官方地址
           时间和字符传的转化
 日期转为字符串
 
-123456789101112131415161718192021import java.text.SimpleDateFormat;import java.util.Date; public class Test01 &#123;    public static void main(String[] args) &#123;        Date dat
+import java.text.SimpleDateFormat;
+import java.util.Date;
+ 
+public class Test01 &#123;
+    public static void main(String[] args) &#123;
+        Date date = new Date(); //获取当前时间
+   
         </a>
       </p>
 
@@ -732,9 +759,10 @@ macOS缺失的软件包管理器 官方地址
           
           1、环境说明环境就不进行说明了，比较三次配置，一个配过九台，每每情况各有不同。只能告知各位读者，博主这里使用的是red hat红帽，估计centOS也差不太多，不过有差异也无妨，学会博主方法，相信你就不会蒙蔽了，知道怎么往对的方向走了
 2、场景说明要求node1免密登录到node2，这里任选了一个用户，也即是
-1[hadoop@node1 .ssh]$ ssh node2
+[hadoop@node1 .ssh]$ ssh node2
 
 3、ssh登录原理过程
+
         </a>
       </p>
 

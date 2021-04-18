@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -294,9 +294,14 @@
 <h5 id="2-1-创建并启动容器"><a href="#2-1-创建并启动容器" class="headerlink" title="2.1 创建并启动容器"></a>2.1 创建并启动容器</h5><p>容器启动有两种方式：</p>
 <ol>
 <li><p>docker create命令用于创建容器，创建后的容器处于停止状态，然后可以使用docker start命令来启动它。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># --name 指定容器的名称  </span><br><span class="line"># 最后面的busybox为镜像</span><br><span class="line">docker create -it --name&#x3D;new_busybox busybox</span><br><span class="line"></span><br><span class="line"># 启动刚create创建的容器</span><br><span class="line">docker start new_busybox</span><br></pre></td></tr></table></figure></li>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none"># --name 指定容器的名称  
+# 最后面的busybox为镜像
+docker create -it --name&#x3D;new_busybox busybox
+
+# 启动刚create创建的容器
+docker start new_busybox</code></pre></div></li>
 <li><p>使用docker run命令直接基于镜像新建一个容器并启动，相当于先执行docker create命令从镜像创建容器，然后再执行docker start命令启动容器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name&#x3D;new_busybox busybox</span><br></pre></td></tr></table></figure></li>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker run -it --name&#x3D;new_busybox busybox</code></pre></div></li>
 </ol>
 <p>当使用<code>docker run</code>创建并启动容器时，Docker 后台执行的流程为：</p>
 <ul>
@@ -308,13 +313,14 @@
 </ul>
 <h5 id="2-2-终止容器"><a href="#2-2-终止容器" class="headerlink" title="2.2 终止容器"></a>2.2 终止容器</h5><p><code>docker stop</code>命令：停止运行中的容器。命令格式为 docker stop [-t|–time[=10]]。</p>
 <p>该命令首先会向运行中的容器发送 SIGTERM 信号，如果容器内 1 号进程接受并能够处理 SIGTERM，则等待 1 号进程处理完毕后退出，如果等待一段时间后，容器仍然没有退出，则会发送 SIGKILL 强制终止容器。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop new_busybox</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker stop new_busybox</code></pre></div>
 
 <p>如果你想查看停止状态的容器信息，你可以使用 docker ps -a 命令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker ps -a</code></pre></div>
 
 <p>处于终止状态的容器也可以通过<code>docker start</code>命令和<code>docker restart</code>命令来重新启动。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start new_busybox</span><br><span class="line">docker restart new_busybox</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker start new_busybox
+docker restart new_busybox</code></pre></div>
 
 
 
@@ -323,19 +329,23 @@
 <li><strong>使用</strong><code>docker attach</code>命令<strong>进入容器</strong></li>
 </ul>
 <p>使用 docker attach ，进入我们上一步创建好的容器，如下所示。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach new_busybox</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker attach new_busybox</code></pre></div>
 
 <p><strong>注意：</strong>当我们同时使用<code>docker attach</code>命令同时在多个终端运行时，所有的终端窗口将同步显示相同内容，当某个命令行窗口的命令阻塞时，其他命令行窗口同样也无法操作。<br>由于<code>docker attach</code>命令不够灵活，因此我们一般不会使用<code>docker attach</code>进入容器</p>
 <ul>
 <li><strong>使用 docker exec 命令进入容器</strong></li>
 </ul>
 <p>通过<code>docker exec -it CONTAINER /bin/bash</code>的方式进入到一个已经运行中的容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it 容器id &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker exec -it 容器id &#x2F;bin&#x2F;bash</code></pre></div>
 
 
 
 <h5 id="2-4-删除容器"><a href="#2-4-删除容器" class="headerlink" title="2.4 删除容器"></a>2.4 删除容器</h5><p>删除容器命令的使用方式如下：<code>docker rm [OPTIONS] CONTAINER [CONTAINER...]</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 删除已经暂停的容器</span><br><span class="line">docker rm 容器名或者容器id</span><br><span class="line"></span><br><span class="line"># 删除还在运行中的容器</span><br><span class="line">docker rm -f 容器名或者容器id</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none"># 删除已经暂停的容器
+docker rm 容器名或者容器id
+
+# 删除还在运行中的容器
+docker rm -f 容器名或者容器id</code></pre></div>
 
 
 
@@ -344,7 +354,7 @@
 </ul>
 <p>使用<code>docker export CONTAINER</code>命令导出一个容器到文件，不管此时该容器是否处于运行中的状态。</p>
 <p>执行导出命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker export new_busybox &gt; new_busybox.tar</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker export new_busybox &gt; new_busybox.tar</code></pre></div>
 
 <p>执行以上命令后会在当前文件夹下生成 new_busybox.tar 文件，我们可以将该文件拷贝到其他机器上，通过导入命令实现容器的迁移。</p>
 <ul>
@@ -353,10 +363,10 @@
 <p>通过<code>docker export</code>命令导出的文件，可以使用<code>docker import</code>命令导入，执行完<code>docker import</code>后会变为本地镜像，最后再使用<code>docker run</code>命令启动该镜像，这样我们就实现了容器的迁移。</p>
 <p>导入容器的命令格式为 docker import [OPTIONS] file|URL [REPOSITORY[:TAG]]。接下来将上一步导出的镜像文件导入到其他机器的 Docker 中并启动它。</p>
 <p>使用<code>docker import</code>命令导入上一步导出的容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker import new_busybox.tar new_busybox:test</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker import new_busybox.tar new_busybox:test</code></pre></div>
 
 <p>此时，new_busybox.tar 被导入成为新的镜像，镜像名称为 new_busybox:test 。下面，我们使用<code>docker run</code>命令启动并进入容器，查看上一步创建的临时文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it busybox:test sh</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker run -it busybox:test sh</code></pre></div>
 
 <p><strong>重点：</strong>通过<code>docker export</code>和<code>docker import</code>命令配合实现了容器的迁移</p>
 <h3 id="3-网络动态IP分配"><a href="#3-网络动态IP分配" class="headerlink" title="3. 网络动态IP分配"></a>3. 网络动态IP分配</h3><p>刚讲到docker run命令的执行时需要从Docker IP 池中分配一个 IP 给容器，接下来重点讲解下该内容。</p>
@@ -405,9 +415,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/06/03/1.Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">
+                      <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker 技术原理</span>
+                        <span class="hidden-mobile">Docker 镜像配置</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -415,8 +425,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
-                        <span class="hidden-mobile">Docker 架构</span>
+                      <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
+                        <span class="hidden-mobile">Docker File</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

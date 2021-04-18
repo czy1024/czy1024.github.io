@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -491,13 +491,13 @@ Consul Open Source解决了跨分布式基础架构连接服务
           
             
           
-          安装1sh -c &quot;$(curl -x 192.168.31.225:10822 -fsSl https://raw.githubusercontent.com/czy1024/luna-linux-conf/master/vnc/vnc_install.sh)&quot;
+          安装sh -c "$(curl -x 192.168.31.225:10822 -fsSl https://raw.githubusercontent.com/czy1024/luna-linux-conf/master/vnc/vnc_install.sh)"
 
 
 VNC Client就不用说了，单文件版，双击就能运行。
 VNC Server安装如下：
 
-ssh到你的ser
+ssh到你的server，然后输入以下命
         </a>
       </p>
 
@@ -720,7 +720,7 @@ https://mirrors.tuna.tsinghua.edu.cn/
             
           
           1 用户组操作创建admin用户组，指定组编号，命令如下：
-1groupadd -g 777 admin
+groupadd -g 777 admin
 
 
 
@@ -731,7 +731,9 @@ https://mirrors.tuna.tsinghua.edu.cn/
 
 
 2 用户操作2.1 创建用户创建crane用户，并归属到admin用户组中
-1useradd -g admin crane
+useradd -g admin crane
+
+
         </a>
       </p>
 

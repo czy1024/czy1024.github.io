@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      891 字
+      855 字
     </span>
   
 
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      12
+      11
        分钟
     </span>
   
@@ -260,12 +260,12 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="1-vue脚手架"><a href="#1-vue脚手架" class="headerlink" title="1. vue脚手架"></a>1. vue脚手架</h2><pre><code>用来创建vue项目的工具包
+              <h2 id="1-vue脚手架"><a href="#1-vue脚手架" class="headerlink" title="1. vue脚手架"></a>1. vue脚手架</h2><div class="code-wrapper"><pre><code>用来创建vue项目的工具包
 创建项目:
     npm install -g vue-cli
     vue init webpack VueDemo
@@ -278,12 +278,12 @@
     npm install -g serve
     serve dist
     http://localhost:5000
-</code></pre>
-<h2 id="2-eslint"><a href="#2-eslint" class="headerlink" title="2. eslint"></a>2. eslint</h2><pre><code>用来做项目编码规范检查的工具
+</code></pre></div>
+<h2 id="2-eslint"><a href="#2-eslint" class="headerlink" title="2. eslint"></a>2. eslint</h2><div class="code-wrapper"><pre><code>用来做项目编码规范检查的工具
 基本原理: 定义了很多规则, 检查项目的代码一旦发现违背了某个规则就输出相应的提示信息
 有相应的配置, 可定制检查
-</code></pre>
-<h2 id="3-组件化编程"><a href="#3-组件化编程" class="headerlink" title="3. 组件化编程"></a>3. 组件化编程</h2><pre><code>vue文件包含3个部分
+</code></pre></div>
+<h2 id="3-组件化编程"><a href="#3-组件化编程" class="headerlink" title="3. 组件化编程"></a>3. 组件化编程</h2><div class="code-wrapper"><pre><code>vue文件包含3个部分
     &lt;template&gt;
       &lt;div&gt;&lt;/div&gt;
     &lt;/template&gt;
@@ -334,10 +334,86 @@ vuex
     多组件共享状态(数据的管理)
     组件间的关系也没有限制
     功能比pubsub强大, 更适用于vue项目
-</code></pre>
-<h2 id="4-ajax"><a href="#4-ajax" class="headerlink" title="4. ajax"></a>4. ajax</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">相关库:</span><br><span class="line">    vue-resource: vue插件, 多用于vue1.x</span><br><span class="line">    axios: 第三方库, 多用于vue2.x</span><br><span class="line">vue-resource使用</span><br><span class="line">    <span class="comment">// 引入模块</span></span><br><span class="line">    <span class="keyword">import</span> VueResource <span class="keyword">from</span> <span class="string">&#x27;vue-resource&#x27;</span></span><br><span class="line">    <span class="comment">// 使用插件</span></span><br><span class="line">    Vue.use(VueResource)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 通过vue/组件对象发送ajax请求</span></span><br><span class="line">    <span class="built_in">this</span>.$http.get(<span class="string">&#x27;/someUrl&#x27;</span>).then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// success callback</span></span><br><span class="line">      <span class="built_in">console</span>.log(response.data) <span class="comment">//返回结果数据</span></span><br><span class="line">    &#125;, <span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// error callback</span></span><br><span class="line">      <span class="built_in">console</span>.log(response.statusText) <span class="comment">//错误信息</span></span><br><span class="line">    &#125;)</span><br><span class="line">axios使用</span><br><span class="line">    <span class="comment">// 引入模块</span></span><br><span class="line">    <span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 发送ajax请求</span></span><br><span class="line">    axios.get(url)</span><br><span class="line">      .then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(response.data) <span class="comment">// 得到返回结果数据</span></span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">    	<span class="built_in">console</span>.log(error.message)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+</code></pre></div>
+<h2 id="4-ajax"><a href="#4-ajax" class="headerlink" title="4. ajax"></a>4. ajax</h2><div class="code-wrapper"><pre class="language-js" data-language="js"><code class="language-js">相关库<span class="token operator">:</span>
+    vue<span class="token operator">-</span>resource<span class="token operator">:</span> vue插件<span class="token punctuation">,</span> 多用于vue1<span class="token punctuation">.</span>x
+    axios<span class="token operator">:</span> 第三方库<span class="token punctuation">,</span> 多用于vue2<span class="token punctuation">.</span>x
+vue<span class="token operator">-</span>resource使用
+    <span class="token comment">// 引入模块</span>
+    <span class="token keyword">import</span> VueResource <span class="token keyword">from</span> <span class="token string">'vue-resource'</span>
+    <span class="token comment">// 使用插件</span>
+    Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>VueResource<span class="token punctuation">)</span>
+    
+    <span class="token comment">// 通过vue/组件对象发送ajax请求</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$http<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/someUrl'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// success callback</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token comment">//返回结果数据</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// error callback</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>statusText<span class="token punctuation">)</span> <span class="token comment">//错误信息</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+axios使用
+    <span class="token comment">// 引入模块</span>
+    <span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span>
+    
+    <span class="token comment">// 发送ajax请求</span>
+    axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token comment">// 得到返回结果数据</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+      <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre></div>
 
-<h2 id="5-vue-router"><a href="#5-vue-router" class="headerlink" title="5. vue-router"></a>5. vue-router</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">vue用来实现SPA的插件</span><br><span class="line">使用vue-router</span><br><span class="line">    1. 创建路由器: router/index.js</span><br><span class="line">      new VueRouter(&#123;</span><br><span class="line">        routes: [</span><br><span class="line">          &#123; // 一般路由</span><br><span class="line">            path: &#x27;/about&#x27;,</span><br><span class="line">            component: about</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123; // 自动跳转路由</span><br><span class="line">            path: &#x27;/&#x27;, </span><br><span class="line">            redirect: &#x27;/about&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;)</span><br><span class="line">    2. 注册路由器: main.js</span><br><span class="line">       import router from &#x27;./router&#x27;</span><br><span class="line">       	new Vue(&#123;</span><br><span class="line">       		router</span><br><span class="line">       	&#125;)</span><br><span class="line">    3. 使用路由组件标签:</span><br><span class="line">       	<span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/xxx&quot;</span>&gt;</span>Go to XXX<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line">       	<span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">编写路由的3步</span><br><span class="line">    1. 定义路由组件    </span><br><span class="line">    2. 映射路由</span><br><span class="line">    3. 编写路由2个标签</span><br><span class="line">嵌套路由</span><br><span class="line">    children: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#x27;/home/news&#x27;,</span><br><span class="line">          component: news</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#x27;message&#x27;,</span><br><span class="line">          component: message</span><br><span class="line">        &#125;</span><br><span class="line">     ]</span><br><span class="line">向路由组件传递数据</span><br><span class="line">    params: <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/home/news/abc/123&quot;</span>&gt;</span></span><br><span class="line">    props: <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">msg</span>=<span class="string">&#x27;abc&#x27;</span>&gt;</span></span><br><span class="line">缓存路由组件</span><br><span class="line">    <span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">路由的编程式导航</span><br><span class="line">	this.$router.push(path): 相当于点击路由链接(可以返回到当前路由界面)</span><br><span class="line">	this.$router.replace(path): 用新路由替换当前路由(不可以返回到当前路由界面)</span><br><span class="line">	this.$router.back(): 请求(返回)上一个记录路由</span><br></pre></td></tr></table></figure>
+<h2 id="5-vue-router"><a href="#5-vue-router" class="headerlink" title="5. vue-router"></a>5. vue-router</h2><div class="code-wrapper"><pre class="language-html" data-language="html"><code class="language-html">vue用来实现SPA的插件
+使用vue-router
+    1. 创建路由器: router/index.js
+      new VueRouter(&#123;
+        routes: [
+          &#123; // 一般路由
+            path: '/about',
+            component: about
+          &#125;,
+          &#123; // 自动跳转路由
+            path: '/', 
+            redirect: '/about'
+          &#125;
+        ]
+      &#125;)
+    2. 注册路由器: main.js
+       import router from './router'
+       	new Vue(&#123;
+       		router
+       	&#125;)
+    3. 使用路由组件标签:
+       	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/xxx<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Go to XXX<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-link</span><span class="token punctuation">></span></span>
+       	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">></span></span>
+编写路由的3步
+    1. 定义路由组件    
+    2. 映射路由
+    3. 编写路由2个标签
+嵌套路由
+    children: [
+        &#123;
+          path: '/home/news',
+          component: news
+        &#125;,
+        &#123;
+          path: 'message',
+          component: message
+        &#125;
+     ]
+向路由组件传递数据
+    params: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/home/news/abc/123<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    props: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span> <span class="token attr-name">msg</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>abc<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>
+缓存路由组件
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-view</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">></span></span>
+路由的编程式导航
+	this.$router.push(path): 相当于点击路由链接(可以返回到当前路由界面)
+	this.$router.replace(path): 用新路由替换当前路由(不可以返回到当前路由界面)
+	this.$router.back(): 请求(返回)上一个记录路由</code></pre></div>
             </div>
             <hr>
             <div>

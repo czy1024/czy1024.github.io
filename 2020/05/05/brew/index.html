@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      2.6k 字
     </span>
   
 
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      39
+      37
        分钟
     </span>
   
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -270,86 +270,195 @@
 <p>macOS缺失的软件包管理器<br> <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://brew.sh/">官方地址</a></p>
 </blockquote>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="1、自动安装-推荐"><a href="#1、自动安装-推荐" class="headerlink" title="1、自动安装(推荐)"></a>1、自动安装(推荐)</h2><p>执行如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">/usr/bin/ruby -e <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="token variable">)</span></span>"</span></code></pre></div>
 
 <p>上边的命令行是两个命令，首先下载install文件，然后用系统的ruby工具安装。</p>
 <p>尽量再bash或者zsh下安装，fish下会提示不识别’$’。</p>
 <p>不需要使用超级权限（sudo），该文件会将HomeBrew安装至 <code>usr/local</code> 目录下。安装过程中会提示你絮语奥执行哪些动作。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">==&gt; This script will install:</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/brew</span><br><span class="line">/usr/<span class="built_in">local</span>/share/doc/homebrew</span><br><span class="line">/usr/<span class="built_in">local</span>/share/man/man1/brew.1</span><br><span class="line">/usr/<span class="built_in">local</span>/share/zsh/site-functions/_brew</span><br><span class="line">/usr/<span class="built_in">local</span>/etc/bash_completion.d/brew</span><br><span class="line">/usr/<span class="built_in">local</span>/Homebrew</span><br><span class="line">==&gt; The following new directories will be created:</span><br><span class="line">/usr/<span class="built_in">local</span>/bin</span><br><span class="line">/usr/<span class="built_in">local</span>/etc</span><br><span class="line">/usr/<span class="built_in">local</span>/include</span><br><span class="line">/usr/<span class="built_in">local</span>/lib</span><br><span class="line">/usr/<span class="built_in">local</span>/sbin</span><br><span class="line">/usr/<span class="built_in">local</span>/share</span><br><span class="line">/usr/<span class="built_in">local</span>/var</span><br><span class="line">/usr/<span class="built_in">local</span>/opt</span><br><span class="line">/usr/<span class="built_in">local</span>/share/zsh</span><br><span class="line">/usr/<span class="built_in">local</span>/share/zsh/site-functions</span><br><span class="line">/usr/<span class="built_in">local</span>/var/homebrew</span><br><span class="line">/usr/<span class="built_in">local</span>/var/homebrew/linked</span><br><span class="line">/usr/<span class="built_in">local</span>/Cellar</span><br><span class="line">/usr/<span class="built_in">local</span>/Caskroom</span><br><span class="line">/usr/<span class="built_in">local</span>/Homebrew</span><br><span class="line">/usr/<span class="built_in">local</span>/Frameworks</span><br><span class="line">==&gt; The Xcode Command Line Tools will be installed.</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token operator">==</span><span class="token operator">></span> This script will install:
+/usr/local/bin/brew
+/usr/local/share/doc/homebrew
+/usr/local/share/man/man1/brew.1
+/usr/local/share/zsh/site-functions/_brew
+/usr/local/etc/bash_completion.d/brew
+/usr/local/Homebrew
+<span class="token operator">==</span><span class="token operator">></span> The following new directories will be created:
+/usr/local/bin
+/usr/local/etc
+/usr/local/include
+/usr/local/lib
+/usr/local/sbin
+/usr/local/share
+/usr/local/var
+/usr/local/opt
+/usr/local/share/zsh
+/usr/local/share/zsh/site-functions
+/usr/local/var/homebrew
+/usr/local/var/homebrew/linked
+/usr/local/Cellar
+/usr/local/Caskroom
+/usr/local/Homebrew
+/usr/local/Frameworks
+<span class="token operator">==</span><span class="token operator">></span> The Xcode Command Line Tools will be installed.</code></pre></div>
 
 <p>后边还会有一些提示。继续的话会提示输入密码，等待安装完成。</p>
 <p>安装完成后输入 <code>brew -v</code> 即可显示是否安装成功：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Homebrew 2.1.9</span><br><span class="line">Homebrew&#x2F;homebrew-core (git revision 84988; last commit 2019-07-29)</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">Homebrew 2.1.9
+Homebrew&#x2F;homebrew-core (git revision 84988; last commit 2019-07-29)</code></pre></div>
 
 <h2 id="2、手动安装"><a href="#2、手动安装" class="headerlink" title="2、手动安装"></a>2、手动安装</h2><p>执行如下命令：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir homebrew &amp;&amp; curl -L https:<span class="comment">//github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-cpp" data-language="cpp"><code class="language-cpp">mkdir homebrew <span class="token operator">&amp;&amp;</span> curl <span class="token operator">-</span>L https<span class="token operator">:</span><span class="token comment">//github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew</span></code></pre></div>
 
 <p>避免以下两点：</p>
 <p>目录内包含空格<br> 不要安装在 <code>/sw</code> 或者 <code>/opt/local</code> 目录下<br> 当然也可以手动下载安装脚本，然后修改 <code>HOMEBREW_PREFIX</code> 变量的值，改为自己的安装目录。</p>
 <hr>
-<h1 id="brew常用命令"><a href="#brew常用命令" class="headerlink" title="brew常用命令"></a>brew常用命令</h1><h2 id="1、安装卸载软件"><a href="#1、安装卸载软件" class="headerlink" title="1、安装卸载软件"></a>1、安装卸载软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. `brew --version` 或者 `brew -v` 显示brew版本信息</span><br><span class="line">2. `brew install &lt;formula&gt;` 安装指定软件</span><br><span class="line">3. `brew uninstall &lt;formula&gt;` 卸载指定软件</span><br><span class="line">4. `brew list` 显示所有的已安装的软件</span><br><span class="line">5. `brew search text` 搜索本地远程仓库的软件，已安装会显示绿色的勾</span><br><span class="line">6. `brew search /text/` 使用正则表达式搜软件</span><br><span class="line">7. `brew info &lt;formula&gt;` 显示指定软件信息</span><br><span class="line">8. `brew reinstall &lt;formula&gt;` 重新安装指定软件，先卸载后安装</span><br><span class="line">9. `brew install &lt;formula&gt; --build-from-source` 源码安装指定软件，可以给定指定参数</span><br><span class="line">10. `brew commands`  列出所有可用命令</span><br><span class="line">11. brew link &lt;apps&gt; 添加路径</span><br></pre></td></tr></table></figure>
+<h1 id="brew常用命令"><a href="#brew常用命令" class="headerlink" title="brew常用命令"></a>brew常用命令</h1><h2 id="1、安装卸载软件"><a href="#1、安装卸载软件" class="headerlink" title="1、安装卸载软件"></a>1、安装卸载软件</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>. <span class="token variable"><span class="token variable">`</span>brew --version<span class="token variable">`</span></span> 或者 <span class="token variable"><span class="token variable">`</span>brew -v<span class="token variable">`</span></span> 显示brew版本信息
+<span class="token number">2</span>. <span class="token variable"><span class="token variable">`</span>brew <span class="token function">install</span> <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 安装指定软件
+<span class="token number">3</span>. <span class="token variable"><span class="token variable">`</span>brew uninstall <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 卸载指定软件
+<span class="token number">4</span>. <span class="token variable"><span class="token variable">`</span>brew list<span class="token variable">`</span></span> 显示所有的已安装的软件
+<span class="token number">5</span>. <span class="token variable"><span class="token variable">`</span>brew search text<span class="token variable">`</span></span> 搜索本地远程仓库的软件，已安装会显示绿色的勾
+<span class="token number">6</span>. <span class="token variable"><span class="token variable">`</span>brew search /text/<span class="token variable">`</span></span> 使用正则表达式搜软件
+<span class="token number">7</span>. <span class="token variable"><span class="token variable">`</span>brew info <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 显示指定软件信息
+<span class="token number">8</span>. <span class="token variable"><span class="token variable">`</span>brew reinstall <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 重新安装指定软件，先卸载后安装
+<span class="token number">9</span>. <span class="token variable"><span class="token variable">`</span>brew <span class="token function">install</span> <span class="token operator">&lt;</span>formula<span class="token operator">></span> --build-from-source<span class="token variable">`</span></span> 源码安装指定软件，可以给定指定参数
+<span class="token number">10</span>. <span class="token variable"><span class="token variable">`</span>brew commands<span class="token variable">`</span></span>  列出所有可用命令
+<span class="token number">11</span>. brew <span class="token function">link</span> <span class="token operator">&lt;</span>apps<span class="token operator">></span> 添加路径</code></pre></div>
 
-<h2 id="2、升级软件相关"><a href="#2、升级软件相关" class="headerlink" title="2、升级软件相关"></a>2、升级软件相关</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1. `brew update` 自动升级homebrew （从github下载最新版本）</span><br><span class="line">2. `brew outdated` 检测已经过时的软件</span><br><span class="line">3. `brew upgrade` 升级所有已过时的软件，即列出的以过时软件</span><br><span class="line">4. `brew upgrade &lt;formula&gt;` 升级指定的软件</span><br><span class="line">5. `brew pin &lt;formula&gt;` 禁止指定软件升级</span><br><span class="line">6. `brew unpin &lt;formula&gt;` 解锁禁止升级</span><br><span class="line">7. `brew upgrade --all` 升级所有的软件包，包括未清理干净的旧版本的包</span><br><span class="line">8. `brew edit &lt;formula&gt;` 编辑软件，不会的情况下慎用</span><br><span class="line">9. `brew tap` 列出本地资源仓库，其中 homebrew 是默认仓库，其它都是第三方仓库</span><br><span class="line">10. `brew tap &lt;user/repo&gt;` 添加第三方仓库，命名的规则按照github来定的。[使用](https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.brew.sh%2FTaps)</span><br><span class="line">11. `brew untap &lt;user/repo&gt;`  删除仓库</span><br><span class="line">12. `brew deps &lt;formula&gt;` 查看指定软件依赖于哪些软件</span><br><span class="line">13. `brew uses &lt;formula&gt;` 查看指定软件被哪些软件所依赖</span><br></pre></td></tr></table></figure>
+<h2 id="2、升级软件相关"><a href="#2、升级软件相关" class="headerlink" title="2、升级软件相关"></a>2、升级软件相关</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token number">1</span>. <span class="token variable"><span class="token variable">`</span>brew update<span class="token variable">`</span></span> 自动升级homebrew （从github下载最新版本）
+<span class="token number">2</span>. <span class="token variable"><span class="token variable">`</span>brew outdated<span class="token variable">`</span></span> 检测已经过时的软件
+<span class="token number">3</span>. <span class="token variable"><span class="token variable">`</span>brew upgrade<span class="token variable">`</span></span> 升级所有已过时的软件，即列出的以过时软件
+<span class="token number">4</span>. <span class="token variable"><span class="token variable">`</span>brew upgrade <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 升级指定的软件
+<span class="token number">5</span>. <span class="token variable"><span class="token variable">`</span>brew pin <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 禁止指定软件升级
+<span class="token number">6</span>. <span class="token variable"><span class="token variable">`</span>brew unpin <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 解锁禁止升级
+<span class="token number">7</span>. <span class="token variable"><span class="token variable">`</span>brew upgrade --all<span class="token variable">`</span></span> 升级所有的软件包，包括未清理干净的旧版本的包
+<span class="token number">8</span>. <span class="token variable"><span class="token variable">`</span>brew edit <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 编辑软件，不会的情况下慎用
+<span class="token number">9</span>. <span class="token variable"><span class="token variable">`</span>brew tap<span class="token variable">`</span></span> 列出本地资源仓库，其中 homebrew 是默认仓库，其它都是第三方仓库
+<span class="token number">10</span>. <span class="token variable"><span class="token variable">`</span>brew tap <span class="token operator">&lt;</span>user/repo<span class="token operator">></span><span class="token variable">`</span></span> 添加第三方仓库，命名的规则按照github来定的。<span class="token punctuation">[</span>使用<span class="token punctuation">]</span><span class="token punctuation">(</span>https://links.jianshu.com/go?to<span class="token operator">=</span>https%3A%2F%2Fdocs.brew.sh%2FTaps<span class="token punctuation">)</span>
+<span class="token number">11</span>. <span class="token variable"><span class="token variable">`</span>brew untap <span class="token operator">&lt;</span>user/repo<span class="token operator">></span><span class="token variable">`</span></span>  删除仓库
+<span class="token number">12</span>. <span class="token variable"><span class="token variable">`</span>brew deps <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 查看指定软件依赖于哪些软件
+<span class="token number">13</span>. <span class="token variable"><span class="token variable">`</span>brew uses <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 查看指定软件被哪些软件所依赖</code></pre></div>
 
 
 
-<h2 id="3、清理相关"><a href="#3、清理相关" class="headerlink" title="3、清理相关"></a>3、清理相关</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">homebrew再升级软件时候不会清理相关的旧版本，在软件升级后我们可以使用如下命令清理</span><br><span class="line"></span><br><span class="line">1. `brew cleanup -n` 列出需要清理的内容</span><br><span class="line">2. `brew cleanup &lt;formula&gt;` 清理指定的软件过时包</span><br><span class="line">3. `brew cleanup` 清理所有的过时软件</span><br><span class="line">4. `brew unistall &lt;formula&gt;` 卸载指定软件</span><br><span class="line">5. `brew unistall &lt;fromula&gt; --force` 彻底卸载指定软件，包括旧版本</span><br><span class="line"></span><br><span class="line">通过brew安装的文件会自动设置环境变量，所以不用担心命令行不能启动的问题。</span><br><span class="line"> 比如安装好了gradle，即可运行 `gradle -v`</span><br></pre></td></tr></table></figure>
+<h2 id="3、清理相关"><a href="#3、清理相关" class="headerlink" title="3、清理相关"></a>3、清理相关</h2><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">homebrew再升级软件时候不会清理相关的旧版本，在软件升级后我们可以使用如下命令清理
+
+<span class="token number">1</span>. <span class="token variable"><span class="token variable">`</span>brew cleanup -n<span class="token variable">`</span></span> 列出需要清理的内容
+<span class="token number">2</span>. <span class="token variable"><span class="token variable">`</span>brew cleanup <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 清理指定的软件过时包
+<span class="token number">3</span>. <span class="token variable"><span class="token variable">`</span>brew cleanup<span class="token variable">`</span></span> 清理所有的过时软件
+<span class="token number">4</span>. <span class="token variable"><span class="token variable">`</span>brew unistall <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span> 卸载指定软件
+<span class="token number">5</span>. <span class="token variable"><span class="token variable">`</span>brew unistall <span class="token operator">&lt;</span>fromula<span class="token operator">></span> --force<span class="token variable">`</span></span> 彻底卸载指定软件，包括旧版本
+
+通过brew安装的文件会自动设置环境变量，所以不用担心命令行不能启动的问题。
+ 比如安装好了gradle，即可运行 <span class="token variable"><span class="token variable">`</span>gradle -v<span class="token variable">`</span></span></code></pre></div>
 
 
 
 <h2 id="3、brew-services管理后台服务"><a href="#3、brew-services管理后台服务" class="headerlink" title="3、brew services管理后台服务"></a>3、brew services管理后台服务</h2><p>macOS使用 <code>launchctl</code> 命令加载开机自动运行的服务，<code>brew service</code> 可以简化 <code>lauchctl</code> 的操作。</p>
 <p>以MySQL为例，使用launchctl启动:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -sfv /usr/local/opt/mysql/*.plist ~<span class="regexp">/Library/</span>LaunchAgents</span><br><span class="line">launchctl load ~<span class="regexp">/Library/</span>LaunchAgents/homebrew.mxcl.mysql.plist</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-ruby" data-language="ruby"><code class="language-ruby">ln <span class="token operator">-</span>sfv <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>opt<span class="token operator">/</span>mysql<span class="token operator">/</span><span class="token operator">*</span><span class="token punctuation">.</span>plist <span class="token operator">~</span><span class="token operator">/</span><span class="token constant">Library</span><span class="token operator">/</span><span class="token constant">LaunchAgents</span>
+launchctl load <span class="token operator">~</span><span class="token operator">/</span><span class="token constant">Library</span><span class="token operator">/</span><span class="token constant">LaunchAgents</span><span class="token operator">/</span>homebrew<span class="token punctuation">.</span>mxcl<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>plist</code></pre></div>
 
 <p>如使用 <code>brew service</code> 可以简化为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start mysql</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">brew services start mysql</code></pre></div>
 
 <ul>
 <li>services 常用命令</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">brew services list  <span class="comment"># 查看使用brew安装的服务列表</span></span><br><span class="line"></span><br><span class="line">brew services run formula|--all  <span class="comment"># 启动服务（仅启动不注册）</span></span><br><span class="line"></span><br><span class="line">brew services start formula|--all  <span class="comment"># 启动服务，并注册</span></span><br><span class="line"></span><br><span class="line">brew services stop formula|--all   <span class="comment"># 停止服务，并取消注册</span></span><br><span class="line"></span><br><span class="line">brew services restart formula|--all  <span class="comment"># 重启服务，并注册</span></span><br><span class="line"></span><br><span class="line">brew services cleanup  <span class="comment"># 清除已卸载应用的无用的配置</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">brew services list  <span class="token comment"># 查看使用brew安装的服务列表</span>
+
+brew services run formula<span class="token operator">|</span>--all  <span class="token comment"># 启动服务（仅启动不注册）</span>
+
+brew services start formula<span class="token operator">|</span>--all  <span class="token comment"># 启动服务，并注册</span>
+
+brew services stop formula<span class="token operator">|</span>--all   <span class="token comment"># 停止服务，并取消注册</span>
+
+brew services restart formula<span class="token operator">|</span>--all  <span class="token comment"># 重启服务，并注册</span>
+
+brew services cleanup  <span class="token comment"># 清除已卸载应用的无用的配置</span></code></pre></div>
 
 <ul>
 <li>配置文件目录</li>
 </ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/Library/LaunchDaemons <span class="comment"># 开机自启，需要sudo</span></span><br><span class="line">~<span class="regexp">/Library/</span>LaunchAgents <span class="comment"># 用户登录后自启</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-ruby" data-language="ruby"><code class="language-ruby"><span class="token operator">/</span><span class="token constant">Library</span><span class="token operator">/</span><span class="token constant">LaunchDaemons</span> <span class="token comment"># 开机自启，需要sudo</span>
+<span class="token operator">~</span><span class="token operator">/</span><span class="token constant">Library</span><span class="token operator">/</span><span class="token constant">LaunchAgents</span> <span class="token comment"># 用户登录后自启</span></code></pre></div>
 
 <p>以homebrew.mxcl.kafka.plist为例：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">plist</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//Apple//DTD PLIST 1.0//EN&quot;</span> <span class="meta-string">&quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">&quot;1.0&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>Label<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>homebrew.mxcl.kafka<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>WorkingDirectory<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>ProgramArguments<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/opt/kafka/bin/kafka-server-start<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/etc/kafka/server.properties<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>RunAtLoad<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>KeepAlive<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardErrorPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/var/log/kafka/kafka_output.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>StandardOutPath<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>/usr/local/var/log/kafka/kafka_output.log<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">plist</span> <span class="token name">PUBLIC</span> <span class="token string">"-//Apple//DTD PLIST 1.0//EN"</span> <span class="token string">"http://www.apple.com/DTDs/PropertyList-1.0.dtd"</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plist</span> <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dict</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>Label<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>homebrew.mxcl.kafka<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>WorkingDirectory<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>/usr/local<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>ProgramArguments<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>array</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>/usr/local/opt/kafka/bin/kafka-server-start<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>/usr/local/etc/kafka/server.properties<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>array</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>RunAtLoad<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>true</span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>KeepAlive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>true</span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>StandardErrorPath<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>/usr/local/var/log/kafka/kafka_output.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>key</span><span class="token punctuation">></span></span>StandardOutPath<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>key</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>string</span><span class="token punctuation">></span></span>/usr/local/var/log/kafka/kafka_output.log<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>string</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dict</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plist</span><span class="token punctuation">></span></span></code></pre></div>
 
 <p>在这里可以找到服务路径、启动参数、日志路径等</p>
 <h2 id="4、brew-cask"><a href="#4、brew-cask" class="headerlink" title="4、brew cask"></a>4、brew cask</h2><p>Homebrew Cask 是 Homebrew 的扩展，借助它可以方便地在 macOS 上安装图形界面程序，即我们常用的各类应用。Homebrew 中文含义为自制、自酿酒，Cask 中文含义为桶、木桶，桶装酒是一种成品，也就是说每一个 homebrew cask 都可以直接使用的，比如 Atom 的 Cask 名称为 atom，那么就可以使用如下命令安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install atom</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">brew cask <span class="token function">install</span> atom</code></pre></div>
 
 <p>甚至也可以提交新的 Cask，比如假设有桌面客户端少数派，则用 <code>brew cask create sspai</code> 创建新的名称为 <code>sspai</code> 的 Cask，当然还要提供官网下载链接、官方主页、应用版本等信息，可以参照 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/Homebrew/homebrew-cask/blob/master/CONTRIBUTING.md">官方教程</a>，此处就不再细说。</p>
 <blockquote>
 <p><strong>安装 Homebrew Cask【以后新版不需要安装】</strong><br> 安装好brew 后，就可以执行命令 <code>brew tap caskroom/cask</code> 获取 Homebrew Cask。</p>
 <p><strong>注意：</strong><br> Caskroom 的 Git 地址在 2018 年 5 月 25 日从 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/caskroom/homebrew-cask">https://github.com/caskroom/homebrew-cask</a> 迁移到了 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/Homebrew/homebrew-cask">https://github.com/Homebrew/homebrew-cask</a><br> 所以，以后就不需要安装 Homebrew Cask</p>
 </blockquote>
-<h4 id="使用-Homebrew-Cask"><a href="#使用-Homebrew-Cask" class="headerlink" title="使用 Homebrew Cask"></a>使用 Homebrew Cask</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">github使用：[https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FHomebrew%2Fhomebrew-cask%2Fblob%2Fmaster%2FUSAGE.md)</span><br><span class="line"></span><br><span class="line">1. `brew cask install &lt;formula&gt;`  安装指定图形界面软件</span><br><span class="line">2. `brew cask uninstall &lt;formula&gt;`   卸载软件</span><br><span class="line">3. `brew cask uninstall --force &lt;formula&gt;`   卸载软件，带参数</span><br><span class="line">4. `brew cask search text`   搜索软件</span><br><span class="line">5. `brew cask list`   列出所有通过cask安装的软件</span><br><span class="line">6. 其它可以参考：[https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2FHomebrew%2Fhomebrew-cask%2Fblob%2Fmaster%2FUSAGE.md)</span><br><span class="line"></span><br><span class="line">举例可安装的软件</span><br></pre></td></tr></table></figure>
+<h4 id="使用-Homebrew-Cask"><a href="#使用-Homebrew-Cask" class="headerlink" title="使用 Homebrew Cask"></a>使用 Homebrew Cask</h4><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">github使用：<span class="token punctuation">[</span>https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md<span class="token punctuation">]</span><span class="token punctuation">(</span>https://links.jianshu.com/go?to<span class="token operator">=</span>https%3A%2F%2Fgithub.com%2FHomebrew%2Fhomebrew-cask%2Fblob%2Fmaster%2FUSAGE.md<span class="token punctuation">)</span>
+
+<span class="token number">1</span>. <span class="token variable"><span class="token variable">`</span>brew cask <span class="token function">install</span> <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span>  安装指定图形界面软件
+<span class="token number">2</span>. <span class="token variable"><span class="token variable">`</span>brew cask uninstall <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span>   卸载软件
+<span class="token number">3</span>. <span class="token variable"><span class="token variable">`</span>brew cask uninstall --force <span class="token operator">&lt;</span>formula<span class="token operator">></span><span class="token variable">`</span></span>   卸载软件，带参数
+<span class="token number">4</span>. <span class="token variable"><span class="token variable">`</span>brew cask search text<span class="token variable">`</span></span>   搜索软件
+<span class="token number">5</span>. <span class="token variable"><span class="token variable">`</span>brew cask list<span class="token variable">`</span></span>   列出所有通过cask安装的软件
+<span class="token number">6</span>. 其它可以参考：<span class="token punctuation">[</span>https://github.com/Homebrew/homebrew-cask/blob/master/USAGE.md<span class="token punctuation">]</span><span class="token punctuation">(</span>https://links.jianshu.com/go?to<span class="token operator">=</span>https%3A%2F%2Fgithub.com%2FHomebrew%2Fhomebrew-cask%2Fblob%2Fmaster%2FUSAGE.md<span class="token punctuation">)</span>
+
+举例可安装的软件</code></pre></div>
 
 
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装chrome</span></span><br><span class="line">brew cask install google-chrome</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装LaunchRocket</span></span><br><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 安装chrome</span>
+brew cask <span class="token function">install</span> google-chrome
+
+<span class="token comment"># 安装LaunchRocket</span>
+brew cask <span class="token function">install</span> launchrocket</code></pre></div>
 
 <hr>
 <h1 id="Homebrew-更换为国内镜像"><a href="#Homebrew-更换为国内镜像" class="headerlink" title="Homebrew 更换为国内镜像"></a>Homebrew 更换为国内镜像</h1><p>查看镜像地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ <span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span> </span><br><span class="line">➜  Homebrew git:(stable) <span class="built_in">pwd</span></span><br><span class="line">/usr/<span class="built_in">local</span>/Homebrew</span><br><span class="line">➜  Homebrew git:(stable) git remote -v</span><br><span class="line">origin  https://github.com/Homebrew/brew (fetch)</span><br><span class="line">origin  https://github.com/Homebrew/brew (push)</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">➜  ~ <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span> 
+➜  Homebrew git:<span class="token punctuation">(</span>stable<span class="token punctuation">)</span> <span class="token builtin class-name">pwd</span>
+/usr/local/Homebrew
+➜  Homebrew git:<span class="token punctuation">(</span>stable<span class="token punctuation">)</span> <span class="token function">git</span> remote -v
+origin  https://github.com/Homebrew/brew <span class="token punctuation">(</span>fetch<span class="token punctuation">)</span>
+origin  https://github.com/Homebrew/brew <span class="token punctuation">(</span>push<span class="token punctuation">)</span></code></pre></div>
 
 <h2 id="1、国内镜像安装"><a href="#1、国内镜像安装" class="headerlink" title="1、国内镜像安装"></a>1、国内镜像安装</h2><ul>
 <li>获取官网脚本 并保存名为 brew_install；</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https:<span class="comment">//raw.githubusercontent.com/Homebrew/install/master/install &gt;&gt; brew_install</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-cpp" data-language="cpp"><code class="language-cpp">curl <span class="token operator">-</span>fsSL https<span class="token operator">:</span><span class="token comment">//raw.githubusercontent.com/Homebrew/install/master/install >> brew_install</span></code></pre></div>
 
 <ul>
 <li>编辑brew_install文件，更改脚本中的资源链接，替换成 <em>中国科学技术大学</em> 的镜像</li>
 </ul>
-<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#BREW_REPO = <span class="string">&quot;https://github.com/Homebrew/brew&quot;</span>.freeze</span><br><span class="line">BREW_REPO = <span class="string">&quot;git://mirrors.ustc.edu.cn/brew.git&quot;</span>.freeze</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-objectivec" data-language="objectivec"><code class="language-objectivec"><span class="token macro property"><span class="token directive-hash">#</span><span class="token expression">BREW_REPO <span class="token operator">=</span> </span><span class="token string">"https://github.com/Homebrew/brew"</span><span class="token expression"><span class="token punctuation">.</span>freeze</span></span>
+BREW_REPO <span class="token operator">=</span> "git<span class="token punctuation">:</span><span class="token comment">//mirrors.ustc.edu.cn/brew.git".freeze</span></code></pre></div>
 
 <ul>
 <li>安装brew</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;ruby .&#x2F;brew_install</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">&#x2F;usr&#x2F;bin&#x2F;ruby .&#x2F;brew_install</code></pre></div>
 
 <h2 id="2、Homebrew替换为中科大源"><a href="#2、Homebrew替换为中科大源" class="headerlink" title="2、Homebrew替换为中科大源"></a>2、Homebrew替换为<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://mirrors.ustc.edu.cn/">中科大源</a></h2><ul>
 <li>Homebrew 源使用帮助 <a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://mirrors.ustc.edu.cn/help/brew.git.html">http://mirrors.ustc.edu.cn/help/brew.git.html</a></li>
@@ -360,73 +469,113 @@
 <h3 id="替换默认源"><a href="#替换默认源" class="headerlink" title="替换默认源"></a>替换默认源</h3><ul>
 <li>替换brew.git</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span>     <span class="comment"># 其实就是定位至 /usr/local/Homebrew 目录下</span></span><br><span class="line">git remote set-url origin https://mirrors.ustc.edu.cn/brew.git</span><br><span class="line"><span class="comment"># git remote set-url origin git://mirrors.ustc.edu.cn/brew.git</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置为官方地址：</span></span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/brew.git</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span>     <span class="token comment"># 其实就是定位至 /usr/local/Homebrew 目录下</span>
+<span class="token function">git</span> remote set-url origin https://mirrors.ustc.edu.cn/brew.git
+<span class="token comment"># git remote set-url origin git://mirrors.ustc.edu.cn/brew.git</span>
+
+<span class="token comment"># 重置为官方地址：</span>
+<span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span>
+<span class="token function">git</span> remote set-url origin https://github.com/Homebrew/brew.git</code></pre></div>
 
 <ul>
 <li>替换homebrew-core.git</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git</span><br><span class="line"><span class="comment"># git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置为官方地址：</span></span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>/Library/Taps/homebrew/homebrew-core&quot;</span></span><br><span class="line">git remote set-url origin https://github.com/Homebrew/homebrew-core</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>/Library/Taps/homebrew/homebrew-core"</span>
+<span class="token function">git</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+<span class="token comment"># git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-core.git</span>
+
+<span class="token comment"># 重置为官方地址：</span>
+<span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>/Library/Taps/homebrew/homebrew-core"</span>
+<span class="token function">git</span> remote set-url origin https://github.com/Homebrew/homebrew-core</code></pre></div>
 
 <ul>
 <li>默认不安装cask 有需要的可以替换<br> [Homebrew cask 软件仓库，提供 macOS 应用和大型二进制文件]</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span>/Library/Taps/homebrew/homebrew-cask</span><br><span class="line">git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git</span><br><span class="line"><span class="comment"># git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-cask.git</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重置为官方地址：</span></span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span>/Library/Taps/homebrew/homebrew-cask</span><br><span class="line">git remote set-url origin https://github.com/Homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span>/Library/Taps/homebrew/homebrew-cask
+<span class="token function">git</span> remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+<span class="token comment"># git remote set-url origin git://mirrors.ustc.edu.cn/homebrew-cask.git</span>
+
+<span class="token comment"># 重置为官方地址：</span>
+<span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span>/Library/Taps/homebrew/homebrew-cask
+<span class="token function">git</span> remote set-url origin https://github.com/Homebrew/homebrew-cask</code></pre></div>
 
 <ul>
 <li>brew 更新</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">brew update</code></pre></div>
 
 <ul>
 <li>检查是否有误</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew doctor</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">brew doctor</code></pre></div>
 
 <h3 id="替换Homebrew-Bottles源"><a href="#替换Homebrew-Bottles源" class="headerlink" title="替换Homebrew Bottles源"></a>替换Homebrew Bottles源</h3><ul>
 <li>bash用户</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27;</span> &gt;&gt; ~/.bash_profile</span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles'</span> <span class="token operator">>></span> ~/.bash_profile
+<span class="token builtin class-name">source</span> ~/.bash_profile</code></pre></div>
 
 <ul>
 <li>zsh用户</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles'</span> <span class="token operator">>></span> ~/.zshrc
+<span class="token builtin class-name">source</span> ~/.zshrc</code></pre></div>
 
 <h2 id="3、Homebrew替换为清华大学源"><a href="#3、Homebrew替换为清华大学源" class="headerlink" title="3、Homebrew替换为清华大学源"></a>3、Homebrew替换为<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华大学源</a></h2><h3 id="替换默认源-1"><a href="#替换默认源-1" class="headerlink" title="替换默认源"></a>替换默认源</h3><ul>
 <li>替换现有上游</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git -C <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git</span><br><span class="line"></span><br><span class="line">git -C <span class="string">&quot;<span class="subst">$(brew --repo homebrew/core)</span>&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git</span><br><span class="line"></span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> -C <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+
+<span class="token function">git</span> -C <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo homebrew/core<span class="token variable">)</span></span>"</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+
+brew update</code></pre></div>
 
 <ul>
 <li>复原</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git -C <span class="string">&quot;<span class="subst">$(brew --repo)</span>&quot;</span> remote set-url origin https://github.com/Homebrew/brew.git</span><br><span class="line"></span><br><span class="line">git -C <span class="string">&quot;<span class="subst">$(brew --repo homebrew/core)</span>&quot;</span> remote set-url origin https://github.com/Homebrew/homebrew-core</span><br><span class="line"></span><br><span class="line">brew update</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> -C <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo<span class="token variable">)</span></span>"</span> remote set-url origin https://github.com/Homebrew/brew.git
+
+<span class="token function">git</span> -C <span class="token string">"<span class="token variable"><span class="token variable">$(</span>brew --repo homebrew/core<span class="token variable">)</span></span>"</span> remote set-url origin https://github.com/Homebrew/homebrew-core
+
+brew update</code></pre></div>
 
 <h3 id="替换Homebrew-Bottles源-1"><a href="#替换Homebrew-Bottles源-1" class="headerlink" title="替换Homebrew Bottles源"></a>替换Homebrew Bottles源</h3><ul>
 <li>bash用户</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27;</span> &gt;&gt; ~/.bash_profile</span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'</span> <span class="token operator">>></span> ~/.bash_profile
+<span class="token builtin class-name">source</span> ~/.bash_profile</code></pre></div>
 
 <ul>
 <li>zsh用户</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles'</span> <span class="token operator">>></span> ~/.zshrc
+<span class="token builtin class-name">source</span> ~/.zshrc</code></pre></div>
 
 <blockquote>
 <p>中科大源 和 清华大学源 其实在操作上是一样的，而本文档分了两部份整理，是为了区分 和更容易理解</p>
 </blockquote>
-<h1 id="常用软件安装"><a href="#常用软件安装" class="headerlink" title="常用软件安装"></a>常用软件安装</h1><h2 id="ccat-安装（查看工具）"><a href="#ccat-安装（查看工具）" class="headerlink" title="ccat 安装（查看工具）"></a>ccat 安装（查看工具）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ccat</span><br></pre></td></tr></table></figure>
+<h1 id="常用软件安装"><a href="#常用软件安装" class="headerlink" title="常用软件安装"></a>常用软件安装</h1><h2 id="ccat-安装（查看工具）"><a href="#ccat-安装（查看工具）" class="headerlink" title="ccat 安装（查看工具）"></a>ccat 安装（查看工具）</h2><div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">brew install ccat</code></pre></div>
 
 <p>添加快捷方式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改配置</span></span><br><span class="line">vi ~/.zshrc</span><br><span class="line"><span class="comment"># 底部添加（覆盖掉之前的 cat功能。最好不要有换行）</span></span><br><span class="line"><span class="built_in">alias</span> cat=ccat</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 修改配置</span>
+<span class="token function">vi</span> ~/.zshrc
+<span class="token comment"># 底部添加（覆盖掉之前的 cat功能。最好不要有换行）</span>
+<span class="token builtin class-name">alias</span> <span class="token assign-left variable">cat</span><span class="token operator">=</span>ccat</code></pre></div>
 
-<h2 id="git-安装（git插件）"><a href="#git-安装（git插件）" class="headerlink" title="git 安装（git插件）"></a>git 安装（git插件）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install tig</span><br></pre></td></tr></table></figure>
+<h2 id="git-安装（git插件）"><a href="#git-安装（git插件）" class="headerlink" title="git 安装（git插件）"></a>git 安装（git插件）</h2><div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">brew install tig</code></pre></div>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在git项目下 输入</span></span><br><span class="line">tig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入tig界面，上下键选择提交的信息</span></span><br><span class="line"><span class="comment"># 按住 cmd 按键查看</span></span><br><span class="line"><span class="comment"># q 键退出</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 在git项目下 输入</span>
+tig
 
-<h4 id="安装常用的开发包"><a href="#安装常用的开发包" class="headerlink" title="安装常用的开发包"></a>安装常用的开发包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wget watch tmux cmake openssl imagemagick graphicsmagick gearman geoip readline autoconf multitail source-highlight autojump zsh-completions sshfs</span><br></pre></td></tr></table></figure>
+<span class="token comment"># 进入tig界面，上下键选择提交的信息</span>
+<span class="token comment"># 按住 cmd 按键查看</span>
+<span class="token comment"># q 键退出</span></code></pre></div>
 
-<h4 id="安装常用的软件"><a href="#安装常用的软件" class="headerlink" title="安装常用的软件"></a>安装常用的软件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew cask install firefox google-chrome  thunder qq phpstorm sublime-text</span><br><span class="line"></span><br><span class="line">brew cask install alfred appcleaner  sequel-pro sketch mplayerx</span><br></pre></td></tr></table></figure>
+<h4 id="安装常用的开发包"><a href="#安装常用的开发包" class="headerlink" title="安装常用的开发包"></a>安装常用的开发包</h4><div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> <span class="token function">wget</span> <span class="token function">watch</span> tmux cmake openssl imagemagick graphicsmagick gearman geoip readline autoconf multitail source-highlight autojump zsh-completions sshfs</code></pre></div>
+
+<h4 id="安装常用的软件"><a href="#安装常用的软件" class="headerlink" title="安装常用的软件"></a>安装常用的软件</h4><div class="code-wrapper"><pre class="language-undefined" data-language="undefined"><code class="language-undefined">brew cask install firefox google-chrome  thunder qq phpstorm sublime-text
+
+brew cask install alfred appcleaner  sequel-pro sketch mplayerx</code></pre></div>
             </div>
             <hr>
             <div>

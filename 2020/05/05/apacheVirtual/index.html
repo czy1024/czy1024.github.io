@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -260,17 +260,42 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
             <div class="markdown-body">
               <h2 id="apache虚拟主机配置"><a href="#apache虚拟主机配置" class="headerlink" title="apache虚拟主机配置"></a>apache虚拟主机配置</h2><p>apache2.4的最终配置效果:</p>
 <p><strong>httpd.conf</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Listen 19010</span><br><span class="line"># Virtual hosts</span><br><span class="line">Include conf/extra/httpd-vhosts.conf</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-xml" data-language="xml"><code class="language-xml">Listen 19010
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf</code></pre></div>
 
 <p><strong>httpd-vhosts.conf</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># IP:Port,以端口号配置虚拟机</span><br><span class="line"><span class="tag">&lt;<span class="name">VirtualHost</span> <span class="attr">127.0.0.1:19010</span>&gt;</span></span><br><span class="line">    # 网站错误时提示的联系管理员邮箱（可不配置）</span><br><span class="line">    ServerAdmin webmaster@dummy-host.example.com</span><br><span class="line">    # 虚拟主机根目录</span><br><span class="line">    DocumentRoot &quot;$&#123;SRVROOT&#125;&quot;</span><br><span class="line">    # 服务器名称（可不配置）</span><br><span class="line">    ServerName dummy-host.example.com</span><br><span class="line">    # 服务器别名（可不配置）</span><br><span class="line">    ServerAlias www.dummy-host.example.com</span><br><span class="line">    # 错误日志</span><br><span class="line">    ErrorLog &quot;logs/dummy-host.example.com-error.log&quot;</span><br><span class="line">    # 访问日志</span><br><span class="line">    CustomLog &quot;logs/dummy-host.example.com-access.log&quot; common</span><br><span class="line">    # 访问目录的配置，可以是其的一个子文件夹</span><br><span class="line">    <span class="tag">&lt;<span class="name">Directory</span> &quot;$&#123;<span class="attr">SRVROOT</span>&#125;/<span class="attr">public</span>&quot;&gt;</span></span><br><span class="line">        # 控制特定目录将启用哪些服务器特性</span><br><span class="line">		Options FollowSymLinks</span><br><span class="line">        # 指明Apache服务器是否去找.htacess文件作为配置文件</span><br><span class="line">		AllowOverride All</span><br><span class="line">        # 控制请求是否可以访问</span><br><span class="line">		Require all granted</span><br><span class="line">	<span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">VirtualHost</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-xml" data-language="xml"><code class="language-xml"># IP:Port,以端口号配置虚拟机
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>VirtualHost</span> <span class="token attr-name"><span class="token namespace">127.0.0.1:</span>19010</span><span class="token punctuation">></span></span>
+    # 网站错误时提示的联系管理员邮箱（可不配置）
+    ServerAdmin webmaster@dummy-host.example.com
+    # 虚拟主机根目录
+    DocumentRoot "$&#123;SRVROOT&#125;"
+    # 服务器名称（可不配置）
+    ServerName dummy-host.example.com
+    # 服务器别名（可不配置）
+    ServerAlias www.dummy-host.example.com
+    # 错误日志
+    ErrorLog "logs/dummy-host.example.com-error.log"
+    # 访问日志
+    CustomLog "logs/dummy-host.example.com-access.log" common
+    # 访问目录的配置，可以是其的一个子文件夹
+    &lt;Directory "$&#123;SRVROOT&#125;/public">
+        # 控制特定目录将启用哪些服务器特性
+		Options FollowSymLinks
+        # 指明Apache服务器是否去找.htacess文件作为配置文件
+		AllowOverride All
+        # 控制请求是否可以访问
+		Require all granted
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Directory</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>VirtualHost</span><span class="token punctuation">></span></span></code></pre></div>
 
 <p>部分参数详细说明：</p>
 <p><strong>Options FollowSymLinks</strong></p>

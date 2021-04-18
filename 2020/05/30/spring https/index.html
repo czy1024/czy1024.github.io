@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      299 字
+      289 字
     </span>
   
 
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -280,13 +280,52 @@
 <h4 id="2-spring配置"><a href="#2-spring配置" class="headerlink" title="2. spring配置"></a>2. spring配置</h4><ul>
 <li>新建spring配置文件注解@Configuration</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置 http(80) -&gt; 强制跳转到 https(443)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Connector <span class="title">connector</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Connector connector = <span class="keyword">new</span> Connector(<span class="string">&quot;org.apache.coyote.http11.Http11NioProtocol&quot;</span>);</span><br><span class="line">        connector.setScheme(<span class="string">&quot;http&quot;</span>);</span><br><span class="line">        connector.setPort(<span class="number">80</span>);</span><br><span class="line">        connector.setSecure(<span class="keyword">false</span>);</span><br><span class="line">        connector.setRedirectPort(<span class="number">443</span>);</span><br><span class="line">        <span class="keyword">return</span> connector;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TomcatServletWebServerFactory <span class="title">tomcatServletWebServerFactory</span><span class="params">(Connector connector)</span> </span>&#123;</span><br><span class="line">        TomcatServletWebServerFactory tomcat = <span class="keyword">new</span> TomcatServletWebServerFactory() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">postProcessContext</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">                SecurityConstraint securityConstraint = <span class="keyword">new</span> SecurityConstraint();</span><br><span class="line">                securityConstraint.setUserConstraint(<span class="string">&quot;CONFIDENTIAL&quot;</span>);</span><br><span class="line">                SecurityCollection collection = <span class="keyword">new</span> SecurityCollection();</span><br><span class="line">                collection.addPattern(<span class="string">&quot;/*&quot;</span>);</span><br><span class="line">                securityConstraint.addCollection(collection);</span><br><span class="line">                context.addConstraint(securityConstraint);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        tomcat.addAdditionalTomcatConnectors(connector);</span><br><span class="line">        <span class="keyword">return</span> tomcat;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * 配置 http(80) -> 强制跳转到 https(443)
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">Connector</span> <span class="token function">connector</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">Connector</span> connector <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Connector</span><span class="token punctuation">(</span><span class="token string">"org.apache.coyote.http11.Http11NioProtocol"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        connector<span class="token punctuation">.</span><span class="token function">setScheme</span><span class="token punctuation">(</span><span class="token string">"http"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        connector<span class="token punctuation">.</span><span class="token function">setPort</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        connector<span class="token punctuation">.</span><span class="token function">setSecure</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        connector<span class="token punctuation">.</span><span class="token function">setRedirectPort</span><span class="token punctuation">(</span><span class="token number">443</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> connector<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">TomcatServletWebServerFactory</span> <span class="token function">tomcatServletWebServerFactory</span><span class="token punctuation">(</span><span class="token class-name">Connector</span> connector<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">TomcatServletWebServerFactory</span> tomcat <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TomcatServletWebServerFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">postProcessContext</span><span class="token punctuation">(</span><span class="token class-name">Context</span> context<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token class-name">SecurityConstraint</span> securityConstraint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SecurityConstraint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                securityConstraint<span class="token punctuation">.</span><span class="token function">setUserConstraint</span><span class="token punctuation">(</span><span class="token string">"CONFIDENTIAL"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">SecurityCollection</span> collection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SecurityCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                collection<span class="token punctuation">.</span><span class="token function">addPattern</span><span class="token punctuation">(</span><span class="token string">"/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                securityConstraint<span class="token punctuation">.</span><span class="token function">addCollection</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                context<span class="token punctuation">.</span><span class="token function">addConstraint</span><span class="token punctuation">(</span>securityConstraint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+        tomcat<span class="token punctuation">.</span><span class="token function">addAdditionalTomcatConnectors</span><span class="token punctuation">(</span>connector<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> tomcat<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span></code></pre></div>
 
 <ul>
 <li>将server.keystore放至resource目录下</li>
 <li>编写配置文件</li>
 </ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">ssl:</span></span><br><span class="line">    <span class="comment"># 证书路径</span></span><br><span class="line">    <span class="attr">key-store:</span> <span class="string">classpath:server.keystore</span></span><br><span class="line">    <span class="attr">key-alias:</span> <span class="string">tomcat</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">key-store-type:</span> <span class="string">JKS</span></span><br><span class="line">    <span class="comment">#与申请时输入一致</span></span><br><span class="line">    <span class="attr">key-store-password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="comment"># 浏览器默认端口 和 80 类似</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">443</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">server:
+  ssl:
+    # 证书路径
+    key-store: classpath:server.keystore
+    key-alias: tomcat
+    enabled: true
+    key-store-type: JKS
+    #与申请时输入一致
+    key-store-password: 123456
+    # 浏览器默认端口 和 80 类似
+  port: 443
+</code></pre></div>
 
 <h3 id="启动项目-访问80就会自动跳转433端口了-若提示443端口被占用可修改相应端口号"><a href="#启动项目-访问80就会自动跳转433端口了-若提示443端口被占用可修改相应端口号" class="headerlink" title="启动项目,访问80就会自动跳转433端口了 ,若提示443端口被占用可修改相应端口号"></a>启动项目,访问80就会自动跳转433端口了 ,若提示443端口被占用可修改相应端口号</h3>
             </div>

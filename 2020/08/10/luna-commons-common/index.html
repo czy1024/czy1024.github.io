@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      920 字
+      879 字
     </span>
   
 
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
@@ -268,92 +268,234 @@
               <h2 id="基础工具包Api"><a href="#基础工具包Api" class="headerlink" title="基础工具包Api"></a>基础工具包Api</h2><h3 id="http操作"><a href="#http操作" class="headerlink" title="http操作"></a>http操作</h3><h5 id="HttpUtils类"><a href="#HttpUtils类" class="headerlink" title="HttpUtils类"></a>HttpUtils类</h5><ol>
 <li>普通get请求</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> host 主机</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path 路径</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> headers 请求头</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> queries 请求参数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpResponse <span class="title">doGet</span><span class="params">(String host, String path, Map&lt;String, String&gt; headers,Map&lt;String, String&gt; queries)</span> </span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * get
+     *
+     * @param host 主机
+     * @param path 路径
+     * @param headers 请求头
+     * @param queries 请求参数
+     * @return
+     * @throws Exception
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">HttpResponse</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> headers<span class="token punctuation">,</span><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> queries<span class="token punctuation">)</span> </code></pre></div>
 
 <ol start="2">
 <li>参数/文件post请求</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Post File/form</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> host 主机</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path 路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> headers 请求头</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> queries 请求参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> bodies &lt;p&gt;Map&lt;文件名或者参数key,文件地址或者参数value&gt;&lt;p/&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpResponse <span class="title">doPost</span><span class="params">(String host, String path, Map&lt;String, String&gt; headers,</span></span></span><br><span class="line"><span class="function"><span class="params">    Map&lt;String, String&gt; queries, Map&lt;String, String&gt; bodies)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Post File/form
+ *
+ * @param host 主机
+ * @param path 路径
+ * @param headers 请求头
+ * @param queries 请求参数
+ * @param bodies &lt;p>Map&lt;文件名或者参数key,文件地址或者参数value>&lt;p/>
+ * @return
+ * @throws Exception
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">HttpResponse</span> <span class="token function">doPost</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> headers<span class="token punctuation">,</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> queries<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> bodies<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="3">
 <li>流post请求</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Post stream</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> host 主机</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path 路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> headers 请求头</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> queries 请求参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> body 字节流</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpResponse <span class="title">doPost</span><span class="params">(String host, String path, Map&lt;String, String&gt; headers,</span></span></span><br><span class="line"><span class="function"><span class="params">    Map&lt;String, String&gt; queries, <span class="keyword">byte</span>[] body)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Post stream
+ *
+ * @param host 主机
+ * @param path 路径
+ * @param headers 请求头
+ * @param queries 请求参数
+ * @param body 字节流
+ * @return
+ * @throws Exception
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">HttpResponse</span> <span class="token function">doPost</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> headers<span class="token punctuation">,</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> queries<span class="token punctuation">,</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> body<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="4">
 <li>字符串post请求</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Post String</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> host 主机</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path 路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> headers 请求头</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> queries 请求参数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> body 字符串</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HttpResponse <span class="title">doPost</span><span class="params">(String host, String path, Map&lt;String, String&gt; headers,</span></span></span><br><span class="line"><span class="function"><span class="params">    Map&lt;String, String&gt; queries, String body)</span> </span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Post String
+ *
+ * @param host 主机
+ * @param path 路径
+ * @param headers 请求头
+ * @param queries 请求参数
+ * @param body 字符串
+ * @return
+ * @throws Exception
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">HttpResponse</span> <span class="token function">doPost</span><span class="token punctuation">(</span><span class="token class-name">String</span> host<span class="token punctuation">,</span> <span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> headers<span class="token punctuation">,</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> queries<span class="token punctuation">,</span> <span class="token class-name">String</span> body<span class="token punctuation">)</span> </code></pre></div>
 
 <ol start="5">
 <li>返回结果解析及检查</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检测响应体</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> httpResponse</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">checkResponseAndGetResult</span><span class="params">(HttpResponse httpResponse, <span class="keyword">boolean</span> isEnsure)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * 检测响应体
+     * 
+     * @param httpResponse
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">checkResponseAndGetResult</span><span class="token punctuation">(</span><span class="token class-name">HttpResponse</span> httpResponse<span class="token punctuation">,</span> <span class="token keyword">boolean</span> isEnsure<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="6">
 <li>简单的检查是否为网络路径</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 检查是不是网络路径</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> url</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNetUrl</span><span class="params">(String url)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+    * 检查是不是网络路径
+    * 
+    * @param url
+    * @return
+    */</span>
+   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isNetUrl</span><span class="token punctuation">(</span><span class="token class-name">String</span> url<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></code></pre></div>
 
 <h3 id="jsonfile"><a href="#jsonfile" class="headerlink" title="jsonfile"></a>jsonfile</h3><h5 id="InformationConverter类"><a href="#InformationConverter类" class="headerlink" title="InformationConverter类"></a>InformationConverter类</h5><ol>
 <li>读取JSON文件操作</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 读取json文件并转换为JSONObject</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path JSON文件路径</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> a fastjson JSONObject</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JSONObject <span class="title">fileToJson</span><span class="params">(String path)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * 读取json文件并转换为JSONObject
+     * @param path JSON文件路径
+     * @return a fastjson JSONObject
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">JSONObject</span> <span class="token function">fileToJson</span><span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="2">
 <li>JSONObject写入JSON文件</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * write json String to a json file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> text the json text needs to write</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path the json file path needs to save</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">stringToFile</span><span class="params">(String text, String path)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * write json String to a json file
+ * @param text the json text needs to write
+ * @param path the json file path needs to save
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">stringToFile</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">,</span> <span class="token class-name">String</span> path<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="3">
 <li>获取JSON文件中的指定值</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * get item from json text file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> path the json file path</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> item the item you want to get, can be para, header</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> a Map, key is String, value is Object</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">getItem</span><span class="params">(String path, String item)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * get item from json text file
+     * @param path the json file path
+     * @param item the item you want to get, can be para, header
+     * @return a Map, key is String, value is Object
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getItem</span><span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">String</span> item<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="4">
 <li>将JSONObject的值转为HashMap</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Convert jsonobject to hashMap</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> object the jsonObject need to convert</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the hashMap(String, String)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HashMap&lt;String, String&gt; <span class="title">jsonToHasMap</span><span class="params">(JSONObject object)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * Convert jsonobject to hashMap
+ * @param object the jsonObject need to convert
+ * @return the hashMap(String, String)
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">jsonToHasMap</span><span class="token punctuation">(</span><span class="token class-name">JSONObject</span> object<span class="token punctuation">)</span></code></pre></div>
 
 <h3 id="okHttp"><a href="#okHttp" class="headerlink" title="okHttp"></a>okHttp</h3><ol>
 <li>Get请求</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * send a get to a site</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> url the website url</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> para the parameter hashMap, use put to add</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> header the header hasMap, use put to add</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> a response json object</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JSONObject <span class="title">get</span><span class="params">(String url, HashMap&lt;String,String&gt; para, HashMap&lt;String,String&gt; header)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * send a get to a site
+ * @param url the website url
+ * @param para the parameter hashMap, use put to add
+ * @param header the header hasMap, use put to add
+ * @return a response json object
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">JSONObject</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">String</span> url<span class="token punctuation">,</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">></span></span> para<span class="token punctuation">,</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">String</span><span class="token punctuation">></span></span> header<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="2">
 <li>POST请求</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * send a post to a site</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> url the website url</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> para the parameter hashMap, use put to add</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> header the header hasMap, use put to add</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bodyFormat the body hashMap, if use none, put(&quot;none&quot;,&quot;&quot;), if form-data, put(key,value)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> a response json object</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> JSONObject <span class="title">post</span><span class="params">(String url, HashMap&lt;String, String&gt; para, HashMap&lt;String, String&gt; header,</span></span></span><br><span class="line"><span class="function"><span class="params">        HashMap&lt;String, String&gt; bodyFormat)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+     * send a post to a site
+     * 
+     * @param url the website url
+     * @param para the parameter hashMap, use put to add
+     * @param header the header hasMap, use put to add
+     * @param bodyFormat the body hashMap, if use none, put("none",""), if form-data, put(key,value)
+     * @return a response json object
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">JSONObject</span> <span class="token function">post</span><span class="token punctuation">(</span><span class="token class-name">String</span> url<span class="token punctuation">,</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> para<span class="token punctuation">,</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> header<span class="token punctuation">,</span>
+        <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> bodyFormat<span class="token punctuation">)</span></code></pre></div>
 
 <h3 id="utils"><a href="#utils" class="headerlink" title="utils"></a>utils</h3><h5 id="fileUtils"><a href="#fileUtils" class="headerlink" title="fileUtils"></a>fileUtils</h5><ol>
 <li>获取文件夹内文件数</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取文件夹内文件数目</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">getFileLength</span><span class="params">(String path)</span> </span>&#123;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 获取文件夹内文件数目
+ *
+ * @param path
+ * @return
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Integer</span> <span class="token function">getFileLength</span><span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></code></pre></div>
 
 <ol start="2">
 <li>批量转换文件类型</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 批量转换文件类型</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path 文件夹路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> oldExt 原本类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> newExt 转换后类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">renameFiles</span><span class="params">(String path, String oldExt, String newExt)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 批量转换文件类型
+ *
+ * @param path 文件夹路径
+ * @param oldExt 原本类型
+ * @param newExt 转换后类型
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">renameFiles</span><span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">String</span> oldExt<span class="token punctuation">,</span> <span class="token class-name">String</span> newExt<span class="token punctuation">)</span></code></pre></div>
 
 <ol start="3">
 <li>复制文件</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 复制文件</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> input 输入</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> output 输出</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFile</span><span class="params">(File input, File output)</span> </span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 复制文件
+ *
+ * @param input 输入
+ * @param output 输出
+ * @throws IOException
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">copyFile</span><span class="token punctuation">(</span><span class="token class-name">File</span> input<span class="token punctuation">,</span> <span class="token class-name">File</span> output<span class="token punctuation">)</span> </code></pre></div>
 
 <ol start="4">
 <li>批量复制文件</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 批量复制文件</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> inputPath 输入目录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> outputPath 输出目录</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> number 每个文件复制数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> inputPrefix 输入文件前缀</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> outputPrefix 输出文件前缀</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> inputType 输入文件类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> outputType 输出文件类型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 文件操作数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">copyFile</span><span class="params">(String inputPath, String outputPath, Integer number, String inputPrefix,</span></span></span><br><span class="line"><span class="function"><span class="params">    String outputPrefix, String inputType, String outputType)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 批量复制文件
+ *
+ * @param inputPath 输入目录
+ * @param outputPath 输出目录
+ * @param number 每个文件复制数量
+ * @param inputPrefix 输入文件前缀
+ * @param outputPrefix 输出文件前缀
+ * @param inputType 输入文件类型
+ * @param outputType 输出文件类型
+ * @return 文件操作数
+ * @throws IOException
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Integer</span> <span class="token function">copyFile</span><span class="token punctuation">(</span><span class="token class-name">String</span> inputPath<span class="token punctuation">,</span> <span class="token class-name">String</span> outputPath<span class="token punctuation">,</span> <span class="token class-name">Integer</span> number<span class="token punctuation">,</span> <span class="token class-name">String</span> inputPrefix<span class="token punctuation">,</span>
+    <span class="token class-name">String</span> outputPrefix<span class="token punctuation">,</span> <span class="token class-name">String</span> inputType<span class="token punctuation">,</span> <span class="token class-name">String</span> outputType<span class="token punctuation">)</span></code></pre></div>
 
 <h5 id="imageUtils"><a href="#imageUtils" class="headerlink" title="imageUtils"></a>imageUtils</h5><ol>
 <li>图片/文件转为字节</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 图片转字节</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> imgFile 文件路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] getBytes(String imgFile) </span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 图片转字节
+ * 
+ * @param imgFile 文件路径
+ * @return
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token class-name">String</span> imgFile<span class="token punctuation">)</span> </code></pre></div>
 
 <ol start="2">
 <li>字节转图片</li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 字节转图片</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> data 数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> path 输出路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">byte2image</span><span class="params">(<span class="keyword">byte</span>[] data, String path)</span></span></span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 字节转图片
+ * 
+ * @param data 数据
+ * @param path 输出路径
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">byte2image</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">,</span> <span class="token class-name">String</span> path<span class="token punctuation">)</span></code></pre></div>
 
 <h5 id="textUtils"><a href="#textUtils" class="headerlink" title="textUtils"></a>textUtils</h5><p>CharsetKit 字符串处理工具栏</p>
 <p>Convert 类型转换器</p>

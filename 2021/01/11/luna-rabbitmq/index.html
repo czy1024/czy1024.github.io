@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/rabbitmq.jpg') no-repeat center center;
+         style="background: url('/img/rabbitmq.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：2 minutes ago
                 
               </p>
             
@@ -279,11 +279,11 @@
 <p>使用RabbitMQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态。</p>
 <p>打开命令窗口：</p>
 <p>输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_management</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">&quot;C:\Program Files\RabbitMQ Server\rabbitmq_server-3.6.5\sbin\rabbitmq-plugins.bat&quot; enable rabbitmq_management</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/01/29/pKRy4mQU9Poz6lC.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>这样，就安装好插件了，是不是能使用了呢？别急，需要重启服务才行，使用命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop RabbitMQ &amp;&amp; net start RabbitMQ</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">net stop RabbitMQ &amp;&amp; net start RabbitMQ</code></pre></div>
 
 <p>这时候的，也许会出现这种结果：</p>
 <p><img src="https://i.loli.net/2021/01/29/S8awjq2sGLDTx34.png" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -296,11 +296,11 @@
 <p>注意：安装路径不同的请看仔细啊。</p>
 <p>rabbitmq的用户管理包括增加用户，删除用户，查看用户列表，修改用户密码。</p>
 <p>查看已有用户及用户的角色：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl.bat list_users</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">rabbitmqctl.bat list_users</code></pre></div>
 
 <p><img src="http://images2015.cnblogs.com/blog/784082/201609/784082-20160924001810231-489339837.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>新增一个用户：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl.bat add_user username password</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">rabbitmqctl.bat add_user username password</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/01/29/OoEbayLInpQUScR.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>此时来看下我们当前用户哈：</p>
@@ -319,22 +319,22 @@
 <p>(5) 其他的</p>
 <p>无法登陆管理控制台，通常就是普通的生产者和消费者。</p>
 <p>好啦，我们也给 eric 变成 “超级管理员” 角色：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl.bat set_user_tags username administrator</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">rabbitmqctl.bat set_user_tags username administrator</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/01/29/2xHaJfvYmrkg3pt.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>再看下结果哈：</p>
 <p><img src="https://i.loli.net/2021/01/29/ovjVFKL2hAsRXEJ.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>当然，除了上面的administrator 还有 monitoring、policymaker、management、自定义名称 ，对应上面介绍到的不同的角色。</p>
 <p>像我们人一样，我们角色除了是公司的员工，还是父母的孩子、子女的爸妈等，用户也可以同时具有多个角色,设置方式:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl.bat  set_user_tags  username tag1 tag2 ...</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">rabbitmqctl.bat  set_user_tags  username tag1 tag2 ...</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/01/29/YMh9Kr4EnumZbQs.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>恩，现在总觉得guest 这个不安全（它的默认密码是guest）,想更改密码，好办：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl change_password userName newPassword</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">rabbitmqctl change_password userName newPassword</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/01/29/rdyDgh3YJ26wfaO.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>有的人也许会说，我就是看guest不爽，老子新增了administrator用户了，就是想干掉它，可以：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl.bat delete_user username</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">rabbitmqctl.bat delete_user username</code></pre></div>
 
 <p><img src="https://i.loli.net/2021/01/29/1UJQxXdPzy9rTkR.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p> 这时，可能有人就要问了：命令框是只有一个用户了，你怎么操作啊？怎么查看执行情况啊/</p>

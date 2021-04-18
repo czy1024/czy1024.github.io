@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -188,24 +188,34 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DML/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="mysql-DML">
+        <a href="/2020/07/04/mysql-DDL/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DML/">mysql-DML</a>
+        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DML/">
+        <a href="/2020/07/04/mysql-DDL/">
           
           
             
           
-          Review mysql插入12345678910111213141516171819202122232425一、方式一语法：insert into 表名(字段名,...) values(值,...);特点：1、要求值的类型和字段的类型要一致或兼容2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致但必须保证值和字段一一对应3、假如表中有可以为null的字段，注意可以通过以下两种方式插入nul
+          Review mysql库管理一、创建库
+create database 【if not exists】 库名【 character set 字符集名】;
+
+二、修改库
+alter database 库名 character set 字符集名;
+三、删除库
+drop database 【if exists】 库名;
+
+
+表管理一、创建表 ★
+create table 【if not exists】
         </a>
       </p>
 
@@ -259,7 +269,22 @@
           
             
           
-          Review mysql基础查询1234567891011121314151617181920212223242526272829303132333435363738394041424344一、语法select 查询列表from 表名;二、特点1、查询列表可以是字段、常量、表达式、函数，也可以是多个2、查询结果是一个虚拟表三、示例1、查询单个字段select 字段名 from 表名;2、查询多个字
+          Review mysql基础查询一、语法
+select 查询列表
+from 表名;
+二、特点
+1、查询列表可以是字段、常量、表达式、函数，也可以是多个
+2、查询结果是一个虚拟表
+
+三、示例
+1、查询单个字段
+select 字段名 from 表名;
+2、查询多个字段
+select 字段名，字段名 from 表名;
+3、查询所有字段
+select * from 表名
+4、查询常量
+select 常量值
         </a>
       </p>
 
@@ -378,7 +403,15 @@
           
             
           
-          1. Vue.js是什么?1234567891011121314151617181). 一位华裔前Google工程师(尤雨溪)开发的前端js库2). 作用: 动态构建用户界面3). 特点:	* 遵循MVVM模式	* 编码简洁, 体积小, 运行效率高, 移动/PC端开发	* 它本身只关注UI, 可以轻松引入vue插件和其它第三库开发项目4). 与其它框架的关联:	* 借鉴angular的模板和数据绑
+          1. Vue.js是什么?1). 一位华裔前Google工程师(尤雨溪)开发的前端js库
+2). 作用: 动态构建用户界面
+3). 特点:
+	* 遵循MVVM模式
+	* 编码简洁, 体积小, 运行效率高, 移动&#x2F;PC端开发
+	* 它本身只关注UI, 可以轻松引入vue插件和其它第三库开发项目
+4). 与其它框架的关联:
+	* 借鉴angular的模板和数据绑定技术
+	* 借鉴react的
         </a>
       </p>
 
@@ -435,7 +468,17 @@
           springBoot 统一异常处理异常处理反例
 捕获异常后只输出到控制台
 
-123456789101112131415前端$.ajax(&#123;    type: &quot;GET&quot;,    url: &quot;/user/add&quot;,    dataType: &quot;json&quot;,    success: function(data)&#123;     
+前端
+$.ajax(&#123;
+    type: "GET",
+    url: "/user/add",
+    dataType: "json",
+    success: function(data)&#123;
+        alert("添加成功");
+    &#125;
+&#125;);
+后端
+try 
         </a>
       </p>
 
@@ -490,118 +533,6 @@
             
           
           先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。1. Docker 能做什么？​    众所周知，Docker 是一个用于开发，发布和运行应用程序的开放平台。通俗地讲，Docker 类似于集装箱。在一艘大船上，各种货物要想被整齐摆放并且相互不受到影响，我们就需要把各种货物进行集装箱标准化。有了集装箱，我们就不需要专门运输水果或者化学用品的船了。我
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-03 00:00" pubdate>
-              2020-06-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
-          
-          
-            
-          
-          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
-1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
-
-1.1 容器的生命周期容器的生命周期是容器可能处于
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-03 00:00" pubdate>
-              2020-06-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_self">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="Docker 架构">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">Docker 架构</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
-          
-          
-            
-          
-          1. 前言docker架构设计参考文章进行整理：地址为https://www.huweihuang.com/article/docker/docker-architecture/
-这一篇文章源于2015年出版的《docker源码分析》，书中以docker1.2.0版本进行分析。但是在docker1.11以后，docker的架构就在不断的优化和拆分。下面整理出了docker框架的变迁史，可以稍作参考
         </a>
       </p>
 
@@ -696,6 +627,63 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+          
+          
+            
+          
+          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
+1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
+
+1.1 容器的生命周期容器的生命周期是容器可能处于
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-03 00:00" pubdate>
+              2020-06-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/" target="_self">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="Docker File">
         </a>
@@ -718,6 +706,61 @@
 易于版本化管理，Dockerfile 本身是一个文本文件，方便存放在代码仓库做版本管理，可以很方便地找到各个版本之间的变更历史；
 
 过程可追溯，Dockerfile 的每一行指令代表一个镜像层，根据 Dockerfile 的内容即可很明确地查看镜像的完整
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-03 00:00" pubdate>
+              2020-06-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="Docker 架构">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">Docker 架构</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+          
+          
+            
+          
+          1. 前言docker架构设计参考文章进行整理：地址为https://www.huweihuang.com/article/docker/docker-architecture/
+这一篇文章源于2015年出版的《docker源码分析》，书中以docker1.2.0版本进行分析。但是在docker1.11以后，docker的架构就在不断的优化和拆分。下面整理出了docker框架的变迁史，可以稍作参考
         </a>
       </p>
 

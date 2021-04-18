@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      467 字
+      471 字
     </span>
   
 
@@ -260,16 +260,72 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：18 hours ago
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Review-mysql"><a href="#Review-mysql" class="headerlink" title="Review mysql"></a>Review mysql</h2><h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">一、方式一</span><br><span class="line">语法：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(字段名,...) <span class="keyword">values</span>(值,...);</span><br><span class="line">特点：</span><br><span class="line"><span class="number">1</span>、要求值的类型和字段的类型要一致或兼容</span><br><span class="line"><span class="number">2</span>、字段的个数和顺序不一定与原始表中的字段个数和顺序一致</span><br><span class="line">但必须保证值和字段一一对应</span><br><span class="line"><span class="number">3</span>、假如表中有可以为<span class="keyword">null</span>的字段，注意可以通过以下两种方式插入<span class="keyword">null</span>值</span><br><span class="line">①字段和值都省略</span><br><span class="line">②字段写上，值使用<span class="keyword">null</span></span><br><span class="line"><span class="number">4</span>、字段和值的个数必须一致</span><br><span class="line"><span class="number">5</span>、字段名可以省略，默认所有列</span><br><span class="line"></span><br><span class="line">二、方式二</span><br><span class="line">语法：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名 <span class="keyword">set</span> 字段<span class="operator">=</span>值,字段<span class="operator">=</span>值,...;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">两种方式 的区别：</span><br><span class="line"><span class="number">1.</span>方式一支持一次插入多行，语法如下：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名【(字段名,..)】 <span class="keyword">values</span>(值，..),(值，...),...;</span><br><span class="line"><span class="number">2.</span>方式一支持子查询，语法如下：</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名</span><br><span class="line">查询语句;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+              <h2 id="Review-mysql"><a href="#Review-mysql" class="headerlink" title="Review mysql"></a>Review mysql</h2><h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><div class="code-wrapper"><pre class="language-sql" data-language="sql"><code class="language-sql">一、方式一
+语法：
+<span class="token keyword">insert</span> <span class="token keyword">into</span> 表名<span class="token punctuation">(</span>字段名<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword">values</span><span class="token punctuation">(</span>值<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+特点：
+<span class="token number">1</span>、要求值的类型和字段的类型要一致或兼容
+<span class="token number">2</span>、字段的个数和顺序不一定与原始表中的字段个数和顺序一致
+但必须保证值和字段一一对应
+<span class="token number">3</span>、假如表中有可以为<span class="token boolean">null</span>的字段，注意可以通过以下两种方式插入<span class="token boolean">null</span>值
+①字段和值都省略
+②字段写上，值使用<span class="token boolean">null</span>
+<span class="token number">4</span>、字段和值的个数必须一致
+<span class="token number">5</span>、字段名可以省略，默认所有列
 
-<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">一、修改单表的记录 ★</span><br><span class="line">语法：update 表名 <span class="keyword">set</span> 字段<span class="operator">=</span>值,字段<span class="operator">=</span>值 【<span class="keyword">where</span> 筛选条件】;</span><br><span class="line"></span><br><span class="line">二、修改多表的记录【补充】</span><br><span class="line">语法：</span><br><span class="line">update 表<span class="number">1</span> 别名 </span><br><span class="line"><span class="keyword">left</span><span class="operator">|</span><span class="keyword">right</span><span class="operator">|</span><span class="keyword">inner</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名 </span><br><span class="line"><span class="keyword">on</span> 连接条件  </span><br><span class="line"><span class="keyword">set</span> 字段<span class="operator">=</span>值,字段<span class="operator">=</span>值 </span><br><span class="line">【<span class="keyword">where</span> 筛选条件】;</span><br></pre></td></tr></table></figure>
+二、方式二
+语法：
+<span class="token keyword">insert</span> <span class="token keyword">into</span> 表名 <span class="token keyword">set</span> 字段<span class="token operator">=</span>值<span class="token punctuation">,</span>字段<span class="token operator">=</span>值<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
 
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">方式一：使用<span class="keyword">delete</span></span><br><span class="line">一、删除单表的记录★</span><br><span class="line">语法：<span class="keyword">delete</span> <span class="keyword">from</span> 表名 【<span class="keyword">where</span> 筛选条件】【limit 条目数】</span><br><span class="line">二、级联删除[补充]</span><br><span class="line">语法：</span><br><span class="line"><span class="keyword">delete</span> 别名<span class="number">1</span>,别名<span class="number">2</span> <span class="keyword">from</span> 表<span class="number">1</span> 别名 </span><br><span class="line"><span class="keyword">inner</span><span class="operator">|</span><span class="keyword">left</span><span class="operator">|</span><span class="keyword">right</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名 </span><br><span class="line"><span class="keyword">on</span> 连接条件</span><br><span class="line"> 【<span class="keyword">where</span> 筛选条件】</span><br><span class="line"></span><br><span class="line">方式二：使用<span class="keyword">truncate</span></span><br><span class="line">语法：<span class="keyword">truncate</span> <span class="keyword">table</span> 表名</span><br><span class="line"></span><br><span class="line">两种方式的区别【面试题】★</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span><span class="keyword">truncate</span>删除后，如果再插入，标识列从<span class="number">1</span>开始</span><br><span class="line">  <span class="keyword">delete</span>删除后，如果再插入，标识列从断点开始</span><br><span class="line"><span class="number">2.</span><span class="keyword">delete</span>可以添加筛选条件</span><br><span class="line"> <span class="keyword">truncate</span>不可以添加筛选条件</span><br><span class="line"><span class="number">3.</span><span class="keyword">truncate</span>效率较高</span><br><span class="line"><span class="number">4.</span><span class="keyword">truncate</span>没有返回值</span><br><span class="line"><span class="keyword">delete</span>可以返回受影响的行数</span><br><span class="line"><span class="number">5.</span><span class="keyword">truncate</span>不可以回滚</span><br><span class="line"><span class="keyword">delete</span>可以回滚</span><br></pre></td></tr></table></figure>
+
+两种方式 的区别：
+<span class="token number">1.</span>方式一支持一次插入多行，语法如下：
+<span class="token keyword">insert</span> <span class="token keyword">into</span> 表名【<span class="token punctuation">(</span>字段名<span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>】 <span class="token keyword">values</span><span class="token punctuation">(</span>值，<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span>值，<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+<span class="token number">2.</span>方式一支持子查询，语法如下：
+<span class="token keyword">insert</span> <span class="token keyword">into</span> 表名
+查询语句<span class="token punctuation">;</span>
+</code></pre></div>
+
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><div class="code-wrapper"><pre class="language-sql" data-language="sql"><code class="language-sql">一、修改单表的记录 ★
+语法：<span class="token keyword">update</span> 表名 <span class="token keyword">set</span> 字段<span class="token operator">=</span>值<span class="token punctuation">,</span>字段<span class="token operator">=</span>值 【<span class="token keyword">where</span> 筛选条件】<span class="token punctuation">;</span>
+
+二、修改多表的记录【补充】
+语法：
+<span class="token keyword">update</span> 表<span class="token number">1</span> 别名 
+<span class="token keyword">left</span><span class="token operator">|</span><span class="token keyword">right</span><span class="token operator">|</span><span class="token keyword">inner</span> <span class="token keyword">join</span> 表<span class="token number">2</span> 别名 
+<span class="token keyword">on</span> 连接条件  
+<span class="token keyword">set</span> 字段<span class="token operator">=</span>值<span class="token punctuation">,</span>字段<span class="token operator">=</span>值 
+【<span class="token keyword">where</span> 筛选条件】<span class="token punctuation">;</span></code></pre></div>
+
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><div class="code-wrapper"><pre class="language-sql" data-language="sql"><code class="language-sql">方式一：使用<span class="token keyword">delete</span>
+一、删除单表的记录★
+语法：<span class="token keyword">delete</span> <span class="token keyword">from</span> 表名 【<span class="token keyword">where</span> 筛选条件】【<span class="token keyword">limit</span> 条目数】
+二、级联删除<span class="token punctuation">[</span>补充<span class="token punctuation">]</span>
+语法：
+<span class="token keyword">delete</span> 别名<span class="token number">1</span><span class="token punctuation">,</span>别名<span class="token number">2</span> <span class="token keyword">from</span> 表<span class="token number">1</span> 别名 
+<span class="token keyword">inner</span><span class="token operator">|</span><span class="token keyword">left</span><span class="token operator">|</span><span class="token keyword">right</span> <span class="token keyword">join</span> 表<span class="token number">2</span> 别名 
+<span class="token keyword">on</span> 连接条件
+ 【<span class="token keyword">where</span> 筛选条件】
+
+方式二：使用<span class="token keyword">truncate</span>
+语法：<span class="token keyword">truncate</span> <span class="token keyword">table</span> 表名
+
+两种方式的区别【面试题】★
+
+<span class="token number">1.</span><span class="token keyword">truncate</span>删除后，如果再插入，标识列从<span class="token number">1</span>开始
+  <span class="token keyword">delete</span>删除后，如果再插入，标识列从断点开始
+<span class="token number">2.</span><span class="token keyword">delete</span>可以添加筛选条件
+ <span class="token keyword">truncate</span>不可以添加筛选条件
+<span class="token number">3.</span><span class="token keyword">truncate</span>效率较高
+<span class="token number">4.</span><span class="token keyword">truncate</span>没有返回值
+<span class="token keyword">delete</span>可以返回受影响的行数
+<span class="token number">5.</span><span class="token keyword">truncate</span>不可以回滚
+<span class="token keyword">delete</span>可以回滚</code></pre></div>
 
 
             </div>
@@ -305,9 +361,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/07/04/mysql-DDL/">
+                      <a href="/2020/07/27/maven/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mysql-DDL</span>
+                        <span class="hidden-mobile">maven配置学习</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -315,8 +371,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/29/mysql-DQL/">
-                        <span class="hidden-mobile">mysql-DQL</span>
+                      <a href="/2020/07/04/mysql-DDL/">
+                        <span class="hidden-mobile">mysql-DDL</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

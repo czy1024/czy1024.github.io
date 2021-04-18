@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/minions.jpg">
+  <link rel="icon" href="/img/luna.png">
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/blog/img/macos.jpg') no-repeat center center;
+         style="background: url('/img/macos.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 hours ago
+                  本文最后更新于：4 minutes ago
                 
               </p>
             
@@ -293,7 +293,7 @@
 <p>如遇curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation timed out</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_27741463/article/details/102950077">https://blog.csdn.net/sinat_27741463/article/details/102950077</a></p>
 <p>如果你的mac是10.14.6 以上，homebrew安装失败 可以试试用国内的源。亲测可用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homebrew.sh)&quot;</code></pre></div>
 
 <p>/bin/zsh -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;">https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</a></p>
 <p><img src="https://i.loli.net/2021/01/29/6e2cTJQNVqBjAuH.png" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -316,7 +316,15 @@
 <p>objc[6704]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/bin/java (0x1026804c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1027044e0). One of the two will be used. Which one is undefined.</p>
 <p>解决办法：</p>
 <p>help-Edit Custom Properties 里添加</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># custom IntelliJ IDEA properties</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">idea_rt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">idea.no.launcher=true</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-html" data-language="html"><code class="language-html"># custom IntelliJ IDEA properties
+
+
+
+idea_rt
+
+
+
+idea.no.launcher=true</code></pre></div>
 
 <p>4.Chrome浏览器jsonview插件安装</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/whycxb/p/7126116.html">https://www.cnblogs.com/whycxb/p/7126116.html</a></p>
@@ -354,7 +362,7 @@
 <p>ControlPersist yes</p>
 <p>ServerAliveInterval 14400</p>
 <h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>修改 host 配置，在终端中输入下列指令，打开编辑文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi &#x2F;etc&#x2F;hosts</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">sudo vi &#x2F;etc&#x2F;hosts</code></pre></div>
 
 <p>进入编辑模式，在最下面添加 13.229.188.59 github.com<br>再次尝试在终端 ping github.com，发现已经成功了。</p>
 <p><img src="https://i.loli.net/2021/01/29/uHtRbZNhW5aJoCA.png" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -364,22 +372,30 @@
 <p><img src="https://i.loli.net/2021/01/29/5b4HhDRuKBvnSmc.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>解决方法</p>
 <p>安装Meslo字体，否则会出现乱码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/powerline/fonts.git </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> fonts </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">./install.sh </span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/powerline/fonts.git 
+
+
+
+<span class="token builtin class-name">cd</span> fonts 
+
+
+
+./install.sh </code></pre></div>
 
 <p>如遇<br>Cloning into ‘fonts’…<br>remote: Enumerating objects: 968, done.<br>error: RPC failed; curl 18 transfer closed with outstanding read data remaining<br>fatal: the remote end hung up unexpectedly<br>fatal: early EOF<br>fatal: index-pack failed</p>
 <p>在执行git clone命令时报错：fatal: early EOF。解决办法如下：</p>
 <p>1.关闭压缩</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.compression 0</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">git config --global core.compression 0</code></pre></div>
 
 <p>2.然后执行部分clone</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth 1 &lt;repo_URI&gt;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">git clone --depth 1 &lt;repo_URI&gt;</code></pre></div>
 
 <p>其中代表你的远程代码仓库地址，这里我的是用git clone –depth 1 <a target="_blank" rel="noopener" href="https://github.com/powerline/fonts.git">https://github.com/powerline/fonts.git</a></p>
 <p>3.如果起作用了，clone剩下的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch --unshallow </span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">git fetch --unshallow </code></pre></div>
 
 <p>4.以后执行常规操作就行了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --all</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">git pull --all</code></pre></div>
 
 <p>因为git代码一直拉不下来，所有换一种方式，就是修改oh-my-zsh主题</p>
 <p>vim .zshrc</p>
@@ -389,11 +405,11 @@
 <p><img src="https://i.loli.net/2021/01/29/ZXKgJlabHu6P2SY.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>[zsh 配置] zsh命令自动补全插件</p>
 <p>下载该插件到.oh-my-zsh的插件目录  /Users/qa/.oh-my-zsh/plugins</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git:&#x2F;&#x2F;github.com&#x2F;zsh-users&#x2F;zsh-autosuggestions $ZSH_CUSTOM&#x2F;plugins&#x2F;zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">git clone git:&#x2F;&#x2F;github.com&#x2F;zsh-users&#x2F;zsh-autosuggestions $ZSH_CUSTOM&#x2F;plugins&#x2F;zsh-autosuggestions</code></pre></div>
 
 <p>编辑/Users/qa/.zshrc文件</p>
 <p>找到plugins=(git)这一行，如果没有添加。更改为如下 注意不要注释掉之前的plugins=(git) 要直接修改这行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins&#x3D;(git zsh-autosuggestions)</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">plugins&#x3D;(git zsh-autosuggestions)</code></pre></div>
 
 <p>plugins=(git zsh-autosuggestions)</p>
 <p>记得source .zshrc </p>
@@ -502,7 +518,15 @@
 <p># Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)<br>!gradle-wrapper.jar</p>
 <p>## maven<br>target/<br>pom.xml.tag<br>pom.xml.releaseBackup<br>pom.xml.versionsBackup<br>pom.xml.next<br>release.properties<br>dependency-reduced-pom.xml<br>buildNumber.properties<br>.mvn/timing.properties</p>
 <p># Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)<br>!/.mvn/wrapper/maven-wrapper.jar</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git commit -m &#39;update .gitignore&#39;</span><br></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">git rm -r --cached .
+
+
+
+git add .
+
+
+
+git commit -m &#39;update .gitignore&#39;</code></pre></div>
 
 <p>.gitignore文件 具体的规则一搜就有。我在使用GIT的过程中，明明写好了规则，但问题不起作用，每次还是重复提交，无法忍受。其实这个文件里的规则对已经追踪的文件是没有效果的。所以我们需要使用rm命令清除一下相关的缓存内容。这样文件将以未追踪的形式出现 然后再重新添加提交一下 .gitignore文件里的规则就可以起作用了</p>
 <p>参考博客 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/sloong/p/5523244.html">https://www.cnblogs.com/sloong/p/5523244.html</a></p>
