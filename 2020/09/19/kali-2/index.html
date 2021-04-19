@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 小时前
+                  本文最后更新于：13 分钟前
                 
               </p>
             
@@ -272,11 +272,11 @@
 <ol>
 <li><p>我们首先通过执行下列命令升级发行版作为开始：</p>
 <p><code>apt-get update</code></p>
-<p><img src="/blog/img/img/2-1-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-1-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>下面，我们需要再次使用<code>apt-get</code>来准备内核头文件，执行下列命令：</p>
 <p><code>apt-get install linux-headers - </code>uname –r``</p>
-<p><img src="/blog/img/img/2-1-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-1-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>复制下列目录以及其中的全部内容：</p>
 <p><code>cd /usr/src/linux cp -rf include/generated/* include/linux/</code></p>
@@ -290,7 +290,7 @@
 <ol>
 <li><p>打开终端窗口，从<a target="_blank" rel="noopener" href="http://www.broadcom.com/support/802.11/linux_sta.php%E4%B8%8B%E8%BD%BD%E5%90%88%E9%80%82%E7%9A%84Broadcom">http://www.broadcom.com/support/802.11/linux_sta.php下载合适的Broadcom</a> 驱动：</p>
 <p><code>cd /tmp/ wget http://www.broadcom.com/docs/linux_sta/hybrid-portsrc_ x86_64-v5_100_82_112.tar.gz</code></p>
-<p><img src="/blog/img/img/2-2-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-2-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>使用下列命令解压下载的驱动：</p>
 <p><code>mkdir broadcom tar xvfz hybrid-portsrc_x86_64-v5_100_82_112.tar.gz –C /tmp/ broadcom</code></p>
@@ -333,11 +333,11 @@
 <li><p>下载系统所需的ATI显示驱动：</p>
 <p><code>cd /tmp/ wget http://www2.ati.com/drivers/linux/amd-driver-installer-121-x86.x86_64.run</code></p>
 <p>我们也可以从下面的网址下载显示驱动：[<a target="_blank" rel="noopener" href="http://support/">http://support</a>. amd.com/us/gpudownload/Pages/index.aspx](<a target="_blank" rel="noopener" href="http://support/">http://support</a>. amd.com/us/gpudownload/Pages/index.aspx)。</p>
-<p><img src="/blog/img/img/2-3-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-3-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>通过键入下列命令来开始安装：</p>
 <p><code>sh amd-driver-installer-12-1-x86.x86_64.run</code></p>
-<p><img src="/blog/img/img/2-3-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-3-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>在安装完成之后，重启你的系统来使改变生效，并且避免不稳定。</p>
 </li>
@@ -395,7 +395,7 @@
 <ol>
 <li><p>下载英伟达开发者显示驱动，根据你的CPU架构：</p>
 <p><code>cd /tmp/ wget http://developer.download.nvidia.com/compute/cuda/4_1/rel/ drivers/NVIDIA-Linux-x86_64-285.05.33.run</code></p>
-<p><img src="/blog/img/img/2-4-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-4-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>安装驱动：</p>
 <p><code>chmod +x NVIDIA-Linux-x86_64-285.05.33.run ./NVIDIA-Linux-x86_64-285.05.33.run –kernel-source-path=&#39;/usr/src/ linux&#39;</code></p>
@@ -469,10 +469,10 @@
 <p><code>vim /etc/proxychains.conf</code></p>
 </li>
 <li><p>解除我们打算使用的链接类型的注释，这里是<code>dynamic_chain</code>：</p>
-<p><img src="/blog/img/img/2-6-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-6-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>向列表中添加一些代理服务器：</p>
-<p><img src="/blog/img/img/2-6-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-6-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>使用我们的链式代理来解析目标主机：</p>
 <p><code>proxyresolv www.targethost.com</code></p>
@@ -484,11 +484,11 @@
 <h2 id="2-7-目录加密"><a href="#2-7-目录加密" class="headerlink" title="2.7 目录加密"></a>2.7 目录加密</h2><p>这一章的最后一个秘籍关于信息隐私。我们会使用TrueCrypt通过密钥来隐藏重要和私密的数字信息，远离公众的眼睛。</p>
 <h3 id="操作步骤-6"><a href="#操作步骤-6" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
 <li><p>通过访问<code>Applications Menu | Kali | Forensics | Digital Anti Forensics | install truecrypt</code>来安装TrueCrypt。</p>
-<p><img src="/blog/img/img/2-7-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-7-1.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>点击<code>Install TrueCrypt</code>（安装TrueCrypt）并且遵循屏幕上的指导。</p>
 </li>
 <li><p>从<code>Applications Menu | Kali Linux | Forensics | Digital Anti Forensics | truecrypt</code>运行TrueCrypt，你会看到下面的窗口：</p>
-<p><img src="/blog/img/img/2-7-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-7-2.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>点击<code>Create Volume</code>（新建卷）来启动<code>TrueCrypt Volume Creation Wizard</code>（TrueCrypt卷创建向导）。</p>
 </li>
@@ -497,7 +497,7 @@
 <li><p>选择<code>Standard TrueCrypt</code>（标准TrueCrypt）模式并点击<code>Next</code>。</p>
 </li>
 <li><p>点击<code>Select File…</code>（选择文件）按钮并为新的TrueCrypt卷指定名称和路径。完成后点击<code>Save</code>（保存）。</p>
-<p><img src="/blog/img/img/2-7-3.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-7-3.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>点击<code>Next</code>按钮并选择打算使用的加密和哈希算法。</p>
 </li>
@@ -518,7 +518,7 @@
 <li><p>从列表中选择一个<code>Slot</code>（槽）来解密我们的卷，点击<code>Select File…</code>（选择文件），并打开我们创建的卷。</p>
 </li>
 <li><p>点击<code>Mount</code>（挂载）并键入我们的密码，完成后点击<code>OK</code>。</p>
-<p><img src="/blog/img/img/2-7-4.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="/img/img/2-7-4.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 </li>
 <li><p>我们现在可以通过在槽上双击或通过挂载目录来访问卷，以及在里面保存文件。当我们完成之后，只需要点击<code>Dismount All</code>（解除所有挂载）。</p>
 </li>
@@ -562,9 +562,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/09/19/kali-3/">
+                      <a href="/2020/09/19/kali-1/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">kali高级测试环境</span>
+                        <span class="hidden-mobile">安装和启动Kali</span>
                         <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
@@ -572,8 +572,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/09/19/kali-8/">
-                        <span class="hidden-mobile">kali 无线攻击</span>
+                      <a href="/2020/09/19/kali-3/">
+                        <span class="hidden-mobile">kali高级测试环境</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

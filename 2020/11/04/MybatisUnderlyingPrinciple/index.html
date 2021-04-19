@@ -208,7 +208,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      3.4k 字
     </span>
   
 
@@ -218,7 +218,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      86
+      85
        分钟
     </span>
   
@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 小时前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -272,8 +272,7 @@
 		<span class="token class-name">SqlSession</span> sqlSession <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 		<span class="token class-name">String</span> name <span class="token operator">=</span> <span class="token string">"tom"</span><span class="token punctuation">;</span>
 		<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">selectList</span><span class="token punctuation">(</span><span class="token string">"com.demo.mapper.UserMapper.getUserByName"</span><span class="token punctuation">,</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token number">1234567</span></code></pre></div>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <ol>
 <li>创建SqlSessionFactoryBuilder对象，调用build(inputstream)方法读取并解析配置文件，返回SqlSessionFactory对象</li>
@@ -290,8 +289,7 @@
 		<span class="token comment">//这里不再调用SqlSession 的api，而是获得了接口对象，调用接口中的方法。</span>
 		<span class="token class-name">UserMapper</span> mapper <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">getMapper</span><span class="token punctuation">(</span><span class="token class-name">UserMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 		<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">getUserByName</span><span class="token punctuation">(</span><span class="token string">"tom"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token number">123456789</span></code></pre></div>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <h2 id="原生MyBatis原理分析"><a href="#原生MyBatis原理分析" class="headerlink" title="原生MyBatis原理分析"></a>原生MyBatis原理分析</h2><h2 id="初始化工作"><a href="#初始化工作" class="headerlink" title="初始化工作"></a>初始化工作</h2><h3 id="解析配置文件"><a href="#解析配置文件" class="headerlink" title="解析配置文件"></a>解析配置文件</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> inputStream <span class="token operator">=</span> <span class="token class-name">Resources</span><span class="token punctuation">.</span><span class="token function">getResourceAsStream</span><span class="token punctuation">(</span><span class="token string">"mybatis-config.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//这一行代码正是初始化工作的开始。</span>
@@ -324,7 +322,7 @@
 <blockquote>
 <p>properties（属性），settings（设置），typeAliases（类型别名），typeHandlers（类型处理器），objectFactory（对象工厂），mappers（映射器）等</p>
 </blockquote>
-<p>Configuration也有对应的对象属性来封装它们：<br>（图片来自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/luanlouis/article/details/37744073%EF%BC%89![%E5%9C%A8%E8%BF%99%E9%87%8C%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E6%8F%8F%E8%BF%B0](https://img-blog.csdnimg.cn/20190607110727998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzE4NDc2OQ==,size_16,color_FFFFFF,t_70)">https://blog.csdn.net/luanlouis/article/details/37744073）![在这里插入图片描述](https://img-blog.csdnimg.cn/20190607110727998.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzE4NDc2OQ==,size_16,color_FFFFFF,t_70)</a><br>也就是说，<code>初始化配置文件信息的本质就是创建Configuration对象，将解析的xml数据封装到Configuration内部的属性中。</code></p>
+<p>Configuration也有对应的对象属性来封装它们：<br><img src="https://i.loli.net/2021/04/19/ZnUdxmWcGEzgoq9.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>也就是说，<code>初始化配置文件信息的本质就是创建Configuration对象，将解析的xml数据封装到Configuration内部的属性中。</code></p>
 </blockquote>
 <div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//在创建XMLConfigBuilder时，它的构造方法中解析器XPathParser已经读取了配置文件</span>
 <span class="token comment">//3. 进入XMLConfigBuilder 中的 parse()方法。</span>
@@ -374,17 +372,16 @@
 <h3 id="配置类方式"><a href="#配置类方式" class="headerlink" title="配置类方式"></a>配置类方式</h3><p>发散一下思路，既然解析xml是对Configuration中的属性进行复制，那么我们同样可以在一个类中创建Configuration对象，手动设置其中属性的值来达到配置的效果。</p>
 <h2 id="执行SQL"><a href="#执行SQL" class="headerlink" title="执行SQL"></a>执行SQL</h2><p>先简单介绍<strong>SqlSession</strong>：</p>
 <blockquote>
-<p>SqlSession是一个接口，它有两个实现类：DefaultSqlSession（默认）和SqlSessionManager（弃用，不做介绍）<br>SqlSession是MyBatis中用于和数据库交互的<code>顶层类</code>，通常将它与ThreadLocal绑定，一个会话使用一个SqlSession，并且在使用完毕后需要close。<br><img src="https://img-blog.csdnimg.cn/20190607113736428.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>SqlSession中的两个最重要的参数，configuration与初始化时的相同，Executor为执行器，</p>
+<p>SqlSession是一个接口，它有两个实现类：DefaultSqlSession（默认）和SqlSessionManager（弃用，不做介绍）<br>SqlSession是MyBatis中用于和数据库交互的<code>顶层类</code>，通常将它与ThreadLocal绑定，一个会话使用一个SqlSession，并且在使用完毕后需要close。<br><img src="https://i.loli.net/2021/04/19/sgclvkANYuZ8Tzf.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>SqlSession中的两个最重要的参数，configuration与初始化时的相同，Executor为执行器，</p>
 </blockquote>
 <p><strong>Executor：</strong></p>
 <blockquote>
 <p>Executor也是一个接口，他有三个常用的实现类BatchExecutor（重用语句并执行批量更新），ReuseExecutor（重用预处理语句prepared statements），SimpleExecutor（普通的执行器，默认）。</p>
 </blockquote>
 <h3 id="SqlSession-API方式"><a href="#SqlSession-API方式" class="headerlink" title="SqlSession API方式"></a>SqlSession API方式</h3><p>继续分析，初始化完毕后，我们就要执行SQL了：</p>
-<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java">		<span class="token class-name">SqlSession</span> sqlSession <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">String</span> name <span class="token operator">=</span> <span class="token string">"tom"</span><span class="token punctuation">;</span>
-		<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">selectList</span><span class="token punctuation">(</span><span class="token string">"com.demo.mapper.UserMapper.getUserByName"</span><span class="token punctuation">,</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token number">123</span></code></pre></div>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">SqlSession</span> sqlSession <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">openSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> name <span class="token operator">=</span> <span class="token string">"tom"</span><span class="token punctuation">;</span>
+<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> sqlSession<span class="token punctuation">.</span><span class="token function">selectList</span><span class="token punctuation">(</span><span class="token string">"com.demo.mapper.UserMapper.getUserByName"</span><span class="token punctuation">,</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 
 <p>获得sqlSession</p>
 <div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token comment">//6. 进入openSession方法。</span>
@@ -450,8 +447,7 @@
 <ul>
 <li>在configuration中对应的属性为</li>
 </ul>
-<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">MappedStatement</span><span class="token punctuation">></span></span> mappedStatements <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StrictMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MappedStatement</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"Mapped Statements collection"</span><span class="token punctuation">)</span>
-<span class="token number">1</span></code></pre></div>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">MappedStatement</span><span class="token punctuation">></span></span> mappedStatements <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StrictMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">MappedStatement</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string">"Mapped Statements collection"</span><span class="token punctuation">)</span></code></pre></div>
 
 <ul>
 <li>在XMLConfigBuilder中的处理：</li>
@@ -762,6 +758,8 @@
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span></code></pre></div>
+
+
             </div>
             <hr>
             <div>
