@@ -40,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Jf1XC66LVfvBgBpG1uzXEivd","app_key":"UyOEEpxFaJC2kPqgBkDOeMPE","server_url":"https://jf1xc66l.lc-cn-n1-shared.com"}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Jf1XC66LVfvBgBpG1uzXEivd","app_key":"UyOEEpxFaJC2kPqgBkDOeMPE","server_url":"https://jf1xc66l.lc-cn-n1-shared.com"}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -192,32 +192,30 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20tar/" target="_blank">
-          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="tar 命令">
+        <a href="/2020/04/02/linux%20systemctl/" target="_blank">
+          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/02/linux%20tar/">tar 命令</a>
+        <a href="/2020/04/02/linux%20systemctl/">linux_systemctl</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/02/linux%20tar/">
+        <a href="/2020/04/02/linux%20systemctl/">
           
           
             
           
-          tar
--c: 建立压缩档案-x：解压-t：查看内容-r：向压缩归档文件末尾追加文件-u：更新原压缩包中的文件
+          systemctl配置管理文件详解
+文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
 
-这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。
-
--z：有gzip属性的-j：有bz2属性的-Z：有compress属性的-v：显示所有过程-O：将文件解开到标准输出
-
-下面的参数-f是必须的
--f: 使
+文件内容$cat sshd.service
+    [Unit]
+    Description=OpenSSH server daemon
+    Documentation=man:sshd(8) man:s
         </a>
       </p>
 
@@ -256,30 +254,32 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20systemctl/" target="_blank">
-          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
+        <a href="/2020/04/02/linux%20tar/" target="_blank">
+          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="tar 命令">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/02/linux%20systemctl/">linux_systemctl</a>
+        <a href="/2020/04/02/linux%20tar/">tar 命令</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/02/linux%20systemctl/">
+        <a href="/2020/04/02/linux%20tar/">
           
           
             
           
-          systemctl配置管理文件详解
-文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
+          tar
+-c: 建立压缩档案-x：解压-t：查看内容-r：向压缩归档文件末尾追加文件-u：更新原压缩包中的文件
 
-文件内容$cat sshd.service
-    [Unit]
-    Description=OpenSSH server daemon
-    Documentation=man:sshd(8) man:s
+这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。
+
+-z：有gzip属性的-j：有bz2属性的-Z：有compress属性的-v：显示所有过程-O：将文件解开到标准输出
+
+下面的参数-f是必须的
+-f: 使
         </a>
       </p>
 
@@ -484,7 +484,7 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
     
       <div class="col-lg-7 mx-auto nopadding-x-md">
         <div class="container custom mx-auto">
-          <script src='https://api.vvhan.com/api/snow'>
+          <script src='https://api.vvhan.com/api/snow'><script src='https://g.joyinshare.com/hc/ribbon.min.js'>
         </div>
       </div>
     
@@ -533,7 +533,7 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
     NProgress.start()
     window.addEventListener('load', function() {
       NProgress.done();
@@ -583,34 +583,7 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      $.ajax({
-        type: 'GET',
-        url: 'https://api.eatrice.top/reading/',
-        headers: {},
-        dataType: 'json',
-        success: function (result) {
-          var text;
-          if (result) {
-            var keys = 'Content'.split('.')
-            if (result instanceof Array) {
-              result = result[0]
-            }
-            for (const k of keys) {
-              var value = result[k]
-              if (typeof value === 'string') {
-                text = value
-                break
-              } else if (value instanceof Object) {
-                result = value
-              }
-            }
-          }
-          text ? typing(text) : typing(title);
-        },
-        error: function () {
-          typing(title)
-        }
-      })
+      typing(title)
       
     })(window, document);
   </script>

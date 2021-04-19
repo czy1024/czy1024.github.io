@@ -40,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Jf1XC66LVfvBgBpG1uzXEivd","app_key":"UyOEEpxFaJC2kPqgBkDOeMPE","server_url":"https://jf1xc66l.lc-cn-n1-shared.com"}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Jf1XC66LVfvBgBpG1uzXEivd","app_key":"UyOEEpxFaJC2kPqgBkDOeMPE","server_url":"https://jf1xc66l.lc-cn-n1-shared.com"}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -192,28 +192,27 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker File">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">Docker File</a>
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
           
           
             
           
-          1. 前言​    生产实践中一定优先使用 Dockerfile 的方式构建镜像。 因为使用 Dockerfile 构建镜像可以带来很多好处：
+          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
+1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
 
-易于版本化管理，Dockerfile 本身是一个文本文件，方便存放在代码仓库做版本管理，可以很方便地找到各个版本之间的变更历史；
-
-过程可追溯，Dockerfile 的每一行指令代表一个镜像层，根据 Dockerfile 的内容即可很明确地查看镜像的完整
+1.1 容器的生命周期容器的生命周期是容器可能处于
         </a>
       </p>
 
@@ -252,27 +251,28 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
+        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker File">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
+        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">Docker File</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        <a href="/2020/06/03/5.Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
           
           
             
           
-          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
-1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
+          1. 前言​    生产实践中一定优先使用 Dockerfile 的方式构建镜像。 因为使用 Dockerfile 构建镜像可以带来很多好处：
 
-1.1 容器的生命周期容器的生命周期是容器可能处于
+易于版本化管理，Dockerfile 本身是一个文本文件，方便存放在代码仓库做版本管理，可以很方便地找到各个版本之间的变更历史；
+
+过程可追溯，Dockerfile 的每一行指令代表一个镜像层，根据 Dockerfile 的内容即可很明确地查看镜像的完整
         </a>
       </p>
 
@@ -828,7 +828,7 @@ import org.springframework.scheduling.an
     
       <div class="col-lg-7 mx-auto nopadding-x-md">
         <div class="container custom mx-auto">
-          <script src='https://api.vvhan.com/api/snow'>
+          <script src='https://api.vvhan.com/api/snow'><script src='https://g.joyinshare.com/hc/ribbon.min.js'>
         </div>
       </div>
     
@@ -877,7 +877,7 @@ import org.springframework.scheduling.an
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
     NProgress.start()
     window.addEventListener('load', function() {
       NProgress.done();
@@ -927,34 +927,7 @@ import org.springframework.scheduling.an
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      $.ajax({
-        type: 'GET',
-        url: 'https://api.eatrice.top/reading/',
-        headers: {},
-        dataType: 'json',
-        success: function (result) {
-          var text;
-          if (result) {
-            var keys = 'Content'.split('.')
-            if (result instanceof Array) {
-              result = result[0]
-            }
-            for (const k of keys) {
-              var value = result[k]
-              if (typeof value === 'string') {
-                text = value
-                break
-              } else if (value instanceof Object) {
-                result = value
-              }
-            }
-          }
-          text ? typing(text) : typing(title);
-        },
-        error: function () {
-          typing(title)
-        }
-      })
+      typing(title)
       
     })(window, document);
   </script>

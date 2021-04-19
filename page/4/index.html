@@ -40,7 +40,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Jf1XC66LVfvBgBpG1uzXEivd","app_key":"UyOEEpxFaJC2kPqgBkDOeMPE","server_url":"https://jf1xc66l.lc-cn-n1-shared.com"}}};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Jf1XC66LVfvBgBpG1uzXEivd","app_key":"UyOEEpxFaJC2kPqgBkDOeMPE","server_url":"https://jf1xc66l.lc-cn-n1-shared.com"}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -312,34 +312,34 @@ pom.xml文件的节点大致可以分为以下几个部分：
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DML/" target="_blank">
-          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DML">
+        <a href="/2020/07/04/mysql-DDL/" target="_blank">
+          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DML/">mysql-DML</a>
+        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DML/">
+        <a href="/2020/07/04/mysql-DDL/">
           
           
             
           
-          Review mysql插入一、方式一
-语法：
-insert into 表名(字段名,...) values(值,...);
-特点：
-1、要求值的类型和字段的类型要一致或兼容
-2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致
-但必须保证值和字段一一对应
-3、假如表中有可以为null的字段，注意可以通过以下两种方式插入null值
-①字段和值都省略
-②字段写上，值使用null
-4、字段和值的个
+          Review mysql库管理一、创建库
+create database 【if not exists】 库名【 character set 字符集名】;
+
+二、修改库
+alter database 库名 character set 字符集名;
+三、删除库
+drop database 【if exists】 库名;
+
+
+表管理一、创建表 ★
+create table 【if not exists】
         </a>
       </p>
 
@@ -378,34 +378,34 @@ insert into 表名(字段名,...) values(值,...);
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/07/04/mysql-DDL/" target="_blank">
-          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DDL">
+        <a href="/2020/07/04/mysql-DML/" target="_blank">
+          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql-DML">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/07/04/mysql-DDL/">mysql-DDL</a>
+        <a href="/2020/07/04/mysql-DML/">mysql-DML</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/07/04/mysql-DDL/">
+        <a href="/2020/07/04/mysql-DML/">
           
           
             
           
-          Review mysql库管理一、创建库
-create database 【if not exists】 库名【 character set 字符集名】;
-
-二、修改库
-alter database 库名 character set 字符集名;
-三、删除库
-drop database 【if exists】 库名;
-
-
-表管理一、创建表 ★
-create table 【if not exists】
+          Review mysql插入一、方式一
+语法：
+insert into 表名(字段名,...) values(值,...);
+特点：
+1、要求值的类型和字段的类型要一致或兼容
+2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致
+但必须保证值和字段一一对应
+3、假如表中有可以为null的字段，注意可以通过以下两种方式插入null值
+①字段和值都省略
+②字段写上，值使用null
+4、字段和值的个
         </a>
       </p>
 
@@ -873,7 +873,7 @@ try
     
       <div class="col-lg-7 mx-auto nopadding-x-md">
         <div class="container custom mx-auto">
-          <script src='https://api.vvhan.com/api/snow'>
+          <script src='https://api.vvhan.com/api/snow'><script src='https://g.joyinshare.com/hc/ribbon.min.js'>
         </div>
       </div>
     
@@ -922,7 +922,7 @@ try
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
 
   <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
     NProgress.start()
     window.addEventListener('load', function() {
       NProgress.done();
@@ -972,34 +972,7 @@ try
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      $.ajax({
-        type: 'GET',
-        url: 'https://api.eatrice.top/reading/',
-        headers: {},
-        dataType: 'json',
-        success: function (result) {
-          var text;
-          if (result) {
-            var keys = 'Content'.split('.')
-            if (result instanceof Array) {
-              result = result[0]
-            }
-            for (const k of keys) {
-              var value = result[k]
-              if (typeof value === 'string') {
-                text = value
-                break
-              } else if (value instanceof Object) {
-                result = value
-              }
-            }
-          }
-          text ? typing(text) : typing(title);
-        },
-        error: function () {
-          typing(title)
-        }
-      })
+      typing(title)
       
     })(window, document);
   </script>
