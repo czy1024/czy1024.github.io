@@ -192,6 +192,68 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/04/02/linux%20systemctl/" target="_self">
+          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/04/02/linux%20systemctl/">linux_systemctl</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/04/02/linux%20systemctl/">
+          
+          
+            
+          
+          systemctl配置管理文件详解
+文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
+
+文件内容$cat sshd.service
+    [Unit]
+    Description=OpenSSH server daemon
+    Documentation=man:sshd(8) man:s
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-04-02 00:00" pubdate>
+              2020-04-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/system/">system</a>
+            
+              <a href="/categories/system/linux/">linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/04/02/linux%20tar/" target="_self">
           <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="tar 命令">
         </a>
@@ -401,7 +463,7 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -410,7 +472,7 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

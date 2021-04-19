@@ -192,6 +192,69 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/05/brew/" target="_self">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="homebrew教程">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/05/brew/">homebrew教程</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/05/brew/">
+          
+          
+            
+          
+          homebrew是osx下的一个包管理工具，可以很方便的管理各类包。官方给出的定义是
+
+macOS缺失的软件包管理器 官方地址
+
+安装1、自动安装(推荐)执行如下命令：
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+上边的命令行是两个命令，首先下
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-05 00:00" pubdate>
+              2020-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/system/">system</a>
+            
+              <a href="/categories/system/macos/">macos</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Mac-brew/">Mac-brew</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/05/date/" target="_self">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="时间和字符传的转化">
         </a>
@@ -733,68 +796,6 @@ Map&lt;Str
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20systemctl/" target="_self">
-          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/02/linux%20systemctl/">linux_systemctl</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/02/linux%20systemctl/">
-          
-          
-            
-          
-          systemctl配置管理文件详解
-文件存放位置：（共三处）/etc/systemd/system//usr/lib/systemd/system/lib/systemd/system
-
-文件内容$cat sshd.service
-    [Unit]
-    Description=OpenSSH server daemon
-    Documentation=man:sshd(8) man:s
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-02 00:00" pubdate>
-              2020-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/system/">system</a>
-            
-              <a href="/categories/system/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -824,7 +825,7 @@ Map&lt;Str
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -833,7 +834,7 @@ Map&lt;Str
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

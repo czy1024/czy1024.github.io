@@ -260,7 +260,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：1 小时前
                 
               </p>
             
@@ -392,7 +392,7 @@
 <ul>
 <li>如果传入的是单参数且参数类型是一个List的时候，collection属性值为list</li>
 <li>如果传入的是单参数且参数类型是一个array数组的时候，collection的属性值为array</li>
-<li>如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可以封装成map，实际上如果你在传入参数的时候，在MyBatis里面也是会把它封装成一个Map的，map的key就是参数名，所以这个时候collection属性值就是传入的List或array对象在自己封装的map里面的key</li>
+<li>如果传入的参数是多个的时候，我们就需要把它们封装成一个Map了，当然单参数也可以封装成map，实际上如果你在传入参数的时候，在MyBatis里面也是会把它封装成一个Map的，map的key就是参数名，所以这⁄⁄⁄个时候collection属性值就是传入的List或array对象在自己封装的map里面的key</li>
 </ul>
 <h4 id="1）单参数List的类型："><a href="#1）单参数List的类型：" class="headerlink" title="1）单参数List的类型："></a>1）单参数List的类型：</h4><div class="code-wrapper"><pre class="language-sql" data-language="sql"><code class="language-sql"><span class="token operator">&lt;</span><span class="token keyword">select</span> id<span class="token operator">=</span><span class="token string">"dynamicForeachTest"</span> resultType<span class="token operator">=</span><span class="token string">"Blog"</span><span class="token operator">></span>  
     <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t_blog <span class="token keyword">where</span> id <span class="token operator">in</span>  
@@ -467,16 +467,16 @@
                       <a href="/2020/11/24/spring%20restTemplate/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">spring RestTemplate</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/04/MybatisUnderlyingPrinciple/">
+                      <a href="/2020/11/04/mybatis%E5%8E%9F%E7%90%86/">
                         <span class="hidden-mobile">mybatis原理</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -527,7 +527,7 @@
     
       <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
         <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -559,7 +559,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -568,7 +568,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
