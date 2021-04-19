@@ -192,7 +192,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/luna-welcome/" target="_self">
+        <a href="/2020/04/02/luna-welcome/" target="_blank">
           <img src="/img/logo.png" srcset="/img/loading.gif" lazyload alt="welcome!">
         </a>
       </div>
@@ -250,7 +250,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/19/mybatis%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_self">
+        <a href="/2021/04/19/mybatis%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank">
           <img src="/img/mybatis.jpg" srcset="/img/loading.gif" lazyload alt="">
         </a>
       </div>
@@ -308,7 +308,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/15/haproxy/" target="_self">
+        <a href="/2021/01/15/haproxy/" target="_blank">
           <img src="/img/haproxy.png" srcset="/img/loading.gif" lazyload alt="haproxy">
         </a>
       </div>
@@ -365,7 +365,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/11/rabbitmq-windows-install/" target="_self">
+        <a href="/2021/01/11/rabbitmq-windows-install/" target="_blank">
           <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="rabbitmq-windows">
         </a>
       </div>
@@ -425,7 +425,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/11/rabbitmq-linux/" target="_self">
+        <a href="/2021/01/11/rabbitmq-linux/" target="_blank">
           <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="rabbitmq-linux">
         </a>
       </div>
@@ -483,7 +483,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/10/macos/" target="_self">
+        <a href="/2021/01/10/macos/" target="_blank">
           <img src="/img/macos.png" srcset="/img/loading.gif" lazyload alt="luna-macos">
         </a>
       </div>
@@ -542,7 +542,7 @@ Homebrew是以最简单，最灵活的方式来安装苹果公司在MacOS中不�
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/07/frp/" target="_self">
+        <a href="/2021/01/07/frp/" target="_blank">
           <img src="/img/frp.jpg" srcset="/img/loading.gif" lazyload alt="frp">
         </a>
       </div>
@@ -598,7 +598,7 @@ Homebrew是以最简单，最灵活的方式来安装苹果公司在MacOS中不�
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/07/consul/" target="_self">
+        <a href="/2021/01/07/consul/" target="_blank">
           <img src="/img/consul.png" srcset="/img/loading.gif" lazyload alt="consul">
         </a>
       </div>
@@ -662,7 +662,7 @@ Consul Open Source解决了跨分布式基础架构连接服务
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/05/vncserver/" target="_self">
+        <a href="/2021/01/05/vncserver/" target="_blank">
           <img src="/img/vncserver.png" srcset="/img/loading.gif" lazyload alt="vncserver">
         </a>
       </div>
@@ -724,7 +724,7 @@ ssh到你的server，然后输入以下命
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/04/redis/" target="_self">
+        <a href="/2021/01/04/redis/" target="_blank">
           <img src="/img/redis.jpg" srcset="/img/loading.gif" lazyload alt="redis">
         </a>
       </div>
@@ -916,8 +916,6 @@ ssh到你的server，然后输入以下命
 
 
 
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
 
   <script defer src="/js/leancloud.js" ></script>
 
@@ -929,7 +927,34 @@ ssh到你的server，然后输入以下命
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.eatrice.top/reading/',
+        headers: {},
+        dataType: 'json',
+        success: function (result) {
+          var text;
+          if (result) {
+            var keys = 'Content'.split('.')
+            if (result instanceof Array) {
+              result = result[0]
+            }
+            for (const k of keys) {
+              var value = result[k]
+              if (typeof value === 'string') {
+                text = value
+                break
+              } else if (value instanceof Object) {
+                result = value
+              }
+            }
+          }
+          text ? typing(text) : typing(title);
+        },
+        error: function () {
+          typing(title)
+        }
+      })
       
     })(window, document);
   </script>

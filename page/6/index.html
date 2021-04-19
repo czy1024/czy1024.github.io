@@ -192,7 +192,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/genesis-2/" target="_self">
+        <a href="/2020/06/01/genesis-2/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="智慧教学辅助系统-作品思路">
         </a>
       </div>
@@ -247,7 +247,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/reply/" target="_self">
+        <a href="/2020/06/01/reply/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="reply">
         </a>
       </div>
@@ -305,7 +305,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/spring%20aop/" target="_self">
+        <a href="/2020/06/01/spring%20aop/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="Spring Aop切面编程">
         </a>
       </div>
@@ -370,7 +370,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/31/spring%20logback/" target="_self">
+        <a href="/2020/05/31/spring%20logback/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="SpringBoot + LogBack 配置">
         </a>
       </div>
@@ -432,7 +432,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/31/spring%20security/" target="_self">
+        <a href="/2020/05/31/spring%20security/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="Spring security 配置">
         </a>
       </div>
@@ -494,7 +494,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/30/spring%20https/" target="_self">
+        <a href="/2020/05/30/spring%20https/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="springhttps">
         </a>
       </div>
@@ -560,7 +560,7 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/29/javacv/" target="_self">
+        <a href="/2020/05/29/javacv/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="JavaCV调用">
         </a>
       </div>
@@ -621,7 +621,7 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/18/date%20utils/" target="_self">
+        <a href="/2020/05/18/date%20utils/" target="_blank">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="DateUtils方法">
         </a>
       </div>
@@ -684,7 +684,7 @@ keytool命令，keytool -genkey -alias ccc -keyalg RSA -validity 36500 -keystore
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/apacheDav/" target="_self">
+        <a href="/2020/05/05/apacheDav/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apachedav配置">
         </a>
       </div>
@@ -747,7 +747,7 @@ sudo chown www-data:
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/apacheVirtual/" target="_self">
+        <a href="/2020/05/05/apacheVirtual/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apache 虚拟主机配置">
         </a>
       </div>
@@ -946,8 +946,6 @@ httpd-vhosts.conf
 
 
 
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
 
   <script defer src="/js/leancloud.js" ></script>
 
@@ -959,7 +957,34 @@ httpd-vhosts.conf
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.eatrice.top/reading/',
+        headers: {},
+        dataType: 'json',
+        success: function (result) {
+          var text;
+          if (result) {
+            var keys = 'Content'.split('.')
+            if (result instanceof Array) {
+              result = result[0]
+            }
+            for (const k of keys) {
+              var value = result[k]
+              if (typeof value === 'string') {
+                text = value
+                break
+              } else if (value instanceof Object) {
+                result = value
+              }
+            }
+          }
+          text ? typing(text) : typing(title);
+        },
+        error: function () {
+          typing(title)
+        }
+      })
       
     })(window, document);
   </script>

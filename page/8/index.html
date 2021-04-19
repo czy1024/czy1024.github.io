@@ -192,7 +192,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20tar/" target="_self">
+        <a href="/2020/04/02/linux%20tar/" target="_blank">
           <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="tar 命令">
         </a>
       </div>
@@ -256,7 +256,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/linux%20systemctl/" target="_self">
+        <a href="/2020/04/02/linux%20systemctl/" target="_blank">
           <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_systemctl">
         </a>
       </div>
@@ -318,7 +318,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/shiro/" target="_self">
+        <a href="/2020/04/02/shiro/" target="_blank">
           <img src="/img/shiro.jpg" srcset="/img/loading.gif" lazyload alt="shiro">
         </a>
       </div>
@@ -376,7 +376,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/spring%20mvc/" target="_self">
+        <a href="/2020/04/02/spring%20mvc/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="springMVC">
         </a>
       </div>
@@ -572,8 +572,6 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
 
 
 
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
 
   <script defer src="/js/leancloud.js" ></script>
 
@@ -585,7 +583,34 @@ spring.thymeleaf.prefix&#x3D;classpath:&#x2F;templates&#x2F;
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.eatrice.top/reading/',
+        headers: {},
+        dataType: 'json',
+        success: function (result) {
+          var text;
+          if (result) {
+            var keys = 'Content'.split('.')
+            if (result instanceof Array) {
+              result = result[0]
+            }
+            for (const k of keys) {
+              var value = result[k]
+              if (typeof value === 'string') {
+                text = value
+                break
+              } else if (value instanceof Object) {
+                result = value
+              }
+            }
+          }
+          text ? typing(text) : typing(title);
+        },
+        error: function () {
+          typing(title)
+        }
+      })
       
     })(window, document);
   </script>

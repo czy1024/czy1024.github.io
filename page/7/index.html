@@ -192,7 +192,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/brew/" target="_self">
+        <a href="/2020/05/05/brew/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="homebrew教程">
         </a>
       </div>
@@ -255,7 +255,7 @@ macOS缺失的软件包管理器 官方地址
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/date/" target="_self">
+        <a href="/2020/05/05/date/" target="_blank">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="时间和字符传的转化">
         </a>
       </div>
@@ -318,7 +318,7 @@ public class Test01 &#123;
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/ssh-password/" target="_self">
+        <a href="/2020/05/05/ssh-password/" target="_blank">
           <img src="/img/ssh.png" srcset="/img/loading.gif" lazyload alt="ssh 配置教程">
         </a>
       </div>
@@ -379,7 +379,7 @@ public class Test01 &#123;
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/13/ideaPlugs/" target="_self">
+        <a href="/2020/04/13/ideaPlugs/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="IDEA插件">
         </a>
       </div>
@@ -439,7 +439,7 @@ activate-power-mode 和 Power mode II
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/13/py-getter-setter/" target="_self">
+        <a href="/2020/04/13/py-getter-setter/" target="_blank">
           <img src="/img/python.png" srcset="/img/loading.gif" lazyload alt="pyGetterSetter">
         </a>
       </div>
@@ -499,7 +499,7 @@ codingclass Money(object):
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/13/spring%20anno/" target="_self">
+        <a href="/2020/04/13/spring%20anno/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="anno">
         </a>
       </div>
@@ -557,7 +557,7 @@ codingclass Money(object):
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/13/timeordate/" target="_self">
+        <a href="/2020/04/13/timeordate/" target="_blank">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="时间和字符传的转化">
         </a>
       </div>
@@ -619,7 +619,7 @@ public class Test01 &#123;
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/05/regular/" target="_self">
+        <a href="/2020/04/05/regular/" target="_blank">
           <img src="/img/regular.png" srcset="/img/loading.gif" lazyload alt="正则表达式">
         </a>
       </div>
@@ -680,7 +680,7 @@ split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/04/util/" target="_self">
+        <a href="/2020/04/04/util/" target="_blank">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="JAVA常用工具类">
         </a>
       </div>
@@ -737,7 +737,7 @@ split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/Json/" target="_self">
+        <a href="/2020/04/02/Json/" target="_blank">
           <img src="/img/json.png" srcset="/img/loading.gif" lazyload alt="Json处理">
         </a>
       </div>
@@ -934,8 +934,6 @@ Map&lt;Str
 
 
 
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
 
   <script defer src="/js/leancloud.js" ></script>
 
@@ -947,7 +945,34 @@ Map&lt;Str
       var typing = Fluid.plugins.typing;
       var title = document.getElementById('subtitle').title;
       
-      typing(title)
+      $.ajax({
+        type: 'GET',
+        url: 'https://api.eatrice.top/reading/',
+        headers: {},
+        dataType: 'json',
+        success: function (result) {
+          var text;
+          if (result) {
+            var keys = 'Content'.split('.')
+            if (result instanceof Array) {
+              result = result[0]
+            }
+            for (const k of keys) {
+              var value = result[k]
+              if (typeof value === 'string') {
+                text = value
+                break
+              } else if (value instanceof Object) {
+                result = value
+              }
+            }
+          }
+          text ? typing(text) : typing(title);
+        },
+        error: function () {
+          typing(title)
+        }
+      })
       
     })(window, document);
   </script>
