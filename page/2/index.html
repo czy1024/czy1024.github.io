@@ -439,6 +439,72 @@ useradd -g admin crane
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/12/24/linux%20practice/" target="_self">
+          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux practice">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/24/linux%20practice/">linux practice</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/24/linux%20practice/">
+          
+          
+            
+          
+           #！/bin/bash
+# 系统安装断开网卡
+
+# 安装vmtools
+
+# 重启打开网卡
+
+# 更换镜像源
+sudo cat > /etc/apt/sources.list &lt;&lt;EOF 
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial m
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-24 00:00" pubdate>
+              2020-12-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/system/">system</a>
+            
+              <a href="/categories/system/linux/">linux</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/linux/">linux</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/12/24/linux%20crontabs/" target="_self">
           <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux crontabs">
         </a>
@@ -482,72 +548,6 @@ useradd -g admin crane
 
 在以上各个字段中，还可以使用以下特殊字符：
 星号（*）：代表所有可能的值，例如m
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-24 00:00" pubdate>
-              2020-12-24
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/system/">system</a>
-            
-              <a href="/categories/system/linux/">linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/linux/">linux</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/12/24/linux%20practice/" target="_self">
-          <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux practice">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/12/24/linux%20practice/">linux practice</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/24/linux%20practice/">
-          
-          
-            
-          
-           #！/bin/bash
-# 系统安装断开网卡
-
-# 安装vmtools
-
-# 重启打开网卡
-
-# 更换镜像源
-sudo cat > /etc/apt/sources.list &lt;&lt;EOF 
-# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial m
         </a>
       </p>
 
@@ -857,7 +857,7 @@ public static void main(String[] args) &#123;
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -866,7 +866,7 @@ public static void main(String[] args) &#123;
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                 for="local-search-input">キーワード</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
