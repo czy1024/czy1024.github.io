@@ -194,27 +194,85 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
+        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 镜像配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
+        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">Docker 镜像配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+        <a href="/2020/06/03/3.Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
           
           
             
           
-          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
-1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
+          ​    Docker 核心：镜像，首先重点讲解一下镜像的基本操作，然后介绍一下镜像的实现原理。
+1. 镜像​    镜像是一个只读的 Docker 容器模板，包含启动容器所需要的所有文件系统结构和内容。简单来讲，镜像是一个特殊的文件系统，它提供了容器运行时所需的程序、软件库、资源、配置等静态数据。即镜像不包含任何动态数据，镜像内容在构建后不会被改变。
+如何操作镜像：
 
-1.1 容器的生命周期容器的生命周期是容器可能处于
+从图中可知，镜像的操作可分
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-03 00:00" pubdate>
+              2020-06-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 架构">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">Docker 架构</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+          
+          
+            
+          
+          1. 前言docker架构设计参考文章进行整理：地址为https://www.huweihuang.com/article/docker/docker-architecture/
+这一篇文章源于2015年出版的《docker源码分析》，书中以docker1.2.0版本进行分析。但是在docker1.11以后，docker的架构就在不断的优化和拆分。下面整理出了docker框架的变迁史，可以稍作参考
         </a>
       </p>
 
@@ -313,25 +371,26 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 架构">
+        <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全性能">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">Docker 架构</a>
+        <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">Docker 安全性能</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+        <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">
           
           
             
           
-          1. 前言docker架构设计参考文章进行整理：地址为https://www.huweihuang.com/article/docker/docker-architecture/
-这一篇文章源于2015年出版的《docker源码分析》，书中以docker1.2.0版本进行分析。但是在docker1.11以后，docker的架构就在不断的优化和拆分。下面整理出了docker框架的变迁史，可以稍作参考
+          1. 前言​    Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
+​    在讨论容器的安全性之前，我们先了解下容器与虚拟机的区别，这样可以帮助我们更好地了解容器的安全隐患以及如何加固容器安全。
+2. docke
         </a>
       </p>
 
@@ -370,26 +429,27 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全性能">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 容器操作">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">Docker 安全性能</a>
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">Docker 容器操作</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">
+        <a href="/2020/06/03/4.Docker%E5%AE%B9%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
           
           
             
           
-          1. 前言​    Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
-​    在讨论容器的安全性之前，我们先了解下容器与虚拟机的区别，这样可以帮助我们更好地了解容器的安全隐患以及如何加固容器安全。
-2. docke
+          ​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。
+1. 容器（Container）容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。
+
+1.1 容器的生命周期容器的生命周期是容器可能处于
         </a>
       </p>
 
@@ -718,61 +778,6 @@ import org.springframework.scheduling.an
               <a href="/tags/redis/">redis</a>
             
               <a href="/tags/spring/">spring</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/genesis-1/" target="_blank">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="智慧教学辅助系统-作品简介">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/01/genesis-1/">智慧教学辅助系统-作品简介</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/01/genesis-1/">
-          
-          
-            
-          
-          作品简介现阶段，智慧教育课堂教学仍是学校教育的主阵地，传统课堂教学过程中，教师讲授课程知识以知识点为基本元素，更多偏向将过于细琐和庞杂的知识点填鸭式的、照本宣科的讲授给大学生。
-我们开发的智慧教学辅助系统，利用知识图谱的构建与调整功能帮助教师了解学生在教学过程中对某一知识点的掌握情况，及时调整教学内容和教学方法，合理分配，重新组合知识点教学，利用知识点识别学生状态检测功能优化学生与老师的学习与授课
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-01 00:00" pubdate>
-              2020-06-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/genesis/">genesis</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%99%BA%E6%85%A7%E6%95%99%E5%AD%A6%E8%BE%85%E5%8A%A9%E7%B3%BB%E7%BB%9F/">智慧教学辅助系统</a>
             
           </div>
         
