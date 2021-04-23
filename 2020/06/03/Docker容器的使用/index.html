@@ -20,7 +20,7 @@
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
   
-  <title>Docker File - 十平方米小屋</title>
+  <title>Docker 容器操作 - 十平方米小屋</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -183,7 +183,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Docker File">
+            <span class="h2" id="subtitle" title="Docker 容器操作">
               
             </span>
 
@@ -210,7 +210,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.7k 字
+      1.9k 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      52
+      34
        分钟
     </span>
   
@@ -258,139 +258,131 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Docker File</h1>
+            <h1 style="display: none">Docker 容器操作</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 天前
+                  本文最后更新于：5 天前
                 
               </p>
             
             <div class="markdown-body">
-              <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h3><p>​    生产实践中一定优先使用 Dockerfile 的方式构建镜像。 因为使用 Dockerfile 构建镜像可以带来很多好处：</p>
+              <p>​        镜像包含了容器运行所需要的文件系统结构和内容，是静态的只读文件，而容器则是在镜像的只读层上创建了可写层，并且容器中的进程属于运行状态，容器是真正的应用载体。接下来讲讲Docker 核心：容器，重点讲解一下容器的基本操作。</p>
+<h3 id="1-容器（Container）"><a href="#1-容器（Container）" class="headerlink" title="1. 容器（Container）"></a>1. 容器（Container）</h3><p>容器是基于镜像创建的可运行实例，并且单独存在，一个镜像可以创建出多个容器。</p>
+<p><img src="/img/images/4docker-%E5%AE%B9%E5%99%A8%E5%B1%82.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="1-1-容器的生命周期"><a href="#1-1-容器的生命周期" class="headerlink" title="1.1 容器的生命周期"></a>1.1 容器的生命周期</h5><p>容器的生命周期是容器可能处于的状态，容器的生命周期分为 5 种。</p>
 <ul>
-<li><p>易于版本化管理，Dockerfile 本身是一个文本文件，方便存放在代码仓库做版本管理，可以很方便地找到各个版本之间的变更历史；</p>
+<li><p>created：初建状态</p>
 </li>
-<li><p>过程可追溯，Dockerfile 的每一行指令代表一个镜像层，根据 Dockerfile 的内容即可很明确地查看镜像的完整构建过程；</p>
+<li><p>running：运行状态</p>
 </li>
-<li><p>屏蔽构建环境异构，使用 Dockerfile 构建镜像无须考虑构建环境，基于相同 Dockerfile 无论在哪里运行，构建结果都一致；</p>
+<li><p>stopped：停止状态</p>
 </li>
-<li><p>虽然有这么多好处，但是如果你 Dockerfile 使用不当也会引发很多问题。比如镜像构建时间过长，甚至镜像构建失败；镜像层数过多，导致镜像文件过大。所以，这一课时我就教你如何在生产环境中编写最优的 Dockerfile；</p>
+<li><p>paused： 暂停状态</p>
+</li>
+<li><p>deleted：删除状态</p>
 </li>
 </ul>
-<h3 id="2-Dockerfile编写遵循的原则"><a href="#2-Dockerfile编写遵循的原则" class="headerlink" title="2. Dockerfile编写遵循的原则"></a>2. Dockerfile编写遵循的原则</h3><p>​    遵循以下 Dockerfile 书写原则，不仅可以使得我们的 Dockerfile 简洁明了，让协作者清楚地了解镜像的完整构建流程，还可以帮助我们减少镜像的体积，加快镜像构建的速度和分发速度。</p>
-<p><strong>（1）单一职责</strong><br>​    由于容器的本质是进程，一个容器代表一个进程，因此不同功能的应用应该尽量拆分为不同的容器，每个容器只负责单一业务进程。</p>
-<p><strong>（2）提供注释信息</strong><br>​    Dockerfile 也是一种代码，我们应该保持良好的代码编写习惯，晦涩难懂的代码尽量添加注释，让协作者可以一目了然地知道每一行代码的作用，并且方便扩展和使用。</p>
-<p><strong>（3）保持容器最小化</strong><br>​    应该避免安装无用的软件包，比如在一个 nginx 镜像中，我并不需要安装 vim 、gcc 等开发编译工具。这样不仅可以加快容器构建速度，而且可以避免镜像体积过大。</p>
-<p><strong>（4）合理选择基础镜像</strong><br>​    容器的核心是应用，因此只要基础镜像能够满足应用的运行环境即可。例如一个Java类型的应用运行时只需要JRE，并不需要JDK，因此我们的基础镜像只需要安装JRE环境即可。</p>
-<p><strong>（5）使用 .dockerignore 文件</strong><br>​    在使用git时，我们可以使用.gitignore文件忽略一些不需要做版本管理的文件。同理，使用.dockerignore文件允许我们在构建时，忽略一些不需要参与构建的文件，从而提升构建效率。.dockerignore的定义类似于.gitignore。</p>
-<p>.dockerignore的本质是文本文件，Docker 构建时可以使用换行符来解析文件定义，每一行可以忽略一些文件或者文件夹。具体使用方式如下：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">规则			   含义
-# 开头的表示注释，# 后面所有内容将会被忽略
-&#x2F;tmp			匹配当前目录下任何以 tmp 开头的文件或者文件夹
-*.md			匹配以 .md 为后缀的任意文件
-tem?			匹配以 tem 开头并且以任意字符结尾的文件，？代表任意一个字符
-!README.md  	! 表示排除忽略。</code></pre></div>
+<p>各生命周期之前的转换关系如图所示：</p>
+<p><img src="/img/images/4docker-%E5%AE%B9%E5%99%A8%E7%8A%B6%E6%80%81.png" srcset="/img/loading.gif" lazyload></p>
+<p>docker create命令: 生成的容器状态为初建状态，初建状态通过</p>
+<p>docker start命令：可以将初建状态转化为运行状态</p>
+<p>docker stop命令：运行状态的容器转化为停止状态</p>
+<p>docker start命令：可以将处于停止状态的容器转化为运行状态</p>
+<p>docker pause命令：运行状态的容器转化为暂停状态</p>
+<p>docker unpause命令：将处于暂停状态的容器转化为运行状态 。</p>
+<p><strong>重点：处于初建状态、运行状态、停止状态、暂停状态的容器都可以直接删除。</strong></p>
+<h3 id="2-容器命令"><a href="#2-容器命令" class="headerlink" title="2. 容器命令"></a>2. 容器命令</h3><p>容器的操作可以分为五个步骤：创建并启动容器、终止容器、进入容器、删除容器、导入和导出容器。</p>
+<h5 id="2-1-创建并启动容器"><a href="#2-1-创建并启动容器" class="headerlink" title="2.1 创建并启动容器"></a>2.1 创建并启动容器</h5><p>容器启动有两种方式：</p>
+<ol>
+<li><p>docker create命令用于创建容器，创建后的容器处于停止状态，然后可以使用docker start命令来启动它。</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none"># --name 指定容器的名称  
+# 最后面的busybox为镜像
+docker create -it --name&#x3D;new_busybox busybox
 
-<p><strong>（6）尽量使用构建缓存</strong><br>​    Docker 构建过程中，每一条 Dockerfile 指令都会提交为一个镜像层，下一条指令都是基于上一条指令构建的。如果构建时发现要构建的镜像层的父镜像层已经存在，并且下一条命令使用了相同的指令，即可命中构建缓存。</p>
-<p>Docker 构建时判断是否需要使用缓存的规则如下：</p>
+# 启动刚create创建的容器
+docker start new_busybox</code></pre></div></li>
+<li><p>使用docker run命令直接基于镜像新建一个容器并启动，相当于先执行docker create命令从镜像创建容器，然后再执行docker start命令启动容器。</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker run -it --name&#x3D;new_busybox busybox</code></pre></div></li>
+</ol>
+<p>当使用<code>docker run</code>创建并启动容器时，Docker 后台执行的流程为：</p>
 <ul>
-<li><p>从当前构建层开始，比较所有的子镜像，检查所有的构建指令是否与当前完全一致，如果不一致，则不使用缓存；</p>
-</li>
-<li><p>一般情况下，只需要比较构建指令即可判断是否需要使用缓存，但是有些指令除外（例如ADD和COPY）；</p>
-</li>
-<li><p>对于ADD和COPY指令不仅要校验命令是否一致，还要为即将拷贝到容器的文件计算校验和（根据文件内容计算出的一个数值，如果两个文件计算的数值一致，表示两个文件内容一致 ），命令和校验和完全一致，才认为命中缓存。</p>
-</li>
-<li><p>因此，基于 Docker 构建时的缓存特性，我们可以把不轻易改变的指令放到 Dockerfile 前面（例如安装软件包），而可能经常发生改变的指令放在 Dockerfile 末尾（例如编译应用程序）。</p>
-</li>
-<li><p>例如，我们想要定义一些环境变量并且安装一些软件包，可以按照如下顺序编写 Dockerfile：</p>
-</li>
+<li>Docker 会检查本地是否存在 busybox 镜像，如果镜像不存在则从 Docker Hub 拉取 busybox 镜像</li>
+<li>使用 busybox 镜像创建并启动一个容器, 容器名为new_busybox</li>
+<li>分配文件系统，并且在镜像只读层外创建一个读写层</li>
+<li>从 Docker IP 池中分配一个 IP 给容器（在下面会讲解原理）</li>
+<li>执行用户的启动命令运行镜像</li>
 </ul>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">FROM centos:7
-# 设置环境变量指令放前面
-ENV PATH &#x2F;usr&#x2F;local&#x2F;bin:$PATH
-# 安装软件指令放前面
-RUN yum install -y make
-# 把业务软件的配置,版本等经常变动的步骤放最后</code></pre></div>
+<h5 id="2-2-终止容器"><a href="#2-2-终止容器" class="headerlink" title="2.2 终止容器"></a>2.2 终止容器</h5><p><code>docker stop</code>命令：停止运行中的容器。命令格式为 docker stop [-t|–time[=10]]。</p>
+<p>该命令首先会向运行中的容器发送 SIGTERM 信号，如果容器内 1 号进程接受并能够处理 SIGTERM，则等待 1 号进程处理完毕后退出，如果等待一段时间后，容器仍然没有退出，则会发送 SIGKILL 强制终止容器。</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker stop new_busybox</code></pre></div>
 
-<p>按照上面原则编写的 Dockerfile 在构建镜像时，前面步骤命中缓存的概率会增加，可以大大缩短镜像构建时间。</p>
-<p><strong>（7）正确设置时区</strong><br>​    我们从 Docker Hub 拉取的官方操作系统镜像大多数都是 UTC 时间（世界标准时间）。如果你想要在容器中使用中国区标准时间（东八区），请根据使用的操作系统修改相应的时区信息，下面我介绍几种常用操作系统的修改方式：</p>
-<p><strong>Ubuntu 和Debian 系统</strong></p>
-<p>Ubuntu 和Debian 系统可以向 Dockerfile 中添加以下指令：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">RUN ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime
-RUN echo &quot;Asia&#x2F;Shanghai&quot; &gt;&gt; &#x2F;etc&#x2F;timezone</code></pre></div>
+<p>如果你想查看停止状态的容器信息，你可以使用 docker ps -a 命令。</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker ps -a</code></pre></div>
 
-<p><strong>CentOS系统</strong></p>
-<p>CentOS 系统则向 Dockerfile 中添加以下指令：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">RUN ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime</code></pre></div>
+<p>处于终止状态的容器也可以通过<code>docker start</code>命令和<code>docker restart</code>命令来重新启动。</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker start new_busybox
+docker restart new_busybox</code></pre></div>
 
-<p><strong>（8）使用国内软件源加快镜像构建速度</strong><br>​    由于我们常用的官方操作系统镜像基本都是国外的，软件服务器大部分也在国外，所以我们构建镜像的时候想要安装一些软件包可能会非常慢。</p>
-<p><strong>（9）最小化镜像层数</strong><br>在构建镜像时尽可能地减少 Dockerfile 指令行数。例如我们要在 CentOS 系统中安装make和net-tools两个软件包，应该在 Dockerfile 中使用以下指令：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">RUN yum install -y make net-tools</code></pre></div>
 
-<p>而不应该写成这样：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">RUN yum install -y make
-RUN yum install -y make</code></pre></div>
 
-<p>了解完 Dockerfile 的书写原则后，我们再来具体了解下这些原则落实到具体的 Dockerfile 指令应该如何书写。</p>
-<h3 id="3-Dockerfile-指令书写建议"><a href="#3-Dockerfile-指令书写建议" class="headerlink" title="3. Dockerfile 指令书写建议"></a>3. Dockerfile 指令书写建议</h3><p>下面是我们常用的一些指令:</p>
-<p><strong>（1）RUN</strong><br>RUN指令在构建时<strong>将会生成一个新的镜像层</strong>并且执行RUN指令后面的内容。</p>
-<p>使用RUN指令时应该尽量遵循以下原则：</p>
+<h5 id="2-3-进入容器"><a href="#2-3-进入容器" class="headerlink" title="2.3 进入容器"></a>2.3 进入容器</h5><p>处于运行状态的容器可以通过<code>docker attach</code>、<code>docker exec</code>、<code>nsenter</code>等多种方式进入容器。</p>
 <ul>
-<li><p>当RUN指令后面跟的内容比较复杂时，建议使用反斜杠（\） 结尾并且换行；</p>
-</li>
-<li><p>RUN指令后面的内容尽量按照字母顺序排序，提高可读性。</p>
-</li>
+<li><strong>使用</strong><code>docker attach</code>命令<strong>进入容器</strong></li>
 </ul>
-<p>例如，在官方的 CentOS 镜像下安装一些软件，一个建议的 Dockerfile 指令如下：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">FROM centos:7
-RUN yum install -y automake \
-                   curl \
-                   python \
-                   vim</code></pre></div>
+<p>使用 docker attach ，进入我们上一步创建好的容器，如下所示。</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker attach new_busybox</code></pre></div>
 
-<p><strong>（2）CMD 和 ENTRYPOINT</strong></p>
-<p>​    <strong>CMD和ENTRYPOINT指令都是容器运行的命令入口</strong>。</p>
-<p>这两个指令的相同之处，CMD和ENTRYPOINT的基本使用格式分为两种。</p>
+<p><strong>注意：</strong>当我们同时使用<code>docker attach</code>命令同时在多个终端运行时，所有的终端窗口将同步显示相同内容，当某个命令行窗口的命令阻塞时，其他命令行窗口同样也无法操作。<br>由于<code>docker attach</code>命令不够灵活，因此我们一般不会使用<code>docker attach</code>进入容器</p>
 <ul>
-<li><p>第一种为CMD/ENTRYPOINT[“command” , “param”]。这种格式是使用 <strong>Linux 的exec</strong>实现的， 一般称为exec模式，这种书写格式为CMD/ENTRYPOINT后面跟 json 数组，也是Docker 推荐的使用格式。</p>
-</li>
-<li><p>另外一种格式为CMD/ENTRYPOINTcommand param ，这种格式是<strong>基于 shell 实现</strong>的， 通常称为shell模式。当使用shell模式时，Docker 会以 /bin/sh -c command 的方式执行命令。</p>
-</li>
+<li><strong>使用 docker exec 命令进入容器</strong></li>
 </ul>
-<p>区别：</p>
+<p>通过<code>docker exec -it CONTAINER /bin/bash</code>的方式进入到一个已经运行中的容器</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker exec -it 容器id &#x2F;bin&#x2F;bash</code></pre></div>
+
+
+
+<h5 id="2-4-删除容器"><a href="#2-4-删除容器" class="headerlink" title="2.4 删除容器"></a>2.4 删除容器</h5><p>删除容器命令的使用方式如下：<code>docker rm [OPTIONS] CONTAINER [CONTAINER...]</code></p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none"># 删除已经暂停的容器
+docker rm 容器名或者容器id
+
+# 删除还在运行中的容器
+docker rm -f 容器名或者容器id</code></pre></div>
+
+
+
+<h5 id="2-5-导出容器"><a href="#2-5-导出容器" class="headerlink" title="2.5 导出容器"></a>2.5 导出容器</h5><ul>
+<li><strong>导出容器</strong></li>
+</ul>
+<p>使用<code>docker export CONTAINER</code>命令导出一个容器到文件，不管此时该容器是否处于运行中的状态。</p>
+<p>执行导出命令：</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker export new_busybox &gt; new_busybox.tar</code></pre></div>
+
+<p>执行以上命令后会在当前文件夹下生成 new_busybox.tar 文件，我们可以将该文件拷贝到其他机器上，通过导入命令实现容器的迁移。</p>
 <ul>
-<li>Dockerfile 中如果使用了ENTRYPOINT指令，启动 Docker 容器时需要使用 –entrypoint 参数才能覆盖 Dockerfile 中的ENTRYPOINT指令 </li>
-<li>使用CMD设置的命令则可以被docker run后面的参数直接覆盖。</li>
-<li>ENTRYPOINT指令可以结合CMD指令使用，也可以单独使用，而CMD指令只能单独使用。</li>
+<li><strong>导入容器</strong></li>
 </ul>
-<p>例如：dockerfiler如下定义</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">FROM python:3
+<p>通过<code>docker export</code>命令导出的文件，可以使用<code>docker import</code>命令导入，执行完<code>docker import</code>后会变为本地镜像，最后再使用<code>docker run</code>命令启动该镜像，这样我们就实现了容器的迁移。</p>
+<p>导入容器的命令格式为 docker import [OPTIONS] file|URL [REPOSITORY[:TAG]]。接下来将上一步导出的镜像文件导入到其他机器的 Docker 中并启动它。</p>
+<p>使用<code>docker import</code>命令导入上一步导出的容器</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker import new_busybox.tar new_busybox:test</code></pre></div>
 
-CMD [&quot;python3&quot;, &quot;hello.py&quot;]</code></pre></div>
+<p>此时，new_busybox.tar 被导入成为新的镜像，镜像名称为 new_busybox:test 。下面，我们使用<code>docker run</code>命令启动并进入容器，查看上一步创建的临时文件</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">docker run -it busybox:test sh</code></pre></div>
 
-<p>执行启动命令为：docker run python3 xxx.py -itd xxxx，表示下拉python:3镜像，并执行python3 xxx.py命令，如果用docker run -itd xxxx，表示下拉python:3镜像，并执行Dockerfile中定义的python3 hello.py命令。</p>
-<h4 id="疑问🤔️："><a href="#疑问🤔️：" class="headerlink" title="疑问🤔️："></a><strong>疑问🤔️：</strong></h4><p>什么时候应该使用ENTRYPOINT,什么时候使用CMD呢？</p>
-<p>如果你希望你的镜像足够灵活，推荐使用CMD指令。如果你的镜像只执行单一的具体程序，并且不希望用户在执行docker run时覆盖默认程序，建议使用ENTRYPOINT。</p>
-<p>最后再强调一下，无论使用CMD还是ENTRYPOINT，都<strong>尽量使用exec模式</strong>。</p>
-<p>如果<strong>在Dockerfile中有多条CMD指令，那么永远只会执行最后一条CMD指令，最好将执行的命令通过&amp;&amp;进行连接。</strong></p>
-<p><strong>（3）ADD 和 COPY</strong><br>​    ADD和COPY指令功能类似，都是从外部往容器内添加文件。</p>
-<ul>
-<li>COPY指令只支持<strong>基本的文件和文件夹</strong>拷贝功能</li>
-<li>ADD则支持更多<strong>文件来源类型</strong>，比如自动提取 tar 包，并且可以支持源文件为 URL 格式。</li>
-</ul>
-<p>那么在日常应用中，我们应该使用哪个命令向容器里添加文件呢？既然ADD指令支持的功能更多，当然应该使用ADD指令了。然而事实恰恰相反，其实更推荐使用COPY指令，因为COPY指令更加透明，仅支持本地文件向容器拷贝，而且使用COPY指令可以更好地利用构建缓存，有效减小镜像体积。</p>
-<p>如果使用ADD向容器中添加 URL 文件时，请尽量考虑使用其他方式替代。例如你想要在容器中安装 memtester（一种内存压测工具），你应该避免使用以下格式：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">ADD http:&#x2F;&#x2F;pyropus.ca&#x2F;software&#x2F;memtester&#x2F;old-versions&#x2F;memtester-4.3.0.tar.gz &#x2F;tmp&#x2F;
-RUN tar -xvf &#x2F;tmp&#x2F;memtester-4.3.0.tar.gz -C &#x2F;tmp
-RUN make -C &#x2F;tmp&#x2F;memtester-4.3.0 &amp;&amp; make -C &#x2F;tmp&#x2F;memtester-4.3.0 install</code></pre></div>
-
-<p>下面是推荐写法：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">RUN wget -O &#x2F;tmp&#x2F;memtester-4.3.0.tar.gz http:&#x2F;&#x2F;pyropus.ca&#x2F;software&#x2F;memtester&#x2F;old-versions&#x2F;memtester-4.3.0.tar.gz \
-&amp;&amp; tar -xvf &#x2F;tmp&#x2F;memtester-4.3.0.tar.gz -C &#x2F;tmp \
-&amp;&amp; make -C &#x2F;tmp&#x2F;memtester-4.3.0 &amp;&amp; make -C &#x2F;tmp&#x2F;memtester-4.3.0 install</code></pre></div>
-
-<p><strong>（4）WORKDIR</strong><br>​    WORKDIR： 指定容器的工作路径，应该尽量避免使用 RUN cd /work/path &amp;&amp; do some work 这样的指令。</p>
+<p><strong>重点：</strong>通过<code>docker export</code>和<code>docker import</code>命令配合实现了容器的迁移</p>
+<h3 id="3-网络动态IP分配"><a href="#3-网络动态IP分配" class="headerlink" title="3. 网络动态IP分配"></a>3. 网络动态IP分配</h3><p>刚讲到docker run命令的执行时需要从Docker IP 池中分配一个 IP 给容器，接下来重点讲解下该内容。</p>
+<h5 id="一、Docker的四种网络模式"><a href="#一、Docker的四种网络模式" class="headerlink" title="一、Docker的四种网络模式"></a>一、Docker的四种网络模式</h5><p>Docker在创建容器时有四种网络模式，bridge为默认不需要用–net去指定，其他三种模式需要在创建容器时使用–net去指定。</p>
+<ol>
+<li>bridge模式，使用–net=bridge指定，默认设置。</li>
+<li>none模式，使用–net=none指定。</li>
+<li>host模式，使用–net=host指定。</li>
+<li>container模式，使用–net=container:容器名称或ID指定。（如：–net=container:30b668ccb630）</li>
+</ol>
+<p><strong>bridge模式：</strong>docker网络隔离基于网络命名空间<Network Namespace>，在物理机上创建docker容器时会为每一个docker容器分配网络命名空间，并且把容器IP桥接到物理机的虚拟网桥上。</p>
+<p><strong>none模式：</strong>此模式下创建容器是不会为容器配置任何网络参数的，如：容器网卡、IP、通信路由等，全部需要自己去配置。</p>
+<p><strong>host模式：</strong>此模式创建的容器没有自己独立的网络命名空间，是和物理机共享一个Network Namespace，并且共享物理机的所有端口与IP，并且这个模式认为是不安全的。</p>
+<p><strong>container模式：</strong>此模式和host模式很类似，只是此模式创建容器共享的是其他容器的IP和端口而不是物理机，此模式容器自身是不会配置网络和端口，创建此模式容器进去后，你会发现里边的IP是你所指定的那个容器IP并且端口也是共享的，而且其它还是互相隔离的，如进程等。</p>
 
             </div>
             <hr>
@@ -427,9 +419,9 @@ RUN make -C &#x2F;tmp&#x2F;memtester-4.3.0 &amp;&amp; make -C &#x2F;tmp&#x2F;mem
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/06/03/6.docker%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+                      <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker 架构</span>
+                        <span class="hidden-mobile">Docker 安全性能</span>
                         <span class="visible-mobile">Vorheriger</span>
                       </a>
                     
@@ -437,8 +429,8 @@ RUN make -C &#x2F;tmp&#x2F;memtester-4.3.0 &amp;&amp; make -C &#x2F;tmp&#x2F;mem
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/03/7.Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">
-                        <span class="hidden-mobile">Docker 安全性能</span>
+                      <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
+                        <span class="hidden-mobile">Docker 镜像配置</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
