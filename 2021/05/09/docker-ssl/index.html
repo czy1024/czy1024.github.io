@@ -20,7 +20,7 @@
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
   
-  <title>Docker 安全性能 - 十平方米小屋</title>
+  <title>docker-ssl - 十平方米小屋</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -183,7 +183,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Docker 安全性能">
+            <span class="h2" id="subtitle" title="docker-ssl">
               
             </span>
 
@@ -198,8 +198,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-06-03 00:00" pubdate>
-        2020年6月3日 凌晨
+      <time datetime="2021-05-09 21:07" pubdate>
+        2021年5月9日 晚上
       </time>
     </span>
   
@@ -210,7 +210,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      1.1k 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      27
        分钟
     </span>
   
@@ -258,79 +258,96 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Docker 安全性能</h1>
+            <h1 style="display: none">docker-ssl</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：21 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body">
-              <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h3><p>​    Docker 是基于 Linux 内核的 <strong>Namespace</strong> 技术实现资源隔离的，<strong>所有的容器都共享主机的内核</strong>。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。</p>
-<p>​    在讨论容器的安全性之前，我们先了解下容器与虚拟机的区别，这样可以帮助我们更好地了解容器的安全隐患以及如何加固容器安全。</p>
-<h3 id="2-docker与虚拟机的区别"><a href="#2-docker与虚拟机的区别" class="headerlink" title="2. docker与虚拟机的区别"></a>2. docker与虚拟机的区别</h3><p>​    虚拟机是通过<strong>管理系统(Hypervisor)<strong>模拟出 CPU、内存、网络等硬件，然后在这些模拟的硬件上创建客户内核和操作系统。这样做的好处</strong>就是虚拟机有自己的内核和操作系统，并且硬件都是通过虚拟机管理系统模拟出来的，用户程序无法直接使用到主机的操作系统和硬件资源，</strong>因此虚拟机也对隔离性和安全性有着更好的保证。</p>
-<p>​    而 Docker 容器则是通过 Linux 内核(<strong>kernel</strong>)的 <strong>Namespace 技术实现了文件系统、进程、设备以及网络的隔离</strong>，然后再通过 <strong>Cgroups 对 CPU、 内存等资源进行限制</strong>，最终实现了容器之间相互不受影响，由于容器的隔离性仅仅依靠内核来提供，因此容器的隔离性也远弱于虚拟机。</p>
-<p><img src="/img/images/7.docker%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB.png" srcset="/img/loading.gif" lazyload></p>
-<p>​    容器与虚拟机相比，<strong>容器的性能损耗非常小，并且镜像也非常小</strong>，而且在业务快速开发和迭代的今天，容器秒级的启动等特性也非常匹配业务快速迭代的业务场景。</p>
-<p>​    既然我们要利用容器的优点，那就需要尽量弥补<strong>容器弱隔离的安全性缺点</strong>呢？要了解如何解决容器的安全问题，我们首先需要了解下容器目前存在的安全问题。</p>
-<h3 id="3-docker的安全性问题"><a href="#3-docker的安全性问题" class="headerlink" title="3. docker的安全性问题"></a><strong>3. docker的安全性问题</strong></h3><h5 id="1）docker自身安全"><a href="#1）docker自身安全" class="headerlink" title="1）docker自身安全"></a>1）docker自身安全</h5><p>​    Docker 作为一款容器引擎，本身也会存在一些安全漏洞。安全漏洞可以通过CVE（Common Vulnerabilities and Exposures）又称常见漏洞与披露，是一个与信息安全有关的数据库，收集各种信息安全弱点及漏洞并给予编号以便于公众查阅。</p>
-<p><strong>2）镜像安全</strong><br>​    由于 Docker 容器是基于镜像创建并启动，因此镜像的安全直接影响到容器的安全。具体影响镜像安全的总结如下。</p>
-<ul>
-<li><p>镜像软件存在安全漏洞：由于容器需要安装基础的软件包，如果软件包存在漏洞，则可能会被不法分子利用并且侵入容器，影响其他容器或主机安全。</p>
-</li>
-<li><p>仓库漏洞：无论是 Docker 官方的镜像仓库还是我们私有的镜像仓库，都有可能被攻击，然后篡改镜像，当我们使用镜像时，就可能成为攻击者的目标对象。</p>
-</li>
-<li><p>用户程序漏洞：用户自己构建的软件包可能存在漏洞或者被植入恶意脚本，这样会导致运行时提权影响其他容器或主机安全。</p>
-</li>
-</ul>
-<p><strong>3）Linux 内核隔离性不够</strong></p>
-<p>​    尽管目前 <strong>Namespace</strong> 已经提供了非常多的资源隔离类型，但是仍有部分关键内容没有被完全隔离，其中包括一些系统的关键性目录（如 /sys、/proc 等），这些关键性的目录可能会泄露主机上一些关键性的信息，让攻击者利用这些信息对整个主机甚至云计算中心发起攻击。</p>
-<p>​    而且仅仅依靠 Namespace 的隔离是远远不够的，因为一旦内核的 Namespace 被突破，使用者就有可能直接提权获取到主机的超级权限，从而影响主机安全。</p>
-<p><strong>4) 所有容器共享主机内核</strong></p>
-<p>​    由于<strong>同一宿主机上所有容器共享主机内核</strong>，所以攻击者可以利用一些特殊手段导致内核崩溃，进而导致主机宕机影响主机上其他服务。</p>
-<h3 id="4-Docker安全问题解决"><a href="#4-Docker安全问题解决" class="headerlink" title="4. Docker安全问题解决"></a>4. Docker安全问题解决</h3><p><strong>1) Docker 自身安全性改进</strong><br>​    事实上，Docker 从 2013 年诞生到现在，在安全性上面已经做了非常多的努力。目前 Docker 在默认配置和默认行为下是足够安全的。</p>
-<p>​    Docker 自身是基于 Linux 的多种 Namespace 实现的，其中有一个<strong>很重要的 Namespace 叫作 User Namespace</strong>，User Namespace 主要是用来做容器内用户和主机的用户隔离的。在过去容器里的 root 用户就是主机上的 root 用户，如果容器受到攻击，或者容器本身含有恶意程序，在容器内就可以直接获取到主机 root 权限。Docker 从 1.10 版本开始，使用 <strong>User Namespace 做用户隔离，实现了容器中的 root 用户映射到主机上的非 root 用户，从而大大减轻了容器被突破的风险。</strong></p>
-<p>因此，我们尽可能地使用 Docker 最新版本就可以得到更好的安全保障。</p>
-<p><strong>2) 保障镜像安全</strong></p>
-<p>​    为保障镜像安全，我们可以在<strong>私有镜像仓库安装镜像安全扫描组件</strong>，对上传的镜像进行检查，通过与 CVE 数据库对比，一旦发现有漏洞的镜像及时通知用户或阻止非安全镜像继续构建和分发。同时为了确保我们使用的镜像足够安全，在拉取镜像时，要确保只从受信任的镜像仓库拉取，并且与镜像仓库通信一定要使用 HTTPS 协议。</p>
-<p><strong>3) 加强内核安全和管理</strong></p>
-<p>​    由于仅仅依赖内核的隔离可能会引发安全问题，因此我们对于内核的安全应该更加重视。可以从以下几个方面进行加强。</p>
-<ul>
-<li><p>宿主机及时升级内核漏洞</p>
-</li>
-<li><p>宿主机内核应该尽量安装最新补丁，因为更新的内核补丁往往有着更好的安全性和稳定性。</p>
-</li>
-<li><p>使用 Capabilities 划分权限</p>
-</li>
-</ul>
-<p>Capabilities 是 Linux 内核的概念，Linux 将系统权限分为了多个 Capabilities，它们都可以单独地开启或关闭，Capabilities 实现了系统更细粒度的访问控制。在执行docker run命令启动容器时，如非特殊可控情况，–privileged 参数不允许设置为 true，其他特殊权限可以使用 –cap-add 参数，根据使用场景适当添加相应的权限。</p>
-<p><strong>4) 使用安全加固组件</strong></p>
-<p>​    Linux 的 <strong>SELinux、AppArmor、GRSecurity组件都是 Docker 官方推荐的安全加固组件</strong>。</p>
-<ul>
-<li><p>SELinux (Secure Enhanced Linux): 是 Linux 的一个内核安全模块，提供了安全访问的策略机制，通过设置 SELinux 策略可以实现某些进程允许访问某些文件。</p>
-</li>
-<li><p>AppArmor: 类似于 SELinux，也是一个 Linux 的内核安全模块，普通的访问控制仅能控制到用户的访问权限，而 AppArmor 可以控制到用户程序的访问权限。</p>
-</li>
-<li><p>GRSecurity: 是一个对内核的安全扩展，可通过智能访问控制，提供内存破坏防御，文件系统增强等多种防御形式。</p>
-</li>
-</ul>
-<p>这三个组件可以限制一个容器对主机的内核或其他资源的访问控制。目前，容器报告的一些安全漏洞中，很多都是通过对内核进行加强访问和隔离来实现的。</p>
-<p><strong>5) 资源限制</strong></p>
-<p>​    在生产环境中，建议每个容器都添加相应的资源限制。下面给出一些执行docker run命令启动容器时可以传递的资源限制参数：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">--cpus                          限制 CPU 配额
--m, --memory                    限制内存配额
---pids-limit                    限制容器的 PID 个数</code></pre></div>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>仅仅开放远程访问Docker API，这个还不够的，因为会有安全问题。关于这点，Docker有相关的安全机制，参考官方文档<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/security/https/">Protect the Docker daemon socket</a>，大致就是：生成证书，用来达到验证客户端身份的目的。</strong></p>
+<p>下面是操作步骤：</p>
+<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><h3 id="1-创建certs文件夹，用来存放CA私钥和公钥"><a href="#1-创建certs文件夹，用来存放CA私钥和公钥" class="headerlink" title="1. 创建certs文件夹，用来存放CA私钥和公钥"></a>1. 创建certs文件夹，用来存放CA私钥和公钥</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">mkdir -pv &#x2F;etc&#x2F;docker&#x2F;certs
+cd &#x2F;etc&#x2F;docker&#x2F;certs</code></pre></div>
 
-<p>例如我想要启动一个 1 核 2G 的容器，并且限制在容器内最多只能创建 1000 个 PID，启动命令如下：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">$ docker run -it --cpus&#x3D;1 -m&#x3D;2048m --pids-limit&#x3D;1000 busybox &#x2F;bin&#x2F;bash</code></pre></div>
+<h3 id="2-创建密码"><a href="#2-创建密码" class="headerlink" title="2. 创建密码"></a>2. 创建密码</h3><p><strong>需要连续输入两次相同的密码</strong></p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl genrsa -aes256 -out ca-key.pem 4096</code></pre></div>
 
-<p>推荐在生产环境中限制 CPU、内存、PID 等资源，这样即便应用程序有漏洞，也不会导致主机的资源完全耗尽，最大限度降低安全风险。</p>
-<p><strong>6) 使用安全容器</strong></p>
-<p>​    容器有着轻便快速启动的优点，虚拟机有着安全隔离的优点，有没有一种技术可以兼顾两者的优点，做到既轻量又安全呢？</p>
-<p>​    答案是有，那就是<strong>安全容器。安全容器是相较于普通容器的，安全容器与普通容器的主要区别在于，安全容器中的每个容器都运行在一个单独的微型虚拟机中，拥有独立的操作系统和内核，并且有虚拟化层的安全隔离。</strong></p>
-<p>安全容器目前推荐的技术方案是 : <strong>Kata Containers</strong></p>
+<h3 id="3-依次输入密码、国家、省、市、组织名称等（除了密码外其他的可以直接回车跳过）"><a href="#3-依次输入密码、国家、省、市、组织名称等（除了密码外其他的可以直接回车跳过）" class="headerlink" title="3. 依次输入密码、国家、省、市、组织名称等（除了密码外其他的可以直接回车跳过）"></a>3. 依次输入密码、国家、省、市、组织名称等（除了密码外其他的可以直接回车跳过）</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem</code></pre></div>
 
+<h3 id="4-生成server-key-pem"><a href="#4-生成server-key-pem" class="headerlink" title="4. 生成server-key.pem"></a>4. 生成server-key.pem</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl genrsa -out server-key.pem 4096</code></pre></div>
+
+<h3 id="5-生成server-csr（把下面的IP换成你自己服务器外网的IP或者域名）"><a href="#5-生成server-csr（把下面的IP换成你自己服务器外网的IP或者域名）" class="headerlink" title="5. 生成server.csr（把下面的IP换成你自己服务器外网的IP或者域名）"></a>5. 生成server.csr（把下面的IP换成你自己服务器外网的IP或者域名）</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl req -subj &quot;&#x2F;CN&#x3D;123.123.123.123&quot; -sha256 -new -key server-key.pem -out server.csr</code></pre></div>
+
+<h3 id="6-配置白名单"><a href="#6-配置白名单" class="headerlink" title="6. 配置白名单"></a>6. 配置白名单</h3><p><strong>0.0.0.0表示所有ip都可以连接。（这里需要注意，虽然0.0.0.0可以匹配任意，但是仍需要配置你的外网ip和127.0.0.1，否则客户端会连接不上）</strong></p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">echo subjectAltName &#x3D; IP:0.0.0.0,IP:123.123.123.123,IP:127.0.0.1 &gt;&gt; extfile.cnf</code></pre></div>
+
+<p><strong>或者也可以设置成域名</strong></p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">echo subjectAltName &#x3D; DNS:www.example.com,IP:123.123.123.123,IP:127.0.0.1 &gt;&gt; extfile.cnf</code></pre></div>
+
+<h3 id="7-将Docker守护程序密钥的扩展使用属性设置为仅用于服务器身份验证"><a href="#7-将Docker守护程序密钥的扩展使用属性设置为仅用于服务器身份验证" class="headerlink" title="7. 将Docker守护程序密钥的扩展使用属性设置为仅用于服务器身份验证"></a>7. 将Docker守护程序密钥的扩展使用属性设置为仅用于服务器身份验证</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">echo extendedKeyUsage &#x3D; serverAuth &gt;&gt; extfile.cnf</code></pre></div>
+
+<h3 id="8-输入之前设置的密码，生成签名证书"><a href="#8-输入之前设置的密码，生成签名证书" class="headerlink" title="8.输入之前设置的密码，生成签名证书"></a>8.输入之前设置的密码，生成签名证书</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem \
+  -CAcreateserial -out server-cert.pem -extfile extfile.cnf</code></pre></div>
+
+<h3 id="9、生成供客户端发起远程访问时使用的key-pem"><a href="#9、生成供客户端发起远程访问时使用的key-pem" class="headerlink" title="9、生成供客户端发起远程访问时使用的key.pem"></a>9、生成供客户端发起远程访问时使用的key.pem</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl genrsa -out key.pem 4096</code></pre></div>
+
+<h3 id="10-生成client-csr（把下面的IP换成你自己服务器外网的IP或者域名）"><a href="#10-生成client-csr（把下面的IP换成你自己服务器外网的IP或者域名）" class="headerlink" title="10. 生成client.csr（把下面的IP换成你自己服务器外网的IP或者域名）"></a>10. 生成client.csr（把下面的IP换成你自己服务器外网的IP或者域名）</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl req -subj &quot;&#x2F;CN&#x3D;123.123.123.123&quot; -new -key key.pem -out client.csr</code></pre></div>
+
+<h3 id="11-创建扩展配置文件，把密钥设置为客户端身份验证用"><a href="#11-创建扩展配置文件，把密钥设置为客户端身份验证用" class="headerlink" title="11. 创建扩展配置文件，把密钥设置为客户端身份验证用"></a>11. 创建扩展配置文件，把密钥设置为客户端身份验证用</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">echo extendedKeyUsage &#x3D; clientAuth &gt; extfile-client.cnf</code></pre></div>
+
+<h3 id="12-生成cert-pem，输入前面设置的密码，生成签名证书"><a href="#12-生成cert-pem，输入前面设置的密码，生成签名证书" class="headerlink" title="12. 生成cert.pem，输入前面设置的密码，生成签名证书"></a>12. 生成cert.pem，输入前面设置的密码，生成签名证书</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem \
+  -CAcreateserial -out cert.pem -extfile extfile-client.cnf</code></pre></div>
+
+<h3 id="13-删除不需要的配置文件和两个证书的签名请求"><a href="#13-删除不需要的配置文件和两个证书的签名请求" class="headerlink" title="13. 删除不需要的配置文件和两个证书的签名请求"></a>13. 删除不需要的配置文件和两个证书的签名请求</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">rm -v client.csr server.csr extfile.cnf extfile-client.cnf</code></pre></div>
+
+<h3 id="14-为了防止私钥文件被更改以及被其他用户查看，修改其权限为所有者只读"><a href="#14-为了防止私钥文件被更改以及被其他用户查看，修改其权限为所有者只读" class="headerlink" title="14. 为了防止私钥文件被更改以及被其他用户查看，修改其权限为所有者只读"></a>14. 为了防止私钥文件被更改以及被其他用户查看，修改其权限为所有者只读</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">chmod -v 0400 ca-key.pem key.pem server-key.pem</code></pre></div>
+
+<h3 id="15-为了防止-公钥文件被更改，修改其权限为只读"><a href="#15-为了防止-公钥文件被更改，修改其权限为只读" class="headerlink" title="15. 为了防止##### 公钥文件被更改，修改其权限为只读"></a>15. 为了防止##### 公钥文件被更改，修改其权限为只读</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">chmod -v 0444 ca.pem server-cert.pem cert.pem</code></pre></div>
+
+<h3 id="16-修改Docker配置，使Docker守护程序仅接受来自提供CA信任的证书的客户端的连接"><a href="#16-修改Docker配置，使Docker守护程序仅接受来自提供CA信任的证书的客户端的连接" class="headerlink" title="16. 修改Docker配置，使Docker守护程序仅接受来自提供CA信任的证书的客户端的连接"></a>16. 修改Docker配置，使Docker守护程序仅接受来自提供CA信任的证书的客户端的连接</h3><p>拷贝安装包单元文件到/etc，这样就不会因为docker升级而被覆盖</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">cp &#x2F;lib&#x2F;systemd&#x2F;system&#x2F;docker.service &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service</code></pre></div>
+
+<p>在<code>ExecStart=/usr/bin/dockerd-current \</code>下面增加</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">--tlsverify \
+--tlscacert&#x3D;&#x2F;etc&#x2F;docker&#x2F;certs&#x2F;ca.pem \
+--tlscert&#x3D;&#x2F;etc&#x2F;docker&#x2F;certs&#x2F;server-cert.pem \
+--tlskey&#x3D;&#x2F;etc&#x2F;docker&#x2F;certs&#x2F;server-key.pem \
+-H tcp:&#x2F;&#x2F;0.0.0.0:2376 \
+-H unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock \</code></pre></div>
+
+<h3 id="17-重新加载daemon并重启docker"><a href="#17-重新加载daemon并重启docker" class="headerlink" title="17. 重新加载daemon并重启docker"></a>17. 重新加载daemon并重启docker</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">systemctl daemon-reload
+systemctl restart docker</code></pre></div>
+
+<h2 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h2><h3 id="1-创建证书目录"><a href="#1-创建证书目录" class="headerlink" title="1. 创建证书目录"></a>1. 创建证书目录</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">mkdir -pv ~&#x2F;.docker&#x2F;certs&#x2F;
+cd ~&#x2F;.docker&#x2F;certs&#x2F;</code></pre></div>
+
+<h3 id="2-将ca-pem-cert-pem-key-pem这3个文件拷贝到当前目录"><a href="#2-将ca-pem-cert-pem-key-pem这3个文件拷贝到当前目录" class="headerlink" title="2. 将ca.pem cert.pem key.pem这3个文件拷贝到当前目录"></a>2. 将<code>ca.pem</code> <code>cert.pem</code> <code>key.pem</code>这3个文件拷贝到当前目录</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">scp ca.pem .&#x2F;
+scp cert.pem .&#x2F;
+scp key.pem .&#x2F;</code></pre></div>
+
+<h3 id="3-使用docker客户端测试（注意修改证书路径）"><a href="#3-使用docker客户端测试（注意修改证书路径）" class="headerlink" title="3. 使用docker客户端测试（注意修改证书路径）"></a>3. 使用docker客户端测试（注意修改证书路径）</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">docker --tlsverify \
+    --tlscacert&#x3D;&#x2F;home&#x2F;alex&#x2F;.docker&#x2F;certs&#x2F;ca.pem \
+    --tlscert&#x3D;&#x2F;home&#x2F;alex&#x2F;.docker&#x2F;certs&#x2F;cert.pem \
+    --tlskey&#x3D;&#x2F;home&#x2F;alex&#x2F;.docker&#x2F;certs&#x2F;key.pem \
+    -H&#x3D;123.123.123.123:2376 version</code></pre></div>
+
+<h3 id="4-使用curl测试Docker-API"><a href="#4-使用curl测试Docker-API" class="headerlink" title="4. 使用curl测试Docker API"></a>4. 使用curl测试Docker API</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none">curl https:&#x2F;&#x2F;123.123.123.123:2376&#x2F;images&#x2F;json \
+  --cert ~&#x2F;.docker&#x2F;certs&#x2F;cert.pem \
+  --key ~&#x2F;.docker&#x2F;certs&#x2F;key.pem \
+  --cacert ~&#x2F;.docker&#x2F;certs&#x2F;ca.pem</code></pre></div>
+
+<h3 id="5-配置默认远程调用服务器docker服务"><a href="#5-配置默认远程调用服务器docker服务" class="headerlink" title="5. 配置默认远程调用服务器docker服务"></a>5. 配置默认远程调用服务器docker服务</h3><div class="code-wrapper"><pre class="language-none"><code class="language-none"># 配置~&#x2F;.zshrc（或者~&#x2F;.bashrc，根据你的客户端环境而定），在末尾添加以下几行
+export DOCKER_HOST&#x3D;tcp:&#x2F;&#x2F;123.123.123.123:2376 DOCKER_TLS_VERIFY&#x3D;1
+export DOCKER_CERT_PATH&#x3D;~&#x2F;.docker&#x2F;certs&#x2F;
+# 然后让加载到当前会话
+source .zshrc
+# 测试
+docker ps</code></pre></div>
+
+<h4 id="务必非常小心保管这些key，它们就跟服务器root密码一样重要（众所周知docker是可以进行真实主机提权的）"><a href="#务必非常小心保管这些key，它们就跟服务器root密码一样重要（众所周知docker是可以进行真实主机提权的）" class="headerlink" title="*务必非常小心保管这些key，它们就跟服务器root密码一样重要（众所周知docker是可以进行真实主机提权的）"></a>*<code>务必非常小心保管这些key，它们就跟服务器root密码一样重要（众所周知docker是可以进行真实主机提权的）</code></h4>
             </div>
             <hr>
             <div>
@@ -366,18 +383,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/06/03/Dockerfile%E7%9A%84%E7%BC%96%E5%86%99%E8%A7%84%E5%88%99/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker File</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">
-                        <span class="hidden-mobile">Docker 安全</span>
+                      <a href="/2021/05/09/vim/">
+                        <span class="hidden-mobile">vim</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
