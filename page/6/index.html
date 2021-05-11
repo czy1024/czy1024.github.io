@@ -311,24 +311,28 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 技术原理">
+        <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 镜像配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">Docker 技术原理</a>
+        <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">Docker 镜像配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">
+        <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
           
           
             
           
-          先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。1. Docker 能做什么？​    众所周知，Docker 是一个用于开发，发布和运行应用程序的开放平台。通俗地讲，Docker 类似于集装箱。在一艘大船上，各种货物要想被整齐摆放并且相互不受到影响，我们就需要把各种货物进行集装箱标准化。有了集装箱，我们就不需要专门运输水果或者化学用品的船了。我
+          ​    Docker 核心：镜像，首先重点讲解一下镜像的基本操作，然后介绍一下镜像的实现原理。
+1. 镜像​    镜像是一个只读的 Docker 容器模板，包含启动容器所需要的所有文件系统结构和内容。简单来讲，镜像是一个特殊的文件系统，它提供了容器运行时所需的程序、软件库、资源、配置等静态数据。即镜像不包含任何动态数据，镜像内容在构建后不会被改变。
+如何操作镜像：
+
+从图中可知，镜像的操作可分
         </a>
       </p>
 
@@ -367,28 +371,24 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 镜像配置">
+        <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 技术原理">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">Docker 镜像配置</a>
+        <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">Docker 技术原理</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/Docker%E9%95%9C%E5%83%8F%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%8E%9F%E7%90%86/">
+        <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/">
           
           
             
           
-          ​    Docker 核心：镜像，首先重点讲解一下镜像的基本操作，然后介绍一下镜像的实现原理。
-1. 镜像​    镜像是一个只读的 Docker 容器模板，包含启动容器所需要的所有文件系统结构和内容。简单来讲，镜像是一个特殊的文件系统，它提供了容器运行时所需的程序、软件库、资源、配置等静态数据。即镜像不包含任何动态数据，镜像内容在构建后不会被改变。
-如何操作镜像：
-
-从图中可知，镜像的操作可分
+          先聊聊Docker 的基础内容：Docker 能做什么，怎么安装 Docker，以及容器技术的原理。1. Docker 能做什么？​    众所周知，Docker 是一个用于开发，发布和运行应用程序的开放平台。通俗地讲，Docker 类似于集装箱。在一艘大船上，各种货物要想被整齐摆放并且相互不受到影响，我们就需要把各种货物进行集装箱标准化。有了集装箱，我们就不需要专门运输水果或者化学用品的船了。我
         </a>
       </p>
 
@@ -805,7 +805,7 @@ import org.springframework.scheduling.an
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -814,7 +814,7 @@ import org.springframework.scheduling.an
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
