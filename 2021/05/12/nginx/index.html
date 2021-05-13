@@ -742,7 +742,7 @@ if($http_user_agent ~ Chrome)&#123;
 &#125;</code></pre></div>
 
 <p>当访问 <code>fe.lion.com/download/</code> 时，会把服务器 <code>/opt/source/download/</code> 路径下的文件展示出来，如下图所示：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtGScQRCxyfmDPfskKicRMDGMibAnLj1WX8Vv0nS8hGaAZEfohJOIuzvTA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://i.loli.net/2021/05/13/xSXV4IvkreYuOa2.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p><strong>变量</strong></p>
 <p><code>Nginx</code> 提供给使用者的变量非常多，但是终究是一个完整的请求过程所产生数据， <code>Nginx</code> 将这些数据以变量的形式提供给使用者。</p>
 <p>下面列举些项目中常用的变量：</p>
@@ -812,7 +812,7 @@ document_root: &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</code></pre></div>
 <p><strong>Nginx 应用核心概念</strong></p>
 <p>代理是在服务器和客户端之间假设的一层服务器，代理将接收客户端的请求并将它转发给服务器，然后将服务端的响应转发给客户端。</p>
 <p>不管是正向代理还是反向代理，实现的都是上面的功能。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtguRkXWwLy0FsAVibBv3qiaJhmu1Dh28ibEZ1BxVXn4icUJJU7PvzibQx5Yg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://i.loli.net/2021/05/13/fSs4pyHmb5AQtiU.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p><strong>正向代理</strong></p>
 <blockquote>
 <p>正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。</p>
@@ -845,7 +845,7 @@ document_root: &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</code></pre></div>
 <p>很明显这是由于服务器性能的瓶颈造成的问题，除了堆机器之外，最重要的做法就是负载均衡。</p>
 <p>请求爆发式增长的情况下，单个机器性能再强劲也无法满足要求了，这个时候集群的概念产生了，单个服务器解决不了的问题，可以使用多个服务器，然后将请求分发到各个服务器上，将负载分发到不同的服务器，这就是负载均衡，核心是「分摊压力」。<code>Nginx</code> 实现负载均衡，一般来说指的是将请求转发给服务器集群。</p>
 <p>举个具体的例子，晚高峰乘坐地铁的时候，入站口经常会有地铁工作人员大喇叭“请走 <code>B</code> 口， <code>B</code>口人少车空….”，这个工作人员的作用就是负载均衡。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZt4hPMc4FRgLth4Yn0Q8F8tj0v2xaKCQrPfJVpWEn5W4Aq3JaT8M059A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://i.loli.net/2021/05/13/Wsy3nxX6OkcjU5f.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p><code>Nginx</code> 实现负载均衡的策略：</p>
 <ul>
 <li>轮询策略：默认情况下采用的策略，将所有客户端请求轮询分配给服务端。这种策略是可以正常工作的，但是如果其中某一台服务器压力太大，出现延迟，会影响所有分配在这台服务器下的用户。</li>
@@ -857,7 +857,7 @@ document_root: &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html</code></pre></div>
 <p>在配置反向代理和负载均衡等等功能之前，有两个核心模块是我们必须要掌握的，这两个模块应该说是 <code>Nginx</code> 应用配置中的核心，它们分别是：<code>upstream</code> 、<code>proxy_pass</code> 。</p>
 <p><strong>upstream</strong></p>
 <p>用于定义上游服务器（指的就是后台提供的应用服务器）的相关信息。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtPq4RNcsFc6icp4alOBg28vOho4W8VCUUeJGrxuSktIYD7MeNbZTQ6eA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://i.loli.net/2021/05/13/L7Au6MSZ8NUcmeO.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">语法：upstream name &#123;
  ...
 &#125;
@@ -1321,7 +1321,7 @@ http:&#x2F;&#x2F;news.company.com&#x2F;dir&#x2F;other.html 不同源，主机不
 <p>并不是每个浏览器都支持 <code>gzip</code> 的，如何知道客户端是否支持 <code>gzip</code> 呢，请求头中的 <code>Accept-Encoding</code> 来标识对压缩的支持。</p>
 <p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>启用 <code>gzip</code> 同时需要客户端和服务端的支持，如果客户端支持 <code>gzip</code> 的解析，那么只要服务端能够返回 <code>gzip</code> 的文件就可以启用 <code>gzip</code> 了,我们可以通过 <code>Nginx</code> 的配置来让服务端支持 <code>gzip</code> 。下面的 <code>respone</code> 中 <code>content-encoding:gzip</code> ，指服务端开启了 <code>gzip</code> 的压缩方式。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtywHU7es5DM2kDNfU3jChbCnVr3RNYZlv5ekHgbGE5JvffWlPuMseibQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://i.loli.net/2021/05/13/2InKAg9biCSdoPj.png" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>在 <code>/etc/nginx/conf.d/</code> 文件夹中新建配置文件 <code>gzip.conf</code> ：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none"># # 默认off，是否开启gzip
 gzip on; 
@@ -1380,7 +1380,7 @@ gzip_http_version 1.1;</code></pre></div>
 <p>\6. 老的 <code>worker</code> 进程关闭监听句柄，处理完当前连接后关闭进程；</p>
 <p>\7. 整个过程 <code>Nginx</code> 始终处于平稳运行中，实现了平滑升级，用户无感知；</p>
 <h2 id="Nginx-模块化管理机制"><a href="#Nginx-模块化管理机制" class="headerlink" title="Nginx 模块化管理机制"></a>Nginx 模块化管理机制</h2><p><code>Nginx</code> 的内部结构是由核心部分和一系列的功能模块所组成。这样划分是为了使得每个模块的功能相对简单，便于开发，同时也便于对系统进行功能扩展。<code>Nginx</code> 的模块是互相独立的,低耦合高内聚。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtxkGzdXVSdAyy7KoYhFC2IoyfNaLNH87X6e5bEAXicC7xaqwfYbicsvVQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgil28gi4j30u00kudje.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 
             </div>
             <hr>
