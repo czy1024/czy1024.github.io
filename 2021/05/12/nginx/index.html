@@ -418,7 +418,7 @@ http <span class="token punctuation">&#123;</span>
 <li><code>upstream</code> 配置后端服务器具体地址，负载均衡配置不可或缺的部分；</li>
 </ul>
 <p>用一张图清晰的展示它的层级结构：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZttVadvjianCuG5VVd2nuiauWV2p6XTtSHiaIfjlNg8LuO8NYddOlj5iceJg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgipd9lr4j304w0bd3ye.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <h2 id="配置文件-main-段核心参数"><a href="#配置文件-main-段核心参数" class="headerlink" title="配置文件 main 段核心参数"></a>配置文件 main 段核心参数</h2><h2 id="user"><a href="#user" class="headerlink" title="user"></a>user</h2><p>指定运行 <code>Nginx</code> 的 <code>woker</code> 子进程的属主和属组，其中组可以不指定。</p>
 <div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">user USERNAME <span class="token punctuation">[</span>GROUP<span class="token punctuation">]</span>
 
@@ -449,7 +449,7 @@ worker_processes auto<span class="token punctuation">;</span> <span class="token
 
 
 
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtZIGmia42mZYtFicgicRtCKBCJYbon4trM52w2f8sqtXqSzUM2eZvm2tSw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgipukswcj30h20cj3yl.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>将每个 <code>worker</code> 子进程与特定 <code>CPU</code> 物理核心绑定，优势在于，避免同一个 <code>worker</code> 子进程在不同的 <code>CPU</code> 核心上切换，缓存失效，降低性能。但其并不能真正的避免进程切换。</p>
 <p><strong>worker_priority</strong></p>
 <p>指定 <code>worker</code> 子进程的 <code>nice</code> 值，以调整运行 <code>Nginx</code> 的优先级，通常设定为负值，以优先调用<code>Nginx</code> 。</p>
@@ -746,7 +746,7 @@ if($http_user_agent ~ Chrome)&#123;
 <p><strong>变量</strong></p>
 <p><code>Nginx</code> 提供给使用者的变量非常多，但是终究是一个完整的请求过程所产生数据， <code>Nginx</code> 将这些数据以变量的形式提供给使用者。</p>
 <p>下面列举些项目中常用的变量：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tshHIlcFwiap9d3kaiaXLvLMAibOBfJXwBxia7msxn3zw1D7Obd4OO8HoOt23ibjMLhW2snkLDfj3YGGIkw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgionqq4ij30k212ydkv.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>实例演示 <code>var.conf</code> ：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">server&#123;
  listen 8081;
@@ -1009,7 +1009,7 @@ server &#123;
 <p>本地机器要访问 <code>proxy.lion.club</code> 域名，因此需要配置本地 <code>hosts</code> ，通过命令：<code>vim /etc/hosts</code>进入配置文件，添加如下内容：</p>
 <div class="code-wrapper"><pre class="language-none"><code class="language-none">121.5.180.193 proxy.lion.club</code></pre></div>
 
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZt7ZagQyO1XZk6iclBoicY5v7OhGGrqfmCEswrNtAgyKpl6GhOefU6wo1w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgio8wopaj30ry054glt.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>分析：</p>
 <p>当访问 <code>proxy.lion.club/proxy</code> 时通过 <code>upstream</code> 的配置找到 <code>121.42.11.34:8080</code> ；</p>
 <p>因此访问地址变为 <code>http://121.42.11.34:8080/proxy</code> ；</p>
@@ -1064,7 +1064,7 @@ server &#123;
 121.5.180.193 balance.lion.club</code></pre></div>
 
 <p>在客户端机器执行 <code>curl http://balance.lion.club/balance/</code> 命令：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib1CxxiaXXtjSM4U1Y0r7AeZtJcN9Ghfnox2UsXQohHk2LOichwufTKWRBoU0F4ibAI5AKfXjeLXSLDXg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgiu2hh9mj30ip06675k.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>不难看出，负载均衡的配置已经生效了，每次给我们分发的上游服务器都不一样。就是通过简单的轮询策略进行上游服务器分发。</p>
 <p>接下来，我们再来了解下 <code>Nginx</code> 的其它分发策略。</p>
 <p><strong>hash 算法</strong></p>
@@ -1358,7 +1358,7 @@ gzip_http_version 1.1;</code></pre></div>
 <p><strong>Nginx 架构</strong></p>
 <p><strong>进程结构</strong></p>
 <p>多进程结构 <code>Nginx</code> 的进程模型图：</p>
-<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" srcset="/img/loading.gif" lazyload alt="Image"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqgj9dsw29j30rn0aj74h.jpg" srcset="/img/loading.gif" lazyload alt="Image"></p>
 <p>多进程中的 <code>Nginx</code> 进程架构如下图所示，会有一个父进程（ <code>Master Process</code> ），它会有很多子进程（ <code>Child Processes</code> ）。</p>
 <ul>
 <li><p><code>Master Process</code> 用来管理子进程的，其本身并不真正处理用户请求。</p>
