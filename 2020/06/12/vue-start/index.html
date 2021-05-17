@@ -210,7 +210,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.3k 字
+      1.2k 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      26
        分钟
     </span>
   
@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：25 天前
+                  本文最后更新于：1 个月前
                 
               </p>
             
@@ -368,36 +368,36 @@ css样式
     &lt;div&gt;&#123;&#123;myData | filterName&#125;&#125;&lt;/div&gt;
     &lt;div&gt;&#123;&#123;myData | filterName(arg)&#125;&#125;&lt;/div&gt;
 </code></pre></div>
-<h1 id="7-vue内置指令"><a href="#7-vue内置指令" class="headerlink" title="7. vue内置指令"></a>7. vue内置指令</h1><div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">v-text&#x2F;v-html: 指定标签体
-	* v-text : 当作纯文本
-	* v-html : 将value作为html标签来解析
-v-if v-else v-show: 显示&#x2F;隐藏元素
-	* v-if : 如果vlaue为true, 当前标签会输出在页面中
-	* v-else : 与v-if一起使用, 如果value为false, 将当前标签输出到页面中
-	* v-show: 就会在标签中添加display样式, 如果vlaue为true, display&#x3D;block, 否则是none
-v-for : 遍历
-	* 遍历数组 : v-for&#x3D;&quot;(person, index) in persons&quot;   
-	* 遍历对象 : v-for&#x3D;&quot;value in person&quot;   $key
-v-on : 绑定事件监听
-	* v-on:事件名, 可以缩写为: @事件名
-	* 监视具体的按键: @keyup.keyCode   @keyup.enter
-	* 停止事件的冒泡和阻止事件默认行为: @click.stop   @click.prevent
-	* 隐含对象: $event
-v-bind : 强制绑定解析表达式  
-	* html标签属性是不支持表达式的, 就可以使用v-bind
-	* 可以缩写为:  :id&#x3D;&#39;name&#39;
-	* :class
-	  * :class&#x3D;&quot;a&quot;
-		* :class&#x3D;&quot;&#123;classA : isA, classB : isB&#125;&quot;
-		* :class&#x3D;&quot;[classA, classB]&quot;
-	* :style
-		:style&#x3D;&quot;&#123;color : color&#125;&quot;
-v-model
+<h1 id="7-vue内置指令"><a href="#7-vue内置指令" class="headerlink" title="7. vue内置指令"></a>7. vue内置指令</h1><div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">v-text/v-html</span><span class="token punctuation">:</span> 指定标签体
+	* v<span class="token punctuation">-</span><span class="token key atrule">text</span> <span class="token punctuation">:</span> 当作纯文本
+	* v<span class="token punctuation">-</span><span class="token key atrule">html</span> <span class="token punctuation">:</span> 将value作为html标签来解析
+<span class="token key atrule">v-if v-else v-show</span><span class="token punctuation">:</span> 显示/隐藏元素
+	* v<span class="token punctuation">-</span><span class="token key atrule">if</span> <span class="token punctuation">:</span> 如果vlaue为true<span class="token punctuation">,</span> 当前标签会输出在页面中
+	* v<span class="token punctuation">-</span><span class="token key atrule">else</span> <span class="token punctuation">:</span> 与v<span class="token punctuation">-</span>if一起使用<span class="token punctuation">,</span> 如果value为false<span class="token punctuation">,</span> 将当前标签输出到页面中
+	* v<span class="token punctuation">-</span><span class="token key atrule">show</span><span class="token punctuation">:</span> 就会在标签中添加display样式<span class="token punctuation">,</span> 如果vlaue为true<span class="token punctuation">,</span> display=block<span class="token punctuation">,</span> 否则是none
+<span class="token key atrule">v-for</span> <span class="token punctuation">:</span> 遍历
+	* 遍历数组 <span class="token punctuation">:</span> v<span class="token punctuation">-</span>for="(person<span class="token punctuation">,</span> index) in persons"   
+	* 遍历对象 <span class="token punctuation">:</span> v<span class="token punctuation">-</span>for="value in person"   $key
+<span class="token key atrule">v-on</span> <span class="token punctuation">:</span> 绑定事件监听
+	* v<span class="token punctuation">-</span>on<span class="token punctuation">:</span>事件名<span class="token punctuation">,</span> <span class="token key atrule">可以缩写为</span><span class="token punctuation">:</span> @事件名
+	* 监视具体的按键<span class="token punctuation">:</span> @keyup.keyCode   @keyup.enter
+	* 停止事件的冒泡和阻止事件默认行为<span class="token punctuation">:</span> @click.stop   @click.prevent
+	* 隐含对象<span class="token punctuation">:</span> $event
+<span class="token key atrule">v-bind</span> <span class="token punctuation">:</span> 强制绑定解析表达式  
+	* html标签属性是不支持表达式的<span class="token punctuation">,</span> 就可以使用v<span class="token punctuation">-</span>bind
+	* 可以缩写为<span class="token punctuation">:</span>  <span class="token punctuation">:</span>id='name'
+	* <span class="token punctuation">:</span>class
+	  * <span class="token punctuation">:</span>class="a"
+		* <span class="token punctuation">:</span>class="<span class="token punctuation">&#123;</span><span class="token key atrule">classA</span> <span class="token punctuation">:</span> isA<span class="token punctuation">,</span> <span class="token key atrule">classB</span> <span class="token punctuation">:</span> isB<span class="token punctuation">&#125;</span>"
+		* <span class="token punctuation">:</span>class="<span class="token punctuation">[</span>classA<span class="token punctuation">,</span> classB<span class="token punctuation">]</span>"
+	* <span class="token punctuation">:</span>style
+		<span class="token punctuation">:</span>style="<span class="token punctuation">&#123;</span><span class="token key atrule">color</span> <span class="token punctuation">:</span> color<span class="token punctuation">&#125;</span>"
+v<span class="token punctuation">-</span>model
 	* 双向数据绑定
 	* 自动收集用户输入数据
-ref : 标识某个标签
-	* ref&#x3D;&#39;xxx&#39;
-	* 读取得到标签对象: this.$refs.xxx</code></pre></div>
+<span class="token key atrule">ref</span> <span class="token punctuation">:</span> 标识某个标签
+	* ref='xxx'
+	* 读取得到标签对象<span class="token punctuation">:</span> this.$refs.xxx</code></pre></div>
 
 <h1 id="8-自定义指令"><a href="#8-自定义指令" class="headerlink" title="8. 自定义指令"></a>8. 自定义指令</h1><h2 id="1-注册全局指令"><a href="#1-注册全局指令" class="headerlink" title="1). 注册全局指令"></a>1). 注册全局指令</h2><div class="code-wrapper"><pre class="language-javascript" data-language="javascript"><code class="language-javascript">Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'my-directive'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
   el<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> binding<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>

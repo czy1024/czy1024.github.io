@@ -210,7 +210,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.1k 字
+      4k 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      82
+      79
        分钟
     </span>
   
@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：25 天前
+                  本文最后更新于：1 个月前
                 
               </p>
             
@@ -315,18 +315,18 @@ yum -y install wget httpd-tools vim</code></pre></div>
 <p><strong>2.3负载均衡</strong></p>
 <p>如果请求数过大，单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器的情况改为请求分发到多个服务器上，就是负载均衡。</p>
 <p>Upstream 指定后端服务器地址列表，在 server 中拦截响应请求，并将请求转发到 Upstream 中配置的服务器列表。</p>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">upstream balanceServer &#123;
- server 10.1.22.33:12345;
-  server 10.1.22.34:12345;
-server 10.1.22.35:12345;
-&#125;
-server &#123; 
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">upstream balanceServer <span class="token punctuation">&#123;</span>
+ server 10.1.22.33<span class="token punctuation">:</span>12345;
+  server 10.1.22.34<span class="token punctuation">:</span>12345;
+server 10.1.22.35<span class="token punctuation">:</span>12345;
+<span class="token punctuation">&#125;</span>
+server <span class="token punctuation">&#123;</span> 
   server_name fe.server.com;
   listen 80;
-  location &#x2F;api &#123;
-    proxy_pass [http:&#x2F;&#x2F;balanceServer](http:&#x2F;&#x2F;balanceserver&#x2F;);
- &#125;
-&#125;</code></pre></div>
+  location /api <span class="token punctuation">&#123;</span>
+    proxy_pass <span class="token punctuation">[</span>http<span class="token punctuation">:</span>//balanceServer<span class="token punctuation">]</span>(http<span class="token punctuation">:</span>//balanceserver/);
+ <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <p>上面的配置只是指定了 nginx 需要转发的服务端列表，并没有指定分配策略。</p>
 <p>默认情况下采用的是轮询策略，将所有客户端请求轮询分配给服务端。这种策略是可以正常工作的，但是如果其中某一台服务器压力太大，出现延迟，会影响所有分配在这台服务器下的用户。</p>
@@ -420,60 +420,60 @@ $ yum <span class="token function">install</span> openssl openssl-devel</code></
 <blockquote>
 <p>下载/编译nginx</p>
 </blockquote>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">$ wget -c https:&#x2F;&#x2F;nginx.org&#x2F;download&#x2F;nginx-1.16.0.tar.gz
-$ tar -zxvf nginx-1.16.0.tar.gz
-# 编译安装
-$ cd nginx-1.16.0
-$ .&#x2F;configure  # 默认安装在&#x2F;usr&#x2F;local&#x2F;nginx
-$ make &amp;&amp; make install
-# 创建软链
-$ ln -s &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin&#x2F;nginx &#x2F;usr&#x2F;local&#x2F;sbin&#x2F;nginx
-$ nginx -v</code></pre></div>
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">$ wget <span class="token punctuation">-</span>c https<span class="token punctuation">:</span>//nginx.org/download/nginx<span class="token punctuation">-</span>1.16.0.tar.gz
+$ tar <span class="token punctuation">-</span>zxvf nginx<span class="token punctuation">-</span>1.16.0.tar.gz
+<span class="token comment"># 编译安装</span>
+$ cd nginx<span class="token punctuation">-</span>1.16.0
+$ ./configure  <span class="token comment"># 默认安装在/usr/local/nginx</span>
+$ make <span class="token important">&amp;&amp;</span> make install
+<span class="token comment"># 创建软链</span>
+$ ln <span class="token punctuation">-</span>s /usr/local/nginx/sbin/nginx /usr/local/sbin/nginx
+$ nginx <span class="token punctuation">-</span>v</code></pre></div>
 
 <p><strong>五.Nginx配置</strong></p>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">#打开主配置文件，若你是用lnmp环境安装
-vim &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf
-----------------------------------------
-user                    #设置nginx服务的系统使用用户
-worker_processes        #工作进程数 一般情况与CPU核数保持一致
-error_log               #nginx的错误日志
-pid                     #nginx启动时的pid
-events &#123;
-    worker_connections    #每个进程允许最大连接数
-    use                   #nginx使用的内核模型
-&#125;</code></pre></div>
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml"><span class="token comment">#打开主配置文件，若你是用lnmp环境安装</span>
+vim /usr/local/nginx/conf/nginx.conf
+<span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">---</span><span class="token punctuation">-</span>
+user                    <span class="token comment">#设置nginx服务的系统使用用户</span>
+worker_processes        <span class="token comment">#工作进程数 一般情况与CPU核数保持一致</span>
+error_log               <span class="token comment">#nginx的错误日志</span>
+pid                     <span class="token comment">#nginx启动时的pid</span>
+events <span class="token punctuation">&#123;</span>
+    worker_connections    <span class="token comment">#每个进程允许最大连接数</span>
+    use                   <span class="token comment">#nginx使用的内核模型</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <p>我们使用 nginx 的 http 服务，在配置文件 nginx.conf 中的 http 区域内，配置无数个 server ，每一个 server 对应这一个虚拟主机或者域名。</p>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">http &#123;
-    ... ...        #后面再详细介绍 http 配置项目
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">http <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">...</span> <span class="token punctuation">...</span>        <span class="token comment">#后面再详细介绍 http 配置项目</span>
     
-    server &#123;
-        listen 80                          #监听端口;
-        server_name localhost              #地址
+    server <span class="token punctuation">&#123;</span>
+        listen 80                          <span class="token comment">#监听端口;</span>
+        server_name localhost              <span class="token comment">#地址</span>
         
-        location &#x2F; &#123;                       #访问首页路径
-            root &#x2F;xxx&#x2F;xxx&#x2F;index.html       #默认目录
-            index index.html index.htm     #默认文件
-        &#125;        
+        location / <span class="token punctuation">&#123;</span>                       <span class="token comment">#访问首页路径</span>
+            root /xxx/xxx/index.html       <span class="token comment">#默认目录</span>
+            index index.html index.htm     <span class="token comment">#默认文件</span>
+        <span class="token punctuation">&#125;</span>        
         
-        error_page  500 504   &#x2F;50x.html    #当出现以上状态码时从新定义到50x.html
-        location &#x3D; &#x2F;50x.html &#123;             #当访问50x.html时
-            root &#x2F;xxx&#x2F;xxx&#x2F;html             #50x.html 页面所在位置
-        &#125;        
-    &#125;
+        error_page  500 504   /50x.html    <span class="token comment">#当出现以上状态码时从新定义到50x.html</span>
+        location = /50x.html <span class="token punctuation">&#123;</span>             <span class="token comment">#当访问50x.html时</span>
+            root /xxx/xxx/html             <span class="token comment">#50x.html 页面所在位置</span>
+        <span class="token punctuation">&#125;</span>        
+    <span class="token punctuation">&#125;</span>
     
-    server &#123;
-        ... ...
- &#125; 
-&#125;</code></pre></div>
+    server <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">...</span> <span class="token punctuation">...</span>
+ <span class="token punctuation">&#125;</span> 
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <p>一个 server 可以出现多个 location ，我们对不同的访问路径进行不同情况的配置<br>我们再来看看 http 的配置详情。</p>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">http &#123;
-    sendfile  on                  #高效传输文件的模式 一定要开启
-    keepalive_timeout   65        #客户端服务端请求超时时间
-    log_format  main   XXX        #定义日志格式 代号为main
-    access_log  &#x2F;usr&#x2F;local&#x2F;access.log  main     #日志保存地址 格式代码 main
-&#125;</code></pre></div>
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">http <span class="token punctuation">&#123;</span>
+    sendfile  on                  <span class="token comment">#高效传输文件的模式 一定要开启</span>
+    keepalive_timeout   65        <span class="token comment">#客户端服务端请求超时时间</span>
+    log_format  main   XXX        <span class="token comment">#定义日志格式 代号为main</span>
+    access_log  /usr/local/access.log  main     <span class="token comment">#日志保存地址 格式代码 main</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <p>下面是 nginx 一些配置中常用的内置全局变量，你可以在配置的任何位置使用它们。</p>
 <p><img src="/blog/img/nginx-3.jpg" srcset="/img/loading.gif" lazyload></p>
@@ -484,91 +484,91 @@ events &#123;
 <blockquote>
 <p><em>注：_</em><code>conf/nginx.conf</code> 是 nginx 的默认配置文件。你也可以使用 nginx -c 指定你的配置文件_</p>
 </blockquote>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">#运行用户
-#user somebody;
-#启动进程,通常设置成和cpu的数量相等
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml"><span class="token comment">#运行用户</span>
+<span class="token comment">#user somebody;</span>
+<span class="token comment">#启动进程,通常设置成和cpu的数量相等</span>
 worker_processes  1;
-#全局错误日志
-error_log  D:&#x2F;Tools&#x2F;nginx-1.10.1&#x2F;logs&#x2F;error.log;
-error_log  D:&#x2F;Tools&#x2F;nginx-1.10.1&#x2F;logs&#x2F;notice.log  notice;
-error_log  D:&#x2F;Tools&#x2F;nginx-1.10.1&#x2F;logs&#x2F;info.log  info;
-#PID文件，记录当前启动的nginx的进程ID
-pid        D:&#x2F;Tools&#x2F;nginx-1.10.1&#x2F;logs&#x2F;nginx.pid;
-#工作模式及连接数上限
-events &#123;
-    worker_connections 1024;    #单个后台worker process进程的最大并发链接数
-&#125;
-#设定http服务器，利用它的反向代理功能提供负载均衡支持
-http &#123;
-    #设定mime类型(邮件支持类型),类型由mime.types文件定义
-    include       D:&#x2F;Tools&#x2F;nginx-1.10.1&#x2F;conf&#x2F;mime.types;
-    default_type  application&#x2F;octet-stream;
-    #设定日志
-    log_format  main  &#39;[$remote_addr] - [$remote_user] [$time_local] &quot;$request&quot; &#39;
-                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
-                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
-    access_log    D:&#x2F;Tools&#x2F;nginx-1.10.1&#x2F;logs&#x2F;access.log main;
+<span class="token comment">#全局错误日志</span>
+error_log  D<span class="token punctuation">:</span>/Tools/nginx<span class="token punctuation">-</span>1.10.1/logs/error.log;
+error_log  D<span class="token punctuation">:</span>/Tools/nginx<span class="token punctuation">-</span>1.10.1/logs/notice.log  notice;
+error_log  D<span class="token punctuation">:</span>/Tools/nginx<span class="token punctuation">-</span>1.10.1/logs/info.log  info;
+<span class="token comment">#PID文件，记录当前启动的nginx的进程ID</span>
+pid        D<span class="token punctuation">:</span>/Tools/nginx<span class="token punctuation">-</span>1.10.1/logs/nginx.pid;
+<span class="token comment">#工作模式及连接数上限</span>
+events <span class="token punctuation">&#123;</span>
+    worker_connections 1024;    <span class="token comment">#单个后台worker process进程的最大并发链接数</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">#设定http服务器，利用它的反向代理功能提供负载均衡支持</span>
+http <span class="token punctuation">&#123;</span>
+    <span class="token comment">#设定mime类型(邮件支持类型),类型由mime.types文件定义</span>
+    include       D<span class="token punctuation">:</span>/Tools/nginx<span class="token punctuation">-</span>1.10.1/conf/mime.types;
+    default_type  application/octet<span class="token punctuation">-</span>stream;
+    <span class="token comment">#设定日志</span>
+    log_format  main  '<span class="token punctuation">[</span>$remote_addr<span class="token punctuation">]</span> <span class="token punctuation">-</span> <span class="token punctuation">[</span>$remote_user<span class="token punctuation">]</span> <span class="token punctuation">[</span>$time_local<span class="token punctuation">]</span> "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log    D<span class="token punctuation">:</span>/Tools/nginx<span class="token punctuation">-</span>1.10.1/logs/access.log main;
     rewrite_log     on;
-    #sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，对于普通应用，
-    #必须设为 on,如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，以平衡磁盘与网络I&#x2F;O处理速度，降低系统的uptime.
+    <span class="token comment">#sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，对于普通应用，</span>
+    <span class="token comment">#必须设为 on,如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，以平衡磁盘与网络I/O处理速度，降低系统的uptime.</span>
     sendfile        on;
-    #tcp_nopush     on;
-    #连接超时时间
+    <span class="token comment">#tcp_nopush     on;</span>
+    <span class="token comment">#连接超时时间</span>
     keepalive_timeout  120;
     tcp_nodelay        on;
-    #gzip压缩开关
-    #gzip  on;
-    #设定实际的服务器列表
-    upstream zp_server1&#123;
-        server 127.0.0.1:8089;
-    &#125;
-    #HTTP服务器
-    server &#123;
-        #监听80端口，80端口是知名端口号，用于HTTP协议
+    <span class="token comment">#gzip压缩开关</span>
+    <span class="token comment">#gzip  on;</span>
+    <span class="token comment">#设定实际的服务器列表</span>
+    upstream zp_server1<span class="token punctuation">&#123;</span>
+        server 127.0.0.1<span class="token punctuation">:</span>8089;
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">#HTTP服务器</span>
+    server <span class="token punctuation">&#123;</span>
+        <span class="token comment">#监听80端口，80端口是知名端口号，用于HTTP协议</span>
         listen       80;
-        #定义使用www.xx.com访问
+        <span class="token comment">#定义使用www.xx.com访问</span>
         server_name  www.helloworld.com;
-        #首页
+        <span class="token comment">#首页</span>
         index index.html
-        #指向webapp的目录
-        root D:01_WorkspaceProjectgithubzpSpringNotesspring-securityspring-shirosrcmainwebapp;
-        #编码格式
-        charset utf-8;
-        #代理配置参数
+        <span class="token comment">#指向webapp的目录</span>
+        root D<span class="token punctuation">:</span>01_WorkspaceProjectgithubzpSpringNotesspring<span class="token punctuation">-</span>securityspring<span class="token punctuation">-</span>shirosrcmainwebapp;
+        <span class="token comment">#编码格式</span>
+        charset utf<span class="token punctuation">-</span>8;
+        <span class="token comment">#代理配置参数</span>
         proxy_connect_timeout 180;
         proxy_send_timeout 180;
         proxy_read_timeout 180;
         proxy_set_header Host $host;
-        proxy_set_header X-Forwarder-For $remote_addr;
-        #反向代理的路径（和upstream绑定），location 后面设置映射的路径
-        location &#x2F; &#123;
-            proxy_pass http:&#x2F;&#x2F;zp_server1;
-        &#125;
-        #静态文件，nginx自己处理
-        location ~ ^&#x2F;(images|javascript|js|css|flash|media|static)&#x2F; &#123;
-            root D:01_WorkspaceProjectgithubzpSpringNotesspring-securityspring-shirosrcmainwebappviews;
-            #过期30天，静态文件不怎么更新，过期可以设大一点，如果频繁更新，则可以设置得小一点。
+        proxy_set_header X<span class="token punctuation">-</span>Forwarder<span class="token punctuation">-</span>For $remote_addr;
+        <span class="token comment">#反向代理的路径（和upstream绑定），location 后面设置映射的路径</span>
+        location / <span class="token punctuation">&#123;</span>
+            proxy_pass http<span class="token punctuation">:</span>//zp_server1;
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">#静态文件，nginx自己处理</span>
+        location ~ ^/(images<span class="token punctuation">|</span>javascript<span class="token punctuation">|</span>js<span class="token punctuation">|</span>css<span class="token punctuation">|</span>flash<span class="token punctuation">|</span>media<span class="token punctuation">|</span>static)/ <span class="token punctuation">&#123;</span>
+            root D<span class="token punctuation">:</span>01_WorkspaceProjectgithubzpSpringNotesspring<span class="token punctuation">-</span>securityspring<span class="token punctuation">-</span>shirosrcmainwebappviews;
+            <span class="token comment">#过期30天，静态文件不怎么更新，过期可以设大一点，如果频繁更新，则可以设置得小一点。</span>
             expires 30d;
-        &#125;
-        #设定查看Nginx状态的地址
-        location &#x2F;NginxStatus &#123;
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">#设定查看Nginx状态的地址</span>
+        location /NginxStatus <span class="token punctuation">&#123;</span>
             stub_status           on;
             access_log            on;
-            auth_basic            &quot;NginxStatus&quot;;
-            auth_basic_user_file  conf&#x2F;htpasswd;
-        &#125;
-        #禁止访问 .htxxx 文件
-        location ~ &#x2F;.ht &#123;
+            auth_basic            "NginxStatus";
+            auth_basic_user_file  conf/htpasswd;
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">#禁止访问 .htxxx 文件</span>
+        location ~ /.ht <span class="token punctuation">&#123;</span>
             deny all;
-        &#125;
-        #错误处理页面（可选择性配置）
-        #error_page   404              &#x2F;404.html;
-        #error_page   500 502 503 504  &#x2F;50x.html;
-        #location &#x3D; &#x2F;50x.html &#123;
-        #    root   html;
-        #&#125;
-    &#125;
-&#125;</code></pre></div>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">#错误处理页面（可选择性配置）</span>
+        <span class="token comment">#error_page   404              /404.html;</span>
+        <span class="token comment">#error_page   500 502 503 504  /50x.html;</span>
+        <span class="token comment">#location = /50x.html &#123;</span>
+        <span class="token comment">#    root   html;</span>
+        <span class="token comment">#&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
 
 <p>好了，让我们来试试吧：</p>
 <ol>
@@ -591,16 +591,16 @@ http &#123;
 <li>charset 设置为 charset utf-8,gbk;，可以避免中文乱码问题</li>
 </ul>
 <p>一个最简化的配置如下：</p>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">autoindex on;# 显示目录
-autoindex_exact_size on;# 显示文件大小
-autoindex_localtime on;# 显示文件时间
-server &#123;
-    charset      utf-8,gbk; # windows 服务器下设置后，依然乱码，暂时无解
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">autoindex on;<span class="token comment"># 显示目录</span>
+autoindex_exact_size on;<span class="token comment"># 显示文件大小</span>
+autoindex_localtime on;<span class="token comment"># 显示文件时间</span>
+server <span class="token punctuation">&#123;</span>
+    charset      utf<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">,</span>gbk; <span class="token comment"># windows 服务器下设置后，依然乱码，暂时无解</span>
     listen       9050 default_server;
-    listen       [::]:9050 default_server;
+    listen       <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>9050 default_server;
     server_name  _;
-    root         &#x2F;share&#x2F;fs;
-&#125;</code></pre></div>
+    root         /share/fs;
+<span class="token punctuation">&#125;</span></code></pre></div>
             </div>
             <hr>
             <div>

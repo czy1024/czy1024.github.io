@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：25 天前
+                  本文最后更新于：1 个月前
                 
               </p>
             
@@ -309,22 +309,22 @@
 <ol start="2">
 <li>yml配置</li>
 </ol>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">spring:
-  task:
-    execution:
-      pool:
-        # 最大线程数
-        max-size: 16
-        # 核心线程数
-        core-size: 16
-        # 存活时间
-        keep-alive: 10s
-        # 队列大小
-        queue-capacity: 100
-        # 是否允许核心线程超时
-        allow-core-thread-timeout: true
-      # 线程名称前缀
-      thread-name-prefix: async-task-</code></pre></div>
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">task</span><span class="token punctuation">:</span>
+    <span class="token key atrule">execution</span><span class="token punctuation">:</span>
+      <span class="token key atrule">pool</span><span class="token punctuation">:</span>
+        <span class="token comment"># 最大线程数</span>
+        <span class="token key atrule">max-size</span><span class="token punctuation">:</span> <span class="token number">16</span>
+        <span class="token comment"># 核心线程数</span>
+        <span class="token key atrule">core-size</span><span class="token punctuation">:</span> <span class="token number">16</span>
+        <span class="token comment"># 存活时间</span>
+        <span class="token key atrule">keep-alive</span><span class="token punctuation">:</span> 10s
+        <span class="token comment"># 队列大小</span>
+        <span class="token key atrule">queue-capacity</span><span class="token punctuation">:</span> <span class="token number">100</span>
+        <span class="token comment"># 是否允许核心线程超时</span>
+        <span class="token key atrule">allow-core-thread-timeout</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+      <span class="token comment"># 线程名称前缀</span>
+      <span class="token key atrule">thread-name-prefix</span><span class="token punctuation">:</span> async<span class="token punctuation">-</span>task<span class="token punctuation">-</span></code></pre></div>
 
 <ol start="3">
 <li>然后直接调用即可产生异步效果</li>

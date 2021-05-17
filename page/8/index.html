@@ -194,6 +194,197 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/18/date%20utils/" target="_blank">
+          <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="DateUtils方法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/18/date%20utils/">DateUtils方法</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/18/date%20utils/">
+          
+          
+            
+          
+           
+    /**
+     * 以秒为标准时间的毫秒数
+     */
+    public static final long MILLIS_PER_SECOND = 1000
+    /**
+     *以分钟为标准时间的毫秒数
+     */
+    public static final long MILLIS_PER_MINUTE = 60 * MILLIS_PER_SECOND
+  
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-18 00:00" pubdate>
+              2020-05-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/date/">date</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/05/apacheDav/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apachedav配置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/05/apacheDav/">apachedav配置</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/05/apacheDav/">
+          
+          
+            
+          
+          1.安装apachesudo apt-get install apache2 apache2-utils
+
+2.启用dav模块sudo a2enmod dav_fs
+sudo a2enmod dav
+sudo a2enmod dav_lock
+
+3.创建webdav目录及DavLockDB文件sudo mkdir /var/webdav
+sudo chown www-data:www-data /
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-05 00:00" pubdate>
+              2020-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/apache/">apache</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/apache/">apache</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/05/apacheVirtual/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apache 虚拟主机配置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/05/apacheVirtual/">apache 虚拟主机配置</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/05/apacheVirtual/">
+          
+          
+            
+          
+          apache虚拟主机配置apache2.4的最终配置效果:
+httpd.conf
+Listen 19010
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
+
+httpd-vhosts.conf
+# IP:Port,以端口号配置虚拟机
+&lt;VirtualHost 127.0.0.1:19010>
+    # 网站错误时提示的联系管理员邮箱
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-05 00:00" pubdate>
+              2020-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/apache/">apache</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/apache/">apache</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/05/brew/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="homebrew教程">
         </a>
@@ -610,187 +801,6 @@ public class Test01 &#123;
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/date/">date</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/05/regular/" target="_blank">
-          <img src="/img/regular.png" srcset="/img/loading.gif" lazyload alt="正则表达式">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/05/regular/">正则表达式</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/05/regular/">
-          
-          
-            
-          
-          1. 构建正则表达式
-pattern() 返回正则表达式的字符串形式,其实就是返回Pattern.complile(String regex)的regex参数
-p.pattern();//返回 \d+
-
-split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
-`String[] str = p.split(“我的QQ是:456456我的电话是:05322
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-05 00:00" pubdate>
-              2020-04-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-              <a href="/categories/java/basic-language/">basic-language</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/regular/">regular</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/04/util/" target="_blank">
-          <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="JAVA常用工具类">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/04/util/">JAVA常用工具类</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/04/util/">
-          
-          
-            
-          
-          JAVA常用工具类目录- 第一部分：常用的16个工具类- 第二部分：常用的测试库（链接及用法）- 第三部分：java开发常用工具类（正则校验）
-第一部分：常用的16个工具类https://mvnrepository.com/artifact/org.apache.commons/org.apache.commons.lang -->
-&lt;dependency>
-    &lt;groupId>
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-04 00:00" pubdate>
-              2020-04-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/util/">util</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/Json/" target="_blank">
-          <img src="/img/json.png" srcset="/img/loading.gif" lazyload alt="Json处理">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/02/Json/">Json处理</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/02/Json/">
-          
-          
-            
-          
-          FastJSON
-引入依赖或者Jar包
-&lt;dependency>
-     &lt;groupId>com.alibaba&lt;/groupId>
-     &lt;artifactId>fastjson&lt;/artifactId>
-     &lt;version>1.1.23&lt;/version>
- &lt;/dependency>
-
-将Map转成JSON
-Map&lt;Str
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-02 00:00" pubdate>
-              2020-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/json/">json</a>
             
           </div>
         

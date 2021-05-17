@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：25 天前
+                  本文最后更新于：1 个月前
                 
               </p>
             
@@ -279,29 +279,29 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-pool2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre></div>
 
-<h3 id="yml-配置"><a href="#yml-配置" class="headerlink" title="yml 配置"></a>yml 配置</h3><div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">spring:
-  redis:
-    host: xxx
-    # 连接超时时间（记得添加单位，Duration）
-    timeout: 10000ms
-    # Redis默认情况下有16个分片，这里配置具体使用的分片
-    # database: 0
-    lettuce:
-      pool:
-        # 连接池最大连接数（使用负值表示没有限制） 默认 8
-        max-active: 8
-        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
-        max-wait: -1ms
-        # 连接池中的最大空闲连接 默认 8
-        max-idle: 8
-        # 连接池中的最小空闲连接 默认 0
-        min-idle: 0
-  cache:
-    # 一般来说是不用配置的，Spring Cache 会根据依赖的包自行装配
-    type: redis
-logging:
-  level:
-    com.xkcoding: debug
+<h3 id="yml-配置"><a href="#yml-配置" class="headerlink" title="yml 配置"></a>yml 配置</h3><div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">host</span><span class="token punctuation">:</span> xxx
+    <span class="token comment"># 连接超时时间（记得添加单位，Duration）</span>
+    <span class="token key atrule">timeout</span><span class="token punctuation">:</span> 10000ms
+    <span class="token comment"># Redis默认情况下有16个分片，这里配置具体使用的分片</span>
+    <span class="token comment"># database: 0</span>
+    <span class="token key atrule">lettuce</span><span class="token punctuation">:</span>
+      <span class="token key atrule">pool</span><span class="token punctuation">:</span>
+        <span class="token comment"># 连接池最大连接数（使用负值表示没有限制） 默认 8</span>
+        <span class="token key atrule">max-active</span><span class="token punctuation">:</span> <span class="token number">8</span>
+        <span class="token comment"># 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1</span>
+        <span class="token key atrule">max-wait</span><span class="token punctuation">:</span> <span class="token punctuation">-</span>1ms
+        <span class="token comment"># 连接池中的最大空闲连接 默认 8</span>
+        <span class="token key atrule">max-idle</span><span class="token punctuation">:</span> <span class="token number">8</span>
+        <span class="token comment"># 连接池中的最小空闲连接 默认 0</span>
+        <span class="token key atrule">min-idle</span><span class="token punctuation">:</span> <span class="token number">0</span>
+  <span class="token key atrule">cache</span><span class="token punctuation">:</span>
+    <span class="token comment"># 一般来说是不用配置的，Spring Cache 会根据依赖的包自行装配</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> redis
+<span class="token key atrule">logging</span><span class="token punctuation">:</span>
+  <span class="token key atrule">level</span><span class="token punctuation">:</span>
+    <span class="token key atrule">com.xkcoding</span><span class="token punctuation">:</span> debug
 </code></pre></div>
 
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
@@ -1074,8 +1074,8 @@ public boolean <span class="token function">lUpdateIndex</span><span class="toke
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/06/01/genesis-2/">
-                        <span class="hidden-mobile">智慧教学辅助系统-作品思路</span>
+                      <a href="/2020/06/01/genesis-1/">
+                        <span class="hidden-mobile">智慧教学辅助系统-作品简介</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

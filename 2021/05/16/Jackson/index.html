@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+<html lang="ZH-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="luna">
+  <meta name="keywords" content="博客,luna,java,spring,utils,linux,idea">
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+  
+  <title>Jackson - 十平方米小屋</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      
+        
+          
+        
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.min.css" />
+      
+      
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"czy1024.github.io","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":65,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"1WlABYJFX3ooWNnixAEsUHg2-gzGzoHsz","app_key":"4HAsQYXea2QPsxkF5wOFFpbH","server_url":"https://cn-n1-cell1.leancloud.cn"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>十平方米小屋</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/paper/bg.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Jackson">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      luna
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-16 20:36" pubdate>
+        2021年5月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      33
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Jackson</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：14 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="Jackson-使用篇"><a href="#Jackson-使用篇" class="headerlink" title="Jackson 使用篇"></a>Jackson 使用篇</h1><h2 id="【简介】"><a href="#【简介】" class="headerlink" title="【简介】"></a>【简介】</h2><p>日常开发过程中经常会使用json进行数据的传输，这就涉及到了对象和json的相互转化，常用的解决方案有：Jackson（推荐）、谷歌的Gson、阿里的Fastjson，详情见 Json【汇总】</p>
+<p>因为SpringBoot默认的json解析格式就是Jackson，所以不需要额外的引入依赖</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqkjtgzf0lj30jh0bjgm5.jpg" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="【常见配置】"><a href="#【常见配置】" class="headerlink" title="【常见配置】"></a>【常见配置】</h2><h3 id="方式一：yml配置"><a href="#方式一：yml配置" class="headerlink" title="方式一：yml配置"></a>方式一：yml配置</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java">spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>date<span class="token operator">-</span>format指定日期格式，比如yyyy<span class="token operator">-</span>MM<span class="token operator">-</span>dd HH<span class="token operator">:</span>mm<span class="token operator">:</span>ss，或者具体的格式化类的全限定名
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>time<span class="token operator">-</span>zone指定日期格式化时区，比如<span class="token class-name">America</span><span class="token operator">/</span><span class="token class-name">Los_Angeles</span>或者GMT<span class="token operator">+</span><span class="token number">10.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>deserialization是否开启<span class="token class-name">Jackson</span>的反序列化
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>generator是否开启json的generators<span class="token punctuation">.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>joda<span class="token operator">-</span>date<span class="token operator">-</span>time<span class="token operator">-</span>format指定<span class="token class-name">Joda</span> date<span class="token operator">/</span>time的格式，比如yyyy<span class="token operator">-</span>MM<span class="token operator">-</span>ddHH<span class="token operator">:</span>mm<span class="token operator">:</span>ss<span class="token punctuation">)</span><span class="token punctuation">.</span> 如果没有配置的话，dateformat会作为backup
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>locale指定json使用的<span class="token class-name">Locale</span><span class="token punctuation">.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>mapper是否开启<span class="token class-name">Jackson</span>通用的特性<span class="token punctuation">.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>parser是否开启jackson的parser特性<span class="token punctuation">.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>property<span class="token operator">-</span>naming<span class="token operator">-</span>strategy指定<span class="token class-name">PropertyNamingStrategy</span><span class="token punctuation">(</span>CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES<span class="token punctuation">)</span>或者指定<span class="token class-name">PropertyNamingStrategy</span>子类的全限定类名<span class="token punctuation">.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>serialization是否开启jackson的序列化<span class="token punctuation">.</span>
+
+spring<span class="token punctuation">.</span>jackson<span class="token punctuation">.</span>serialization<span class="token operator">-</span>inclusion指定序列化时属性的inclusion方式，具体查看<span class="token class-name">JsonInclude<span class="token punctuation">.</span>Include</span>枚举<span class="token punctuation">.</span></code></pre></div>
+
+<div class="code-wrapper"><pre class="language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">jackson</span><span class="token punctuation">:</span>
+    <span class="token comment">#日期格式化</span>
+    <span class="token key atrule">date-format</span><span class="token punctuation">:</span> yyyy<span class="token punctuation">-</span>MM<span class="token punctuation">-</span>dd HH<span class="token punctuation">:</span>mm<span class="token punctuation">:</span>ss
+    <span class="token key atrule">time-zone</span><span class="token punctuation">:</span> GMT+8
+    <span class="token comment">#设置空如何序列化</span>
+    <span class="token key atrule">default-property-inclusion</span><span class="token punctuation">:</span> non_null    
+    <span class="token key atrule">serialization</span><span class="token punctuation">:</span>
+       <span class="token comment">#格式化输出 </span>
+      <span class="token key atrule">indent_output</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+      <span class="token comment">#忽略无法转换的对象</span>
+      <span class="token key atrule">fail_on_empty_beans</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">deserialization</span><span class="token punctuation">:</span>
+      <span class="token comment">#允许对象忽略json中不存在的属性</span>
+      <span class="token key atrule">fail_on_unknown_properties</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">parser</span><span class="token punctuation">:</span>
+      <span class="token comment">#允许出现特殊字符和转义符</span>
+      <span class="token key atrule">allow_unquoted_control_chars</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+      <span class="token comment">#允许出现单引号</span>
+      <span class="token key atrule">allow_single_quotes</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre></div>
+
+<h3 id="方式二：重新注入ObjectMapper"><a href="#方式二：重新注入ObjectMapper" class="headerlink" title="方式二：重新注入ObjectMapper"></a>方式二：重新注入ObjectMapper</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
+<span class="token annotation punctuation">@Primary</span>
+<span class="token annotation punctuation">@ConditionalOnMissingBean</span><span class="token punctuation">(</span><span class="token class-name">ObjectMapper</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">ObjectMapper</span> <span class="token function">jacksonObjectMapper</span><span class="token punctuation">(</span><span class="token class-name">Jackson2ObjectMapperBuilder</span> builder<span class="token punctuation">&#123;</span>
+   <span class="token class-name">ObjectMapper</span> objectMapper <span class="token operator">=</span> builder<span class="token punctuation">.</span><span class="token function">createXmlMapper</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token comment">// 通过该方法对mapper对象进行设置，所有序列化的对象都将按改规则进行系列化</span>
+   <span class="token comment">// Include.Include.ALWAYS 默认</span>
+   <span class="token comment">// Include.NON_DEFAULT 属性为默认值不序列化</span>
+   <span class="token comment">// Include.NON_EMPTY 属性为 空（""） 或者为 NULL 都不序列化，则返回的json是没有这个字段的。这样对移动端会更省流量</span>
+   <span class="token comment">// Include.NON_NULL 属性为NULL 不序列化</span>
+   objectMapper<span class="token punctuation">.</span><span class="token function">setSerializationInclusion</span><span class="token punctuation">(</span><span class="token class-name">JsonInclude<span class="token punctuation">.</span>Include</span><span class="token punctuation">.</span>NON_EMPTY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   objectMapper<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">DeserializationFeature</span><span class="token punctuation">.</span>FAIL_ON_UNKNOWN_PROPERTIES<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">// 允许出现特殊字符和转义符</span>
+   objectMapper<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">JsonParser<span class="token punctuation">.</span>Feature</span><span class="token punctuation">.</span>ALLOW_UNQUOTED_CONTROL_CHARS<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">// 允许出现单引号</span>
+   objectMapper<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">JsonParser<span class="token punctuation">.</span>Feature</span><span class="token punctuation">.</span>ALLOW_SINGLE_QUOTES<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment">// 字段保留，将null值转为""</span>
+   objectMapper<span class="token punctuation">.</span><span class="token function">getSerializerProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setNullValueSerializer</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">JsonSerializer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+   <span class="token punctuation">&#123;</span>
+       <span class="token annotation punctuation">@Override</span>
+       <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">,</span> <span class="token class-name">JsonGenerator</span> jsonGenerator<span class="token punctuation">,</span>
+                             <span class="token class-name">SerializerProvider</span> serializerProvider<span class="token punctuation">)</span>
+               <span class="token keyword">throws</span> <span class="token class-name">IOException</span>
+       <span class="token punctuation">&#123;</span>
+           jsonGenerator<span class="token punctuation">.</span><span class="token function">writeString</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">return</span> objectMapper<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<h2 id="【常用-API】"><a href="#【常用-API】" class="headerlink" title="【常用 API】"></a>【常用 API】</h2><p>因为日常开发最常用的api就是对象的序列化和反序列化，这里封装一个工具类，这里只展示部分API，其他API可参考 <a target="_blank" rel="noopener" href="https://github.com/czy1024/luna-json-util/tree/master/json-jackson">JSON解析-Jackson</a></p>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JsonUtils</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">ObjectMapper</span> mapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">static</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 对于空的对象转json的时候不抛出错误</span>
+        mapper<span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token class-name">SerializationFeature</span><span class="token punctuation">.</span>FAIL_ON_EMPTY_BEANS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 允许属性名称没有引号</span>
+        mapper<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">JsonParser<span class="token punctuation">.</span>Feature</span><span class="token punctuation">.</span>ALLOW_UNQUOTED_FIELD_NAMES<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 允许单引号</span>
+        mapper<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span><span class="token class-name">JsonParser<span class="token punctuation">.</span>Feature</span><span class="token punctuation">.</span>ALLOW_SINGLE_QUOTES<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 设置输入时忽略在json字符串中存在但在java对象实际没有的属性</span>
+        mapper<span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token class-name">DeserializationFeature</span><span class="token punctuation">.</span>FAIL_ON_UNKNOWN_PROPERTIES<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 设置输出时包含属性的风格</span>
+        mapper<span class="token punctuation">.</span><span class="token function">setSerializationInclusion</span><span class="token punctuation">(</span><span class="token class-name">JsonInclude<span class="token punctuation">.</span>Include</span><span class="token punctuation">.</span>NON_NULL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+    <span class="token comment">/**
+     * 序列化，将对象转化为json字符串
+     *
+     * @param data
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> <span class="token function">toJsonString</span><span class="token punctuation">(</span><span class="token class-name">Object</span> data<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>data <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token class-name">String</span> json <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            json <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">writeValueAsString</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">JsonProcessingException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"[&#123;&#125;] toJsonString error：&#123;&#123;&#125;&#125;"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> json<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+
+    <span class="token comment">/**
+     * 反序列化，将json字符串转化为对象
+     *
+     * @param json
+     * @param clazz
+     * @param &lt;T>
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token class-name">T</span> <span class="token function">parse</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NonNull</span> <span class="token class-name">String</span> json<span class="token punctuation">,</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> clazz<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">T</span> t <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            t <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">readValue</span><span class="token punctuation">(</span>json<span class="token punctuation">,</span> clazz<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">" parse json [&#123;&#125;] to class [&#123;&#125;] error：&#123;&#123;&#125;&#125;"</span><span class="token punctuation">,</span> json<span class="token punctuation">,</span> clazz<span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> t<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<h4 id="定义一个Bean"><a href="#定义一个Bean" class="headerlink" title="定义一个Bean"></a>定义一个Bean</h4><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Builder</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JacksonTest</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token class-name">User</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token number">1L</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"tom"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">age</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">birthday</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">String</span> json <span class="token operator">=</span> <span class="token class-name">JsonUtils</span><span class="token punctuation">.</span><span class="token function">toJsonString</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"obj toJsonString:[&#123;&#125;]"</span><span class="token punctuation">,</span> json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">User</span> u <span class="token operator">=</span> <span class="token class-name">JsonUtils</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>json<span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"parse json to obj: [&#123;&#125;]"</span><span class="token punctuation">,</span> u<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash"><span class="token number">16</span>:44:01.871 <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO com.it.jackson.test.JacksonTest - obj toJsonString:<span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token string">"id"</span>:1,<span class="token string">"name"</span><span class="token builtin class-name">:</span><span class="token string">"tom"</span>,<span class="token string">"age"</span>:23,<span class="token string">"birthday"</span>:1587890641047<span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
+<span class="token number">16</span>:44:01.941 <span class="token punctuation">[</span>main<span class="token punctuation">]</span> INFO com.it.jackson.test.JacksonTest - parse json to obj: <span class="token punctuation">[</span>User<span class="token punctuation">(</span>id<span class="token operator">=</span><span class="token number">1</span>, <span class="token assign-left variable">name</span><span class="token operator">=</span>tom, <span class="token assign-left variable">age</span><span class="token operator">=</span><span class="token number">23</span>, <span class="token assign-left variable">birthday</span><span class="token operator">=</span>Sun Apr <span class="token number">26</span> <span class="token number">16</span>:44:01 CST <span class="token number">2020</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre></div>
+
+<h2 id="【常用-注解】"><a href="#【常用-注解】" class="headerlink" title="【常用 注解】"></a>【常用 注解】</h2><h3 id="【-JsonProperty】类似于sql里字段的别名，用于序列化，使用注解字段属性，替代原字段属性"><a href="#【-JsonProperty】类似于sql里字段的别名，用于序列化，使用注解字段属性，替代原字段属性" class="headerlink" title="【@JsonProperty】类似于sql里字段的别名，用于序列化，使用注解字段属性，替代原字段属性"></a>【@JsonProperty】类似于sql里字段的别名，用于序列化，使用注解字段属性，替代原字段属性</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"userName"</span><span class="token punctuation">)</span>
+<span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span></code></pre></div>
+
+<h4 id="序列化结果为：在序列化的json串中，userName替代了name"><a href="#序列化结果为：在序列化的json串中，userName替代了name" class="headerlink" title="序列化结果为：在序列化的json串中，userName替代了name"></a>序列化结果为：在序列化的json串中，userName替代了name</h4><div class="code-wrapper"><pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"userName"</span><span class="token operator">:</span><span class="token string">"tom"</span><span class="token punctuation">&#125;</span></code></pre></div>
+
+<h3 id="【-JsonIgnore】在序列化时忽略该字段"><a href="#【-JsonIgnore】在序列化时忽略该字段" class="headerlink" title="【@JsonIgnore】在序列化时忽略该字段"></a>【@JsonIgnore】在序列化时忽略该字段</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Builder</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@JsonIgnore</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"userName"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonIgnore</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonIgnore</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<h4 id="序列化结果为："><a href="#序列化结果为：" class="headerlink" title="序列化结果为："></a>序列化结果为：</h4><div class="code-wrapper"><pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"userName"</span><span class="token operator">:</span><span class="token string">"tom"</span><span class="token punctuation">&#125;</span></code></pre></div>
+
+<h3 id="【-JsonIgnoreProperties】"><a href="#【-JsonIgnoreProperties】" class="headerlink" title="【@JsonIgnoreProperties】"></a>【@JsonIgnoreProperties】</h3><p>1、序列化@JsonIgnoreProperties与@JsonIgnore类似，用于类上，注解使用的是字段别名</p>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java">
+<span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Builder</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token annotation punctuation">@JsonIgnoreProperties</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token string">"id"</span><span class="token punctuation">,</span><span class="token string">"userName"</span><span class="token punctuation">,</span><span class="token string">"birthday"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"userName"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<h4 id="序列化结果为：-1"><a href="#序列化结果为：-1" class="headerlink" title="序列化结果为："></a>序列化结果为：</h4><div class="code-wrapper"><pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"age"</span><span class="token operator">:</span><span class="token number">23</span><span class="token punctuation">&#125;</span></code></pre></div>
+
+<p>2、@JsonIgnoreProperties(ignoreUnknown = true)用于忽略字段不匹配情况，相当于mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);</p>
+<h3 id="【-JsonTypeName-JsonTypeInfo】用在类上，在序列化时增加一层"><a href="#【-JsonTypeName-JsonTypeInfo】用在类上，在序列化时增加一层" class="headerlink" title="【@JsonTypeName @JsonTypeInfo】用在类上，在序列化时增加一层"></a>【@JsonTypeName @JsonTypeInfo】用在类上，在序列化时增加一层</h3><div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java">
+<span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Builder</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token annotation punctuation">@JsonTypeName</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"user"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@JsonTypeInfo</span><span class="token punctuation">(</span>include <span class="token operator">=</span> <span class="token class-name">JsonTypeInfo<span class="token punctuation">.</span>As</span><span class="token punctuation">.</span>WRAPPER_OBJECT<span class="token punctuation">,</span> use <span class="token operator">=</span> <span class="token class-name">JsonTypeInfo<span class="token punctuation">.</span>Id</span><span class="token punctuation">.</span>NAME<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"userName"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+</code></pre></div>
+
+<p>序列化结果：</p>
+<div class="code-wrapper"><pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"user"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token property">"id"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token property">"age"</span><span class="token operator">:</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token property">"birthday"</span><span class="token operator">:</span><span class="token number">1587891781603</span><span class="token punctuation">,</span><span class="token property">"userName"</span><span class="token operator">:</span><span class="token string">"tom"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span></code></pre></div>
+
+<h3 id="【-JsonRootName】"><a href="#【-JsonRootName】" class="headerlink" title="【@JsonRootName】"></a>【@JsonRootName】</h3><p>组合在序列化上等于类上注解@JsonRootName(“user”) 和 mapper.enable(SerializationFeature.WRAP_ROOT_VALUE),反序列化无用;</p>
+<div class="code-wrapper"><pre class="language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Builder</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Long</span> id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonProperty</span><span class="token punctuation">(</span><span class="token string">"userName"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Integer</span> age<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@JsonFormat</span><span class="token punctuation">(</span>pattern <span class="token operator">=</span> <span class="token string">"yyyy-MM-dd HH:mm:ss:SSS"</span><span class="token punctuation">,</span> timezone <span class="token operator">=</span> <span class="token string">"GMT+8"</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">Date</span> birthday<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre></div>
+
+<p>序列化结果：</p>
+<div class="code-wrapper"><pre class="language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"id"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token property">"age"</span><span class="token operator">:</span><span class="token number">23</span><span class="token punctuation">,</span><span class="token property">"birthday"</span><span class="token operator">:</span><span class="token string">"2020-04-26 17:09:32:818"</span><span class="token punctuation">,</span><span class="token property">"userName"</span><span class="token operator">:</span><span class="token string">"tom"</span><span class="token punctuation">&#125;</span></code></pre></div>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/categories/java/json/">json</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/RestTemplate/">RestTemplate</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/17/macos-profile/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">macos-profile</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/16/binner/">
+                        <span class="hidden-mobile">binner</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "Jf1XC66LVfvBgBpG1uzXEivd-gzGzoHsz",
+          app_key: "UyOEEpxFaJC2kPqgBkDOeMPE",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://jf1xc66l.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">Stichwort</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+      <div class="col-lg-7 mx-auto nopadding-x-md">
+        <div class="container custom mx-auto">
+          <script src="https://g.joyinshare.com/hc/ribbon.min.js"></script><script src="/js/fireworks.js"></script><script src="https://api.vvhan.com/api/snow"></script>
+        </div>
+      </div>
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/czy1024" target="_blank" rel="nofollow noopener"><span>luna</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+    
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

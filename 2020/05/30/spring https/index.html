@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：25 天前
+                  本文最后更新于：1 个月前
                 
               </p>
             
@@ -316,17 +316,17 @@
 <li>将server.keystore放至resource目录下</li>
 <li>编写配置文件</li>
 </ul>
-<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml">server:
-  ssl:
-    # 证书路径
-    key-store: classpath:server.keystore
-    key-alias: tomcat
-    enabled: true
-    key-store-type: JKS
-    #与申请时输入一致
-    key-store-password: 123456
-    # 浏览器默认端口 和 80 类似
-  port: 443
+<div class="code-wrapper"><pre class="language-yml" data-language="yml"><code class="language-yml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ssl</span><span class="token punctuation">:</span>
+    <span class="token comment"># 证书路径</span>
+    <span class="token key atrule">key-store</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>server.keystore
+    <span class="token key atrule">key-alias</span><span class="token punctuation">:</span> tomcat
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">key-store-type</span><span class="token punctuation">:</span> JKS
+    <span class="token comment">#与申请时输入一致</span>
+    <span class="token key atrule">key-store-password</span><span class="token punctuation">:</span> <span class="token number">123456</span>
+    <span class="token comment"># 浏览器默认端口 和 80 类似</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">443</span>
 </code></pre></div>
 
 <h3 id="启动项目-访问80就会自动跳转433端口了-若提示443端口被占用可修改相应端口号"><a href="#启动项目-访问80就会自动跳转433端口了-若提示443端口被占用可修改相应端口号" class="headerlink" title="启动项目,访问80就会自动跳转433端口了 ,若提示443端口被占用可修改相应端口号"></a>启动项目,访问80就会自动跳转433端口了 ,若提示443端口被占用可修改相应端口号</h3>
