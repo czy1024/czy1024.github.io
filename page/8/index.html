@@ -194,6 +194,67 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/29/javacv/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="JavaCV调用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/29/javacv/">JavaCV调用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/29/javacv/">
+          
+          
+            
+          
+          JavaCV调用摄像, javacv 包含了opencv ,ffmpeg 等图像处理包 使用javacpp 转为C 文件后执行
+首先需要引入依赖，当然，也可以使用Jar包，推荐使用maven管理
+
+&lt;dependency>
+            &lt;groupId>org.bytedeco&lt;/groupId>
+            &lt;artifactId>javacpp&
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-29 00:00" pubdate>
+              2020-05-29
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+              <a href="/categories/java/javacv/">javacv</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/video/">video</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/18/date%20utils/" target="_blank">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="DateUtils方法">
         </a>
@@ -257,31 +318,33 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/apacheDav/" target="_blank">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apachedav配置">
+        <a href="/2020/05/05/apacheVirtual/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apache 虚拟主机配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/05/apacheDav/">apachedav配置</a>
+        <a href="/2020/05/05/apacheVirtual/">apache 虚拟主机配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/05/apacheDav/">
+        <a href="/2020/05/05/apacheVirtual/">
           
           
             
           
-          1.安装apachesudo apt-get install apache2 apache2-utils
+          apache虚拟主机配置apache2.4的最终配置效果:
+httpd.conf
+Listen 19010
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
 
-2.启用dav模块sudo a2enmod dav_fs
-sudo a2enmod dav
-sudo a2enmod dav_lock
-
-3.创建webdav目录及DavLockDB文件sudo mkdir /var/webdav
-sudo chown www-data:www-data /
+httpd-vhosts.conf
+# IP:Port,以端口号配置虚拟机
+&lt;VirtualHost 127.0.0.1:19010>
+    # 网站错误时提示的联系管理员邮箱
         </a>
       </p>
 
@@ -320,33 +383,31 @@ sudo chown www-data:www-data /
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/05/05/apacheVirtual/" target="_blank">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apache 虚拟主机配置">
+        <a href="/2020/05/05/apacheDav/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apachedav配置">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/05/apacheVirtual/">apache 虚拟主机配置</a>
+        <a href="/2020/05/05/apacheDav/">apachedav配置</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/05/apacheVirtual/">
+        <a href="/2020/05/05/apacheDav/">
           
           
             
           
-          apache虚拟主机配置apache2.4的最终配置效果:
-httpd.conf
-Listen 19010
-# Virtual hosts
-Include conf/extra/httpd-vhosts.conf
+          1.安装apachesudo apt-get install apache2 apache2-utils
 
-httpd-vhosts.conf
-# IP:Port,以端口号配置虚拟机
-&lt;VirtualHost 127.0.0.1:19010>
-    # 网站错误时提示的联系管理员邮箱
+2.启用dav模块sudo a2enmod dav_fs
+sudo a2enmod dav
+sudo a2enmod dav_lock
+
+3.创建webdav目录及DavLockDB文件sudo mkdir /var/webdav
+sudo chown www-data:www-data /
         </a>
       </p>
 
@@ -746,68 +807,6 @@ codingclass Money(object):
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/13/timeordate/" target="_blank">
-          <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="时间和字符传的转化">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/13/timeordate/">时间和字符传的转化</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/13/timeordate/">
-          
-          
-            
-          
-          时间和字符传的转化
-日期转为字符串
-import java.text.SimpleDateFormat;
-import java.util.Date;
- 
-public class Test01 &#123;
-    public static void main(String[] args) &#123;
-        Date date = new Date(); //获取当前时间
-    
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-13 00:00" pubdate>
-              2020-04-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/date/">date</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -837,7 +836,7 @@ public class Test01 &#123;
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -846,7 +845,7 @@ public class Test01 &#123;
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

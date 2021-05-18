@@ -194,6 +194,68 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/11/28/logical-operations/" target="_blank">
+          <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="逻辑运算符">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/28/logical-operations/">逻辑运算符</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/28/logical-operations/">
+          
+          
+            
+          
+          逻辑运算符(and, or, nor)and &amp; 
+规则: 1&amp;1 = 1; 1&amp;0 = 0; 0&amp;1 = 0; 0&amp;0 =0
+运用：and al, 10111111B
+将0位对应的数值置为0
+将1位对应的数值保持不变
+or |
+规则：1|1 = 1； 1|0 = 1； 0|1 = 1； 0|0 = 0
+运用：or al， 10111111B
+将0位对用的数
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-28 00:00" pubdate>
+              2020-11-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/logic/">logic</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/11/24/spring%20restTemplate/" target="_blank">
           <img src="/img/spring.png" srcset="/img/loading.gif" lazyload alt="spring RestTemplate">
         </a>
@@ -736,64 +798,6 @@ base.css
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/09/13/easycode/" target="_blank">
-          <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="easyCode 代码生成">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/09/13/easycode/">easyCode 代码生成</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/09/13/easycode/">
-          
-          
-            
-          
-          easyCode 代码生成dao##定义初始变量
-#set($tableName = $tool.append($tableInfo.name, "Mapper"))
-##设置回调
-$!callback.setFileName($tool.append($tableName, ".java"))
-$!callback.setSavePath($tool.append($tableInfo.save
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-09-13 00:00" pubdate>
-              2020-09-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/easyCode/">easyCode</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -823,7 +827,7 @@ $!callback.setSavePath($tool.append($tableInfo.save
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -832,7 +836,7 @@ $!callback.setSavePath($tool.append($tableInfo.save
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
