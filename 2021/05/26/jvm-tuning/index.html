@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/json.png') no-repeat center center;
+         style="background: url('/img/paper/bg.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 小时前
+                  本文最后更新于：5 天前
                 
               </p>
             
@@ -283,7 +283,7 @@
 <p>4、调优策略&amp;示例</p>
 </blockquote>
 <h1 id="一、性能调优的层次"><a href="#一、性能调优的层次" class="headerlink" title="一、性能调优的层次"></a><strong>一、性能调优的层次</strong></h1><p>为了提升系统性能，我们需要对系统的各个角度和层次来进行优化，以下是需要优化的几个层次。</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/140720_0Ey6_1859679.png" srcset="/img/loading.gif" lazyload alt="140720_0Ey6_1859679"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0ggfzvhj30n90dttad.jpg" srcset="/img/loading.gif" lazyload alt="140720_0Ey6_1859679"></p>
 <p>从上面我们可以看到，除了jvm调优以外，还有其他几个层面需要来处理，所以针对系统的调优不是只有jvm调优一项，而是需要针对系统来整体调优，才能提升系统的性能。本篇只针对jvm调优来讲解，其他几个方面，后续再介绍。</p>
 <p>在进行jvm调优之前，我们假设项目的架构调优和代码调优已经进行过或者是针对当前项目是最优的。这两个是jvm调优的基础，并且架构调优是对系统影响最大的 ，我们不能指望一个系统架构有缺陷或者代码层次优化没有穷尽的应用，通过jvm调优令其达到一个质的飞跃，这是不可能的。</p>
 <p>另外，在调优之前，必须得有明确的性能优化目标， 然后找到其性能瓶颈。之后针对瓶颈的优化，还需要对应用进行压力和基准测试，通过各种监控和统计工具，确认调优后的应用是否已经达到相关目标。</p>
@@ -303,7 +303,7 @@
 <p>\2. GC内存最大化原则：处理吞吐量和延迟问题时候，垃圾处理器能使用的内存越大，垃圾收集的效果越好，应用程序也会越来越流畅。</p>
 <p>\3. GC调优3选2原则: 在性能属性里面，吞吐量、延迟、内存占用，我们只能选择其中两个进行调优，不可三者兼得。</p>
 </blockquote>
-<h2 id="3、性能调优流程"><a href="#3、性能调优流程" class="headerlink" title="3、性能调优流程"></a><strong>3、性能调优流程</strong></h2><p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/140848_xf95_1859679.jpg" srcset="/img/loading.gif" lazyload alt="140848_xf95_1859679"></p>
+<h2 id="3、性能调优流程"><a href="#3、性能调优流程" class="headerlink" title="3、性能调优流程"></a><strong>3、性能调优流程</strong></h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0gmes2jj30cm0powh1.jpg" srcset="/img/loading.gif" lazyload alt="140848_xf95_1859679"></p>
 <p>以上就是对应用程序进行jvm调优的基本流程，我们可以看到，jvm调优是根据性能测试结果不断优化配置而多次迭代的过程。在达到每一个系统需求指标之前，之前的每个步骤都有可能经历多次迭代。有时候为了达到某一方面的指标，有可能需要对之前的参数进行多次调整，进而需要把之前的所有步骤重新测试一遍。</p>
 <p>另外调优一般是从满足程序的内存使用需求开始的，之后是时间延迟的要求，最后才是吞吐量的要求，要基于这个步骤来不断优化，每一个步骤都是进行下一步的基础，不可逆行之。以下我们针对每个步骤进行详细的示例讲解。</p>
 <p>在JVM的运行模式方面，我们直接选择server模式，这也是jdk1.6以后官方推荐的模式。</p>
@@ -322,7 +322,7 @@
 <p>3、总结阶段:最后的总结阶段，进行一些基准测试，生成响应的策报告。这个阶段我们可以不关注。</p>
 </blockquote>
 <p>确定内存占用以及活跃数据的大小，我们应该是在程序的稳定阶段来进行确定，而不是在项目起初阶段来进行确定，如何确定，我们先看以下jvm的内存分配。</p>
-<h2 id="2、jvm内存分配-amp-参数"><a href="#2、jvm内存分配-amp-参数" class="headerlink" title="2、jvm内存分配&amp;参数"></a><strong>2、jvm内存分配&amp;参数</strong></h2><p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141029_qI9i_1859679.png" srcset="/img/loading.gif" lazyload alt="141029_qI9i_1859679"></p>
+<h2 id="2、jvm内存分配-amp-参数"><a href="#2、jvm内存分配-amp-参数" class="headerlink" title="2、jvm内存分配&amp;参数"></a><strong>2、jvm内存分配&amp;参数</strong></h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0grnwrrj30ae02bjrg.jpg" srcset="/img/loading.gif" lazyload alt="141029_qI9i_1859679"></p>
 <p>jvm堆中主要的空间，就是以上新生代、老生代、永久代组成,整个堆大小=新生代大小 + 老生代大小 + 永久代大小。 具体的对象提升方式，这里不再过多介绍了，我们看下一些jvm命令参数，对堆大小的指定。如果不采用以下参数进行指定的话，虚拟机会自动选择合适的值，同时也会基于系统的开销自动调整。</p>
 <table>
 <thead>
@@ -385,7 +385,7 @@
 </tbody></table>
 <p>在设置的时候，如果关注性能开销的话，应尽量把永久代的初始值与最大值设置为同一值，因为永久代的大小调整需要进行FullGC 才能实现。</p>
 <h2 id="3、计算活跃数据大小"><a href="#3、计算活跃数据大小" class="headerlink" title="3、计算活跃数据大小"></a><strong>3、计算活跃数据大小</strong></h2><p>计算活跃数据大小应该遵循以下流程:</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141106_QwVB_1859679.png" srcset="/img/loading.gif" lazyload alt="141106_QwVB_1859679"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0gvxnd9j30do0dhwfb.jpg" srcset="/img/loading.gif" lazyload alt="141106_QwVB_1859679"></p>
 <p>如前所述，活跃数据应该是基于应用程序稳定阶段时，观察长期存活与对象在java堆中占用的空间大小。</p>
 <p>计算活跃数据时应该确保以下条件发生：</p>
 <blockquote>
@@ -405,7 +405,7 @@
 <p>jmap -histo:live pid</p>
 </blockquote>
 <p>在稳定阶段触发了FullGC我们一般会拿到如下信息:</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141203_akPQ_1859679.png" srcset="/img/loading.gif" lazyload alt="141203_akPQ_1859679"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0gymyuxj30g3090jth.jpg" srcset="/img/loading.gif" lazyload alt="141203_akPQ_1859679"></p>
 <p>从以上gc日志中，我们大概可以分析到，在发生fullGC之时，整个应用的堆占用以及GC时间，当然了，为了更加精确，应该多收集几次，获取一个平均值。或者是采用耗时最长的一次FullGC来进行估算。</p>
 <p>在上图中，fullGC之后，老年代空间占用在93168kb（约93MB），我们以此定为老年代空间的活跃数据。</p>
 <p><strong>其他堆空间的分配，基于以下规则来进行</strong>。</p>
@@ -469,7 +469,7 @@
 <li>最差情况下，FullGC的频率；</li>
 </ul>
 </blockquote>
-<h2 id="2、优化新生代的大小"><a href="#2、优化新生代的大小" class="headerlink" title="2、优化新生代的大小"></a><strong>2、优化新生代的大小</strong></h2><p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141420_DIoU_1859679.png" srcset="/img/loading.gif" lazyload alt="141420_DIoU_1859679"></p>
+<h2 id="2、优化新生代的大小"><a href="#2、优化新生代的大小" class="headerlink" title="2、优化新生代的大小"></a><strong>2、优化新生代的大小</strong></h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0h3taanj30hv08wjvg.jpg" srcset="/img/loading.gif" lazyload alt="141420_DIoU_1859679"></p>
 <p>比如如上的gc日志中，我们可以看到Minor GC的平均持续时间=0.069秒，MinorGC 的频率为0.389秒一次。</p>
 <blockquote>
 <p>如果，我们系统的设置的平均停滞时间为50ms，当前的69ms明显是太长了，就需要调整。</p>
@@ -484,7 +484,7 @@
 新生代的大小有140m变为126，堆大小顺应变化，此时老年代是没有变化的。</code></pre></div>
 
 <h2 id="3、优化老年代的大小"><a href="#3、优化老年代的大小" class="headerlink" title="3、优化老年代的大小"></a><strong>3、优化老年代的大小</strong></h2><p>同上一步一样，在优化之前，也需要采集gc日志的数据。此次我们关注的是FullGC的持续时间和频率。</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141538_oPj2_1859679.png" srcset="/img/loading.gif" lazyload alt="141538_oPj2_1859679"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0h7an91j30i207nn0w.jpg" srcset="/img/loading.gif" lazyload alt="141538_oPj2_1859679"></p>
 <p>上图中，我们可以看到</p>
 <div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">FullGC 平均频率 <span class="token operator">=</span><span class="token number">5</span>.8s
 
@@ -504,7 +504,7 @@ FullGC 平均持续时间<span class="token operator">=</span><span class="token
 </blockquote>
 <p>有了对象提升率，我们就可以算出填充满老年代空间需要多少次minorGC，大概一次fullGC的时间就可以计算出来了。</p>
 <p>比如:</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141659_dfML_1859679.png" srcset="/img/loading.gif" lazyload alt="141659_dfML_1859679"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0ha84akj30i008ujvi.jpg" srcset="/img/loading.gif" lazyload alt="141659_dfML_1859679"></p>
 <p>上图中:</p>
 <div class="code-wrapper"><pre class="language-bash" data-language="bash"><code class="language-bash">第一次minor GC 之后，老年代空间:13740kb - 13732kb <span class="token operator">=</span>8kb
 
@@ -539,7 +539,7 @@ FullGC 平均持续时间<span class="token operator">=</span><span class="token
 <p>吞吐量调优主要是基于应用程序的吞吐量要求而来的，应用程序应该有一个综合的吞吐指标，这个指标基于真个应用的需求和测试而衍生出来的。当有应用程序的吞吐量达到或者超过预期的吞吐目标，整个调优过程就可以圆满结束了。</p>
 <p>如果出现调优后依然无法达到应用程序的吞吐目标，需要重新回顾吞吐要求，评估当前吞吐量和目标差距是否巨大，如果在20%左右，可以修改参数，加大内存，再次从头调试，如果巨大就需要从整个应用层面来考虑，设计以及目标是否一致了，重新评估吞吐目标。</p>
 <p>对于垃圾收集器来说，提升吞吐量的性能调优的目标就是就是尽可能避免或者很少发生FullGC 或者Stop-The-World压缩式垃圾收集（CMS），因为这两种方式都会造成应用程序吞吐降低。尽量在MinorGC 阶段回收更多的对象，避免对象提升过快到老年代。</p>
-<p> <img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)_%E5%AD%90%E6%96%87%E6%A1%A3/%E5%A6%82%E4%BD%95%E5%90%88%E7%90%86%E7%9A%84%E8%A7%84%E5%88%92%E4%B8%80%E6%AC%A1jvm%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98.assets/141902_KuqW_1859679.jpg" srcset="/img/loading.gif" lazyload alt="141902_KuqW_1859679"></p>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0hdn9xqj30go0a1abj.jpg" srcset="/img/loading.gif" lazyload alt="141902_KuqW_1859679"></p>
 <h1 id="六、最后"><a href="#六、最后" class="headerlink" title="六、最后"></a><strong>六、最后</strong></h1><p>据Plumbr公司对特定垃圾收集器使用情况进行了一次调查研究，研究数据使用了84936个案例。在明确指定垃圾收集器的13%的案例中，并发收集器（CMS）使用次数最多；但大多数案例没有选择最佳垃圾收集器。这个比例占用在87%左右。</p>
 <p>JVM调优是一个系统而又复杂的工作，目前jvm下的自动调整已经做的比较优秀，基本的一些初始参数都可以保证一般的应用跑的比较稳定了，对部分团队来说，程序性能可能优先级不高，默认垃圾收集器已经够用了。调优要基于自己的情况而来。</p>
 
@@ -582,7 +582,7 @@ FullGC 平均持续时间<span class="token operator">=</span><span class="token
                     
                       <a href="/2021/05/26/http-content/">
                         <span class="hidden-mobile">http_content</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -665,7 +665,7 @@ FullGC 平均持续时间<span class="token operator">=</span><span class="token
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -674,7 +674,7 @@ FullGC 平均持续时间<span class="token operator">=</span><span class="token
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

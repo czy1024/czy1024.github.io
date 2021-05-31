@@ -210,7 +210,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.5k 字
+      1.4k 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      26
+      25
        分钟
     </span>
   
@@ -262,7 +262,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 小时前
+                  本文最后更新于：5 天前
                 
               </p>
             
@@ -276,15 +276,15 @@
 <p>多说一句，例如”mp3.baidu.com”，域名先是解析出这是个.com的域名，然后跑到管理.com域名的服务器上进行进一步查询，然后是.baidu，最后是mp3，</p>
 <p>所以域名结构为：三级域名.二级域名.一级域名。</p>
 <p>浏览器终于得到了IP以后，浏览器接着给这个IP的服务器发送了一个http请求，方式为get，例如访问nbut.cn</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B" srcset="/img/loading.gif" lazyload alt="image-20201104211159011">_子文档/访问 <a target="_blank" rel="noopener" href="http://www.taobao.com过程.assets/image-20201104211159011.png">www.taobao.com过程.assets/image-20201104211159011.png</a>)</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0i0a87nj30fr0edgq3.jpg" srcset="/img/loading.gif" lazyload alt="image-20201104211159011"></p>
 <p>这个get请求包含了主机（host）、用户代理(User-Agent)，用户代理就是自己的浏览器，它是你的”代理人”，Connection（连接属性）中的keep-alive表示浏览器告诉对方服务器在传输完现在请求的内容后不要断开连接，不断开的话下次继续连接速度就很快了。其他的顾名思义就行了。还有一个重点是Cookies，Cookies保存了用户的登陆信息，在每次向服务器发送请求的时候会重复发送给服务器。Corome上的F12与Firefox上的firebug(快捷键shift+F5)均可查看这些信息。</p>
 <p>发送完请求接下来就是等待回应了</p>
 <p>当然了，服务器收到浏览器的请求以后（其实是WEB服务器接收到了这个请求，WEB服务器有iis、apache等），它会解析这个请求（读请求头），然后生成一个响应头和具体响应内容。接着服务器会传回来一个响应头和一个响应，响应头告诉了浏览器一些必要的信息，例如重要的Status Code，2开头如200表示一切正常，3开头表示重定向，4开头，如404，呵呵。响应就是具体的页面编码，就是那个<html>……</html>，浏览器先读了关于这个响应的说明书（响应头），然后开始解析这个响应并在页面上显示出来。在下一次CF的时候（不是穿越火线，是<a target="_blank" rel="noopener" href="http://codeforces.com/%EF%BC%89%EF%BC%8C%E7%94%B1%E4%BA%8E%E7%BB%8F%E5%B8%B8%E9%9A%BE%E4%BB%A5%E6%89%BF%E5%8F%97%E5%87%A0%E5%8D%83%E4%BA%BA%E7%9A%84%E5%90%8C%E6%97%B6%E8%AE%BF%E9%97%AE%EF%BC%8C%E6%89%80%E4%BB%A5CF%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%B8%B8%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%B4%A9%E6%BA%83%E9%A1%B5%E9%9D%A2%EF%BC%8C%E5%88%B0%E6%97%B6%E5%80%99%E5%8F%AF%E4%BB%A5%E7%82%B9%E5%BC%80%E7%81%AB%E7%8B%90%E7%9A%84firebug%E6%88%96%E6%98%AFChrome%E7%9A%84F12%E7%9C%8B%E7%9C%8B%E7%8A%B6%E6%80%81%EF%BC%8C%E4%B8%8D%E8%BF%87%E8%BF%99%E6%97%B6%E5%80%99%E4%B8%80%E8%88%AC%E9%83%BD%E6%80%A5%E7%9D%80%E7%9C%8B%E9%A2%98%E5%92%8C%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%EF%BC%8C%E4%BC%BC%E4%B9%8E%E6%A0%B9%E6%9C%AC%E5%B0%B1%E6%B2%A1%E5%BF%83%E6%83%85%E7%90%86%E4%BC%9A%E8%BF%99%E4%B8%AA%E7%8A%B6%E6%80%81%E5%90%A7-.-%E3%80%82">http://codeforces.com/），由于经常难以承受几千人的同时访问，所以CF页面经常会出现崩溃页面，到时候可以点开火狐的firebug或是Chrome的F12看看状态，不过这时候一般都急着看题和提交代码，似乎根本就没心情理会这个状态吧-.-。</a></p>
 <p>如果是个静态页面，那么基本上到这一步就没了，但是如今的网站几乎没有静态的了吧，基本全是动态的。所以这时候事情还没完，根据我们的经验，浏览器打开一个网址的时候会慢慢加载这个页面，一部分一部分的显示，直到完全显示，最后标签栏上的圈圈就不转了。</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B" srcset="/img/loading.gif" lazyload alt="image-20201104210542063">_子文档/访问 <a target="_blank" rel="noopener" href="http://www.taobao.com过程.assets/image-20201104210542063.png">www.taobao.com过程.assets/image-20201104210542063.png</a>)</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B" srcset="/img/loading.gif" lazyload alt="image-20201104210454136">_子文档/访问 <a target="_blank" rel="noopener" href="http://www.taobao.com过程.assets/image-20201104210454136.png">www.taobao.com过程.assets/image-20201104210454136.png</a>)</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0i3qj8dj3085012wea.jpg" srcset="/img/loading.gif" lazyload alt="image-20201104210542063"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0i7n737j307y00x3yb.jpg" srcset="/img/loading.gif" lazyload alt="image-20201104210454136"></p>
 <p>这是因为，主页（index）页面框架传送过来以后，浏览器还要继续向服务器发送请求，请求的内容是主页里面包含的一些资源，如图片，视频，css样式等等。这些”非静态”的东西要一点点地请求过来，所以标签栏转啊转，内容刷啊刷，最后全部请求并加载好了就终于好了。</p>
-<p><img src="/Users/luna/application/luna-exercise/luna-interview/interview/02-BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B)/BAT%E9%9D%A2%E8%AF%95%E9%A2%98%E6%B1%87%E6%80%BB%E5%8F%8A%E8%AF%A6%E8%A7%A3(%E8%BF%9B%E5%A4%A7%E5%8E%82%E5%BF%85%E7%9C%8B" srcset="/img/loading.gif" lazyload alt="20140825115321699">_子文档/访问 <a target="_blank" rel="noopener" href="http://www.taobao.com过程.assets/20140825115321699.jpg">www.taobao.com过程.assets/20140825115321699.jpg</a>)</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqw0ia0qsaj30mq03i75c.jpg" srcset="/img/loading.gif" lazyload alt="20140825115321699"></p>
 <p>需要说明的是，对于静态的页面内容，浏览器通常会进行缓存，而对于动态的内容，浏览器通常不会进行缓存。缓存的内容通常也不会保存很久，因为难保网站不会被改动。</p>
 
             </div>
@@ -325,7 +325,7 @@
                       <a href="/2021/05/26/jvm-tuning/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">jvm_tuning</span>
-                        <span class="visible-mobile">Vorheriger</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -334,7 +334,7 @@
                     
                       <a href="/2021/05/26/design-patterns/">
                         <span class="hidden-mobile">design_patterns</span>
-                        <span class="visible-mobile">Nächster</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -417,7 +417,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -426,7 +426,7 @@
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

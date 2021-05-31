@@ -194,25 +194,26 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全">
+        <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 安全性能">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">Docker 安全</a>
+        <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">Docker 安全性能</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87/">
+        <a href="/2020/06/03/Docker%E5%AE%89%E5%85%A8%E6%80%A7%E8%83%BD%E4%BA%86%E8%A7%A3/">
           
           
             
           
-          1. 前言​    Docker容器安全目前推荐的技术方案是 : Kata Containers，那先来认识一下什么是kata containers。
-​    Kata Containers是一个开源项目和社区，致力于构建轻量级虚拟机（VM）的标准实现——这些虚拟机的感知和执行类似容器，但提供VM的工作负载隔离和安全优势，内核级别的隔离宿主机的内核！Kata Containers 项目最初是基于
+          1. 前言​    Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
+​    在讨论容器的安全性之前，我们先了解下容器与虚拟机的区别，这样可以帮助我们更好地了解容器的安全隐患以及如何加固容器安全。
+2. docke
         </a>
       </p>
 
@@ -368,6 +369,64 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/06/03/Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/" target="_blank">
+          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 资源隔离">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/06/03/Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">Docker 资源隔离</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/06/03/Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">
+          
+          
+            
+          
+          1. 前言​    在上一章Docker安全性能中已有讲解Namespace的功能作用。
+​    概念回顾：Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
+​    虽然Namespace的技术的隔离和安全性相对
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-06-03 00:00" pubdate>
+              2020-06-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/docker/">docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/06/03/Docker%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/" target="_blank">
           <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 技术原理">
         </a>
@@ -446,64 +505,6 @@
 如何操作镜像：
 
 从图中可知，镜像的操作可分
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-06-03 00:00" pubdate>
-              2020-06-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/basic-component/">basic-component</a>
-            
-              <a href="/categories/basic-component/docker/">docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/docker/">docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/03/Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/" target="_blank">
-          <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="Docker 资源隔离">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/06/03/Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">Docker 资源隔离</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/06/03/Docker%E5%BA%95%E5%B1%82%E8%B5%84%E6%BA%90%E9%9A%94%E7%A6%BBnamespace/">
-          
-          
-            
-          
-          1. 前言​    在上一章Docker安全性能中已有讲解Namespace的功能作用。
-​    概念回顾：Docker 是基于 Linux 内核的 Namespace 技术实现资源隔离的，所有的容器都共享主机的内核。其实这与以虚拟机为代表的云计算时代还是有很多区别的，比如虚拟机有着更好的隔离性和安全性，而容器的隔离性和安全性则相对较弱。
-​    虽然Namespace的技术的隔离和安全性相对
         </a>
       </p>
 
@@ -727,25 +728,25 @@ import org.springframework.scheduling.an
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/01/genesis-1/" target="_blank">
-          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="智慧教学辅助系统-作品简介">
+        <a href="/2020/06/01/genesis-2/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="智慧教学辅助系统-作品思路">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/06/01/genesis-1/">智慧教学辅助系统-作品简介</a>
+        <a href="/2020/06/01/genesis-2/">智慧教学辅助系统-作品思路</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/06/01/genesis-1/">
+        <a href="/2020/06/01/genesis-2/">
           
           
             
           
-          作品简介现阶段，智慧教育课堂教学仍是学校教育的主阵地，传统课堂教学过程中，教师讲授课程知识以知识点为基本元素，更多偏向将过于细琐和庞杂的知识点填鸭式的、照本宣科的讲授给大学生。
-我们开发的智慧教学辅助系统，利用知识图谱的构建与调整功能帮助教师了解学生在教学过程中对某一知识点的掌握情况，及时调整教学内容和教学方法，合理分配，重新组合知识点教学，利用知识点识别学生状态检测功能优化学生与老师的学习与授课
+          \1. 目标与思路   人工智能，知识图谱等前沿信息技术在教育中的应用，推动信息化教育进入高校，学科知识图谱将不断为智慧的教学提供知识功能，人工智能为智慧教育的发展提供了强有力的技术支持，推动人工智能与教育都应刻不容缓。
+\2. 传统教育   现阶段，智慧教育课堂教学仍是学校教育的主阵地，传统课堂教学过程中，教师讲授课程知识以知识点为基本元素，更多偏向将过于细琐和庞杂的知识点填鸭式的、照本宣科的讲
         </a>
       </p>
 
@@ -807,7 +808,7 @@ import org.springframework.scheduling.an
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -816,7 +817,7 @@ import org.springframework.scheduling.an
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">Stichwort</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
