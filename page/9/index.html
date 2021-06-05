@@ -194,6 +194,71 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2020/05/05/apacheVirtual/" target="_blank">
+          <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="apache 虚拟主机配置">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/05/05/apacheVirtual/">apache 虚拟主机配置</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/05/05/apacheVirtual/">
+          
+          
+            
+          
+          apache虚拟主机配置apache2.4的最终配置效果:
+httpd.conf
+Listen 19010
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf
+
+httpd-vhosts.conf
+# IP:Port,以端口号配置虚拟机
+&lt;VirtualHost 127.0.0.1:19010>
+    # 网站错误时提示的联系管理员邮箱
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-05-05 00:00" pubdate>
+              2020-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/apache/">apache</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/apache/">apache</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2020/05/05/brew/" target="_blank">
           <img src="/img/paper/index_default.png" srcset="/img/loading.gif" lazyload alt="homebrew教程">
         </a>
@@ -735,69 +800,6 @@ split(CharSequence input)方法,用于分隔字符串,并返回一个String[]
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/04/02/Json/" target="_blank">
-          <img src="/img/json.png" srcset="/img/loading.gif" lazyload alt="Json处理">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/02/Json/">Json处理</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/02/Json/">
-          
-          
-            
-          
-          FastJSON
-引入依赖或者Jar包
-&lt;dependency>
-     &lt;groupId>com.alibaba&lt;/groupId>
-     &lt;artifactId>fastjson&lt;/artifactId>
-     &lt;version>1.1.23&lt;/version>
- &lt;/dependency>
-
-将Map转成JSON
-Map&lt;Str
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-02 00:00" pubdate>
-              2020-04-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/json/">json</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -827,7 +829,7 @@ Map&lt;Str
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -836,7 +838,7 @@ Map&lt;Str
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">keyword</label>
+                 for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
