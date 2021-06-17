@@ -194,6 +194,66 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/17/macos-profile/" target="_blank">
+          <img src="/img/macos.png" srcset="/img/loading.gif" lazyload alt="macos-profile">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/17/macos-profile/">macos-profile</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/17/macos-profile/">
+          
+          
+            
+          
+          macOS 环境变量配置教程如果只是寻找设置方法，请按照如下方法操作：$echo $PATH
+$sudo vi ~/.bash_profile
+
+Tips: 以上操作为显示当前已设置环境变量路径，如果没有要添加的程序，则使用vi 命令进行操作添加。 在 文件中 输入 
+$export PATH="$PATH:'pwd'/xxxx/bin"
+
+Tips: 以上命令中将  pwd  替换为当前程序文件
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-17 10:32" pubdate>
+              2021-05-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/system/">system</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/macos/">macos</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/05/16/Jackson/" target="_blank">
           <img src="/img/java.png" srcset="/img/loading.gif" lazyload alt="Jackson">
         </a>
@@ -735,64 +795,6 @@ Tomcat的缺省端口是多少，怎么修改
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/25/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank">
-          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql面试题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/25/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/">mysql面试题</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/25/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/">
-          
-          
-            
-          
-          Mysql 面试题为什么用自增列作为主键1. 如果定义了主键Primary Key，那么InnoDB会选择主键作为聚簇索引
-如果没有显示定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引。
-如果也没有这样的唯一索引，则InnoDB会选择内置6字节长度的RowId作为隐含的聚簇索引（RowId随着行记录的写入而主键递增）这个RowId不像Oracle的RowId 那样可引用
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-25 15:11" pubdate>
-              2021-04-25
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/basic-component/">basic-component</a>
-            
-              <a href="/categories/basic-component/mysql/">mysql</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mysql/">mysql</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -822,7 +824,7 @@ Tomcat的缺省端口是多少，怎么修改
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -831,7 +833,7 @@ Tomcat的缺省端口是多少，怎么修改
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                 for="local-search-input">キーワード</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

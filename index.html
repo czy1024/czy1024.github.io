@@ -252,6 +252,63 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/06/17/git-clean/" target="_blank">
+          <img src="/blog/img/git.png" srcset="/img/loading.gif" lazyload alt="git-clean">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/17/git-clean/">git-clean</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/17/git-clean/">
+          
+          
+            
+          
+          Git仓库删除大文件背景当用Git久了，难免会手误或临时添加一些大文件到仓库中，即使以后添加进了.gitignore，甚至做了git rm，但是Git为了保证版本可回退，history pack里面依然会存储这些对象，这个时候我们就要为Git仓库进行瘦身。
+或者不是大文件的情况，有时我们需要删除掉一些敏感信息文件，比如password.txt，即使回退也无法找到敏感文件，要实现这个要求，也要对hi
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-17 15:29" pubdate>
+              2021-06-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/git/">git</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/06/05/linux-command/" target="_blank">
           <img src="/img/linux.jpg" srcset="/img/loading.gif" lazyload alt="linux_command">
         </a>
@@ -735,66 +792,6 @@ javah：产生可以调
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/17/macos-profile/" target="_blank">
-          <img src="/img/macos.png" srcset="/img/loading.gif" lazyload alt="macos-profile">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/17/macos-profile/">macos-profile</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/17/macos-profile/">
-          
-          
-            
-          
-          macOS 环境变量配置教程如果只是寻找设置方法，请按照如下方法操作：$echo $PATH
-$sudo vi ~/.bash_profile
-
-Tips: 以上操作为显示当前已设置环境变量路径，如果没有要添加的程序，则使用vi 命令进行操作添加。 在 文件中 输入 
-$export PATH="$PATH:'pwd'/xxxx/bin"
-
-Tips: 以上命令中将  pwd  替换为当前程序文件
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-17 10:32" pubdate>
-              2021-05-17
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/system/">system</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/macos/">macos</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -824,7 +821,7 @@ Tips: 以上命令中将  pwd  替换为当前程序文件
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -833,7 +830,7 @@ Tips: 以上命令中将  pwd  替换为当前程序文件
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                 for="local-search-input">キーワード</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>

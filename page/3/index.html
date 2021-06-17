@@ -194,6 +194,64 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/04/25/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank">
+          <img src="/img/mysql.png" srcset="/img/loading.gif" lazyload alt="mysql面试题">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/25/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/">mysql面试题</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/25/mysql%E9%9D%A2%E8%AF%95%E9%A2%98/">
+          
+          
+            
+          
+          Mysql 面试题为什么用自增列作为主键1. 如果定义了主键Primary Key，那么InnoDB会选择主键作为聚簇索引
+如果没有显示定义主键，则InnoDB会选择第一个不包含有NULL值的唯一索引作为主键索引。
+如果也没有这样的唯一索引，则InnoDB会选择内置6字节长度的RowId作为隐含的聚簇索引（RowId随着行记录的写入而主键递增）这个RowId不像Oracle的RowId 那样可引用
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-25 15:11" pubdate>
+              2021-04-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/mysql/">mysql</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/mysql/">mysql</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/04/23/docker-compose/" target="_blank">
           <img src="/img/docker.jpg" srcset="/img/loading.gif" lazyload alt="docker-compose">
         </a>
@@ -426,24 +484,26 @@ l /Library/LaunchAgents –&gt;当用户登陆系统后才会被执行
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/11/rabbitmq-linux/" target="_blank">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="rabbitmq-linux">
+        <a href="/2021/01/11/rabbitmq-windows-install/" target="_blank">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="rabbitmq-windows">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/11/rabbitmq-linux/">rabbitmq-linux</a>
+        <a href="/2021/01/11/rabbitmq-windows-install/">rabbitmq-windows</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/11/rabbitmq-linux/">
+        <a href="/2021/01/11/rabbitmq-windows-install/">
           
           
             
           
-          RabbitMQ1 MQ引言1.1 什么是MQMQ(Message Quene) :  翻译为消息队列,通过典型的生产者和消费者模型,生产者不断向消息队列中生产消息，消费者不断的从队列中获取消息。因为消息的生产和消费都是异步的，而且只关心消息的发送和接收，没有业务逻辑的侵入,轻松的实现系统间解耦。别名为 消息中间件通过利用高效可靠的消息传递机制进行平台无关的数据交流，并基于数据通信来进行分布式系统
+          rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。
+1.安装Erlang所以在安装rabbitMQ之前，需要先安装Erlang 。
+小编使用的是otp_win64_18.1 ，需要其他版本或者32位系
         </a>
       </p>
 
@@ -484,26 +544,24 @@ l /Library/LaunchAgents –&gt;当用户登陆系统后才会被执行
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/11/rabbitmq-windows-install/" target="_blank">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="rabbitmq-windows">
+        <a href="/2021/01/11/rabbitmq-linux/" target="_blank">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="rabbitmq-linux">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/01/11/rabbitmq-windows-install/">rabbitmq-windows</a>
+        <a href="/2021/01/11/rabbitmq-linux/">rabbitmq-linux</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/01/11/rabbitmq-windows-install/">
+        <a href="/2021/01/11/rabbitmq-linux/">
           
           
             
           
-          rabbitMQ是一个在AMQP协议标准基础上完整的，可服用的企业消息系统。它遵循Mozilla Public License开源协议，采用 Erlang 实现的工业级的消息队列(MQ)服务器，Rabbit MQ 是建立在Erlang OTP平台上。
-1.安装Erlang所以在安装rabbitMQ之前，需要先安装Erlang 。
-小编使用的是otp_win64_18.1 ，需要其他版本或者32位系
+          RabbitMQ1 MQ引言1.1 什么是MQMQ(Message Quene) :  翻译为消息队列,通过典型的生产者和消费者模型,生产者不断向消息队列中生产消息，消费者不断的从队列中获取消息。因为消息的生产和消费都是异步的，而且只关心消息的发送和接收，没有业务逻辑的侵入,轻松的实现系统间解耦。别名为 消息中间件通过利用高效可靠的消息传递机制进行平台无关的数据交流，并基于数据通信来进行分布式系统
         </a>
       </p>
 
@@ -603,6 +661,62 @@ Homebrew是以最简单，最灵活的方式来安装苹果公司在MacOS中不�
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/01/07/frp/" target="_blank">
+          <img src="/img/frp.jpg" srcset="/img/loading.gif" lazyload alt="frp">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/01/07/frp/">frp</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/07/frp/">
+          
+          
+            
+          
+          为什么需要内网穿透功能从公网中访问自己的私有设备向来是一件难事儿。自己的主力台式机、NAS等等设备，它们可能处于路由器后，或者运营商因为IP地址短缺不给你分配公网IP地址。如果我们想直接访问到这些设备（远程桌面，远程文件，SSH等等），一般来说要通过一些转发或者P2P组网软件的帮助。我有一台计算机位于一个很复杂的局域网中，我想要实现远程桌面和文件访问，目前来看其所处的网络环境很难通过简单的端口映射
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-07 00:00" pubdate>
+              2021-01-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/basic-component/">basic-component</a>
+            
+              <a href="/categories/basic-component/frp/">frp</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/frp/">frp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2021/01/07/consul/" target="_blank">
           <img src="/img/consul.png" srcset="/img/loading.gif" lazyload alt="consul">
         </a>
@@ -663,124 +777,6 @@ Consul Open Source解决了跨分布式基础架构连接服务
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/07/frp/" target="_blank">
-          <img src="/img/frp.jpg" srcset="/img/loading.gif" lazyload alt="frp">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/07/frp/">frp</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/07/frp/">
-          
-          
-            
-          
-          为什么需要内网穿透功能从公网中访问自己的私有设备向来是一件难事儿。自己的主力台式机、NAS等等设备，它们可能处于路由器后，或者运营商因为IP地址短缺不给你分配公网IP地址。如果我们想直接访问到这些设备（远程桌面，远程文件，SSH等等），一般来说要通过一些转发或者P2P组网软件的帮助。我有一台计算机位于一个很复杂的局域网中，我想要实现远程桌面和文件访问，目前来看其所处的网络环境很难通过简单的端口映射
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-07 00:00" pubdate>
-              2021-01-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/basic-component/">basic-component</a>
-            
-              <a href="/categories/basic-component/frp/">frp</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/frp/">frp</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/01/05/vncserver/" target="_blank">
-          <img src="/img/vncserver.png" srcset="/img/loading.gif" lazyload alt="vncserver">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/05/vncserver/">vncserver</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/05/vncserver/">
-          
-          
-            
-          
-          安装sh -c "$(curl -x 192.168.31.225:10822 -fsSl https://raw.githubusercontent.com/czy1024/luna-linux-conf/master/vnc/vnc_install.sh)"
-
-
-VNC Client就不用说了，单文件版，双击就能运行。
-VNC Server安装如下：
-
-ssh到你的server，然后输入以下命
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-05 00:00" pubdate>
-              2021-01-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/basic-component/">basic-component</a>
-            
-              <a href="/categories/basic-component/vnc/">vnc</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vncserver/">vncserver</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -810,7 +806,7 @@ ssh到你的server，然后输入以下命
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -819,7 +815,7 @@ ssh到你的server，然后输入以下命
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+                 for="local-search-input">キーワード</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
