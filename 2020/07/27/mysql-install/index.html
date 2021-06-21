@@ -210,7 +210,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      516 字
+      430 字
     </span>
   
 
@@ -220,7 +220,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
@@ -262,85 +262,45 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 个月前
+                  本文最后更新于：1 分钟前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="MySQL5-7绿色版（免装版）的初始化和修改密码"><a href="#MySQL5-7绿色版（免装版）的初始化和修改密码" class="headerlink" title="MySQL5.7绿色版（免装版）的初始化和修改密码"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jyiqing/p/6924062.html">MySQL5.7绿色版（免装版）的初始化和修改密码</a></h2><h2 id="1-下载MySQL5-7-18绿色版"><a href="#1-下载MySQL5-7-18绿色版" class="headerlink" title="1.下载MySQL5.7.18绿色版"></a>1.下载MySQL5.7.18绿色版</h2><h3 id="1-1下载链接"><a href="#1-1下载链接" class="headerlink" title="1.1下载链接"></a>1.1下载链接</h3><p>以下是MySQL5.7.18绿色版的链接（来源oracle官网），打开链接直接下载</p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip"> https://dev.mysql.com/gt/Downloads/MySQL-5.7/mysql-5.7.18-winx64.zip</a></p>
-<p><img src="https://i.loli.net/2021/04/18/Fslm6cZMqWU5JCz.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h3 id="1-2解压"><a href="#1-2解压" class="headerlink" title="1.2解压"></a>1.2解压</h3><p>解压到文件夹</p>
-<p><img src="https://i.loli.net/2021/04/18/hqpuc7SHXJ8LQgP.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="2-新建或清空data文件夹"><a href="#2-新建或清空data文件夹" class="headerlink" title="2.新建或清空data文件夹"></a>2.新建或清空data文件夹</h2><p>2.1解压以后，在目录下创建一个data文件夹</p>
-<p><img src="https://i.loli.net/2021/04/18/GCqjWEg8un7N46r.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>2.2如果原来已经有一个data文件夹，就把里面的数据全部删掉。</p>
-<p><img src="https://i.loli.net/2021/04/18/YZfb3eRmorDVaJ8.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="3-安装服务"><a href="#3-安装服务" class="headerlink" title="3.安装服务"></a>3.安装服务</h2><h3 id="3-1打开cmd（管理员）"><a href="#3-1打开cmd（管理员）" class="headerlink" title="3.1打开cmd（管理员）"></a>3.1打开cmd（管理员）</h3><p>右键开始菜单→选择  命令提示符（管理员）  </p>
-<p><img src="https://i.loli.net/2021/04/18/VRUrtOW9iNyLcKl.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>3.2在cmd中打开mysql的bin文件夹</p>
-<p><img src="https://i.loli.net/2021/04/18/LCwnjzseMSNaPOJ.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h3 id="3-3安装服务"><a href="#3-3安装服务" class="headerlink" title="3.3安装服务"></a>3.3安装服务</h3><p>3.3.1运行命令mysqld –install安装服务，如下图：</p>
-<p><img src="https://i.loli.net/2021/04/18/9n3YDyxGzNiP25Q.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>3.3.2（可忽略）如果不需要mysql里，只需要运行mysqld –remove即可移除，如下图</p>
-<p><img src="https://i.loli.net/2021/04/18/ZO9XSDgvMQluIVa.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="4-初始化数据库"><a href="#4-初始化数据库" class="headerlink" title="4.初始化数据库"></a>4.初始化数据库</h2><p>4.1运行命令：mysqld –initialize-insecure –user=mysql –explicit_defaults_for_timestamp。</p>
-<p>运行前，先确保data目录下没有任何文件（如果有文件，会初始化失败）。</p>
-<p>如图：</p>
-<p><img src="https://i.loli.net/2021/04/18/wWMe2ogFzNkxLq9.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="5启动服务"><a href="#5启动服务" class="headerlink" title="5启动服务"></a>5启动服务</h2><p>5.1运行net start mysql 启动服务，如下图:</p>
-<p><img src="https://i.loli.net/2021/04/18/NQcxrwq8CvEWkAj.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>5.2运行net stop mysql 启动服务，如下图:</p>
-<p><img src="https://i.loli.net/2021/04/18/qv6uYVKd5RgsUyF.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="6-客户端测试"><a href="#6-客户端测试" class="headerlink" title="6.客户端测试"></a>6.客户端测试</h2><p>6.1运行：mysql –uroot –p</p>
-<p>如下图：</p>
-<p><img src="https://i.loli.net/2021/04/18/TVWS7py5utzA8fE.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p> 这里不需要密码，直接按回车键</p>
-<p><img src="https://i.loli.net/2021/04/18/ZVoBid1muUFENrt.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>看到 mysql&gt; 就证明是成功进入mysql的了</p>
-<h2 id="7-配置编码为UTF-8"><a href="#7-配置编码为UTF-8" class="headerlink" title="7.配置编码为UTF-8"></a>7.配置编码为UTF-8</h2><p>7.1创建.txt文件，改名为my.ini</p>
-<p><img src="https://i.loli.net/2021/04/18/k9GPZ2D7nFf3pMA.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>将以下代码添加到my.ini</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">[mysqld]
-character-set-server&#x3D;utf8
-[mysql]
-default-character-set&#x3D;utf8</code></pre></div>
+              <h2 id="MySQL5-7绿色版（免装版）的初始化和修改密码"><a href="#MySQL5-7绿色版（免装版）的初始化和修改密码" class="headerlink" title="MySQL5.7绿色版（免装版）的初始化和修改密码"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jyiqing/p/6924062.html">MySQL5.7绿色版（免装版）的初始化和修改密码</a></h2><p><strong>1、下载</strong></p>
+<p>（1）下载地址：<a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a></p>
+<p>（2）选择下载</p>
+<p><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620001542784-897003254.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>2、配置环境变量</strong></p>
+<p>（1）解压目录：D:\mysql-8.0.16-winx64</p>
+<p>（2）配置环境变量</p>
+<p><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620002109235-1598560339.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>3、添加配置文件</strong></p>
+<p>（1）配置文件目录：D:\mysql-8.0.16-winx64</p>
+<p>（2）配置文件名：my.ini</p>
+<p>（3）文件内容：</p>
+<div class="code-wrapper"><pre class="language-none"><code class="language-none">[mysql]&#96;&#96;# 设置mysql客户端默认字符集&#96;&#96;default-character-&#96;&#96;set&#96;&#96;&#x3D;utf8&#96; &#96;[mysqld]&#96;&#96;# 绑定IPv4&#96;&#96;bind-address&#x3D;0.0.0.0&#96;&#96;# 设置端口号&#96;&#96;port&#x3D;3306&#96;&#96;# 设置mysql的安装目录，即解压目录&#96;&#96;basedir&#x3D;D:\\mysql-8.0.16-winx64&#96;&#96;# 设置数据库的数据存放目录&#96;&#96;datadir&#x3D;D:\\mysql-8.0.16-winx64\\data&#96;&#96;# 设置允许最大连接数&#96;&#96;max_connections&#x3D;200&#96;&#96;# 设置允许连接失败次数&#96;&#96;max_connect_errors&#x3D;10&#96;&#96;# 设置服务端的默认字符集&#96;&#96;character-&#96;&#96;set&#96;&#96;-server&#x3D;utf8&#96;&#96;# 创建表使用的默认存储引擎&#96;&#96;default-storage-engine&#x3D;INNODB&#96;&#96;# 使用“mysql_native_password”插件认证&#96;&#96;default_authentication_plugin&#x3D;mysql_native_password</code></pre></div>
 
-<p> 如图：</p>
-<p><img src="https://i.loli.net/2021/04/18/Sc3UfXNeYqiw2Pd.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>7.2在mysql中查看编码</p>
-<p>7.2.1重启mysql，命令：mysqld restart</p>
-<p>7.2.2查看编码命令：<code>show variables ``like &#39;``character``%&#39;;（修改前）</code></p>
-<p><img src="https://i.loli.net/2021/04/18/2tIM8EgOsAauTYG.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p> 7.2.3查看编码命令：<code>show variables ``like &#39;``character``%&#39;;（修改后）</code></p>
-<p> <img src="https://i.loli.net/2021/04/18/BxcSJWG346qTHme.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="8-修改密码"><a href="#8-修改密码" class="headerlink" title="8.修改密码"></a>8.修改密码</h2><p>在mysql 中逐步输入以下的代码：</p>
-<div class="code-wrapper"><pre class="language-none"><code class="language-none">use mysql;
-
-&#x2F;&#x2F;密码为123456
-update user set authentication_string&#x3D;PASSWORD(&quot;123456&quot;) where user&#x3D;&quot;root&quot;;
-
-
-&#x2F;&#x2F;更新权限
-flush privileges; 
-
-&#x2F;&#x2F;退出mysql
-quit;</code></pre></div>
-
-
-
-<p> 如图：</p>
-<p> a.</p>
-<p><img src="https://i.loli.net/2021/04/18/cQzYPhGJK324mVd.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p> b.</p>
-<p><img src="https://i.loli.net/2021/04/18/Qxkv5G4cCVbpjXf.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p>c.</p>
-<p><img src="https://i.loli.net/2021/04/18/C8KUryuVfz4dOkW.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p> d.</p>
-<p><img src="https://i.loli.net/2021/04/18/nGYSEdOCfsq6AKt.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<h2 id="9-重新打开mysql"><a href="#9-重新打开mysql" class="headerlink" title="9.重新打开mysql"></a>9.重新打开mysql</h2><p>使用刚刚设置的密码123456登录</p>
-<p><img src="https://images2015.cnblogs.com/blog/1082630/201705/1082630-20170531194808383-101044283.png" srcset="/img/loading.gif" lazyload alt="img"></p>
-<p> 登录成功！！！</p>
+<p><strong>4、CMD命令窗口配置mysql</strong></p>
+<p>（1）初始化mysql（记住随机密码）：<strong>mysqld –initialize –console</strong></p>
+<p> <img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620014312114-157191049.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>随机密码为：%tbmq)f&lt;;3jE</p>
+<p>目录会多处data文件夹</p>
+<p>（2）安装mysql服务：<strong>mysqld –install mysql –defaults-file=****”D:\mysql-8.0.16-winx64\my.ini”</strong></p>
+<p><strong><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620014706448-303230754.png" srcset="/img/loading.gif" lazyload alt="img"></strong></p>
+<p>切换管理员身份运行</p>
+<p><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620015148365-1323561363.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>（3）启动mysql服务：<strong>net start mysql</strong></p>
+<p><strong><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620015241272-592406864.png" srcset="/img/loading.gif" lazyload alt="img"></strong></p>
+<p>（4）登录mysql：<strong>mysql -uroot -p</strong></p>
+<p>密码为之前的随机密码：：%tbmq)f&lt;;3jE</p>
+<p>（5）修改密码：<strong>ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘新密码’;</strong></p>
+<p><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620020223252-138085659.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>退出重新登录</p>
+<p><img src="https://img2018.cnblogs.com/blog/1627739/201906/1627739-20190620021250850-1721675715.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><strong>5、其他命令</strong></p>
+<p>（1）关闭服务：net stop mysql</p>
+<p>（2）卸载服务：mysqld –remove</p>
 
             </div>
             <hr>
@@ -387,8 +347,8 @@ quit;</code></pre></div>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/07/27/nginx-install/">
-                        <span class="hidden-mobile">一个简单的反向代理Nginx</span>
+                      <a href="/2020/07/27/luna-commons/">
+                        <span class="hidden-mobile">luna-commons</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
